@@ -3,11 +3,23 @@
 2-Presione Ctrl + Shift + P y busque “cambiar modo de idioma”
 3-Dentro de la barra de búsqueda, escriba "tailwindcss" y selecciónelo.
 Ahora su archivo CSS está asociado con Tailwind CSS en lugar de CSS normal y las advertencias deberían desaparecer*/
-@config "./tailwind.config.js"
+/*@config "./tailwind.config.js"*/
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* theme: {
+  colors: {
+    'blue': '#082F49"',
+    'green': '#4ADE80',
+    'esmerald': '#34D399',
+    'orange': '#F59E0B',
+    'gray': '#D6D3D1',
+    'light-gray': '#E5E5E5',
+    'black': '#000000',
+    'withe': '#FFFFFF'
+  },
+  fontFamily: {
+    'titles': ['Oswald', 'sans-serif'],
+    'text': ['Inter', 'sans-serif']
+  }, */
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

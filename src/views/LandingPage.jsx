@@ -4,6 +4,9 @@ const LandingPage = () => {
   return (
     <div>
       <h1>LANDING PAGE</h1>
+      <h2>esta es una prueba</h2>
+      <h3>para probar que tailwind esta ok</h3>
+      <p>el color y tipografia tambien</p>
     </div>
   );
 };

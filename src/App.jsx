@@ -23,14 +23,18 @@ function App() {
       )}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="inbox" element={<InboxUser />} />
-        <Route path="loginAdmi" element={<LoginAdmi />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="inboxAdmi" element={<InboxAdmi />} />
-        <Route path="inboxDetail/:detailId" element={<InboxDetail />} />
-        <Route path="usersManagement" element={<UsersManagement />} />
+        <Route path="/inbox" element={<InboxUser />} />
+        <Route path="/loginAdmi" element={<LoginAdmi />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/inboxAdmi" element={<InboxAdmi />} />
+        <Route path="/inboxDetail/:detailId" element={<InboxDetail />} />
+        <Route path="/usersManagement" element={<UsersManagement />} />
       </Routes>
-      <Footer />
+      {location.pathname === "/" ? null : (
+        <div>
+          <Footer />
+        </div>
+      )}
     </div>
   );
 }
