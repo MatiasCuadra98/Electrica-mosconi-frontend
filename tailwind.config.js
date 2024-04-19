@@ -21,8 +21,8 @@ export default {
       },
       fontSize: {
         'size-name': '32px',
-        'size-titles': '20px',
-        'size-subtitles': '15px',
+        'size-titles': '16px',
+        'size-subtitles': '13x',
         'size-text': '16px'
 
       },
