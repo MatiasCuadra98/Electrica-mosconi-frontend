@@ -12,7 +12,7 @@ import {
 } from "./views";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-function App() {
+const App = () => {
   const location = useLocation();
   return (
     <div>
@@ -37,6 +37,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;
