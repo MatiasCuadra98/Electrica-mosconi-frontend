@@ -6,8 +6,8 @@ export default {
   ],
   theme: {
     extend: {},
-  },
   plugins: [],
+}
 }
 
 // /** @type {import('tailwindcss').Config} */
