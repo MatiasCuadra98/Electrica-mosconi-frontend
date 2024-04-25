@@ -11,7 +11,7 @@ const IconUser = ({ name }) => {
       {fullNameI === null ? (
         <img
           src="/noUser.svg"
-          className=" w-8 h-8 rounded-full drop-shadow-lg"
+          className=" w-10 h-10 rounded-full drop-shadow-lg"
         />
       ) : firstNameI === "A" ||
         firstNameI === "F" ||
@@ -19,7 +19,7 @@ const IconUser = ({ name }) => {
         firstNameI === "O" ||
         firstNameI === "T" ||
         firstNameI === "Y" ? (
-        <div className="bg-sky-950 w-8 h-8 rounded-full drop-shadow-lg">
+        <div className="bg-sky-950 w-10 h-10 rounded-full drop-shadow-lg">
           <h1>{fullNameI}</h1>
         </div>
       ) : firstNameI === "B" ||
@@ -28,7 +28,7 @@ const IconUser = ({ name }) => {
         firstNameI === "P" ||
         firstNameI === "U" ||
         firstNameI === "Z" ? (
-        <div className="bg-green-400 w-8 h-8 rounded-full drop-shadow-lg">
+        <div className="bg-green-400 w-10 h-10 rounded-full drop-shadow-lg">
           <h1>{fullNameI}</h1>
         </div>
       ) : firstNameI === "C" ||
@@ -36,7 +36,7 @@ const IconUser = ({ name }) => {
         firstNameI === "M" ||
         firstNameI === "Q" ||
         firstNameI === "V" ? (
-        <div className="bg-amber-500 w-8 h-8 rounded-full drop-shadow-lg">
+        <div className="bg-amber-500 w-10 h-10 rounded-full drop-shadow-lg">
           <h1>{fullNameI}</h1>
         </div>
       ) : firstNameI === "D" ||
@@ -44,11 +44,11 @@ const IconUser = ({ name }) => {
         firstNameI === "N" ||
         firstNameI === "R" ||
         firstNameI === "W" ? (
-        <div className="bg-neutral-200 w-8 h-8 rounded-full drop-shadow-lg">
+        <div className="bg-neutral-200 w-10 h-10 rounded-full drop-shadow-lg">
           <h1>{fullNameI}</h1>
         </div>
       ) : (
-        <div className="bg-stone-300 w-8 h-8 rounded-full drop-shadow-lg">
+        <div className="bg-stone-300 w-10 h-10 rounded-full drop-shadow-lg">
           <h1>{fullNameI}</h1>
         </div>
       )}

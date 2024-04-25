@@ -2,12 +2,14 @@ import axios from 'axios';
 import {
     sweetAlertsSuccessfully,
     sweetAlertsError,
-  } from '../components/utils/alerts/alerts.jsx'
+  } from '../../components/utils/alerts/alerts.jsx'
 import {
     GET_ALL_USERS,
-    GET_USER_BY_ID
-} from './types.js';
-
+    GET_USER_BY_ID,
+    FILTER_BY_SOCIAL_MEDIA,
+    FILTER_BY_STATE
+} from '../types.js';
+//USER
 export const getAllUsersAction = () => {
     try {
         return async (dispatch) => {

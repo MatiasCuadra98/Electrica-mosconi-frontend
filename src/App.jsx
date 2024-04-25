@@ -30,11 +30,11 @@ const App = () => {
         <Route path="/inboxDetail/:detailId" element={<InboxDetail />} />
         <Route path="/usersManagement" element={<UsersManagement />} />
       </Routes>
-      {location.pathname === "/" ? null : (
+      {/* {location.pathname === "/" ? null : (
         <div>
           <Footer />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

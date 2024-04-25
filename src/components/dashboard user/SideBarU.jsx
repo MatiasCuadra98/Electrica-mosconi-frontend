@@ -7,13 +7,15 @@ import GoHomeButton from "../utils/buttons/GoHomeButton";
 
 const SideBarU = () => {
   return (
-    <div className="w-56 h-screen bg-sky-950  sticky top-0 p-4">
-      <img src="/logo.svg" />
+    <div className="w-52 h-screen bg-sky-950  sticky top-0 p-4">
+      <img className="w-24 h-auto absolute top-3.5 left-12" src="/logo.svg" />
       <SelectUser />
       <FilterBySocialMedia />
       <FilterByState />
-      <ResetButtom />
-      <GoHomeButton />
+      <div className=" absolute bottom-5 left-1/2 transform -translate-x-1/2 gap-4">
+        <ResetButtom />
+        <GoHomeButton />
+      </div>
     </div>
   );
 };
