@@ -5,7 +5,8 @@ import {
   } from '../../components/utils/alerts/alerts.jsx'
 import {
     FILTER_BY_SOCIAL_MEDIA,
-    FILTER_BY_STATE
+    FILTER_BY_STATE, 
+    SEARCH_BY_CONTACT
 } from '../types.js';
 
 export const filterBySocialMediaAction = (socialMedia) => {
@@ -37,3 +38,19 @@ export const filterByStateAction = (state) => {
           );
     }
 }
+
+export const searchByContactAction = (contact) => {
+    try {  
+        return async (dispatch) => {
+            const response = await axios.get('ruta que trae un contacto con por nombre y sus mensajes asociados');
+            const messages = response.data;
+            dispatch({type: SEARCH_BY_CONTACT, payload: messages})
+        };   
+    } catch (error) {
+        sweetAlertsError(
+            "Intenta de nuevo",
+            "No hay mensajes de ese contacto",
+            "Ok"
+          );
+    }
+};
