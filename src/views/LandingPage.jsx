@@ -1,24 +1,49 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../components/utils/Spinner.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { getBusnissesByIdAction } from "../redux/actions/actionBusnisses.js";
+import { sweetAlertsError } from "../components/utils/alerts/alerts.jsx";
+import SpinnerLogin from "../components/utils/spinners/SpinnerLogin.jsx";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const busnisses = useSelector((state) => state.busnisses);
+  //console.log("landing: ", busnisses);
+  //estos datos deberian ser recibidos del login inicial
+  const busnissesId = "2d0ac106-d80f-45ae-900a-55ab87881fd5";
+  //busnisses para prueba de alerta
+  //const busnissesId = "";
+  const busnissesNameForm = "zarasa";
+
+  useEffect(() => {
+    dispatch(getBusnissesByIdAction(busnissesId));
+  }, [dispatch]);
 
   const handlerOnClick = () => {
-    setLoading(true);
-    setTimeout(() => {
-      navigate("/inbox");
-      setLoading(false);
-    }, 3000);
+    if (!busnissesId) {
+      sweetAlertsError(
+        "Intenta de nuevo",
+        `No podemos encontrar a ${busnissesNameForm}`,
+        "Ok"
+      );
+    } else {
+      //este dispatch deberia ejecutarse con un login inicial NIY
+      dispatch(getBusnissesByIdAction(busnissesId, busnissesNameForm));
+      setLoading(true);
+      setTimeout(() => {
+        navigate("/inbox");
+        setLoading(false);
+      }, 3000);
+    }
   };
 
   return (
     <div>
       {loading ? (
-        <Spinner />
+        <SpinnerLogin props={busnisses} />
       ) : (
         <div className="w-screen h-screen relative bg-sky-950 flex-col justify-start items-start inline-flex z-0">
           <img

@@ -3,7 +3,7 @@ import {
     sweetAlertsSuccessfully,
     sweetAlertsError,
   } from '../../components/utils/alerts/alerts.jsx'
-import { GET_ALL_MESSAGES_RECIVED } from "../types";
+import { GET_ALL_MESSAGES_RECIVED, GET_MESSAGE_RECIVED_BY_ID } from "../types";
 
 export const getAllMessagesAction = () => {
     try {

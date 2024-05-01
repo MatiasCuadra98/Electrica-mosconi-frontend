@@ -1,9 +1,10 @@
 import React from "react";
+//import socialMediaIcons from "../../utils/icons/socialMediaIcons";
 
-const InboxCardUser = () => {
+const InboxCardUser = (props) => {
   return (
     <div className="w-80 h-28 relative shadow-inner bg-green-400 ">
-      <h2> soy una card de un mensaje</h2>
+      soy un mensaje de entrada
     </div>
   );
 };
