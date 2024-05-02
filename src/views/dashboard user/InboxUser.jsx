@@ -2,9 +2,19 @@ import React from "react";
 import SideBarU from "../../components/dashboard user/SideBarU";
 import InboxListUser from "../../components/dashboard user/inbox/InboxListUser";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllUsersAction,
+  getUserByIdAction,
+} from "../../redux/actions/actionsUsers";
 
 const InboxUser = () => {
-  useEffect(() => {}, []);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllUsersAction());
+    //console.log("despacho la accion");
+  }, [dispatch]);
 
   return (
     <div className="flex">

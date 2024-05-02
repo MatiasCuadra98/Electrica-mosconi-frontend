@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBusnissesByIdAction } from "../redux/actions/actionBusnisses.js";
+import { getBusinessByIdAction } from "../redux/actions/actionBusiness.js";
 import { sweetAlertsError } from "../components/utils/alerts/alerts.jsx";
 import SpinnerLogin from "../components/utils/spinners/SpinnerLogin.jsx";
 
@@ -10,28 +10,28 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const busnisses = useSelector((state) => state.busnisses);
-  //console.log("landing: ", busnisses);
+  const business = useSelector((state) => state.business);
+  //console.log("landing: ", business);
   //estos datos deberian ser recibidos del login inicial
-  const busnissesId = "2d0ac106-d80f-45ae-900a-55ab87881fd5";
+  const businessId = "2d0ac106-d80f-45ae-900a-55ab87881fd5";
   //busnisses para prueba de alerta
   //const busnissesId = "";
-  const busnissesNameForm = "zarasa";
+  const businessNameForm = "zarasa";
 
   useEffect(() => {
-    dispatch(getBusnissesByIdAction(busnissesId));
+    dispatch(getBusinessByIdAction(businessId));
   }, [dispatch]);
 
   const handlerOnClick = () => {
-    if (!busnissesId) {
+    if (!businessId) {
       sweetAlertsError(
         "Intenta de nuevo",
-        `No podemos encontrar a ${busnissesNameForm}`,
+        `No podemos encontrar a ${businessNameForm}`,
         "Ok"
       );
     } else {
       //este dispatch deberia ejecutarse con un login inicial NIY
-      dispatch(getBusnissesByIdAction(busnissesId, busnissesNameForm));
+      dispatch(getBusinessByIdAction(businessId, businessNameForm));
       setLoading(true);
       setTimeout(() => {
         navigate("/inbox");
@@ -43,7 +43,7 @@ const LandingPage = () => {
   return (
     <div>
       {loading ? (
-        <SpinnerLogin props={busnisses} />
+        <SpinnerLogin props={business} />
       ) : (
         <div className="w-screen h-screen relative bg-sky-950 flex-col justify-start items-start inline-flex z-0">
           <img

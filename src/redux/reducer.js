@@ -1,5 +1,5 @@
 import {
-    GET_BUSNISSES_BY_ID,
+    GET_BUSINESS_BY_ID,
     GET_ALL_USERS,
     GET_USER_BY_ID, 
     FILTER_BY_SOCIAL_MEDIA,
@@ -9,9 +9,9 @@ import {
 const initialState = {
     //**--BUSNISSES-- */
     //negocio por id
-    busnisses: {},
+    business: {},
     //**--USERS--**//
-    //todos los usuarios (+ copia para filtros)
+    //todos los usuarios deun negocio(+ copia para filtros)
     users: [],
     allUsers: [],
     //usuario por id
@@ -35,19 +35,31 @@ const rootReducer = (state = initialState, action) => {
 switch (action.type) {
     //***--REDUCER DE NEGOCIOS-- */
 //trae un negocio por id//
-    case GET_BUSNISSES_BY_ID:
+    case GET_BUSINESS_BY_ID:
         return {
             ...state,
-            busnisses: action.payload
+            business: action.payload
         };
-//***--REDUCER DE USUARIOS-- */
-//trae todos los usuarios- members//
-    case GET_ALL_USERS:
-        return {
-            ...state,
-            users: action.payload,
-            allUsers: action.payload,
-        };
+    //***--REDUCER DE USUARIOS-- */
+//trae todos los usuarios de un negocio
+        case GET_ALL_USERS:
+            let allBusinessUsers = action.payload
+            //console.log('id business: ', state.business.id);
+            const usersFiltered = allBusinessUsers.filter(user => user.Business.id === state.business.id)
+            //console.log('usersFiltered: ', usersFiltered);
+            return {
+                ...state,
+                users: usersFiltered,
+                allUsers: usersFiltered
+            };
+            case GET_USER_BY_ID:
+                //let user1 = action.payload
+                //console.log('entro al reducer con payload: ', user1);
+                return {
+                    ...state,
+                    user: action.payload,
+                };
+
     default:
         return {
             ...state

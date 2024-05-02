@@ -6,7 +6,11 @@ const userJson = [
       password: "hashedpassword123",
       phone: "123-456-7890",
       privilege: "Admin",
-      socketId: "socket123456789"
+      socketId: "socket123456789",
+      Business: {
+        id: '123456789',
+        name: 'soy el nombre del negocio'
+      }
     },
     {
       id: 2,

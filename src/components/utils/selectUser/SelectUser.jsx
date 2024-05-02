@@ -1,21 +1,21 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-//import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getUserByIdAction } from "../../../redux/actions/actionsUsers";
 import IconUser from "./IconUser";
-import userJson from "../../../../public/json/userJson";
 
 const SelectUser = () => {
-  //   const users = useSelector((state) => state.users);
-  //   const user = useSelector((state) => state.user);
-  const users = userJson;
-  const user = {};
   const dispatch = useDispatch();
-  //const [userActive, setUserActive] = useState(false);
+  const users = useSelector((state) => state.users);
+  const userRedux = useSelector((state) => state.user);
+  const user = userRedux ? userRedux : null;
+  console.log(user);
+  //const [userId, setUserId] = useState("");
 
-  const selectHandler = (e) => {
-    dispatch(getUserByIdAction(e.target.value.id));
-    //setUserActive(true);
+  const selectHandler = async (e) => {
+    const value = e.target.value;
+    dispatch(getUserByIdAction(value));
+    //console.log("despacho la accion con id ", value);
   };
 
   return (
@@ -28,6 +28,7 @@ const SelectUser = () => {
         ) : (
           <IconUser name={user.name} />
         )}
+        {/* {user && user.image ? user.image : <img src="/noUser.svg" />} */}
       </div>
       <div>
         <select
@@ -46,8 +47,9 @@ const SelectUser = () => {
           {users &&
             users.map((user, index) => {
               return (
-                <option key={index} value={user}>
+                <option key={index} value={user.id}>
                   {user.name.toUpperCase()}
+                  {/* {console.log("user ", index, ": ", user.id)} */}
                 </option>
               );
             })}

@@ -11,33 +11,32 @@ import {
 } from '../types.js';
 //USER
 export const getAllUsersAction = () => {
-    try {
-        return async (dispatch) => {
-            const response = await axios.get('ruta que trae todos los user');
-            const users = response.data;   
-            dispatch({type: GET_ALL_USERS, payload: users})
+    return async (dispatch) => {
+                try {
+                const response = await axios.get('http://localhost:3000/getUser');
+                const users = response.data; 
+                //console.log(users);  
+                dispatch({type: GET_ALL_USERS, payload: users})
+                //console.log('entro en la accion y voy a reducer con payload: ', users);
+            
+            } catch (error) {
+                console.log(error.message);
+                sweetAlertsError(
+                    "Intenta de nuevo",
+                    "No podemos mostrar a los mienbros de tu equipo",
+                    "Ok"
+                  ); 
+            }
         }
-    } catch (error) {
-        sweetAlertsError(
-            "Intenta de nuevo",
-            "No podemos mostrar a los mienbros de tu equipo",
-            "Ok"
-          ); 
-    }
-}
+    };
 
-export const getUserByIdAction = (id) => {
-    try {
-        return async (dispatch) => {
-            const response = await axios.get('ruta que trae todos los user/${id}');
-            const user = response.data;   
-            dispatch({type: GET_USER_BY_ID, payload: users})
-        }
-    } catch (error) {
-        sweetAlertsError(
-            "Intenta de nuevo",
-            "No podemos mostrar ese miembro de tu equipo",
-            "Ok"
-          ); 
+
+export const getUserByIdAction = (userId) => {
+    return async (dispatch) => {
+            const response = await axios.get(`http://localhost:3000/getUser/${userId}`);
+            const user = response.data; 
+           // console.log('user: ', user);  
+            dispatch({type: GET_USER_BY_ID, payload: user})
+            //console.log('entro en la accion y voy al reducer con payload: ', user);
     }
-}
+};
