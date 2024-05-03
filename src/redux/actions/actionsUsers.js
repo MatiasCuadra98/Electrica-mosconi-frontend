@@ -6,8 +6,6 @@ import {
 import {
     GET_ALL_USERS,
     GET_USER_BY_ID,
-    FILTER_BY_SOCIAL_MEDIA,
-    FILTER_BY_STATE
 } from '../types.js';
 //USER
 export const getAllUsersAction = () => {

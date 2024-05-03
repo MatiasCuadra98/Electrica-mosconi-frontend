@@ -7,8 +7,9 @@ import LogoutButton from "../components/utils/buttons/LogoutButton";
 
 const NavBar = () => {
   const user = useSelector((state) => state.user);
-  const privilege = user.name ? user.privilege : null;
-  console.log(privilege);
+  const privilege = user ? user.privilege : null;
+  const login = user && user.login;
+  //console.log(privilege);
   return (
     <div className="w-full h-16 ml-52 z-10 bg-stone-300 fixed flex items-center justify-between ">
       <div className="w-80">
@@ -24,14 +25,20 @@ const NavBar = () => {
           </span>
           <MessagesCounter />
         </div>
-        {!user.name || privilege === "Member" ? <SearchBar /> : null}
+        {user && privilege === "Admin" && login ? null : <SearchBar />}
+        {/* {!user.name || privilege === "Member" ? <SearchBar /> : null} */}
       </div>
       <div className="flex-grow">
-        {!user.name || privilege === "Member" ? (
+        {user && privilege === "Admin" && login ? (
+          <LogoutButton />
+        ) : (
+          <LoginButton />
+        )}
+        {/* {!user.name || privilege === "Member" ? (
           <LoginButton />
         ) : (
           <LogoutButton />
-        )}
+        )} */}
       </div>
     </div>
   );
