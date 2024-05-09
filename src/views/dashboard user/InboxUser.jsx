@@ -7,6 +7,7 @@ import {
   getAllUsersAction,
   getUserByIdAction,
 } from "../../redux/actions/actionsUsers";
+import ConversationActive from "../../components/dashboard user/conversation/ConversationActive";
 
 const InboxUser = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ const InboxUser = () => {
       </div>
       <div className="flex flex-col flex-1">
         <InboxListUser />
+      </div>
+      <div className="flex flex-col items-center justify-center flex-1">
+        <ConversationActive />
       </div>
     </div>
   );
