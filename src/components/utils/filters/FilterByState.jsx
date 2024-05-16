@@ -4,6 +4,8 @@ import { useState } from "react";
 import socialMediaJson from "../../../../public/json/socialMediaJson";
 import statesJson from "../../../../public/json/statesJson";
 import { filterBySocialMediaAction } from "../../../redux/actions/actionFilters";
+import ResetButton from "../buttons/ResetButton";
+import GoHomeButton from "../buttons/GoHomeButton";
 
 const FilterByState = () => {
   const dispatch = useDispatch();
@@ -60,6 +62,10 @@ const FilterByState = () => {
           />
         </label>
         <br />
+      </div>
+      <div className="mt-6">
+        <ResetButton/>
+        <GoHomeButton/>
       </div>
     </div>
   );
