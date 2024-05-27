@@ -8,7 +8,10 @@ import GoHomeButton from "../utils/buttons/GoHomeButton";
 const SideBarU = () => {
   return (
     <div className="w-52 h-screen bg-sky-950  sticky top-0 p-4">
-      <img className="w-24 h-auto absolute top-3.5 left-12" src="/logo.svg" />
+      <img
+        className="w-24 h-auto absolute top-3.5 left-12"
+        src="/logos/logo.svg"
+      />
       <SelectUser />
       <FilterBySocialMedia />
       <FilterByState />

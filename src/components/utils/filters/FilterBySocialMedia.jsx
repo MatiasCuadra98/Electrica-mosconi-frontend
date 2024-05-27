@@ -57,7 +57,7 @@ const FilterBySocialMedia = () => {
           );
         })}
       <div className="flex items-center mt-4">
-        <img src="/iconoLogoBlanco.svg" className="w-8 h-8" />
+        <img src="/logos/iconoLogoBlanco.svg" className="w-8 h-8" />
         <label className=" text-white text-sm font-normal font-['Oswald'] capitalize ml-3 ">
           TODOS
           <input
