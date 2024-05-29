@@ -1,7 +1,7 @@
 import LandingPage from "./LandingPage";
 import NavBar from "./NavBar";
 import InboxUser from "./dashboard user/InboxUser";
-import LoginAdmi from "./LoginAdmi";
+import LoginAdmi from "./forms/LoginAdmi";
 import Profile from "./dashboard admi/Profile";
 import InboxAdmi from "./dashboard admi/InboxAdmi";
 import InboxDetail from "./dashboard admi/InboxDetail";

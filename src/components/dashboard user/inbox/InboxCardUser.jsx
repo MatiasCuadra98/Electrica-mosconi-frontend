@@ -9,7 +9,7 @@ const InboxCardUser = (props) => {
     <div className="w-80 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
       <img
         src="/socialMediaImage/whatsapp.svg"
-        className="w-14 h-14 opacity-90 rounded-full border-2 border-white mr-2"
+        className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2"
       />
       <div className="flex flex-col justify-center">
         <span className="text-black text-lg font-normal font-['Oswald'] capitalize">

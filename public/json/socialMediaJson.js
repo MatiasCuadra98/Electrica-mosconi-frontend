@@ -14,6 +14,12 @@ const socialMediaJson = [
         name: "Whatsapp",
         icon: "/socialMediaImage/whatsapp.svg"
     },
+    {
+        id: 4,
+        name: "Telegram",
+        icon: "/socialMediaImage/telegram.svg"
+    }
+
 ]
 
 export default socialMediaJson

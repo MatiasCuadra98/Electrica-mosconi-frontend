@@ -20,6 +20,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     dispatch(getBusinessByIdAction(businessId));
+    localStorage.setItem("businessId", businessId);
   }, [dispatch]);
 
   const handlerOnClick = () => {
@@ -49,9 +50,14 @@ const LandingPage = () => {
           <img
             className=" absolute w-screen h-screen left-0 right-0 mx-auto from-sky-950 mix-blend-mode-multiply"
             src="/landing.svg"
+            alt="OneInbox landing"
           />
           <div className="w-[800px] h-[150px] absolute top-10 left-28">
-            <img className="w-[168px] h-[107px]" src="/logo.svg" />
+            <img
+              className="w-[168px] h-[107px]"
+              src="/logos/logo.svg"
+              alt="OneInbox logo"
+            />
             <span className="text-white text-lg font-normal font-['Inter'] absolute top-0 left-28">
               Dale la bienvenida a la tranquilidad en tu vida digital
               <br />
@@ -67,7 +73,7 @@ const LandingPage = () => {
               Tu bandeja de entrada social definitiva
             </div>
           </div>
-          <div className="absolute bottom-9 left-0 right-0 mx-auto">
+          <div className="absolute bottom-9 left-0 right-0 flex justify-center">
             <button
               onClick={handlerOnClick}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-lg font-normal font-['Oswald']"

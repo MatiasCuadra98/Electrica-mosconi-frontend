@@ -14,12 +14,13 @@ const SelectUser = () => {
 
   const selectHandler = async (e) => {
     const value = e.target.value;
+    localStorage.setItem("userId", value);
     dispatch(getUserByIdAction(value));
     //console.log("despacho la accion con id ", value);
   };
 
   return (
-    <div className="flex items-center absolute top-24">
+    <div className="flex items-center">
       <div>
         {!user ? (
           <img src="/noUser.svg" />

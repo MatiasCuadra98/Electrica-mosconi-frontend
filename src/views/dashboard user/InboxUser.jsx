@@ -7,18 +7,36 @@ import {
   getAllUsersAction,
   getUserByIdAction,
 } from "../../redux/actions/actionsUsers";
+import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
 import ConversationActive from "../../components/dashboard user/conversation/ConversationActive";
 
 const InboxUser = () => {
   const dispatch = useDispatch();
+  const businessRedux = useSelector((state) => state.business);
+  const businessId = businessRedux.id || localStorage.getItem("businessId");
+  // const userRedux = useSelector((state) => state.user);
+  // const userId = userRedux.id || JSON.perse(localStorage.getItem("userId"));
+
+  // useEffect(() => {
+  //   if (businessId) {
+  //     dispatch(getBusinessByIdAction(businessId));
+  //     userId
+  //       ? dispatch(getUserByIdAction(userId))
+  //       : dispatch(getAllUsersAction());
+  //     //console.log("despacho la accion");
+  //   }
+  // }, [dispatch, businessId, userId]);
 
   useEffect(() => {
-    dispatch(getAllUsersAction());
-    //console.log("despacho la accion");
-  }, [dispatch]);
+    if (businessId) {
+      dispatch(getBusinessByIdAction(businessId));
+      dispatch(getAllUsersAction());
+      //console.log("despacho la accion");
+    }
+  }, [dispatch, businessId]);
 
   return (
-    <div className="flex">
+    <div className="w-screen h-screen flex">
       <div className="w-52">
         <SideBarU />
       </div>

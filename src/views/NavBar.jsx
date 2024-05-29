@@ -10,35 +10,25 @@ const NavBar = () => {
   const privilege = user ? user.privilege : null;
   const login = user && user.login;
   //console.log(privilege);
+
   return (
-    <div className="w-full h-16 ml-52 z-10 bg-stone-300 fixed flex items-center justify-between ">
-      <div className="w-80">
-        <h2 className="text-black text-[32px] font-semibold font-['Inter'] capitalize">
+    <div className="sticky w-screen h-16 flex">
+      <div className="bg-sky-950 w-52 h-16"></div>
+      <div className="bg-stone-300 flex-grow flex items-center px-8 justify-between">
+        <h2 className="text-black text-[32px] font-semibold font-['Inter'] capitalize ml-8">
           OneInbox
         </h2>
-      </div>
-      <div className="gap-x-16  flex items-center justify-between">
-        <div className="w-[335px] h-[59px] text-center mt-2">
-          <span className="text-black text-sm font-normal font-['Oswald'] uppercase">
-            bandeja de entradas
-            <br />
-          </span>
+        <span className="text-black text-sm font-normal font-['Oswald'] uppercase">
+          bandeja de entradas
+          <br />
           <MessagesCounter />
-        </div>
+        </span>
         {user && privilege === "Admin" && login ? null : <SearchBar />}
-        {/* {!user.name || privilege === "Member" ? <SearchBar /> : null} */}
-      </div>
-      <div className="flex-grow">
         {user && privilege === "Admin" && login ? (
           <LogoutButton />
         ) : (
           <LoginButton />
         )}
-        {/* {!user.name || privilege === "Member" ? (
-          <LoginButton />
-        ) : (
-          <LogoutButton />
-        )} */}
       </div>
     </div>
   );

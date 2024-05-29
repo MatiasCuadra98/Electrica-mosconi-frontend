@@ -9,7 +9,6 @@ const InboxListUser = (props) => {
 
   return (
     <div className="w-80 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
-      <div className="w-80 h-16" />
       <InboxCardUser />
       <InboxCardUser />
       <InboxCardUser />
