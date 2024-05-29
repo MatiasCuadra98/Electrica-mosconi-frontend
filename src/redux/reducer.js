@@ -3,7 +3,8 @@ import {
     GET_ALL_USERS,
     GET_USER_BY_ID, 
     FILTER_BY_SOCIAL_MEDIA,
-    FILTER_BY_STATE
+    FILTER_BY_STATE,
+    CLEAN_USER_BY_ID
 } from './types';
 
 const initialState = {
@@ -59,6 +60,11 @@ switch (action.type) {
                     ...state,
                     user: action.payload,
                 };
+            case CLEAN_USER_BY_ID:
+                return {
+                    ...state,
+                    user: {}
+                }
 
     default:
         return {

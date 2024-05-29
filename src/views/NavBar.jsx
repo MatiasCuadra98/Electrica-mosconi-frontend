@@ -6,6 +6,7 @@ import LoginButton from "../components/utils/buttons/LoginButton";
 import LogoutButton from "../components/utils/buttons/LogoutButton";
 
 const NavBar = () => {
+  const business = useSelector((state) => state.business);
   const user = useSelector((state) => state.user);
   const privilege = user ? user.privilege : null;
   const login = user && user.login;
@@ -19,7 +20,7 @@ const NavBar = () => {
           OneInbox
         </h2>
         <span className="text-black text-sm font-normal font-['Oswald'] uppercase">
-          bandeja de entradas
+          {business ? business.name : "bandeja de entradas"}
           <br />
           <MessagesCounter />
         </span>

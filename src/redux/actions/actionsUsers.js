@@ -4,6 +4,7 @@ import {
     sweetAlertsError,
   } from '../../components/utils/alerts/alerts.jsx'
 import {
+    CLEAN_USER_BY_ID,
     GET_ALL_USERS,
     GET_USER_BY_ID,
 } from '../types.js';
@@ -38,3 +39,9 @@ export const getUserByIdAction = (userId) => {
             //console.log('entro en la accion y voy al reducer con payload: ', user);
     }
 };
+
+export const cleanUserByIdAction = () => {
+        return {
+            type: CLEAN_USER_BY_ID,
+        }
+}

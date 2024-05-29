@@ -19,8 +19,8 @@ const LandingPage = () => {
   const businessNameForm = "zarasa";
 
   useEffect(() => {
-    dispatch(getBusinessByIdAction(businessId));
     localStorage.setItem("businessId", businessId);
+    dispatch(getBusinessByIdAction(businessId));
   }, [dispatch]);
 
   const handlerOnClick = () => {

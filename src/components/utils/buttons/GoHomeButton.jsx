@@ -5,6 +5,8 @@ const GoHomeButton = () => {
   const navigate = useNavigate();
   const handlerOnClick = () => {
     navigate("/");
+    localStorage.removeItem("businessId");
+    localStorage.removeItem("userId");
   };
 
   return (

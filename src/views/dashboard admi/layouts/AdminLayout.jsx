@@ -1,13 +1,13 @@
 import React from "react";
-import HeaderLeft from "../components/dashboard-admin/Header/HeaderLeft";
-import HeaderRight from "../components/dashboard-admin/Header/HeaderRight";
-import GoHomeButton from "../components/utils/buttons/GoHomeButton";
-import ResetButton from "../components/utils/buttons/ResetButton";
-import FilterBySocialMedia from "../components/utils/filters/FilterBySocialMedia";
-import Search from "../components/dashboard-admin/Main/Search";
+import HeaderLeft from "../../components/dashboard-admin/Header/HeaderLeft";
+import HeaderRight from "../../components/dashboard-admin/Header/HeaderRight";
+import GoHomeButton from "../../components/utils/buttons/GoHomeButton";
+import ResetButton from "../../components/utils/buttons/ResetButton";
+import FilterBySocialMedia from "../../components/utils/filters/FilterBySocialMedia";
+import Search from "../../components/dashboard-admin/Main/Search";
 import { Outlet } from "react-router-dom";
-import FilterByState from "../components/utils/filters/FilterByState";
-import FilterByUser from "../components/dashboard-admin/Main/FilterByUser";
+import FilterByState from "../../components/utils/filters/FilterByState";
+import FilterByUser from "../../components/dashboard-admin/Main/FilterByUser";
 
 const AdminLayout = () => {
   return (

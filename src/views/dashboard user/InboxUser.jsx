@@ -14,26 +14,29 @@ const InboxUser = () => {
   const dispatch = useDispatch();
   const businessRedux = useSelector((state) => state.business);
   const businessId = businessRedux.id || localStorage.getItem("businessId");
-  // const userRedux = useSelector((state) => state.user);
-  // const userId = userRedux.id || JSON.perse(localStorage.getItem("userId"));
+  const userRedux = useSelector((state) => state.user);
+  const userId = userRedux.id || localStorage.getItem("userId");
 
-  // useEffect(() => {
-  //   if (businessId) {
-  //     dispatch(getBusinessByIdAction(businessId));
-  //     userId
-  //       ? dispatch(getUserByIdAction(userId))
-  //       : dispatch(getAllUsersAction());
-  //     //console.log("despacho la accion");
-  //   }
-  // }, [dispatch, businessId, userId]);
+  //console.log(userId);
 
   useEffect(() => {
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
+      if (userId) {
+        dispatch(getUserByIdAction(userId));
+      }
       dispatch(getAllUsersAction());
       //console.log("despacho la accion");
     }
-  }, [dispatch, businessId]);
+  }, [dispatch, businessId, userId]);
+
+  // useEffect(() => {
+  //   if (businessId) {
+  //     dispatch(getBusinessByIdAction(businessId));
+  //     dispatch(getAllUsersAction());
+  //     //console.log("despacho la accion");
+  //   }
+  // }, [dispatch, businessId]);
 
   return (
     <div className="w-screen h-screen flex">

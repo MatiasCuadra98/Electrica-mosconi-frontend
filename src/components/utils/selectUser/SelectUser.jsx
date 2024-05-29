@@ -1,22 +1,29 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { getUserByIdAction } from "../../../redux/actions/actionsUsers";
+import { useEffect } from "react";
+import {
+  getUserByIdAction,
+  cleanUserByIdAction,
+} from "../../../redux/actions/actionsUsers";
 import IconUser from "./IconUser";
 
 const SelectUser = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
-  const userRedux = useSelector((state) => state.user);
-  const user = userRedux ? userRedux : null;
-  console.log(user);
+  const user = useSelector((state) => state.user);
+  console.log("user", user);
   //const [userId, setUserId] = useState("");
 
   const selectHandler = async (e) => {
     const value = e.target.value;
-    localStorage.setItem("userId", value);
-    dispatch(getUserByIdAction(value));
-    //console.log("despacho la accion con id ", value);
+    if (value === "") {
+      localStorage.removeItem("userId");
+      dispatch(cleanUserByIdAction());
+    } else {
+      localStorage.setItem("userId", value);
+      dispatch(getUserByIdAction(value));
+      //console.log("despacho la accion con id ", value);
+    }
   };
 
   return (
@@ -35,14 +42,10 @@ const SelectUser = () => {
         <select
           name="selectUser"
           onChange={selectHandler}
+          value={user ? user.id : ""}
           className="text-md bg-sky-950 rounded-2xl text-white text-base font-normal font-['Oswald'] capitalize ml-3"
         >
-          {/* <option value="" hidden={!userActive}> */}
-          <option
-            value=""
-            hidden={!user}
-            // className="font-[Inter] text-stone-400"
-          >
+          <option value="" hidden={!user}>
             usuario...
           </option>
           {users &&
