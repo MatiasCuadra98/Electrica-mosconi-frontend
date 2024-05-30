@@ -6,7 +6,7 @@ const InboxCardUser = (props) => {
   //IMPORTANTE: se trae el dato de user, pero en realidad deberia traer el dato del usuario que contesto el mensaje, y no el activo en el momento!!!
   const user = useSelector((state) => state.user);
   return (
-    <div className="w-80 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
+    <div className="w-72 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
       <img
         src="/socialMediaImage/whatsapp.svg"
         className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2"

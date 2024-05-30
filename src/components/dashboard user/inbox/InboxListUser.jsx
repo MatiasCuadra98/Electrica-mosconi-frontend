@@ -8,7 +8,7 @@ const InboxListUser = (props) => {
   //const messages = messageRecivedJson;
 
   return (
-    <div className="w-80 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
+    <div className="w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
       <InboxCardUser />
       <InboxCardUser />
       <InboxCardUser />

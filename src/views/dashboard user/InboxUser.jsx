@@ -30,23 +30,15 @@ const InboxUser = () => {
     }
   }, [dispatch, businessId, userId]);
 
-  // useEffect(() => {
-  //   if (businessId) {
-  //     dispatch(getBusinessByIdAction(businessId));
-  //     dispatch(getAllUsersAction());
-  //     //console.log("despacho la accion");
-  //   }
-  // }, [dispatch, businessId]);
-
   return (
-    <div className="w-screen h-screen flex">
-      <div className="w-52">
+    <div className="w-screen h-screen flex overflow-hidden">
+      <div className="w-52 flex-shrink-0">
         <SideBarU />
       </div>
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col">
         <InboxListUser />
       </div>
-      <div className="flex flex-col items-center justify-center flex-1">
+      <div className="flex flex-1 items-center justify-center overflow-y-auto overflow-x-hidden">
         <ConversationActive />
       </div>
     </div>

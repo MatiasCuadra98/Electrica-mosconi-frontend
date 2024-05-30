@@ -2,7 +2,7 @@ import React from "react";
 
 const MsgRecived = (props) => {
   return (
-    <div className="w-[473px] h-auto bg-neutral-200 rounded-tl-[40px] rounded-tr-[40px] rounded-bl-[40px] p-4 flex flex-col justify-between">
+    <div className="w-[473px] h-auto bg-neutral-200 rounded-tl-[40px] rounded-tr-[40px] rounded-bl-[40px] p-4 flex flex-col justify-between self-start ml-10 mt-2">
       <div className="flex items-center mb-4">
         <img
           src="/socialMediaImage/whatsapp.svg"
