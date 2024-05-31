@@ -1,5 +1,5 @@
 import React from "react";
-import LoginFormButton from "../../components/utils/buttons/LoginFormButton";
+import LoginFormButton from "../utils/buttons/LoginFormButton";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";

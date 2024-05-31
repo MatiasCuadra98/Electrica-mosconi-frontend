@@ -1,12 +1,12 @@
 import LandingPage from "./LandingPage";
-import NavBar from "./NavBar";
+import NavBar from "../components/NavBar"
 import InboxUser from "./dashboard user/InboxUser";
-import LoginAdmi from "./forms/LoginAdmi";
+import LoginAdmi from "../components/forms/LoginAdmi"
 import Profile from "./dashboard admi/Profile";
 import InboxAdmi from "./dashboard admi/InboxAdmi";
 import InboxDetail from "./dashboard admi/InboxDetail";
 import UsersManagement from "./dashboard admi/UsersManagement";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 
 export {
     LandingPage,

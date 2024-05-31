@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import MessagesCounter from "../components/utils/MessagesCounter";
-import SearchBar from "../components/utils/SearchBar";
-import LoginButton from "../components/utils/buttons/LoginButton";
-import LogoutButton from "../components/utils/buttons/LogoutButton";
+import MessagesCounter from "./utils/MessagesCounter";
+import SearchBar from "./utils/SearchBar";
+import LoginButton from "./utils/buttons/LoginButton";
+import LogoutButton from "./utils/buttons/LogoutButton";
 
 const NavBar = () => {
   const business = useSelector((state) => state.business);
