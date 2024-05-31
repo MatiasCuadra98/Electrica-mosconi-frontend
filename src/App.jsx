@@ -16,7 +16,8 @@ const App = () => {
   const location = useLocation();
   return (
     <div>
-      {location.pathname === "/" ? null : (
+      {location.pathname === "/" ||
+      location.pathname === "/loginAdmi" ? null : (
         <div>
           <NavBar />
         </div>

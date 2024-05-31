@@ -10,7 +10,6 @@ const NavBar = () => {
   const user = useSelector((state) => state.user);
   const privilege = user ? user.privilege : null;
   const login = user && user.login;
-  //console.log(privilege);
 
   return (
     <div className="sticky w-screen h-16 flex">
