@@ -6,6 +6,7 @@ import {
   LoginAdmi,
   HomeAdmi,
   Profile,
+  EditProfile,
   InboxAdmi,
   InboxDetail,
   UsersManagement,
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/loginAdmi" element={<LoginAdmi />} />
         <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
         <Route path="/dashboardAdmi/profile" element={<Profile />} />
+        <Route path="/dashboardAdmi/profile/edit" element={<EditProfile />} />
         <Route path="/dashboardAdmi/inboxAdmi" element={<InboxAdmi />} />
         <Route path="/inboxDetail/:detailId" element={<InboxDetail />} />
         <Route
