@@ -29,7 +29,7 @@ const LoginAdmi = () => {
       localStorage.removeItem("userId");
       localStorage.getItem("userId", user.id);
       dispatch(getUserByIdAction(user.id));
-      navigate("/inboxAdmi");
+      navigate("dashboardAdmi/homeAdmi");
     } else {
       sweetAlertsError(
         `${input.name} no tiene privilegios`,

@@ -4,12 +4,13 @@ import {
   NavBar,
   InboxUser,
   LoginAdmi,
+  HomeAdmi,
   Profile,
   InboxAdmi,
   InboxDetail,
   UsersManagement,
   Footer,
-} from "./views";
+} from "./layouts";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 const App = () => {
@@ -26,10 +27,14 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/inbox" element={<InboxUser />} />
         <Route path="/loginAdmi" element={<LoginAdmi />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/inboxAdmi" element={<InboxAdmi />} />
+        <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
+        <Route path="/dashboardAdmi/profile" element={<Profile />} />
+        <Route path="/dashboardAdmi/inboxAdmi" element={<InboxAdmi />} />
         <Route path="/inboxDetail/:detailId" element={<InboxDetail />} />
-        <Route path="/usersManagement" element={<UsersManagement />} />
+        <Route
+          path="/dashboardAdmi/usersManagement"
+          element={<UsersManagement />}
+        />
       </Routes>
       {/* {location.pathname === "/" ? null : (
         <div>
