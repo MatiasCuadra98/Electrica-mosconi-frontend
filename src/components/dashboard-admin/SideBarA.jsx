@@ -1,7 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import IconUser from "../utils/selectUser/IconUser";
-import NavLinkButton from "../utils/buttons/NavLinkButton";
+import SideBarAButton from "../utils/buttons/SideBarAButton";
+import routes from "../../../public/json/routes";
 
 const SideBarA = ({ user }) => {
   //   const user = useSelector((state) => state.user);
@@ -28,19 +28,10 @@ const SideBarA = ({ user }) => {
         </div>
         <div className="flex flex-col justify-between pt-8">
           {/* seguramente estos links deberan ser modificados al refactorizar el codigo para usar <Outlet /> en el layout del Admi */}
-          <NavLinkButton
-            route={"/dashboardAdmi/profile"}
-            nameRoute={"MI PERFIL"}
-          />
-          <NavLinkButton
-            route={"/dashboardAdmi/inboxAdmi"}
-            nameRoute={"BANDEJA DE ENTRADA"}
-          />
-          <NavLinkButton
-            route={"/dashboardAdmi/usersManagement"}
-            nameRoute={"USUARIOS"}
-          />
-          <NavLinkButton route={null} nameRoute={"ANALISIS-METRICAS"} />
+          {routes &&
+            routes.map((route) => (
+              <SideBarAButton route={route.route} nameRoute={route.name} />
+            ))}
         </div>
       </div>
     </div>
