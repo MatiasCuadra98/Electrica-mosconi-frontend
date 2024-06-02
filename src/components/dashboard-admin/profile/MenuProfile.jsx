@@ -8,7 +8,7 @@ const MenuProfile = () => {
     "/dashboardAdmi/profile/edit-socialMedia";
 
   return (
-    <div className="w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400 flex flex-col items-cente justify-center">
+    <div className="sticky w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400 flex flex-col items-cente justify-center">
       <MenuButton
         route={"/dashboardAdmi/profile"}
         nameRoute={"Mis Datos"}

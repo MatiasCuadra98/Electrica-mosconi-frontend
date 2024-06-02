@@ -30,9 +30,9 @@ const SelectUser = () => {
     <div className="flex items-center">
       <div>
         {!user ? (
-          <img src="/noUser.svg" />
+          <img className="w-10 h-10" src="/noUser.svg" />
         ) : user.image ? (
-          user.image
+          <img className="w-10 h-10" src={user.image} />
         ) : (
           <IconUser name={user.name} />
         )}
