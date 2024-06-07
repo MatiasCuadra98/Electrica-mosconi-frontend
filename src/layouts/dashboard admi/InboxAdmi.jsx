@@ -1,5 +1,5 @@
 import React from "react";
-import SideBarA from "../../components/dashboard-admin/SideBarA";
+import SideBarA from "../../components/admi/SideBarA";
 
 const InboxAdmi = () => {
   return (

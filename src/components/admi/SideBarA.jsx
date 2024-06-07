@@ -29,8 +29,12 @@ const SideBarA = ({ user }) => {
         <div className="flex flex-col justify-between pt-8">
           {/* seguramente estos links deberan ser modificados al refactorizar el codigo para usar <Outlet /> en el layout del Admi */}
           {routes &&
-            routes.map((route) => (
-              <SideBarAButton route={route.route} nameRoute={route.name} />
+            routes.map((route, index) => (
+              <SideBarAButton
+                route={route.route}
+                nameRoute={route.name}
+                key={index}
+              />
             ))}
         </div>
       </div>

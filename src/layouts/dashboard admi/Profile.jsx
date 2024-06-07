@@ -1,7 +1,7 @@
 import React from "react";
-import SideBarA from "../../components/dashboard-admin/SideBarA";
-import MenuProfile from "../../components/dashboard-admin/profile/MenuProfile";
-import Data from "../../components/dashboard-admin/profile/Data";
+import SideBarA from "../../components/admi/SideBarA";
+import MenuProfile from "../../components/admi/profile/MenuProfile";
+import Data from "../../components/admi/profile/data/Data";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";

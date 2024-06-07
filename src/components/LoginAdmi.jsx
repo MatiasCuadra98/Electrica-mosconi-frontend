@@ -1,5 +1,4 @@
 import React from "react";
-import LoginFormButton from "../utils/buttons/LoginFormButton";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -17,11 +16,12 @@ const LoginAdmi = () => {
   const handlerInputChange = (e) => {
     setInput({
       ...input,
-      [e.target.value]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handlerLoginSubmit = () => {
+  const handlerLoginSubmit = (e) => {
+    e.preventDefault();
     const user = input.name
       ? allUsers.find((user) => user.name === input.name)
       : null;
@@ -61,14 +61,20 @@ const LoginAdmi = () => {
             <input
               placeholder="Contraseña"
               className="w-72 h-8 bg-white rounded-[30px] shadow-inner mt-4 p-4"
+              type="password"
               id="password"
               name="password"
-              //   value={input.password}
+              value={input.password}
               onChange={handlerInputChange}
             />
           </div>
           <div className="flex justify-center">
-            <LoginFormButton />
+            <button
+              type="submit"
+              className="w-fit h-fit  px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-sm font-normal font-['Oswald']"
+            >
+              LOGIN
+            </button>
           </div>
           <img
             src="/logos/logo.svg"

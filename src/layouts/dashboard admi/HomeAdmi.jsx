@@ -1,5 +1,5 @@
 import React from "react";
-import SideBarA from "../../components/dashboard-admin/SideBarA";
+import SideBarA from "../../components/admi/SideBarA";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";

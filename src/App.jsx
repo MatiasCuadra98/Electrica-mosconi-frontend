@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import {
   LandingPage,
@@ -7,10 +8,11 @@ import {
   HomeAdmi,
   Profile,
   EditProfile,
+  EditBusiness,
+  EditSocialMedia,
   InboxAdmi,
   InboxDetail,
   UsersManagement,
-  Footer,
 } from "./layouts";
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -19,7 +21,9 @@ const App = () => {
   return (
     <div>
       {location.pathname === "/" ||
-      location.pathname === "/loginAdmi" ? null : (
+      location.pathname === "/loginAdmi" ||
+      location.pathname === "/dashboardAdmi/profile/edit" ||
+      location.pathname === "/dashboardAdmi/profile/edit-business" ? null : (
         <div>
           <NavBar />
         </div>
@@ -31,6 +35,14 @@ const App = () => {
         <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
         <Route path="/dashboardAdmi/profile" element={<Profile />} />
         <Route path="/dashboardAdmi/profile/edit" element={<EditProfile />} />
+        <Route
+          path="/dashboardAdmi/profile/edit-business"
+          element={<EditBusiness />}
+        />
+        <Route
+          path="/dashboardAdmi/profile/edit-socialMedia"
+          element={<EditSocialMedia />}
+        />
         <Route path="/dashboardAdmi/inboxAdmi" element={<InboxAdmi />} />
         <Route path="/inboxDetail/:detailId" element={<InboxDetail />} />
         <Route
@@ -38,11 +50,6 @@ const App = () => {
           element={<UsersManagement />}
         />
       </Routes>
-      {/* {location.pathname === "/" ? null : (
-        <div>
-          <Footer />
-        </div>
-      )} */}
     </div>
   );
 };

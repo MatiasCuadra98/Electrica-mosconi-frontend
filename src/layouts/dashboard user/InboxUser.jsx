@@ -1,6 +1,6 @@
 import React from "react";
-import SideBarU from "../../components/dashboard user/SideBarU";
-import InboxListUser from "../../components/dashboard user/inbox/InboxListUser";
+import SideBarU from "../../components/user/SideBarU";
+import InboxListUser from "../../components/user/inbox/InboxListUser";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,7 +8,7 @@ import {
   getUserByIdAction,
 } from "../../redux/actions/actionsUsers";
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
-import ConversationActive from "../../components/dashboard user/conversation/ConversationActive";
+import ConversationActive from "../../components/user/conversation/ConversationActive";
 
 const InboxUser = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,8 @@
 //users
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER_BY_ID = 'GET_USER_BY_ID';
-export const CLEAN_USER_BY_ID = 'CLEAN_USER_BY_ID'
+export const CLEAN_USER_BY_ID = 'CLEAN_USER_BY_ID';
+export const UPDATE_USER = 'UPDATE_USER';
 
 //filtros
 export const FILTER_BY_SOCIAL_MEDIA = 'FILTER_BY_SOCIAL_MEDIA';
@@ -14,3 +15,4 @@ export const GET_MESSAGE_RECIVED_BY_ID = 'GET_MESSAGE_RECIVED_BY_ID';
 
 //busnisess
 export const GET_BUSINESS_BY_ID = 'GET_BUSINESS_BY_ID';
+export const UPDATE_BUSINESS = 'UPDATE_BUSINESS';
