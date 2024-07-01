@@ -7,11 +7,20 @@ import {
     GET_ALL_USERS,
     GET_USER_BY_ID,
 } from '../types.js';
-//USER
+
+const URL = 'https://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
+
+//RUTAS USER:
+// getAll: /user
+//getById: /user/:id
+//crear: /user/create
+//editar: /user/update/:id
+//eliminar: /user/delete/:id
+
 export const getAllUsersAction = () => {
     return async (dispatch) => {
                 try {
-                const response = await axios.get('http://localhost:3000/getUser');
+                const response = await axios.get(`${URL}/user`);
                 const users = response.data; 
                 //console.log(users);  
                 dispatch({type: GET_ALL_USERS, payload: users})
@@ -31,7 +40,7 @@ export const getAllUsersAction = () => {
 
 export const getUserByIdAction = (userId) => {
     return async (dispatch) => {
-            const response = await axios.get(`http://localhost:3000/getUser/${userId}`);
+            const response = await axios.get(`${URL}/user/${userId}`);
             const user = response.data; 
            // console.log('user: ', user);  
             dispatch({type: GET_USER_BY_ID, payload: user})
