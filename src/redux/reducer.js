@@ -1,9 +1,12 @@
 import {
     GET_BUSINESS_BY_ID,
+    UPDATE_BUSINESS,
     GET_ALL_USERS,
-    GET_USER_BY_ID, 
+    GET_USER_BY_ID,
+    UPDATE_USER, 
     FILTER_BY_SOCIAL_MEDIA,
-    FILTER_BY_STATE
+    FILTER_BY_STATE,
+    CLEAN_USER_BY_ID
 } from './types';
 
 const initialState = {
@@ -40,6 +43,14 @@ switch (action.type) {
             ...state,
             business: action.payload
         };
+        case UPDATE_BUSINESS:
+            return {
+              ...state,
+              user: {
+                ...state.business,
+                ...action.payload
+              }
+            };
     //***--REDUCER DE USUARIOS-- */
 //trae todos los usuarios de un negocio
         case GET_ALL_USERS:
@@ -59,6 +70,19 @@ switch (action.type) {
                     ...state,
                     user: action.payload,
                 };
+                case UPDATE_USER:
+                    return {
+                      ...state,
+                      user: {
+                        ...state.user,
+                        ...action.payload
+                      }
+                    };
+            case CLEAN_USER_BY_ID:
+                return {
+                    ...state,
+                    user: {}
+                }
 
     default:
         return {

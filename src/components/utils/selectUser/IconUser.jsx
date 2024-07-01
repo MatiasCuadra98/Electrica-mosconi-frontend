@@ -15,7 +15,7 @@ const IconUser = ({ name }) => {
     <div>
       {fullNameI === null ? (
         <img
-          src="/noUser.svg"
+          src="/userIcon/noUser.svg"
           className=" w-10 h-10 rounded-full drop-shadow-lg"
         />
       ) : firstNameI === "A" ||

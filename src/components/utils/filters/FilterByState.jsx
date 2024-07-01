@@ -4,6 +4,8 @@ import { useState } from "react";
 import socialMediaJson from "../../../../public/json/socialMediaJson";
 import statesJson from "../../../../public/json/statesJson";
 import { filterBySocialMediaAction } from "../../../redux/actions/actionFilters";
+import ResetButton from "../buttons/ResetButton";
+import GoHomeButton from "../buttons/GoHomeButton";
 
 const FilterByState = () => {
   const dispatch = useDispatch();
@@ -27,11 +29,11 @@ const FilterByState = () => {
   };
 
   return (
-    <div className="absolute top-80 mt-10">
+    <div>
       {statesUpper &&
         statesUpper.map((state, index) => {
           return (
-            <div key={index} className="flex items-center mt-3">
+            <div key={index} className="flex items-center m-2">
               <img src={state.icon} className="w-8 h-8" />
               <label className=" text-white text-sm font-normal font-['Oswald'] capitalize ml-3 ">
                 {state.name}
@@ -40,15 +42,15 @@ const FilterByState = () => {
                   value={state.name}
                   checked={selectedFilter === `${state.name}`}
                   onChange={handlerOnChange}
-                  className=" absolute -right-11 w-5 h-5 accent-amber-400"
+                  className="absolute right-3 w-5 h-5 accent-amber-400"
                 />
               </label>
               <br />
             </div>
           );
         })}
-      <div className="flex items-center mt-4">
-        <img src="/iconoLogoBlanco.svg" className="w-8 h-8" />
+      <div className="flex items-center m-2">
+        <img src="/logos/iconoLogoBlanco.svg" className="w-8 h-8" />
         <label className=" text-white text-sm font-normal font-['Oswald'] capitalize ml-3 ">
           TODOS
           <input
@@ -56,7 +58,7 @@ const FilterByState = () => {
             value="TODOS"
             checked={selectedFilter === "TODOS"}
             onChange={handlerOnChange}
-            className=" absolute -right-11 w-5 h-5 accent-amber-400"
+            className="absolute right-3 w-5 h-5 accent-amber-400"
           />
         </label>
         <br />

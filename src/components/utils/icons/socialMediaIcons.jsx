@@ -6,6 +6,8 @@ const SocialMediaIcons = (props) => {
     <div className="w-8 h-8">
       {props === "INSTAGRAM" ? (
         <img src="/socialMediaImage/instagram.svg" />
+      ) : props === "TELEGRAM" ? (
+        <img src="/socialMediaImage/telegram.svg" />
       ) : props === "MERCADO LIBRE" ? (
         <img src="/socialMediaImage/mercadoLibre.svg" />
       ) : props === "WHATSAPP" ? (

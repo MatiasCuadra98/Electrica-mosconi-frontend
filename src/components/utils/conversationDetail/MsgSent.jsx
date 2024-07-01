@@ -6,7 +6,7 @@ const MsgSent = (props) => {
   //IMPORTANTE: se trae el dato de user, pero en realidad deberia traer el dato del usuario que contesto el mensaje, y no el activo en el momento!!!
   const user = useSelector((state) => state.user);
   return (
-    <div className="w-[473px] h-auto bg-stone-300 rounded-tr-[40px] rounded-bl-[40px] rounded-br-[40px] p-4 flex flex-col justify-between">
+    <div className=" w-[473px] h-auto bg-stone-300 rounded-tr-[40px] rounded-bl-[40px] rounded-br-[40px] p-4 flex flex-col justify-between m-4 self-end mr-10">
       <div className="text-center mb-4">
         <h2 className="w-[432px] h-auto text-black text-base font-normal font-['Inter']">
           Soy un mensaje de salida
