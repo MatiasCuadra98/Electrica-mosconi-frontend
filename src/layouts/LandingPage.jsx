@@ -13,31 +13,34 @@ const LandingPage = () => {
   const business = useSelector((state) => state.business);
   //console.log("landing: ", business);
   //estos datos deberian ser recibidos del login inicial
-  const businessId = "2d0ac106-d80f-45ae-900a-55ab87881fd5";
+  const businessId = "6b3d981b-2d34-4636-90eb-5b3437a37315";
+  const businessName = "Electrica Mosconi";
+
   //busnisses para prueba de alerta
   //const busnissesId = "";
-  const businessNameForm = "zarasa";
+  // const businessName = "zarasa";
 
   useEffect(() => {
     localStorage.setItem("businessId", businessId);
     dispatch(getBusinessByIdAction(businessId));
+    console.log("despacho la action get business by Id");
   }, [dispatch]);
 
   const handlerOnClick = () => {
     if (!businessId) {
       sweetAlertsError(
         "Intenta de nuevo",
-        `No podemos encontrar a ${businessNameForm}`,
+        `No podemos encontrar a ${businessName}`,
         "Ok"
       );
     } else {
       //este dispatch deberia ejecutarse con un login inicial NIY
-      dispatch(getBusinessByIdAction(businessId, businessNameForm));
+      dispatch(getBusinessByIdAction(businessId, businessName));
       setLoading(true);
       setTimeout(() => {
         navigate("/inbox");
         setLoading(false);
-      }, 3000);
+      }, 4000);
     }
   };
 

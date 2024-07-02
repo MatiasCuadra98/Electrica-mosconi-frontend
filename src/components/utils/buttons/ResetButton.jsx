@@ -1,11 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { getAllMessagesAction } from "../../../redux/actions/actionMessages";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllMessagesReceivedAction } from "../../../redux/actions/actionMessages";
 
 const ResetButton = () => {
   const dispatch = useDispatch();
+  const businessRedux = useSelector((state) => state.business);
+  const businessId = businessRedux.id || localStorage.getItem("businessId");
+
   const handlerOnClick = () => {
-    dispatch(getAllMessagesAction());
+    dispatch(getAllMessagesReceivedAction());
   };
 
   return (

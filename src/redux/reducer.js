@@ -6,7 +6,8 @@ import {
     UPDATE_USER, 
     FILTER_BY_SOCIAL_MEDIA,
     FILTER_BY_STATE,
-    CLEAN_USER_BY_ID
+    CLEAN_USER_BY_ID,
+    GET_ALL_MESSAGES_RECIVED,
 } from './types';
 
 const initialState = {
@@ -20,11 +21,11 @@ const initialState = {
     //usuario por id
     user: {},
       //**--MENSAJES--**//
-    //todos los mensajes (+ copia para filtros)
-    messages: [],
-    allMessages: [],
+    //todos los mensajes recibidos (+ copia para filtros)
+    messagesReceived: [],
+    allMessagesReceived: [],
     //mensaje por id
-    message: {},
+    messageReceived: {},
 
     //**--ESTADOS PARA CONTADOR DE MENSAJES-- */
     // deben modificarse segun seleccion de filtros y search => asignarle el action.payload
@@ -39,6 +40,7 @@ switch (action.type) {
     //***--REDUCER DE NEGOCIOS-- */
 //trae un negocio por id//
     case GET_BUSINESS_BY_ID:
+        console.log('entro al reducer de business con id:', action.payload.id);
         return {
             ...state,
             business: action.payload
@@ -83,7 +85,22 @@ switch (action.type) {
                     ...state,
                     user: {}
                 }
-
+//**REDUCER MENSAJES RECIBIDOS */
+case GET_ALL_MESSAGES_RECIVED:
+    // let allBusinessMessagesReceived = action.payload
+    // console.log('id business: ', action.payload);
+    // const messagesReceivedFiltered = allBusinessMessagesReceived.filter(message => message.BusinessId === business.id)
+    // //console.log('usersFiltered: ', usersFiltered);
+    // return {
+    //     ...state,
+    //     messagesReceived: messagesReceivedFiltered,
+    //     allMessagesReceived: messagesReceivedFiltered
+    // };
+        return {
+        ...state,
+        messagesReceived: action.payload,
+        allMessagesReceived: action.payload
+    };
     default:
         return {
             ...state

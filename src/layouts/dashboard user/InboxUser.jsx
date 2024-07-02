@@ -8,6 +8,7 @@ import {
   getUserByIdAction,
 } from "../../redux/actions/actionsUsers";
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
+import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
 import ConversationActive from "../../components/user/conversation/ConversationActive";
 
 const InboxUser = () => {
@@ -22,6 +23,7 @@ const InboxUser = () => {
   useEffect(() => {
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
+      dispatch(getAllMessagesReceivedAction());
       if (userId) {
         dispatch(getUserByIdAction(userId));
       }
