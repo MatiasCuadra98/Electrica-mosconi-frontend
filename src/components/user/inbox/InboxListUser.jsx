@@ -1,30 +1,25 @@
 import React from "react";
 import InboxCardUser from "./InboxCardUser";
-import messageRecivedJson from "../../../../public/json/messagesRecivedJson";
-//import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-const InboxListUser = (props) => {
-  //const messages = useSelector((state) => state.messages)
+const InboxListUser = () => {
+  const messagesReceived = useSelector((state) => state.messagesReceived);
+  console.log("menasajes recibidos:", messagesReceived);
   //const messages = messageRecivedJson;
 
   return (
     <div className="sticky w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
-      <InboxCardUser />
+      {messagesReceived.length ? (
+        messagesReceived.map((message, index) => {
+          return (
+            <div key={index}>
+              <InboxCardUser props={message} />
+            </div>
+          );
+        })
+      ) : (
+        <p>No hay mensajes en su OneInbox</p>
+      )}
     </div>
   );
 };

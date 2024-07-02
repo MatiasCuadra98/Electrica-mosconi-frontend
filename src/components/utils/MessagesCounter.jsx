@@ -2,13 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const MessagesCounter = () => {
-  const messages = useSelector((state) => state.messages);
+  const messages = useSelector((state) => state.messagesReceived);
   const socialMediaFilter = useSelector((state) => state.socialMediaFilter);
   const stateFilter = useSelector((state) => state.stateFilter);
   const inputContact = useSelector((state) => state.inputContact);
-  console.log(inputContact);
 
-  const counter = messages.length;
+  const counter = messages ? messages.length : 0;
 
   return (
     <div>

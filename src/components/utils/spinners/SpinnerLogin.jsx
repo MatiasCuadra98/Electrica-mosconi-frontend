@@ -1,7 +1,7 @@
 import React from "react";
 
 const SpinnerLogin = (props) => {
-  //console.log("spinner: ", props.props.name);
+  console.log("spinner: ", props.props.name);
   return (
     <div className="w-screen h-screen bg-sky-950 m-0">
       <div className="flex flex-col items-center justify-center h-full">

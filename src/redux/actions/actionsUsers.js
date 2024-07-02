@@ -10,8 +10,9 @@ import {
     UPDATE_USER,
 } from '../types.js';
 
-const URL = 'https://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
-
+// const URL = 'https://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
+// const URL = 'http://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
+const URL = 'http://localhost:3000';
 //RUTAS USER:
 // getAll: /user
 //getById: /user/:id
@@ -59,7 +60,7 @@ export const cleanUserByIdAction = () => {
 export const updateUserAction = (userId, input) => {
     return async (dispatch) => {
         try {
-            await axios.put(`http://localhost:3000/updateUser/${userId}`, input);
+            await axios.put(`${URL}/user/update//${userId}`, input);
             dispatch({type: UPDATE_USER, payload: input})
             sweetAlertsSuccessfully(
                 `Felicitaciones ${input.name}!`,
