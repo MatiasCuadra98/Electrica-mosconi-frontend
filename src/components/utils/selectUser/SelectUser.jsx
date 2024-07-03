@@ -11,7 +11,7 @@ const SelectUser = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
   const user = useSelector((state) => state.user);
-  console.log("user", user);
+  // console.log("user", user);
   //const [userId, setUserId] = useState("");
 
   const selectHandler = async (e) => {

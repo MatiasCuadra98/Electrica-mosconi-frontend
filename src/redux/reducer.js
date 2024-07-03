@@ -8,6 +8,11 @@ import {
     FILTER_BY_STATE,
     CLEAN_USER_BY_ID,
     GET_ALL_MESSAGES_RECIVED,
+    GET_MESSAGE_RECIVED_BY_ID,
+    UPDATE_ACTIVE_MESSAGE_RECEIVED,
+    DESACTIVATE_ALL_MESSAGES_RECEIVED,
+    GET_CONTACT_BY_ID,
+    GET_CONTACT_BY_MESSAGE_RECEIVED
 } from './types';
 
 const initialState = {
@@ -26,6 +31,9 @@ const initialState = {
     allMessagesReceived: [],
     //mensaje por id
     messageReceived: {},
+          //**--CONTACTOS--**//
+    //contacto por id // mensaje
+    contact: {},
 
     //**--ESTADOS PARA CONTADOR DE MENSAJES-- */
     // deben modificarse segun seleccion de filtros y search => asignarle el action.payload
@@ -40,7 +48,6 @@ switch (action.type) {
     //***--REDUCER DE NEGOCIOS-- */
 //trae un negocio por id//
     case GET_BUSINESS_BY_ID:
-        console.log('entro al reducer de business con id:', action.payload.id);
         return {
             ...state,
             business: action.payload
@@ -86,8 +93,8 @@ switch (action.type) {
                     user: {}
                 }
 //**REDUCER MENSAJES RECIBIDOS */
-case GET_ALL_MESSAGES_RECIVED:
-    // let allBusinessMessagesReceived = action.payload
+            case GET_ALL_MESSAGES_RECIVED:
+            // let allBusinessMessagesReceived = action.payload
     // console.log('id business: ', action.payload);
     // const messagesReceivedFiltered = allBusinessMessagesReceived.filter(message => message.BusinessId === business.id)
     // //console.log('usersFiltered: ', usersFiltered);
@@ -96,15 +103,43 @@ case GET_ALL_MESSAGES_RECIVED:
     //     messagesReceived: messagesReceivedFiltered,
     //     allMessagesReceived: messagesReceivedFiltered
     // };
-        return {
-        ...state,
-        messagesReceived: action.payload,
-        allMessagesReceived: action.payload
-    };
-    default:
-        return {
-            ...state
-        };
+                return {
+                    ...state,
+                    messagesReceived: action.payload,
+                    allMessagesReceived: action.payload
+                };
+            case GET_MESSAGE_RECIVED_BY_ID:
+                return {
+                    ...state,
+                    messageReceived: action.payload
+                }
+            case UPDATE_ACTIVE_MESSAGE_RECEIVED: 
+                return {
+                    ...state,
+                };
+            case DESACTIVATE_ALL_MESSAGES_RECEIVED:
+                let desactiveMessages = state.allMessagesReceived.map(message => message.active = false)
+                return {
+                    ...state,
+                    messagesReceived: desactiveMessages,
+                    allMessagesReceived: desactiveMessages,
+                }    
+    //REDUCER DE CONTACTOS
+            case GET_CONTACT_BY_ID:
+                return {
+                    ...state,
+                    contact: action.payload
+                };
+            case GET_CONTACT_BY_MESSAGE_RECEIVED:
+                return {
+                    ...state,
+                    messageReceived: action.payload.message,
+                    contact: action.payload.contact
+                };
+            default:
+                return {
+                    ...state
+                };
 }
 
 };

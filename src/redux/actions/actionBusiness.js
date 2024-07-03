@@ -21,8 +21,7 @@ export const getBusinessByIdAction = (businessId, businessName) => {
         return async (dispatch) => {
             const response = await axios.get(`${URL}/business/${businessId}`);
             const business = response.data;   
-            dispatch({type: GET_BUSINESS_BY_ID, payload: business})
-            console.log('entro en la action de business con id:', businessId); 
+            dispatch({type: GET_BUSINESS_BY_ID, payload: business}) 
         }
     } catch (error) {
         sweetAlertsError(
