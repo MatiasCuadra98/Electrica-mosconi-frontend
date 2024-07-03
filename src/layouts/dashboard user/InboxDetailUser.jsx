@@ -3,31 +3,38 @@ import SideBarU from "../../components/user/SideBarU";
 import InboxListUser from "../../components/user/inbox/InboxListUser";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   getAllUsersAction,
   getUserByIdAction,
 } from "../../redux/actions/actionsUsers";
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
 import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
+import { getContactByMessageReceivedAction } from "../../redux/actions/actionContact";
+import ConversationActive from "../../components/user/conversation/ConversationActive";
 
-const InboxUser = () => {
+const InboxDetailUser = () => {
   const dispatch = useDispatch();
   const businessRedux = useSelector((state) => state.business);
   const businessId = businessRedux.id || localStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
+  const { messageId } = useParams();
 
   useEffect(() => {
+    // console.log("messageId:", messageId); // Verifica el valor de messageId
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction());
+      if (messageId) {
+        dispatch(getContactByMessageReceivedAction(messageId));
+      }
       if (userId) {
         dispatch(getUserByIdAction(userId));
       }
       dispatch(getAllUsersAction());
-      //console.log("despacho la accion");
     }
-  }, [dispatch, businessId, userId]);
+  }, [dispatch, businessId, userId, messageId]);
 
   return (
     <div className="w-screen h-screen flex overflow-hidden">
@@ -38,10 +45,10 @@ const InboxUser = () => {
         <InboxListUser />
       </div>
       <div className="flex flex-1 items-center justify-center overflow-y-auto overflow-x-hidden">
-        <img src="/public/imagenFondoCAInactiva.svg" className="-mt-12" />
+        <ConversationActive />
       </div>
     </div>
   );
 };
 
-export default InboxUser;
+export default InboxDetailUser;
