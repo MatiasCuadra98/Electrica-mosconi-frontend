@@ -21,6 +21,9 @@ const URL = 'http://localhost:3000';
 //getById: /message/received/:id
 //cambiar active: /message/received/active/:id
 
+//ENVIADOS:
+//create mensaje enviado: /telegram/sendMessage
+
 export const getAllMessagesReceivedAction = () => {
     try {
         return async (dispatch) => {
@@ -75,4 +78,10 @@ export const deactivateAllMessagesReceivedAction = () => {
   };
 
 
-
+//MENSAJES ENVIADOS:
+export const createMessageSentAction = (input) => {
+    return async (dispatch) => {
+        const response = await axios.post(`${URL}/telegram/sendMessage`, input);
+        dispatch({ type: CREATE_MESSAGE_SEND, })
+        return response
+}}
