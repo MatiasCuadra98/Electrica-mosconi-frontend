@@ -1,21 +1,21 @@
 import PropTypes from "prop-types";
-import React from "react";
-import { useDispatch } from "react-redux";
+//import React from "react";
+//import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import IconUser from "../../utils/selectUser/IconUser";
 import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
-import {
-  updateActiveMessageReceivedAction,
-  deactivateAllMessagesReceivedAction,
-} from "../../../redux/actions/actionMessages";
+// import {
+//   updateActiveMessageReceivedAction,
+//   deactivateAllMessagesReceivedAction,
+// } from "../../../redux/actions/actionMessages";
 
 
-const InboxCardUser = (props) => {
+const InboxCardUser = ({name, state, timestamp, id}) => {
    const formattedTimestamp = new Date(parseInt(timestamp)).toLocaleString();
   // const userName = props.state === 'Respondidos' ? props.msgSent.user.name : null;
   let userName = null;
   //falta hacer que: 1-se refleje automaticamente el cambio de active
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onClickHandler = (id) => {
@@ -27,7 +27,7 @@ const InboxCardUser = (props) => {
   return (
     <button
       className="bg-transparent border-none m-0 p-0"
-      onClick={() => onClickHandler(props.props.id)}
+      onClick={() => onClickHandler(id)}
     >
       {/* {!props.props.active ? ( */}
       <div className="w-72 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
@@ -37,7 +37,7 @@ const InboxCardUser = (props) => {
         />
         <div className="flex flex-col justify-center">
           <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
-            {props.props.name}
+            {name}
             <br />
           </span>
           <span className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
@@ -47,7 +47,7 @@ const InboxCardUser = (props) => {
         </div>
         <div className="flex flex-col items-end mr-6">
           <div className="w-10 h-10 bg-white rounded-full mb-1">
-            <StateMessagesIcons state={props.props.state} />
+            <StateMessagesIcons state={state} />
           </div>
           <IconUser name={userName} />
         </div>
@@ -89,6 +89,7 @@ InboxCardUser.propTypes = {
   name: PropTypes.string.isRequired,
   timestamp: PropTypes.string.isRequired,
   state: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default InboxCardUser;
