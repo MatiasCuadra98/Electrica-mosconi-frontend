@@ -9,8 +9,9 @@ const ConversationDetail = ({ isActive, setIsActive, contact }) => {
     return null;
   }
   const allMessages = [...contact.MsgReceiveds, ...contact.MsgSents].sort(
-    (msg1, msg2) => parseInt(msg1.timestamp) - parseInt(msg2.timestamp)
+    (a, b) => b.timestamp - a.timestamp
   );
+
   console.log("todos los mensajes", allMessages);
 
   return (
