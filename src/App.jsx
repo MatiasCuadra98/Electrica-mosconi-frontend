@@ -4,6 +4,7 @@ import {
   LandingPage,
   NavBar,
   InboxUser,
+  InboxDetailUser,
   LoginAdmi,
   HomeAdmi,
   Profile,
@@ -11,7 +12,7 @@ import {
   EditBusiness,
   EditSocialMedia,
   InboxAdmi,
-  InboxDetail,
+  InboxDetailAdmi,
   UsersManagement,
 } from "./layouts";
 import { Routes, Route, useLocation } from "react-router-dom";
@@ -31,6 +32,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/inbox" element={<InboxUser />} />
+        <Route
+          path="/inboxDetailUser/:messageId"
+          element={<InboxDetailUser />}
+        />
         <Route path="/loginAdmi" element={<LoginAdmi />} />
         <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
         <Route path="/dashboardAdmi/profile" element={<Profile />} />
@@ -44,7 +49,10 @@ const App = () => {
           element={<EditSocialMedia />}
         />
         <Route path="/dashboardAdmi/inboxAdmi" element={<InboxAdmi />} />
-        <Route path="/inboxDetail/:detailId" element={<InboxDetail />} />
+        <Route
+          path="/inboxDetailAdmi/:detailId"
+          element={<InboxDetailAdmi />}
+        />
         <Route
           path="/dashboardAdmi/usersManagement"
           element={<UsersManagement />}

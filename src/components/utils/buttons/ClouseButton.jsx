@@ -1,8 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deactivateAllMessagesReceivedAction } from "../../../redux/actions/actionMessages";
 
-const ClouseButton = ({ isActive, setIsActive }) => {
+const ClouseConversationButton = ({ isActive, setIsActive }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handlerOnClick = () => {
     setIsActive(false);
+    navigate("/inbox");
+    dispatch(deactivateAllMessagesReceivedAction());
   };
 
   return (
@@ -21,4 +29,4 @@ const ClouseButton = ({ isActive, setIsActive }) => {
   );
 };
 
-export default ClouseButton;
+export default ClouseConversationButton;

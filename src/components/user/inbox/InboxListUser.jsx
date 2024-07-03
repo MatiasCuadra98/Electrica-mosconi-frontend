@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 
 const InboxListUser = () => {
   const messagesReceived = useSelector((state) => state.messagesReceived);
+
   console.log("menasajes recibidos:", messagesReceived);
   //const messages = messageRecivedJson;
   const sortedMessages = messagesReceived.slice().sort((a, b) => b.timestamp - a.timestamp);
+
 
   return (
     <div className="sticky w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
