@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 
-const SendButton = () => {
-  return <button>ENVIAR</button>;
-};
+// const SendButton = () => {
+//   return <button>ENVIAR</button>;
+// };
 
-export default SendButton;
+// export default SendButton;

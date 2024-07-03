@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +9,9 @@ import {
   deactivateAllMessagesReceivedAction,
 } from "../../../redux/actions/actionMessages";
 
+
 const InboxCardUser = (props) => {
+   const formattedTimestamp = new Date(parseInt(timestamp)).toLocaleString();
   // const userName = props.state === 'Respondidos' ? props.msgSent.user.name : null;
   let userName = null;
   //falta hacer que: 1-se refleje automaticamente el cambio de active
@@ -38,7 +41,7 @@ const InboxCardUser = (props) => {
             <br />
           </span>
           <span className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
-            {props.props.timestamp}
+            {formattedTimestamp}
             <br />
           </span>
         </div>
@@ -48,6 +51,7 @@ const InboxCardUser = (props) => {
           </div>
           <IconUser name={userName} />
         </div>
+
       </div>
       {/* ) : (
         <div className="w-72 h-28 relative shadow-inner bg-white flex items-center justify-between p-2">
@@ -79,6 +83,12 @@ const InboxCardUser = (props) => {
       )} */}
     </button>
   );
+};
+
+InboxCardUser.propTypes = {
+  name: PropTypes.string.isRequired,
+  timestamp: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
 };
 
 export default InboxCardUser;
