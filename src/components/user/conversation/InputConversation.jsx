@@ -7,7 +7,7 @@ const InputConversation = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Evitar el envío automático del formulario
 
-    if (message.trim() === '') {
+    if (message.trim() === "") {
       return; // No hacer nada si el mensaje está vacío
     }
     console.log("Mensaje enviado:", message); // Aquí puedes implementar la lógica para enviar el mensaje
@@ -42,7 +42,13 @@ const InputConversation = () => {
           onChange={handleChange} // Actualizar el estado del mensaje
           onKeyPress={handleKeyPress} // Manejar la pulsación de tecla
         />
-        <button type="submit" onClick={handleClick}> {/* Botón de enviar */}
+        <button
+          type="submit"
+          onClick={handleClick}
+          className="bg-transparent border-none m-0 p-0"
+        >
+          {" "}
+          {/* Botón de enviar */}
           <img
             src="/send-icon.svg"
             className="w-8 h-auto mt-4"
