@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createMessageSentAction } from "../../../redux/actions/actionMessages";
 import { sweetAlertsError } from "../../utils/alerts/alerts";
-//comentario para push
+
 const InputConversation = () => {
   const [input, setInput] = useState({
     chatId: "",

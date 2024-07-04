@@ -127,7 +127,9 @@ switch (action.type) {
                 }
     //MENSAJES ENVIADOS
     case CREATE_MESSAGE_SEND: 
+
     console.log('entro en el reducer, en case del input');
+
     return {
         ...state,
     };
