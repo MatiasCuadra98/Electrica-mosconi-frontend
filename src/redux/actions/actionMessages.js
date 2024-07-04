@@ -80,8 +80,20 @@ export const deactivateAllMessagesReceivedAction = () => {
 
 //MENSAJES ENVIADOS:
 export const createMessageSentAction = (input) => {
+    console.log('entro en la action del input', input);
     return async (dispatch) => {
-        const response = await axios.post(`${URL}/telegram/sendMessage`, input);
-        dispatch({ type: CREATE_MESSAGE_SEND, })
-        return response
+    try {
+            const response = await axios.post(`${URL}/telegram/sendMessage`, input);
+            console.log('respuesta de la action', response.data);
+            // dispatch({ type: CREATE_MESSAGE_SEND, })
+            console.log('envio la action al reducer');
+            // return response
+    } catch (error) {
+        console.log('error de action', error);
+        sweetAlertsError(
+            "Intenta de nuevo",
+            "No podemos enviar tu respuesta",
+            "Ok"
+          );
+    }
 }}
