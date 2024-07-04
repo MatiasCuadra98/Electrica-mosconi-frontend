@@ -79,12 +79,14 @@ export const deactivateAllMessagesReceivedAction = () => {
 
 
 //MENSAJES ENVIADOS:
+
 // export const createMessageSentAction = (input) => {
 //     return async (dispatch) => {
 //         const response = await axios.post(`${URL}/telegram/sendMessage`, input);
 //         dispatch({ type: CREATE_MESSAGE_SEND, })
 //         return response
 // }}
+
 export const createMessageSentAction = (input) => {
     console.log('entro en la action del input', input);
     return async (dispatch) => {
@@ -102,5 +104,6 @@ export const createMessageSentAction = (input) => {
             "Ok"
           );
     }
+
 }}
 
