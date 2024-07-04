@@ -12,7 +12,8 @@ import {
     UPDATE_ACTIVE_MESSAGE_RECEIVED,
     DESACTIVATE_ALL_MESSAGES_RECEIVED,
     GET_CONTACT_BY_ID,
-    GET_CONTACT_BY_MESSAGE_RECEIVED
+    GET_CONTACT_BY_MESSAGE_RECEIVED,
+    CREATE_MESSAGE_SEND
 } from './types';
 
 const initialState = {
@@ -123,7 +124,12 @@ switch (action.type) {
                     ...state,
                     messagesReceived: desactiveMessages,
                     allMessagesReceived: desactiveMessages,
-                }    
+                }
+    //MENSAJES ENVIADOS
+    case CREATE_MESSAGE_SEND: 
+    return {
+        ...state,
+    };
     //REDUCER DE CONTACTOS
             case GET_CONTACT_BY_ID:
                 return {
