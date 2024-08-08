@@ -1,4 +1,5 @@
 import React from "react";
+import FormattedTimestamp from "../FormatedTimeStamp";
 
 const MsgRecived = (props) => {
   //NOta: la img deberia cargarse segun la red social asociada al contacto
@@ -19,9 +20,12 @@ const MsgRecived = (props) => {
         </h2>
       </div>
       <div className="flex justify-end">
-        <p className="w-[74px] h-[18px] text-black text-[13px] font-normal font-['Oswald'] capitalize">
-          {props.props.timestamp}
-        </p>
+        <div className="w-[74px] h-[18px] text-black text-[13px] font-normal font-['Oswald'] capitalize mb-4">
+          <FormattedTimestamp
+            timestamp={props.props.timestamp}
+            // className="w-[74px] h-[18px] text-black text-[13px] font-normal font-['Oswald'] capitalize"
+          />
+        </div>
       </div>
     </div>
   );

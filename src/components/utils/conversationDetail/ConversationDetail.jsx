@@ -7,8 +7,9 @@ const ConversationDetail = ({ isActive, setIsActive, contact }) => {
   if (!contact) {
     return null;
   }
+
   const allMessages = [...contact.MsgReceiveds, ...contact.MsgSents].sort(
-    (a, b) => b.timestamp - a.timestamp
+    (a, b) => a.timestamp - b.timestamp
   );
 
   return (

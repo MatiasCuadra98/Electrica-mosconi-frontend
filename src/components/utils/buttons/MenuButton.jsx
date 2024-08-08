@@ -1,3 +1,4 @@
+//es el boton para el menu lateral verde del administrador
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";

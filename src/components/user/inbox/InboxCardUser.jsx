@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import IconUser from "../../utils/selectUser/IconUser";
 import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
+import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 // import {
 //   updateActiveMessageReceivedAction,
 //   deactivateAllMessagesReceivedAction,
 // } from "../../../redux/actions/actionMessages";
 
-
-const InboxCardUser = ({name, state, timestamp, id}) => {
-   const formattedTimestamp = new Date(parseInt(timestamp)).toLocaleString();
+const InboxCardUser = ({ name, state, timestamp, id }) => {
+  //const formattedTimestamp = new Date(parseInt(timestamp)).toLocaleString();
   // const userName = props.state === 'Respondidos' ? props.msgSent.user.name : null;
   let userName = null;
   //falta hacer que: 1-se refleje automaticamente el cambio de active
@@ -40,10 +40,10 @@ const InboxCardUser = ({name, state, timestamp, id}) => {
             {name}
             <br />
           </span>
-          <span className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
-            {formattedTimestamp}
+          <div className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
+            <FormattedTimestamp timestamp={timestamp} />
             <br />
-          </span>
+          </div>
         </div>
         <div className="flex flex-col items-end mr-6">
           <div className="w-10 h-10 bg-white rounded-full mb-1">
@@ -51,7 +51,6 @@ const InboxCardUser = ({name, state, timestamp, id}) => {
           </div>
           <IconUser name={userName} />
         </div>
-
       </div>
       {/* ) : (
         <div className="w-72 h-28 relative shadow-inner bg-white flex items-center justify-between p-2">
