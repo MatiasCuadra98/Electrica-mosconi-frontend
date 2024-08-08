@@ -16,6 +16,7 @@ const InboxUser = () => {
   const businessId = businessRedux.id || localStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
+  const messagesReceived = useSelector((state) => state.messagesReceived);
 
   useEffect(() => {
     if (businessId) {
@@ -27,7 +28,7 @@ const InboxUser = () => {
       dispatch(getAllUsersAction());
       //console.log("despacho la accion");
     }
-  }, [dispatch, businessId, userId]);
+  }, [dispatch, businessId, userId, messagesReceived]);
 
   return (
     <div className="w-screen h-screen flex overflow-hidden">
