@@ -2,7 +2,11 @@ import InboxCardUser from "./InboxCardUser";
 import { useSelector } from "react-redux";
 
 const InboxListUser = () => {
-  const messagesReceived = useSelector((state) => state.messagesReceived);
+  const business = useSelector((state) => state.business);
+  const allMessagesReceived = useSelector((state) => state.messagesReceived);
+  const messagesReceived = allMessagesReceived.filter(
+    (message) => message.BusinessId === business.id
+  );
 
   const sortedMessages = messagesReceived
     .slice()
