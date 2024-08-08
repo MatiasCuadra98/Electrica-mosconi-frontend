@@ -20,7 +20,7 @@ const InboxDetailUser = () => {
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
   const { messageId } = useParams();
-  const messagesReceived = useSelector((state) => state.messagesReceived);
+  const contact = useSelector((state) => state.contact);
 
   useEffect(() => {
     // console.log("messageId:", messageId); // Verifica el valor de messageId
@@ -35,7 +35,17 @@ const InboxDetailUser = () => {
       }
       dispatch(getAllUsersAction());
     }
-  }, [dispatch, businessId, userId, messageId, messagesReceived]);
+  }, [dispatch, businessId, userId, messageId, contact]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (businessId) {
+        dispatch(getAllMessagesReceivedAction());
+      }
+    }, 15000); // Cada 15 segundos
+
+    return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
+  }, [dispatch, businessId]);
 
   return (
     <div className="w-screen h-screen flex overflow-hidden">

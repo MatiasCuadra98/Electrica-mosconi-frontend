@@ -5,22 +5,13 @@ import { useNavigate } from "react-router-dom";
 import IconUser from "../../utils/selectUser/IconUser";
 import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
-// import {
-//   updateActiveMessageReceivedAction,
-//   deactivateAllMessagesReceivedAction,
-// } from "../../../redux/actions/actionMessages";
 
 const InboxCardUser = ({ name, state, timestamp, id }) => {
-  //const formattedTimestamp = new Date(parseInt(timestamp)).toLocaleString();
-  // const userName = props.state === 'Respondidos' ? props.msgSent.user.name : null;
   let userName = null;
-  //falta hacer que: 1-se refleje automaticamente el cambio de active
-  //const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const onClickHandler = (id) => {
-    // dispatch(deactivateAllMessagesReceivedAction());
-    // dispatch(updateActiveMessageReceivedAction(id));
     navigate(`/inboxDetailUser/${id}`);
   };
 
