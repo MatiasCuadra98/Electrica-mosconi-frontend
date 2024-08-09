@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import MsgRecived from "./MsgRecived";
 import MsgSent from "./MsgSent";
 import ClouseConversationButton from "../buttons/ClouseButton";
-//en este componente deberia tomar todos los mensajes de un y mapearlos: si es enviado por el contacto ? <MsgRecived /> : <MsgSent />
+
 const ConversationDetail = ({ isActive, setIsActive, contact }) => {
+  //auto scroll
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [contact]);
+
   if (!contact) {
     return null;
   }
-
+  //termina el auto scroll
   const allMessages = [...contact.MsgReceiveds, ...contact.MsgSents].sort(
     (a, b) => a.timestamp - b.timestamp
   );
@@ -32,6 +41,8 @@ const ConversationDetail = ({ isActive, setIsActive, contact }) => {
             </div>
           )
         )}
+      {/* referencia para auto scroll */}
+      <div ref={messagesEndRef} />
     </div>
   );
 };
