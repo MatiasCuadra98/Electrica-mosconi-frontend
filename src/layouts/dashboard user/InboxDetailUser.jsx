@@ -48,15 +48,17 @@ const InboxDetailUser = () => {
   }, [dispatch, businessId]);
 
   return (
-    <div className="w-screen h-screen flex overflow-hidden">
+    <div className="w-screen">
       <div className="w-52 flex-shrink-0">
         <SideBarU />
       </div>
-      <div className="flex flex-col">
-        <InboxListUser />
-      </div>
-      <div className="flex flex-1 items-center justify-center overflow-y-auto overflow-x-hidden">
-        <ConversationActive />
+      <div className="flex flex-1 w-screen-minus-sidebar h-screen-minus-navbar overflow-hidden pl-52">
+        <div className="flex flex-col">
+          <InboxListUser />
+        </div>
+        <div className="flex flex-1 items-center justify-center overflow-y-auto overflow-x-hidden">
+          <ConversationActive />
+        </div>
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ const NavBar = () => {
 
   return (
     <div className="sticky w-screen h-16 flex">
+      {/* <div className="fixed top-0 w-full h-16 z-50"> */}
       <div className="bg-sky-950 w-52 h-16"></div>
       <div className="bg-stone-300 flex-grow flex items-center px-8 justify-between">
         <h2 className="text-black text-[32px] font-semibold font-['Inter'] capitalize ml-8">

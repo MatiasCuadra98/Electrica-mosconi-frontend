@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        'screen-minus-navbar': 'calc(100vh - 4rem)',
+        'screen-minus-sidebar': 'calc(100vh - 13rem)',
+      },
+    },
   plugins: [],
 }
 }
