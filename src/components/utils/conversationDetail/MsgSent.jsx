@@ -5,8 +5,11 @@ import FormattedTimestamp from "../FormatedTimeStamp";
 
 const MsgSent = (props) => {
   const users = useSelector((state) => state.users);
-  const user = users.filter((user) => user.id === props.props.UserId);
+  const user = users.find((user) => user.id === props.props.UserId);
+  //console.log("usuario filtro", user);
   const userName = user ? user.name : null;
+  //console.log("nombre", userName);
+
   return (
     <div className="w-full flex justify-end">
       <div className="w-[473px] h-auto bg-stone-300 rounded-tr-[40px] rounded-bl-[40px] rounded-br-[40px] p-4 flex flex-col justify-between m-4 self-end mr-10">

@@ -4,6 +4,8 @@ import MsgSent from "./MsgSent";
 import ClouseConversationButton from "../buttons/ClouseButton";
 
 const ConversationDetail = ({ isActive, setIsActive, contact }) => {
+  //console.log(contact);
+
   //auto scroll
   const messagesEndRef = useRef(null);
 
