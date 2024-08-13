@@ -2,13 +2,11 @@ import PropTypes from "prop-types";
 //import React from "react";
 //import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import IconUser from "../../utils/selectUser/IconUser";
 import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 
-const InboxCardUser = ({ name, state, timestamp, id }) => {
-  let userName = null;
-
+const InboxCardUser = ({ name, state, timestamp, id, SocialMedium }) => {
+  //console.log("redSocial", SocialMedium.name);
   const navigate = useNavigate();
 
   const onClickHandler = (id) => {
@@ -23,7 +21,8 @@ const InboxCardUser = ({ name, state, timestamp, id }) => {
       {/* {!props.props.active ? ( */}
       <div className="w-72 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
         <img
-          src="/socialMediaImage/telegram.svg"
+          src={SocialMedium.icon}
+          alt={SocialMedium.name}
           className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2"
         />
         <div className="flex flex-col justify-center">
@@ -40,7 +39,6 @@ const InboxCardUser = ({ name, state, timestamp, id }) => {
           <div className="w-10 h-10 bg-white rounded-full mb-1">
             <StateMessagesIcons state={state} />
           </div>
-          <IconUser name={userName} />
         </div>
       </div>
       {/* ) : (
@@ -48,25 +46,25 @@ const InboxCardUser = ({ name, state, timestamp, id }) => {
           <div className="w-full h-full flex items-center justify-between bg-transparent border-l-4 border-t-4 border-b-4 border-amber-500">
             <div className="flex items-center">
               <img
-                src="/socialMediaImage/telegram.svg"
+                src={SocialMedium.icon}
+                alt={SocialMedium.name}
                 className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2"
               />
               <div className="flex flex-col justify-center ml-8">
                 <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
-                  {props.props.name}
+                  {name}
                   <br />
                 </span>
                 <span className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
-                  {props.props.timestamp}
+                  {timestamp}
                   <br />
                 </span>
               </div>
             </div>
             <div className="flex flex-col items-end mr-4">
               <div className="w-10 h-10 bg-white rounded-full mb-1">
-                <StateMessagesIcons state={props.props.state} />
+                <StateMessagesIcons state={state} />
               </div>
-              <IconUser name={userName} />
             </div>
           </div>
         </div>

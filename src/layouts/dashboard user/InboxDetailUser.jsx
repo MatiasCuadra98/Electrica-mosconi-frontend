@@ -21,13 +21,14 @@ const InboxDetailUser = () => {
   const userId = userRedux.id || localStorage.getItem("userId");
   const { messageId } = useParams();
   const contact = useSelector((state) => state.contact);
+  //console.log("contacto", contact);
 
   useEffect(() => {
-    // console.log("messageId:", messageId); // Verifica el valor de messageId
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction());
       if (messageId) {
+        //console.log("despacha la action con el mensaje con ID", messageId);
         dispatch(getContactByMessageReceivedAction(messageId));
       }
       if (userId) {

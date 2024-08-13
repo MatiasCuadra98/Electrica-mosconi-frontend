@@ -4,7 +4,7 @@ import MsgSent from "./MsgSent";
 import ClouseConversationButton from "../buttons/ClouseButton";
 
 const ConversationDetail = ({ isActive, setIsActive, contact }) => {
-  //console.log(contact);
+  console.log("conversation detail contact", contact);
 
   //auto scroll
   const messagesEndRef = useRef(null);
@@ -23,6 +23,8 @@ const ConversationDetail = ({ isActive, setIsActive, contact }) => {
     (a, b) => a.timestamp - b.timestamp
   );
 
+  console.log("mensaje desde Contact", allMessages);
+
   return (
     <div className="relative flex flex-col overflow-y-auto overflow-x-hidden p-4">
       <div className="fixed top-16 right-10 mt-2">
@@ -35,7 +37,7 @@ const ConversationDetail = ({ isActive, setIsActive, contact }) => {
         allMessages.map((message) =>
           message.received ? (
             <div key={message.id}>
-              <MsgRecived props={message} />
+              <MsgRecived props={message} contact={contact} />
             </div>
           ) : (
             <div key={message.id}>
