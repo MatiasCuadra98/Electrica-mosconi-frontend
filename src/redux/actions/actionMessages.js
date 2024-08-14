@@ -6,7 +6,8 @@ import {
 import {
     GET_ALL_MESSAGES_RECIVED,
     UPDATE_ACTIVE_MESSAGE_RECEIVED, 
-    GET_MESSAGE_RECIVED_BY_ID, 
+    GET_MESSAGE_RECIVED_BY_ID,
+    UPDATE_STATE_MESSAGE_RECEIVED,
     DESACTIVATE_ALL_MESSAGES_RECEIVED,
     FILTER_BY_SOCIAL_MEDIA,
     FILTER_BY_STATE 
@@ -65,6 +66,23 @@ export const updateActiveMessageReceivedAction = (messageId) => {
         sweetAlertsError(
             "Intenta de nuevo",
             "No podemos activar/desactivar el mensaje seleccionado",
+            "Ok"
+          );  
+    }
+
+}
+
+export const updateStateMessageReceivedAction = (messageId) => {
+    try {
+        return async (dispatch) => {
+            const response = await axios.put(`${URL}/message/received/state/${messageId}`)
+            dispatch({ type: UPDATE_STATE_MESSAGE_RECEIVED, })
+            return response
+          } 
+    } catch (error) {
+        sweetAlertsError(
+            "Intenta de nuevo",
+            "No podemos cambiar el estado del mensaje seleccionado",
             "Ok"
           );  
     }

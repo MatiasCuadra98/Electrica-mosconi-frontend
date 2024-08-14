@@ -36,8 +36,8 @@ const InboxDetailUser = () => {
       }
       dispatch(getAllUsersAction());
     }
-  }, [dispatch, businessId, userId, messageId, contact]);
-  // }, [dispatch, businessId, userId, messageId]);
+    //}, [dispatch, businessId, userId, messageId, contact]);
+  }, [dispatch, businessId, userId, messageId]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

@@ -1,16 +1,19 @@
 import PropTypes from "prop-types";
 //import React from "react";
-//import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
+import { updateStateMessageReceivedAction } from "../../../redux/actions/actionMessages";
 
 const InboxCardUser = ({ name, state, timestamp, id, SocialMedium }) => {
   //console.log("redSocial", SocialMedium.name);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onClickHandler = (id) => {
     navigate(`/inboxDetailUser/${id}`);
+    dispatch(updateStateMessageReceivedAction(id));
   };
 
   return (

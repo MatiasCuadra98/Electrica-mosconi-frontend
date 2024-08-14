@@ -2,9 +2,9 @@ import React from "react";
 import FormattedTimestamp from "../FormatedTimeStamp";
 
 const MsgRecived = ({ props, contact }) => {
-  console.log("propsMsgReceived", props);
+  //console.log("propsMsgReceived", props);
 
-  console.log("contactoMsgRecived", contact);
+  //console.log("contactoMsgRecived", contact);
 
   //NOta: la img deberia cargarse segun la red social asociada al contacto
   return (
