@@ -23,7 +23,7 @@ const ConversationDetail = ({ isActive, setIsActive, contact }) => {
     (a, b) => a.timestamp - b.timestamp
   );
 
-  console.log("mensaje desde Contact", allMessages);
+  //console.log("mensaje desde Contact", allMessages);
 
   return (
     <div className="relative flex flex-col overflow-y-auto overflow-x-hidden p-4">
