@@ -21,6 +21,10 @@ const InputConversation = () => {
 
   const contactChatId = contact ? contact.chatId : null;
   const messages = contact && contact.MsgReceiveds;
+  const newMessages =
+    messages && messages.filter((message) => message.state === "Leidos");
+  console.log(newMessages);
+
   const lastMsgId = messages && messages[messages.length - 1].id;
 
   //console.log("mensajes en input", messages);
@@ -61,7 +65,10 @@ const InputConversation = () => {
       );
     }
     dispatch(createMessageSentAction(input));
-    dispatch(updateStateMessageReceivedAction(lastMsgId));
+    //dispatch(updateStateMessageReceivedAction(lastMsgId));
+    newMessages.forEach((message) =>
+      dispatch(updateStateMessageReceivedAction(message.id))
+    );
     //console.log("despacho la action del input:", input);
     setInput({
       chatId: "",

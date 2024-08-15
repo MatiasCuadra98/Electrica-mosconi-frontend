@@ -16,7 +16,8 @@ const InboxUser = () => {
   const businessId = businessRedux.id || localStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
-
+  const messages = useSelector((state) => state.messagesReceived);
+  const messagesState = messages && messages.state;
   useEffect(() => {
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
@@ -26,7 +27,7 @@ const InboxUser = () => {
       }
       dispatch(getAllUsersAction());
     }
-  }, [dispatch, businessId, userId]);
+  }, [dispatch, businessId, userId, messagesState]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

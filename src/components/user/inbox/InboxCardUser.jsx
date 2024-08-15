@@ -6,14 +6,32 @@ import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 import { updateStateMessageReceivedAction } from "../../../redux/actions/actionMessages";
 
-const InboxCardUser = ({ name, state, timestamp, id, SocialMedium }) => {
+const InboxCardUser = ({
+  name,
+  state,
+  timestamp,
+  id,
+  SocialMedium,
+  ContactId,
+  messagesReceived,
+}) => {
   //console.log("redSocial", SocialMedium.name);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const allMsgByContact =
+    messagesReceived &&
+    messagesReceived.filter((message) => message.ContactId === ContactId);
+  const noReadMsg =
+    allMsgByContact &&
+    allMsgByContact.filter((message) => message.state === "No Leidos");
+
   const onClickHandler = (id) => {
     navigate(`/inboxDetailUser/${id}`);
-    dispatch(updateStateMessageReceivedAction(id));
+    //dispatch(updateStateMessageReceivedAction(id));
+    noReadMsg.forEach((message) =>
+      dispatch(updateStateMessageReceivedAction(message.id))
+    );
   };
 
   return (

@@ -12,13 +12,14 @@ const InboxListUser = () => {
     .slice()
     .sort((a, b) => b.timestamp - a.timestamp);
 
-  const messagesByContact = [];
-  const seenContactIds = new Set();
-
+  const messagesByContact = []; //array para almacenar mensajes de contactos únicos.
+  const seenContactIds = new Set(); //conjunto (Set) es una colección de valores únicos, no puede contener elementos duplicados.
+  //itero sobre cada mensaje de array sortedMessages
   for (const message of sortedMessages) {
     if (!seenContactIds.has(message.ContactId)) {
-      messagesByContact.push(message);
-      seenContactIds.add(message.ContactId);
+      // este id de contacto  NO existe en el conjunto?
+      messagesByContact.push(message); // ==> pusheo el mensaje en messagesByContact
+      seenContactIds.add(message.ContactId); // ==> agrego el contacto en el conjunto
     }
   }
 
@@ -27,7 +28,8 @@ const InboxListUser = () => {
       {messagesReceived.length ? (
         messagesByContact.map((message, index) => {
           //console.log("message", message);
-          const { id, name, timestamp, state, SocialMedium } = message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
+          const { id, name, timestamp, state, SocialMedium, ContactId } =
+            message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
 
           return (
             <div key={index}>
@@ -37,6 +39,8 @@ const InboxListUser = () => {
                 timestamp={timestamp}
                 state={state}
                 SocialMedium={SocialMedium}
+                ContactId={ContactId}
+                messagesReceived={messagesReceived}
               />
             </div>
           );
