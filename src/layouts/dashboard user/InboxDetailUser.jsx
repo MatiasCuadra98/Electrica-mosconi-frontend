@@ -20,13 +20,15 @@ const InboxDetailUser = () => {
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
   const { messageId } = useParams();
+  const contact = useSelector((state) => state.contact);
+  //console.log("contacto", contact);
 
   useEffect(() => {
-    // console.log("messageId:", messageId); // Verifica el valor de messageId
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction());
       if (messageId) {
+        //console.log("despacha la action con el mensaje con ID", messageId);
         dispatch(getContactByMessageReceivedAction(messageId));
       }
       if (userId) {
@@ -34,18 +36,31 @@ const InboxDetailUser = () => {
       }
       dispatch(getAllUsersAction());
     }
-  }, [dispatch, businessId, userId, messageId]);
+  }, [dispatch, businessId, userId, messageId, contact]);
+  // }, [dispatch, businessId, userId, messageId]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (businessId) {
+        dispatch(getAllMessagesReceivedAction());
+      }
+    }, 15000); // Cada 15 segundos
+
+    return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
+  }, [dispatch, businessId]);
 
   return (
-    <div className="w-screen h-screen flex overflow-hidden">
+    <div className="w-screen">
       <div className="w-52 flex-shrink-0">
         <SideBarU />
       </div>
-      <div className="flex flex-col">
-        <InboxListUser />
-      </div>
-      <div className="flex flex-1 items-center justify-center overflow-y-auto overflow-x-hidden">
-        <ConversationActive />
+      <div className="flex flex-1 w-screen-minus-sidebar h-screen-minus-navbar overflow-hidden pl-52">
+        <div className="flex flex-col">
+          <InboxListUser />
+        </div>
+        <div className="flex flex-1 items-center justify-center overflow-y-auto overflow-x-hidden">
+          <ConversationActive />
+        </div>
       </div>
     </div>
   );

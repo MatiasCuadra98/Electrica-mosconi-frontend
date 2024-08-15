@@ -16,15 +16,17 @@ const InputConversation = () => {
   const contact = useSelector((state) => state.contact);
   const contactChatId = contact ? contact.chatId : null;
   const user = useSelector((state) => state.user);
-  const idUser = user ? user.id : null;
+  // console.log("user", user.id);
 
   const inputHandler = (e) => {
     setInput({
       chatId: contactChatId,
       message: e.target.value,
-      UserId: idUser,
+      UserId: user && user.id,
     });
   };
+  // console.log("UserId", input.UserId);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!input.UserId) {
@@ -49,7 +51,7 @@ const InputConversation = () => {
       );
     }
     dispatch(createMessageSentAction(input));
-    console.log("despacho la action del input:", input);
+    //console.log("despacho la action del input:", input);
     setInput({
       chatId: "",
       message: "",

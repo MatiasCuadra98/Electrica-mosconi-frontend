@@ -11,7 +11,7 @@ import EditSocialMedia from "../components/admi/profile/formsEdit/EditSocialMedi
 import InboxAdmi from "./dashboard admi/InboxAdmi";
 import InboxDetailAdmi from "./dashboard admi/InboxDetailAdmi";
 import UsersManagement from "./dashboard admi/UsersManagement";
-import Footer from "../components/Footer";
+
 
 export {
   LandingPage,
@@ -27,5 +27,4 @@ export {
   InboxAdmi,
   InboxDetailAdmi,
   UsersManagement,
-  Footer,
 };

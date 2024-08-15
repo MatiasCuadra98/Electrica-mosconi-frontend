@@ -2,7 +2,11 @@ import InboxCardUser from "./InboxCardUser";
 import { useSelector } from "react-redux";
 
 const InboxListUser = () => {
-  const messagesReceived = useSelector((state) => state.messagesReceived);
+  const business = useSelector((state) => state.business);
+  const allMessagesReceived = useSelector((state) => state.messagesReceived);
+  const messagesReceived = allMessagesReceived.filter(
+    (message) => message.BusinessId === business.id
+  );
 
   const sortedMessages = messagesReceived
     .slice()
@@ -22,7 +26,8 @@ const InboxListUser = () => {
     <div className="sticky w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
       {messagesReceived.length ? (
         messagesByContact.map((message, index) => {
-          const { id, name, timestamp, state } = message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
+          //console.log("message", message);
+          const { id, name, timestamp, state, SocialMedium } = message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
 
           return (
             <div key={index}>
@@ -31,6 +36,7 @@ const InboxListUser = () => {
                 name={name}
                 timestamp={timestamp}
                 state={state}
+                SocialMedium={SocialMedium}
               />
             </div>
           );
