@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createMessageSentAction } from "../../../redux/actions/actionMessages";
+import {
+  createMessageSentAction,
+  updateStateMessageReceivedAction,
+} from "../../../redux/actions/actionMessages";
 import { sweetAlertsError } from "../../utils/alerts/alerts";
 
 const InputConversation = () => {
@@ -14,9 +17,20 @@ const InputConversation = () => {
   const dispatch = useDispatch();
 
   const contact = useSelector((state) => state.contact);
+  //console.log("contacto en input", contact);
+
   const contactChatId = contact ? contact.chatId : null;
+  const messages = contact && contact.MsgReceiveds;
+  const newMessages =
+    messages && messages.filter((message) => message.state === "Leidos");
+  console.log(newMessages);
+
+  const lastMsgId = messages && messages[messages.length - 1].id;
+
+  //console.log("mensajes en input", messages);
+  //console.log("length", lastMsgId);
+
   const user = useSelector((state) => state.user);
-  // console.log("user", user.id);
 
   const inputHandler = (e) => {
     setInput({
@@ -51,6 +65,10 @@ const InputConversation = () => {
       );
     }
     dispatch(createMessageSentAction(input));
+    //dispatch(updateStateMessageReceivedAction(lastMsgId));
+    newMessages.forEach((message) =>
+      dispatch(updateStateMessageReceivedAction(message.id))
+    );
     //console.log("despacho la action del input:", input);
     setInput({
       chatId: "",

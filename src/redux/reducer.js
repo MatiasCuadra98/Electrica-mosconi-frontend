@@ -10,6 +10,7 @@ import {
     GET_ALL_MESSAGES_RECIVED,
     GET_MESSAGE_RECIVED_BY_ID,
     UPDATE_ACTIVE_MESSAGE_RECEIVED,
+    UPDATE_STATE_MESSAGE_RECEIVED,
     DESACTIVATE_ALL_MESSAGES_RECEIVED,
     GET_CONTACT_BY_ID,
     GET_CONTACT_BY_MESSAGE_RECEIVED,
@@ -115,6 +116,10 @@ switch (action.type) {
                     messageReceived: action.payload
                 }
             case UPDATE_ACTIVE_MESSAGE_RECEIVED: 
+                return {
+                    ...state,
+                };
+            case UPDATE_STATE_MESSAGE_RECEIVED: 
                 return {
                     ...state,
                 };

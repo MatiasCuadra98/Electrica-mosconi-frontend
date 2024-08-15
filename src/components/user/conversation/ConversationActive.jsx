@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import InputConversation from "./InputConversation";
 import ConversationDetail from "../../utils/conversationDetail/ConversationDetail";
 import Spinner from "../../utils/spinners/Spinner";
+import CounterInConversation from "../../utils/CounterInConversation";
 
 const ConversationActive = () => {
   const [isActive, setIsActive] = useState(false);
@@ -23,11 +24,16 @@ const ConversationActive = () => {
         {loading ? (
           <Spinner />
         ) : (
-          <ConversationDetail
-            isActive={isActive}
-            setIsActive={setIsActive}
-            contact={contact}
-          />
+          <div>
+            <div className="w-3/5 h-6 fixed top-16 z-40  ml-4 mt-2">
+              <CounterInConversation contact={contact} />
+            </div>
+            <ConversationDetail
+              isActive={isActive}
+              setIsActive={setIsActive}
+              contact={contact}
+            />
+          </div>
         )}
       </div>
       <div className="w-full">
