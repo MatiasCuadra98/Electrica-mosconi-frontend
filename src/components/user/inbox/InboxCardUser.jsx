@@ -87,8 +87,8 @@ const InboxCardUser = ({
                   <br />
                 </span>
                 <span className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
-                  {timestamp}
-                  <br />
+                <FormattedTimestamp timestamp={timestamp} />
+                <br />
                 </span>
               </div>
             </div>

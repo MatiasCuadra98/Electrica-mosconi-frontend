@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import IconUser from "../selectUser/IconUser";
 import FormattedTimestamp from "../FormatedTimeStamp";
