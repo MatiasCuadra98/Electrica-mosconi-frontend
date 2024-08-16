@@ -15,12 +15,17 @@ import ConversationActive from "../../components/user/conversation/ConversationA
 
 const InboxDetailUser = () => {
   const dispatch = useDispatch();
+
   const businessRedux = useSelector((state) => state.business);
   const businessId = businessRedux.id || localStorage.getItem("businessId");
+
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
+
   const { messageId } = useParams();
   const contact = useSelector((state) => state.contact);
+  const messages = useSelector((state) => state.messagesReceived);
+  const messagesActive = messages && messages.active;
   //console.log("contacto", contact);
 
   useEffect(() => {
@@ -43,6 +48,10 @@ const InboxDetailUser = () => {
     const intervalId = setInterval(() => {
       if (businessId) {
         dispatch(getAllMessagesReceivedAction());
+      }
+      if (messageId) {
+        //console.log("despacha la action con el mensaje con ID", messageId);
+        dispatch(getContactByMessageReceivedAction(messageId));
       }
     }, 15000); // Cada 15 segundos
 
