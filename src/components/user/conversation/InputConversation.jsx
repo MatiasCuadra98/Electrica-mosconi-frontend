@@ -23,12 +23,7 @@ const InputConversation = () => {
   const messages = contact && contact.MsgReceiveds;
   const newMessages =
     messages && messages.filter((message) => message.state === "Leidos");
-  console.log(newMessages);
-
-  const lastMsgId = messages && messages[messages.length - 1].id;
-
-  //console.log("mensajes en input", messages);
-  //console.log("length", lastMsgId);
+  //console.log(newMessages);
 
   const user = useSelector((state) => state.user);
 
@@ -43,38 +38,36 @@ const InputConversation = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!input.UserId) {
+    if (input.UserId && input.message && input.chatId) {
+      dispatch(createMessageSentAction(input));
+      newMessages.forEach((message) =>
+        dispatch(updateStateMessageReceivedAction(message.id))
+      );
+      //console.log("despacho la action del input:", input);
+      setInput({
+        chatId: "",
+        message: "",
+        UserId: "",
+      });
+    } else if (!input.UserId && input.message && input.chatId) {
       sweetAlertsError(
         "Seleccioná un Usuario!",
         "No se puede enviar una respuesta sin un usuario asociado",
         "Ok"
       );
-    }
-    if (!input.message) {
+    } else if (!input.message && input.UserId && input.chatId) {
       sweetAlertsError(
         "Escribí un mensaje!",
         "No se puede enviar una respuesta vacía",
         "Ok"
       );
-    }
-    if (!input.chatId) {
+    } else {
       sweetAlertsError(
         "Falló el envío!",
         "Falta información...Intentá enviar la respuesta nuevamente",
         "Ok"
       );
     }
-    dispatch(createMessageSentAction(input));
-    //dispatch(updateStateMessageReceivedAction(lastMsgId));
-    newMessages.forEach((message) =>
-      dispatch(updateStateMessageReceivedAction(message.id))
-    );
-    //console.log("despacho la action del input:", input);
-    setInput({
-      chatId: "",
-      message: "",
-      UserId: "",
-    });
   };
 
   // Manejar la pulsación de tecla en el textarea
