@@ -3,7 +3,7 @@ import MsgRecived from "./MsgRecived";
 import MsgSent from "./MsgSent";
 import ClouseConversationButton from "../buttons/ClouseConversationButton";
 
-const ConversationDetail = ({ isActive, setIsActive, contact }) => {
+const ConversationDetail = ({ contact }) => {
   console.log("conversation detail contact", contact);
 
   //auto scroll
@@ -28,10 +28,7 @@ const ConversationDetail = ({ isActive, setIsActive, contact }) => {
   return (
     <div className="relative flex flex-col overflow-y-auto overflow-x-hidden p-4">
       <div className="fixed top-16 right-10 mt-2">
-        <ClouseConversationButton
-          isActive={isActive}
-          setIsActive={setIsActive}
-        />
+        <ClouseConversationButton msgReceiveds={contact.MsgReceiveds} />
       </div>
       {allMessages &&
         allMessages.map((message) =>

@@ -28,8 +28,15 @@ const InboxListUser = () => {
       {messagesReceived.length ? (
         messagesByContact.map((message, index) => {
           //console.log("message", message);
-          const { id, name, timestamp, state, SocialMedium, ContactId } =
-            message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
+          const {
+            id,
+            name,
+            timestamp,
+            state,
+            active,
+            SocialMedium,
+            ContactId,
+          } = message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
 
           return (
             <div key={index}>
@@ -38,6 +45,7 @@ const InboxListUser = () => {
                 name={name}
                 timestamp={timestamp}
                 state={state}
+                active={active}
                 SocialMedium={SocialMedium}
                 ContactId={ContactId}
                 messagesReceived={messagesReceived}

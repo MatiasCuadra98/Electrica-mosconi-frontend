@@ -4,12 +4,16 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
-import { updateStateMessageReceivedAction } from "../../../redux/actions/actionMessages";
+import {
+  updateStateMessageReceivedAction,
+  updateActiveMessageReceivedAction,
+} from "../../../redux/actions/actionMessages";
 
 const InboxCardUser = ({
   name,
   state,
   timestamp,
+  active,
   id,
   SocialMedium,
   ContactId,
@@ -19,6 +23,9 @@ const InboxCardUser = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const msgActive =
+    messagesReceived && messagesReceived.find((message) => message.active);
+
   const allMsgByContact =
     messagesReceived &&
     messagesReceived.filter((message) => message.ContactId === ContactId);
@@ -27,8 +34,11 @@ const InboxCardUser = ({
     allMsgByContact.filter((message) => message.state === "No Leidos");
 
   const onClickHandler = (id) => {
+    if (msgActive) {
+      dispatch(updateActiveMessageReceivedAction(msgActive.id));
+    }
+    dispatch(updateActiveMessageReceivedAction(id));
     navigate(`/inboxDetailUser/${id}`);
-    //dispatch(updateStateMessageReceivedAction(id));
     noReadMsg.forEach((message) =>
       dispatch(updateStateMessageReceivedAction(message.id))
     );
@@ -39,30 +49,30 @@ const InboxCardUser = ({
       className="bg-transparent border-none m-0 p-0"
       onClick={() => onClickHandler(id)}
     >
-      {/* {!props.props.active ? ( */}
-      <div className="w-72 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
-        <img
-          src={SocialMedium.icon}
-          alt={SocialMedium.name}
-          className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2"
-        />
-        <div className="flex flex-col justify-center">
-          <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
-            {name}
-            <br />
-          </span>
-          <div className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
-            <FormattedTimestamp timestamp={timestamp} />
-            <br />
+      {!active ? (
+        <div className="w-72 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
+          <img
+            src={SocialMedium.icon}
+            alt={SocialMedium.name}
+            className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2"
+          />
+          <div className="flex flex-col justify-center">
+            <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
+              {name}
+              <br />
+            </span>
+            <div className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
+              <FormattedTimestamp timestamp={timestamp} />
+              <br />
+            </div>
+          </div>
+          <div className="flex flex-col items-end mr-6">
+            <div className="w-10 h-10 bg-white rounded-full mb-1">
+              <StateMessagesIcons state={state} />
+            </div>
           </div>
         </div>
-        <div className="flex flex-col items-end mr-6">
-          <div className="w-10 h-10 bg-white rounded-full mb-1">
-            <StateMessagesIcons state={state} />
-          </div>
-        </div>
-      </div>
-      {/* ) : (
+      ) : (
         <div className="w-72 h-28 relative shadow-inner bg-white flex items-center justify-between p-2">
           <div className="w-full h-full flex items-center justify-between bg-transparent border-l-4 border-t-4 border-b-4 border-amber-500">
             <div className="flex items-center">
@@ -89,7 +99,7 @@ const InboxCardUser = ({
             </div>
           </div>
         </div>
-      )} */}
+      )}
     </button>
   );
 };

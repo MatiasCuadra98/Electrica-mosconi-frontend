@@ -1,15 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cleanUserByIdAction } from "../../../redux/actions/actionsUsers";
+import { updateActiveMessageReceivedAction } from "../../../redux/actions/actionMessages";
 
 const GoHomeButton = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const msgsReceived = useSelector((state) => state.messagesReceived);
+  const msgActive =
+    msgsReceived && msgsReceived.find((message) => message.active);
 
   const handlerOnClick = () => {
     navigate("/");
     dispatch(cleanUserByIdAction());
+    if (msgActive) {
+      dispatch(updateActiveMessageReceivedAction(msgActive.id));
+    }
     localStorage.removeItem("businessId");
     localStorage.removeItem("userId");
   };
