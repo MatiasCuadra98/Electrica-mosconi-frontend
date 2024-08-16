@@ -1,10 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { cleanUserByIdAction } from "../../../redux/actions/actionsUsers";
 
 const GoHomeButton = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handlerOnClick = () => {
     navigate("/");
+    dispatch(cleanUserByIdAction());
     localStorage.removeItem("businessId");
     localStorage.removeItem("userId");
   };

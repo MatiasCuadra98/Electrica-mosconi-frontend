@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import MsgRecived from "./MsgRecived";
 import MsgSent from "./MsgSent";
-import ClouseConversationButton from "../buttons/ClouseButton";
+import ClouseConversationButton from "../buttons/ClouseConversationButton";
 
 const ConversationDetail = ({ isActive, setIsActive, contact }) => {
   console.log("conversation detail contact", contact);
