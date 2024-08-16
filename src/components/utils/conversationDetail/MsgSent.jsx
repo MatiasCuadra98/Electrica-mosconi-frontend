@@ -18,9 +18,6 @@ const MsgSent = (props) => {
           </h2>
         </div>
         <div className="flex items-center justify-end gap-4">
-          {/* <p className="w-[74px] h-[18px] text-black text-[13px] font-normal font-['Oswald'] capitalize">
-            {props.props.timestamp}
-          </p> */}
           <div className="w-[74px] h-[18px] text-black text-[13px] font-normal font-['Oswald'] capitalize">
             <FormattedTimestamp timestamp={props.props.timestamp} />
           </div>
