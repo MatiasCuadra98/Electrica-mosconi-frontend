@@ -23,7 +23,7 @@ const LandingPage = () => {
   useEffect(() => {
     localStorage.setItem("businessId", businessId);
     dispatch(getBusinessByIdAction(businessId));
-    console.log("despacho la action get business by Id");
+    //console.log("despacho la action get business by Id");
   }, [dispatch]);
 
   const handlerOnClick = () => {
