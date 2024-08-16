@@ -1,4 +1,3 @@
-import React from "react";
 import FormattedTimestamp from "../FormatedTimeStamp";
 
 const MsgRecived = ({ props, contact }) => {

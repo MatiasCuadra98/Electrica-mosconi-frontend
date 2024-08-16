@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import MsgRecived from "./MsgRecived";
 import MsgSent from "./MsgSent";
 import ClouseConversationButton from "../buttons/ClouseConversationButton";
