@@ -25,10 +25,7 @@ const MsgRecived = ({ props, contact }) => {
       </div>
       <div className="flex justify-end">
         <div className="w-[74px] h-[18px] text-black text-[13px] font-normal font-['Oswald'] capitalize mb-4">
-          <FormattedTimestamp
-            timestamp={props.timestamp}
-            // className="w-[74px] h-[18px] text-black text-[13px] font-normal font-['Oswald'] capitalize"
-          />
+          <FormattedTimestamp timestamp={props.timestamp} />
         </div>
       </div>
     </div>

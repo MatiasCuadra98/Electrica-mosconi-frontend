@@ -9,7 +9,9 @@ const CounterInConversation = ({ contact }) => {
 
   return (
     <div className=" bg-sky-950 text-white text-sm font-['Oswald'] uppercase flex items-center justify-center">
-      <span>ESTA CONVERSACION TIENE {newMsgs.length} MENSAJES NUEVOS</span>
+      <span>
+        ESTA CONVERSACION TIENE {newMsgs.length} MENSAJES SIN RESPONDER
+      </span>
     </div>
   );
 };
