@@ -1,14 +1,15 @@
 import InboxCardUser from "./InboxCardUser";
 import { useSelector } from "react-redux";
+import FilterText from "../../utils/filters/FilterText";
 
 const InboxListUser = () => {
-  const business = useSelector((state) => state.business);
+  //const business = useSelector((state) => state.business);
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
-  const messagesReceived = allMessagesReceived.filter(
-    (message) => message.BusinessId === business.id
-  );
+  // const messagesReceived = allMessagesReceived.filter(
+  //   (message) => message.BusinessId === business.id
+  // );
 
-  const sortedMessages = messagesReceived
+  const sortedMessages = allMessagesReceived
     .slice()
     .sort((a, b) => b.timestamp - a.timestamp);
 
@@ -25,7 +26,7 @@ const InboxListUser = () => {
 
   return (
     <div className="sticky w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
-      {messagesReceived.length ? (
+      {allMessagesReceived.length ? (
         messagesByContact.map((message, index) => {
           //console.log("message", message);
           const {
@@ -48,13 +49,15 @@ const InboxListUser = () => {
                 active={active}
                 SocialMedium={SocialMedium}
                 ContactId={ContactId}
-                messagesReceived={messagesReceived}
+                messagesReceived={allMessagesReceived}
               />
             </div>
           );
         })
       ) : (
-        <p>No hay mensajes en su OneInbox</p>
+        <div className="flex justify-center items-center mt-64">
+          <FilterText />
+        </div>
       )}
     </div>
   );

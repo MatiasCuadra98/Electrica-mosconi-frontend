@@ -1,42 +1,35 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import socialMediaJson from "../../../../public/json/socialMediaJson";
 import statesJson from "../../../../public/json/statesJson";
-import { filterBySocialMediaAction } from "../../../redux/actions/actionFilters";
-import ResetButton from "../buttons/ResetButton";
-import GoHomeButton from "../buttons/GoHomeButton";
+import { filterByStateAction } from "../../../redux/actions/actionFilters";
 
 const FilterByState = () => {
   const dispatch = useDispatch();
 
-  //paso a mayusculas los estados
-  const statesUpper = statesJson.map((state) => {
-    return {
-      ...state,
-      name: state.name.toUpperCase(),
-    };
-  });
-
   // Estado para almacenar el filtro seleccionado
-  const [selectedFilter, setSelectedFilter] = useState("TODOS");
+  const [selectedFilter, setSelectedFilter] = useState(
+    localStorage.getItem("state") || "TODOS"
+  );
 
   // Función para manejar el cambio de estado de un radio button
   const handlerOnChange = (e) => {
     setSelectedFilter(e.target.value);
-    // Despachar la acción de Redux con el valor del filtro seleccionado
-    dispatch(filterBySocialMediaAction(e.target.value));
+    dispatch(filterByStateAction(e.target.value));
+    localStorage.setItem("state", e.target.value);
+    console.log("despacho el filtro por state con payload", e.target.value);
   };
 
   return (
     <div>
-      {statesUpper &&
-        statesUpper.map((state, index) => {
+      {statesJson &&
+        statesJson.map((state, index) => {
           return (
             <div key={index} className="flex items-center m-2">
               <img src={state.icon} className="w-8 h-8" />
               <label className=" text-white text-sm font-normal font-['Oswald'] capitalize ml-3 ">
-                {state.name}
+                {/* {console.log("nombre", state.name)} */}
+                {state.name.toUpperCase()}
                 <input
                   type="radio"
                   value={state.name}

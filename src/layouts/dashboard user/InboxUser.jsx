@@ -9,6 +9,7 @@ import {
 } from "../../redux/actions/actionsUsers";
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
 import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
+import { filterByStateAction } from "../../redux/actions/actionFilters";
 
 const InboxUser = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const InboxUser = () => {
   const businessId = businessRedux.id || localStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
-  const messages = useSelector((state) => state.messagesReceived);
+  // const stateFilter = useSelector((state) => state.stateFilter);
   //console.log("messages", messages);
 
   useEffect(() => {
@@ -30,15 +31,16 @@ const InboxUser = () => {
     }
   }, [dispatch, businessId, userId]);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (businessId) {
-        dispatch(getAllMessagesReceivedAction());
-      }
-    }, 15000); // Cada 15 segundos
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     if (businessId) {
+  //       //dispatch(filterByStateAction(stateFilter));
+  //       dispatch(getAllMessagesReceivedAction());
+  //     }
+  //   }, 15000); // Cada 15 segundos
 
-    return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
-  }, [dispatch, businessId]);
+  //   return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
+  // }, [dispatch, businessId]);
 
   return (
     <div className="w-screen h-screen flex overflow-hidden">

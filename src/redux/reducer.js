@@ -75,8 +75,7 @@ switch (action.type) {
                 allUsers: usersFiltered
             };
             case GET_USER_BY_ID:
-                //let user1 = action.payload
-                //console.log('entro al reducer con payload: ', user1);
+
                 return {
                     ...state,
                     user: action.payload,
@@ -96,19 +95,12 @@ switch (action.type) {
                 }
 //**REDUCER MENSAJES RECIBIDOS */
             case GET_ALL_MESSAGES_RECIVED:
-            // let allBusinessMessagesReceived = action.payload
-    // console.log('id business: ', action.payload);
-    // const messagesReceivedFiltered = allBusinessMessagesReceived.filter(message => message.BusinessId === business.id)
-    // //console.log('usersFiltered: ', usersFiltered);
-    // return {
-    //     ...state,
-    //     messagesReceived: messagesReceivedFiltered,
-    //     allMessagesReceived: messagesReceivedFiltered
-    // };
+                const messages = action.payload
+                 const allMessagesFiltered = messages.filter(message => message.BusinessId === state.business.id)
                 return {
                     ...state,
-                    messagesReceived: action.payload,
-                    allMessagesReceived: action.payload
+                    messagesReceived: allMessagesFiltered,
+                    allMessagesReceived: allMessagesFiltered
                 };
             case GET_MESSAGE_RECIVED_BY_ID:
                 return {
@@ -150,6 +142,29 @@ switch (action.type) {
                     messageReceived: action.payload.message,
                     contact: action.payload.contact
                 };
+    //FILTROS:
+    case FILTER_BY_STATE:
+        const allMessagesReceived = state.allMessagesReceived;
+        console.log('todos los mensajes', allMessagesReceived);
+        if ( action.payload === 'TODOS') {
+           return {
+                ...state,
+                messagesReceived: allMessagesReceived,
+                stateFilter: action.payload
+            }
+       } else {
+
+           const messagesFilteredByState = allMessagesReceived.filter(message => 
+            message.state === action.payload)
+           console.log('mensajes filtrados', messagesFilteredByState);
+    
+               return {
+                   ...state,
+                   messagesReceived: messagesFilteredByState,
+                   stateFilter: action.payload
+               };
+       };
+        
             default:
                 return {
                     ...state

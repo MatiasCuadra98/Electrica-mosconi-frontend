@@ -26,6 +26,8 @@ export const filterBySocialMediaAction = (socialMedia) => {
 
 export const filterByStateAction = (state) => {
     try {
+        console.log('recibo el filtro con state', state);
+        
         return {
             type: FILTER_BY_STATE,
             payload: state
