@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMessagesReceivedAction } from "../../../redux/actions/actionMessages";
+import { cleanFiltersAction } from "../../../redux/actions/actionFilters";
 
 const ResetButton = () => {
   const dispatch = useDispatch();
@@ -9,6 +10,7 @@ const ResetButton = () => {
 
   const handlerOnClick = () => {
     dispatch(getAllMessagesReceivedAction());
+    dispatch(cleanFiltersAction());
   };
 
   return (

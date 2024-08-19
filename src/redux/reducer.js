@@ -14,7 +14,8 @@ import {
     DESACTIVATE_ALL_MESSAGES_RECEIVED,
     GET_CONTACT_BY_ID,
     GET_CONTACT_BY_MESSAGE_RECEIVED,
-    CREATE_MESSAGE_SEND
+    CREATE_MESSAGE_SEND,
+    CLEAN_FILTERS
 } from './types';
 
 const initialState = {
@@ -164,6 +165,13 @@ switch (action.type) {
                    stateFilter: action.payload
                };
        };
+
+       case CLEAN_FILTERS: 
+       return {
+        ...state,
+        stateFilter: 'TODOS',
+        socialMediaFilter: 'TODOS'
+       }
         
             default:
                 return {

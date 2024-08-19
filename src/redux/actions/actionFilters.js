@@ -5,7 +5,8 @@ import {
   } from '../../components/utils/alerts/alerts.jsx'
 import {
     FILTER_BY_SOCIAL_MEDIA,
-    FILTER_BY_STATE, 
+    FILTER_BY_STATE,
+    CLEAN_FILTERS, 
     SEARCH_BY_CONTACT
 } from '../types.js';
 
@@ -39,7 +40,13 @@ export const filterByStateAction = (state) => {
             "Ok"
           );
     }
-}
+};
+
+export const cleanFiltersAction = () => {
+    return {
+      type: 'CLEAN_FILTERS',
+    };
+  };
 
 export const searchByContactAction = (contact) => {
     try {  
