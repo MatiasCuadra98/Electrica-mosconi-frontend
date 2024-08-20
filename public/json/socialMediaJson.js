@@ -13,13 +13,13 @@ const socialMediaJson = [
     },
     {
         id: 3,
-        name: "Whatsapp",
+        name: "whatsapp",
         icon: "/socialMediaImage/whatsapp.svg",
         dataUser: "123-456-7890"
     },
     {
         id: 4,
-        name: "Telegram",
+        name: "telegram",
         icon: "/socialMediaImage/telegram.svg",
         dataUser: "usuario" 
     }

@@ -12,6 +12,7 @@ import {
 
 export const filterBySocialMediaAction = (socialMedia) => {
     try {
+        console.log('recibo el filtro con socialMedia', socialMedia);
         return {
             type: FILTER_BY_SOCIAL_MEDIA,
             payload: socialMedia
@@ -27,8 +28,7 @@ export const filterBySocialMediaAction = (socialMedia) => {
 
 export const filterByStateAction = (state) => {
     try {
-        console.log('recibo el filtro con state', state);
-        
+        //console.log('recibo el filtro con state', state);
         return {
             type: FILTER_BY_STATE,
             payload: state

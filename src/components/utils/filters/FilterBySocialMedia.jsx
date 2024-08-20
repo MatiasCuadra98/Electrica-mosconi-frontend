@@ -6,16 +6,8 @@ import { filterBySocialMediaAction } from "../../../redux/actions/actionFilters"
 
 const FilterBySocialMedia = () => {
   const dispatch = useDispatch();
-
-  //paso a mayusculas y ordeno alfabeticamente las redes sociales
-  const socialMediaUpper = socialMediaJson.map((sm) => {
-    return {
-      ...sm,
-      name: sm.name.toUpperCase(),
-    };
-  });
-
-  const sortSocialMedia = socialMediaUpper.sort((a, b) => {
+  //en lugar de realizar el sort sobre el json, deberia realizarse sobre el array de redes sociales activas
+  const sortSocialMedia = socialMediaJson.sort((a, b) => {
     if (a.name > b.name) {
       return 1;
     }
@@ -33,6 +25,7 @@ const FilterBySocialMedia = () => {
     setSelectedFilter(e.target.value);
     // Despachar la acción de Redux con el valor del filtro seleccionado
     dispatch(filterBySocialMediaAction(e.target.value));
+    localStorage.setItem("socialMedia", e.target.value);
   };
 
   return (
@@ -43,7 +36,7 @@ const FilterBySocialMedia = () => {
             <div key={index} className="flex items-center m-2">
               <img src={sm.icon} className="w-8 h-8" />
               <label className=" text-white text-sm font-normal font-['Oswald'] capitalize ml-3 ">
-                {sm.name}
+                {sm.name.toUpperCase()}
                 <input
                   type="radio"
                   value={sm.name}
