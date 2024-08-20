@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-    sweetAlertsSuccessfully,
+    //sweetAlertsSuccessfully,
     sweetAlertsError,
   } from '../../components/utils/alerts/alerts.jsx'
 import {
@@ -8,14 +8,16 @@ import {
     UPDATE_ACTIVE_MESSAGE_RECEIVED, 
     GET_MESSAGE_RECIVED_BY_ID,
     UPDATE_STATE_MESSAGE_RECEIVED,
-    DESACTIVATE_ALL_MESSAGES_RECEIVED,
-    FILTER_BY_SOCIAL_MEDIA,
-    FILTER_BY_STATE 
+    //DESACTIVATE_ALL_MESSAGES_RECEIVED,
+    //FILTER_BY_SOCIAL_MEDIA,
+    //FILTER_BY_STATE,
+    CREATE_MESSAGE_SEND,
+    NEW_MESSAGE_RECEIVED 
 } from "../types";
 
 // const URL = 'https://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
 // const URL = 'http://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
-const URL = 'http://localhost:3000';
+const URL = 'https://electrica-mosconi-server.onrender.com';
 //RUTAS MENSAJES
 //RECIBIDOS:
 //getAll: /message/received/
@@ -25,21 +27,52 @@ const URL = 'http://localhost:3000';
 //ENVIADOS:
 //create mensaje enviado: /telegram/sendMessage
 
+// export const getAllMessagesReceivedAction = () => {
+//     try {
+//         return async (dispatch) => {
+//             const response = await axios.get(`${URL}/message/received`);
+//             const messages = response.data;   
+//             dispatch({type: GET_ALL_MESSAGES_RECIVED, payload: messages})
+//         }
+//     } catch (error) {
+//         sweetAlertsError(
+//             "Intenta de nuevo",
+//             "No podemos mostrar tus mensajes recibidos",
+//             "Ok"
+//           ); 
+//     }
+// };
 export const getAllMessagesReceivedAction = () => {
-    try {
-        return async (dispatch) => {
+    return async (dispatch, getState) => {
+        try {
             const response = await axios.get(`${URL}/message/received`);
-            const messages = response.data;   
-            dispatch({type: GET_ALL_MESSAGES_RECIVED, payload: messages})
+            const messages = response.data;
+
+            dispatch({ type: GET_ALL_MESSAGES_RECIVED, payload: messages });
+
+            const { socket } = getState();  // socket desde el estado global
+
+            // esucha nuevos mensajes a través del socket
+            if (socket) {
+                socket.on("NEW_MESSAGE_RECEIVED", (newMessage) => {
+                    // Despacha una acción para manejar el nuevo mensaje recibido
+                    dispatch({
+                        type: NEW_MESSAGE_RECEIVED,
+                        payload: newMessage
+                    });
+                });
+            }
+
+        } catch (error) {
+            sweetAlertsError(
+                "Intenta de nuevo",
+                "No podemos mostrar tus mensajes recibidos",
+                "Ok"
+            );
         }
-    } catch (error) {
-        sweetAlertsError(
-            "Intenta de nuevo",
-            "No podemos mostrar tus mensajes recibidos",
-            "Ok"
-          ); 
     }
 };
+
 export const getMessageReceivedByIdAction = (messageId) => {
     try {
         return async (dispatch) => {
@@ -107,13 +140,21 @@ export const deactivateAllMessagesReceivedAction = () => {
 
 export const createMessageSentAction = (input) => {
     console.log('entro en la action del input', input);
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
+        const { socket } = getState();  // obtenemos el socket desde el estado global
+
     try {
             const response = await axios.post(`${URL}/telegram/sendMessage`, input);
             console.log('respuesta de la action', response.data);
-            // dispatch({ type: CREATE_MESSAGE_SEND, })
+            const message = response.data;
+
+           
             console.log('envio la action al reducer');
-            // return response
+            // despacho al reducer y emitimos un evento de socket con el nuevo mensaje
+            dispatch({ type: CREATE_MESSAGE_SEND, payload: message });
+            if (socket) {
+                socket.emit("NEW_MESSAGE_SENT", message);
+            }
     } catch (error) {
         console.log('error de action', error);
         sweetAlertsError(

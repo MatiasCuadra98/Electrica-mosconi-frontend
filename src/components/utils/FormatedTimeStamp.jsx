@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 
 const FormattedTimestamp = ({ timestamp }) => {
-  console.log("Raw timestamp:", timestamp);
 
   // Convertir el timestamp a un número si es necesario
   const timestampNumber = Number(timestamp);
@@ -21,7 +20,6 @@ const FormattedTimestamp = ({ timestamp }) => {
     date = new Date(Date.parse(timestamp));
   }
 
-  console.log("Parsed date:", date);
 
   // Verificar si la fecha es válida
   if (isNaN(date.getTime())) {
@@ -39,7 +37,6 @@ const FormattedTimestamp = ({ timestamp }) => {
     second: '2-digit',
   });
 
-  console.log("Formatted date:", formattedDate);
 
   return <span>{formattedDate}</span>;
 };
