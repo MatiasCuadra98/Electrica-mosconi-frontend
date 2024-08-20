@@ -15,7 +15,10 @@ import {
     GET_CONTACT_BY_ID,
     GET_CONTACT_BY_MESSAGE_RECEIVED,
     CREATE_MESSAGE_SEND,
-    CLEAN_FILTERS
+    CLEAN_FILTERS,
+    NEW_MESSAGE_RECEIVED, //socket
+    CONNECT_SOCKET,//socket
+    DISCONNECT_SOCKET,//socket
 } from './types';
 
 const initialState = {
@@ -205,13 +208,31 @@ switch (action.type) {
         stateFilter: 'TODOS',
         socialMediaFilter: 'TODOS'
        }
+
+       // CASOS PARA socket
+    case CONNECT_SOCKET:
+        return {
+          ...state,
+          socket: action.payload,
+        };
+  
+      case DISCONNECT_SOCKET:
+        return {
+          ...state,
+          socket: null,
+        };
+  
+      case NEW_MESSAGE_RECEIVED:
+        return {
+          ...state,
+          messagesReceived: [...state.messagesReceived, action.payload],
+          allMessagesReceived: [...state.allMessagesReceived, action.payload],
+        };
+  
         
             default:
                 return {
                     ...state
                 };
 }
-
-};
-
-export default rootReducer;
+}

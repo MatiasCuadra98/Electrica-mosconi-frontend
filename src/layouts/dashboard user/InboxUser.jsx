@@ -34,7 +34,10 @@ const InboxUser = () => {
   // useEffect(() => {
   //   const intervalId = setInterval(() => {
   //     if (businessId) {
+<<<<<<< HEAD
   //       //dispatch(filterByStateAction(stateFilter));
+=======
+>>>>>>> 38ebd78822128570a3274d1bd3872aad663c80c7
   //       dispatch(getAllMessagesReceivedAction());
   //     }
   //   }, 15000); // Cada 15 segundos

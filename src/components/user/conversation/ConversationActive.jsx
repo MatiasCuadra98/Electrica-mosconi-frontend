@@ -30,7 +30,10 @@ const ConversationActive = () => {
             <ConversationDetail
               isActive={isActive}
               setIsActive={setIsActive}
-              contact={contact}
+              contact={{
+                ...contact,
+                id: Number(contact.id), // Convertimos contact.id a número para evitar el warning
+              }}
             />
           </div>
         )}

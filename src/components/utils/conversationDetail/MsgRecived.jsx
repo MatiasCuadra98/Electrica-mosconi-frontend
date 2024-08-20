@@ -1,9 +1,32 @@
-import FormattedTimestamp from "../FormatedTimeStamp";
+
+import  { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllMessagesReceivedAction } from "../../../redux/actions/actionMessages";import FormattedTimestamp from "../FormatedTimeStamp";
 
 const MsgRecived = ({ props, contact }) => {
   //console.log("propsMsgReceived", props);
 
   //console.log("contactoMsgRecived", contact);
+  const dispatch = useDispatch();
+  const socket = useSelector((state) => state.socket);
+  
+  useEffect(() => {
+    console.log("Socket en MsgReceived:", socket); 
+
+    if (socket) {
+      socket.on("NEW_MESSAGE_RECEIVED", (message) => {
+        console.log("Nuevo mensaje recibido:", message);
+
+        dispatch(getAllMessagesReceivedAction()); // Actualiza los mensajes recibidos
+      });
+    }
+
+    return () => {
+      if (socket) {
+        socket.off("NEW_MESSAGE_RECEIVED");
+      }
+    };
+  }, [socket, dispatch]);
 
   //NOta: la img deberia cargarse segun la red social asociada al contacto
   return (
