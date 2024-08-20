@@ -5,6 +5,7 @@ import MsgRecived from "./MsgRecived";
 import MsgSent from "./MsgSent";
 import ClouseConversationButton from "../buttons/ClouseConversationButton";
 import configureSocketListeners from "../../../socket/configureSocketListeners";
+import { timestampToISO } from "../timeStampToISO";
 
 const ConversationDetail = ({ contact }) => {
   console.log("conversation detail contact", contact);
@@ -27,6 +28,7 @@ const ConversationDetail = ({ contact }) => {
     }
   }, [messages]);
 
+
   useEffect(() => {
     if (socket) {
         // Configurar los listeners del socket
@@ -41,7 +43,24 @@ const ConversationDetail = ({ contact }) => {
 if (!contact) {
     return null;
 }
-  const sortedMessages = [...messages].sort((a, b) => a.timestamp - b.timestamp);
+
+  //termina el auto scroll
+
+  const concatMessages = [...contact.MsgReceiveds, ...contact.MsgSents];
+  //console.log("mensajes concatenados", concatMessages);
+
+  const formattedMessages = concatMessages.map((message) => {
+    return {
+      ...message,
+      timestamp: timestampToISO(message.timestamp),
+    };
+  });
+
+  const sortedMessages = formattedMessages.sort((a, b) =>
+    a.timestamp.localeCompare(b.timestamp)
+  );
+  //console.log("mensajes ordenados", sortedMessages);
+
 
   return (
     <div className="relative flex flex-col overflow-y-auto overflow-x-hidden p-4">

@@ -1,8 +1,6 @@
-
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const FormattedTimestamp = ({ timestamp }) => {
-
   // Convertir el timestamp a un número si es necesario
   const timestampNumber = Number(timestamp);
 
@@ -19,33 +17,28 @@ const FormattedTimestamp = ({ timestamp }) => {
   } else {
     date = new Date(Date.parse(timestamp));
   }
-
-
   // Verificar si la fecha es válida
   if (isNaN(date.getTime())) {
-    console.error("Invalid date:", timestamp);
+    //console.error("Invalid date:", timestamp);
     return <span>Invalid Date</span>;
   }
 
   // Formatear la fecha
-  const formattedDate = date.toLocaleString('es-AR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
+  const formattedDate = date.toLocaleString("es-AR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
   });
-
 
   return <span>{formattedDate}</span>;
 };
 
 FormattedTimestamp.propTypes = {
-  timestamp: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
+  timestamp: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
 };
 
 export default FormattedTimestamp;
