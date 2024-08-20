@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import "./App.css";
 import {
   LandingPage,
@@ -16,9 +16,24 @@ import {
   UsersManagement,
 } from "./layouts";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { connectSocket, disconnectSocket } from "./redux/actions/socketActions";
+
 
 const App = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // Conectar el socket cuando el componente se monta
+    dispatch(connectSocket());
+
+    return () => {
+      // Desconectar el socket cuando el componente se desmonta
+      dispatch(disconnectSocket());
+    };
+  }, [dispatch]);
+
   return (
     <div>
       {location.pathname === "/" ||
