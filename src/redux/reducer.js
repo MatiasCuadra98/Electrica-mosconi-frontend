@@ -236,3 +236,5 @@ switch (action.type) {
                 };
 }
 }
+
+export default rootReducer
