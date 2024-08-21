@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-import { NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET } from "../types";
+import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET } from "../types";
 
 const socketMiddleware = (store) => {
   let socket = null;
@@ -20,13 +20,18 @@ const socketMiddleware = (store) => {
           console.log("Socket conectado:", socket.id);
         });
 
-       
         socket.on("NEW_MESSAGE_RECEIVED", (message) => {
           store.dispatch({
-            type: NEW_MESSAGE_RECEIVED,
+            type: ADD_NEW_MESSAGE_RECEIVED,
             payload: message,
           });
         });
+        // socket.on("NEW_MESSAGE_RECEIVED", (message) => {
+        //   store.dispatch({
+        //     type: NEW_MESSAGE_RECEIVED,
+        //     payload: message,
+        //   });
+        // });
 
         socket.on("disconnect", () => {
           console.log("Socket desconectado");

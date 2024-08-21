@@ -9,7 +9,7 @@ import {
 } from "../../redux/actions/actionsUsers";
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
 import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
-import { filterByStateAction } from "../../redux/actions/actionFilters";
+import { CONNECT_SOCKET, DISCONNECT_SOCKET } from "../../redux/types";
 
 const InboxUser = () => {
   const dispatch = useDispatch();
@@ -17,8 +17,12 @@ const InboxUser = () => {
   const businessId = businessRedux.id || localStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
-  // const stateFilter = useSelector((state) => state.stateFilter);
-  //console.log("messages", messages);
+  const messagesReceived = useSelector((state) => state.messagesReceived);
+
+  // const handleNewMessage = (message) => {
+  //   dispatch(addNewMessageReceivedAction(message));
+  //   console.log("socket agrego un mensaje con mensaje:", mensaje);
+  // };
 
   useEffect(() => {
     if (businessId) {
@@ -29,18 +33,18 @@ const InboxUser = () => {
       }
       dispatch(getAllUsersAction());
     }
-  }, [dispatch, businessId, userId]);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     if (businessId) {
-  //       //dispatch(filterByStateAction(stateFilter));
-  //       dispatch(getAllMessagesReceivedAction());
-  //     }
-  //   }, 15000); // Cada 15 segundos
+    // Conectar al socket
+    dispatch({ type: CONNECT_SOCKET });
 
-  //   return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
-  // }, [dispatch, businessId]);
+    // // Manejar la recepción de nuevos mensajes
+    // handleNewMessage(message);
+
+    // Limpieza al desmontar el componente
+    return () => {
+      dispatch({ type: DISCONNECT_SOCKET });
+    };
+  }, [dispatch, businessId, userId, messagesReceived]);
 
   return (
     <div className="w-screen h-screen flex overflow-hidden">
