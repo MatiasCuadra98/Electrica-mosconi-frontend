@@ -10,10 +10,10 @@ import { timestampToISO } from "../timeStampToISO";
 const ConversationDetail = ({ contact }) => {
   // console.log("conversation detail contact", contact);
 
-  // const [messages, setMessages] = useState([
-  //   ...contact.MsgReceiveds,
-  //   ...contact.MsgSents
-  // ]);
+  const [messages, setMessages] = useState([
+    ...contact.MsgReceiveds,
+    ...contact.MsgSents,
+  ]);
 
   // const socket = useSelector((state) => state.socket); // Obtenemos el socket desde Redux
   // const dispatch = useDispatch(); // Para despachar acciones

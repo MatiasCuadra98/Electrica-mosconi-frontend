@@ -16,7 +16,8 @@ import {
     GET_CONTACT_BY_MESSAGE_RECEIVED,
     CREATE_MESSAGE_SEND,
     CLEAN_FILTERS,
-    NEW_MESSAGE_RECEIVED, //socket
+    ADD_NEW_MESSAGE_RECEIVED,
+    // NEW_MESSAGE_RECEIVED, //socket
     CONNECT_SOCKET,//socket
     DISCONNECT_SOCKET,//socket
 } from './types';
@@ -46,6 +47,9 @@ const initialState = {
     socialMediaFilter: 'TODOS',
     stateFilter: 'TODOS',
     inputContact: '',
+
+        //**--SOCKET--**//
+    socket: null,
 
 }
 
@@ -201,7 +205,6 @@ switch (action.type) {
                };
        };
 
-
        case CLEAN_FILTERS: 
        return {
         ...state,
@@ -222,14 +225,19 @@ switch (action.type) {
           socket: null,
         };
   
-      case NEW_MESSAGE_RECEIVED:
+    //   case NEW_MESSAGE_RECEIVED:
+    //     return {
+    //       ...state,
+    //       messagesReceived: [...state.messagesReceived, action.payload],
+    //       allMessagesReceived: [...state.allMessagesReceived, action.payload],
+    //     };
+    case ADD_NEW_MESSAGE_RECEIVED:
         return {
-          ...state,
-          messagesReceived: [...state.messagesReceived, action.payload],
-          allMessagesReceived: [...state.allMessagesReceived, action.payload],
+            ...state,
+            messagesReceived: [...state.messagesReceived, action.payload],
+            allMessagesReceived: [...state.allMessagesReceived, action.payload]
         };
-  
-        
+   
             default:
                 return {
                     ...state
