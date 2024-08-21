@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanUserByIdAction } from "../../../redux/actions/actionsUsers";
 import { updateActiveMessageReceivedAction } from "../../../redux/actions/actionMessages";
+import { cleanFiltersAction } from "../../../redux/actions/actionFilters";
 
 const GoHomeButton = () => {
   const navigate = useNavigate();
@@ -14,11 +15,13 @@ const GoHomeButton = () => {
   const handlerOnClick = () => {
     navigate("/");
     dispatch(cleanUserByIdAction());
+    dispatch(cleanFiltersAction());
     if (msgActive) {
       dispatch(updateActiveMessageReceivedAction(msgActive.id));
     }
     localStorage.removeItem("businessId");
     localStorage.removeItem("userId");
+    localStorage.removeItem("state");
   };
 
   return (

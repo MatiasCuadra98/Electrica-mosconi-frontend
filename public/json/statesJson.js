@@ -1,12 +1,12 @@
 const statesJson = [
     {
         id: 1,
-        name: "No leídos",
+        name: "No Leidos",
         icon: "/states/noLeido.svg"
     },
     {
         id: 2,
-        name: "Leídos",
+        name: "Leidos",
         icon: "/states/leido.svg"
     },
     {

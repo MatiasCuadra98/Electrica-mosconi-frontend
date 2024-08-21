@@ -1,13 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMessagesReceivedAction } from "../../../redux/actions/actionMessages";
+import { cleanFiltersAction } from "../../../redux/actions/actionFilters";
 
 const ResetButton = () => {
   const dispatch = useDispatch();
-  const businessRedux = useSelector((state) => state.business);
-  const businessId = businessRedux.id || localStorage.getItem("businessId");
+  // const businessRedux = useSelector((state) => state.business);
+  // const businessId = businessRedux.id || localStorage.getItem("businessId");
 
   const handlerOnClick = () => {
+    dispatch(cleanFiltersAction());
     dispatch(getAllMessagesReceivedAction());
   };
 

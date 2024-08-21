@@ -5,12 +5,14 @@ import {
   } from '../../components/utils/alerts/alerts.jsx'
 import {
     FILTER_BY_SOCIAL_MEDIA,
-    FILTER_BY_STATE, 
+    FILTER_BY_STATE,
+    CLEAN_FILTERS, 
     SEARCH_BY_CONTACT
 } from '../types.js';
 
 export const filterBySocialMediaAction = (socialMedia) => {
     try {
+        console.log('recibo el filtro con socialMedia', socialMedia);
         return {
             type: FILTER_BY_SOCIAL_MEDIA,
             payload: socialMedia
@@ -26,6 +28,7 @@ export const filterBySocialMediaAction = (socialMedia) => {
 
 export const filterByStateAction = (state) => {
     try {
+        //console.log('recibo el filtro con state', state);
         return {
             type: FILTER_BY_STATE,
             payload: state
@@ -37,7 +40,13 @@ export const filterByStateAction = (state) => {
             "Ok"
           );
     }
-}
+};
+
+export const cleanFiltersAction = () => {
+    return {
+      type: 'CLEAN_FILTERS',
+    };
+  };
 
 export const searchByContactAction = (contact) => {
     try {  
