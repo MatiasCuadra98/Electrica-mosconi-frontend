@@ -1,23 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { useSelector, useDispatch  } from "react-redux";
+// import { useSelector, useDispatch  } from "react-redux";
 import MsgRecived from "./MsgRecived";
 import MsgSent from "./MsgSent";
 import ClouseConversationButton from "../buttons/ClouseConversationButton";
-import configureSocketListeners from "../../../socket/configureSocketListeners";
+// import configureSocketListeners from "../../../socket/configureSocketListeners";
 import { timestampToISO } from "../timeStampToISO";
 
 const ConversationDetail = ({ contact }) => {
-  console.log("conversation detail contact", contact);
+  // console.log("conversation detail contact", contact);
 
-  const [messages, setMessages] = useState([
-    ...contact.MsgReceiveds, 
-    ...contact.MsgSents
-  ]);
-  
-  const socket = useSelector((state) => state.socket); // Obtenemos el socket desde Redux
-  const dispatch = useDispatch(); // Para despachar acciones
+  // const [messages, setMessages] = useState([
+  //   ...contact.MsgReceiveds,
+  //   ...contact.MsgSents
+  // ]);
 
+  // const socket = useSelector((state) => state.socket); // Obtenemos el socket desde Redux
+  // const dispatch = useDispatch(); // Para despachar acciones
 
   // Auto scroll
   const messagesEndRef = useRef(null);
@@ -28,23 +27,21 @@ const ConversationDetail = ({ contact }) => {
     }
   }, [messages]);
 
-
-  useEffect(() => {
-    if (socket) {
-        // Configurar los listeners del socket
-        const cleanup = configureSocketListeners(socket, dispatch, contact.id);
-
-        return () => {
-            cleanup(); // Limpia los listeners al desmontar el componente
-        };
-    }
-}, [socket, contact.id, dispatch]);
-
-if (!contact) {
+  if (!contact) {
     return null;
-}
-
+  }
   //termina el auto scroll
+
+  //   useEffect(() => {
+  //     if (socket) {
+  //         // Configurar los listeners del socket
+  //         const cleanup = configureSocketListeners(socket, dispatch, contact.id);
+
+  //         return () => {
+  //             cleanup(); // Limpia los listeners al desmontar el componente
+  //         };
+  //     }
+  // }, [socket, contact.id, dispatch]);
 
   const concatMessages = [...contact.MsgReceiveds, ...contact.MsgSents];
   //console.log("mensajes concatenados", concatMessages);
@@ -60,7 +57,6 @@ if (!contact) {
     a.timestamp.localeCompare(b.timestamp)
   );
   //console.log("mensajes ordenados", sortedMessages);
-
 
   return (
     <div className="relative flex flex-col overflow-y-auto overflow-x-hidden p-4">
