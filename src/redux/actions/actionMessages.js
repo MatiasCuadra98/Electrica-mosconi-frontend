@@ -15,8 +15,9 @@ import {
     NEW_MESSAGE_RECEIVED 
 } from "../types";
 
+//const URL = import.meta.env.VITE_API_URL;
 
-const URL = 'https://electrica-mosconi-server.onrender.com/';
+const URL = 'https://electrica-mosconi-server.onrender.com';
 //RUTAS MENSAJES
 //RECIBIDOS:
 //getAll: /message/received/

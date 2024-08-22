@@ -12,6 +12,7 @@ import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
 import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
 import { getContactByMessageReceivedAction } from "../../redux/actions/actionContact";
 import ConversationActive from "../../components/user/conversation/ConversationActive";
+import { CONNECT_SOCKET, DISCONNECT_SOCKET } from "../../redux/types";
 
 const InboxDetailUser = () => {
   const dispatch = useDispatch();
@@ -24,9 +25,7 @@ const InboxDetailUser = () => {
 
   const { messageId } = useParams();
   const contact = useSelector((state) => state.contact);
-  const messages = useSelector((state) => state.messagesReceived);
-  const messagesActive = messages && messages.active;
-  //console.log("contacto", contact);
+  const socket = useSelector((state) => state.socket);
 
   useEffect(() => {
     if (businessId) {
@@ -41,22 +40,31 @@ const InboxDetailUser = () => {
       }
       dispatch(getAllUsersAction());
     }
-    //}, [dispatch, businessId, userId, messageId, contact]);
   }, [dispatch, businessId, userId, messageId]);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (businessId) {
-        dispatch(getAllMessagesReceivedAction());
-      }
-      if (messageId) {
-        //console.log("despacha la action con el mensaje con ID", messageId);
-        dispatch(getContactByMessageReceivedAction(messageId));
-      }
-    }, 15000); // Cada 15 segundos
+    // Conectar al socket
+    if (!socket) {
+      dispatch({ type: CONNECT_SOCKET });
+    }
 
-    return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
-  }, [dispatch, businessId]);
+    return () => {
+      dispatch({ type: DISCONNECT_SOCKET });
+    };
+  }, [socket]);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     if (businessId) {
+  //       dispatch(getAllMessagesReceivedAction());
+  //     }
+  //     if (messageId) {
+  //       //console.log("despacha la action con el mensaje con ID", messageId);
+  //       dispatch(getContactByMessageReceivedAction(messageId));
+  //     }
+  //   }, 15000); // Cada 15 segundos
+
+  //   return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
+  // }, [dispatch, businessId]);
 
   return (
     <div className="w-screen">

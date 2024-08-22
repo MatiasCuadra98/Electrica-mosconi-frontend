@@ -10,6 +10,10 @@ import {
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
 import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
 import { CONNECT_SOCKET, DISCONNECT_SOCKET } from "../../redux/types";
+import {
+  filterBySocialMediaAction,
+  filterByStateAction,
+} from "../../redux/actions/actionFilters";
 
 const InboxUser = () => {
   const dispatch = useDispatch();
@@ -18,6 +22,7 @@ const InboxUser = () => {
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
   //const messagesReceived = useSelector((state) => state.messagesReceived);
+  const socket = useSelector((state) => state.socket);
 
   // const handleNewMessage = (message) => {
   //   dispatch(addNewMessageReceivedAction(message));
@@ -25,6 +30,9 @@ const InboxUser = () => {
   // };
 
   useEffect(() => {
+    // Conectar al socket
+    dispatch({ type: CONNECT_SOCKET });
+
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction());
@@ -34,9 +42,6 @@ const InboxUser = () => {
       dispatch(getAllUsersAction());
     }
 
-    // Conectar al socket
-    dispatch({ type: CONNECT_SOCKET });
-
     // // Manejar la recepción de nuevos mensajes
     // handleNewMessage(message);
 
@@ -45,6 +50,17 @@ const InboxUser = () => {
       dispatch({ type: DISCONNECT_SOCKET });
     };
   }, [dispatch, businessId, userId]);
+
+  useEffect(() => {
+    // Conectar al socket
+    if (!socket) {
+      dispatch({ type: CONNECT_SOCKET });
+    }
+
+    return () => {
+      dispatch({ type: DISCONNECT_SOCKET });
+    };
+  }, [socket]);
 
   return (
     <div className="w-screen h-screen flex overflow-hidden">

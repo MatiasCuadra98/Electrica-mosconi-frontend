@@ -8,7 +8,8 @@ GET_CONTACT_BY_ID,
 GET_CONTACT_BY_MESSAGE_RECEIVED
 } from "../types";
 
-const URL = 'https://electrica-mosconi-server.onrender.com/';
+//const URL = import.meta.env.VITE_API_URL;
+const URL = 'https://electrica-mosconi-server.onrender.com';
 //RUTAS CONTACTOS: 
 ///getById : /contact/:id
 
