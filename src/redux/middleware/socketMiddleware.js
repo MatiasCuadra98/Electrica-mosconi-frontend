@@ -12,7 +12,7 @@ const socketMiddleware = (store) => {
         }
 
         // Conectar con el servidor WebSocket
-        socket = io("https://electrica-mosconi-server.onrender.com", {
+        socket = io("https://electrica-mosconi-backend.vercel.app/", {
           transports: ["websocket"],
         });
 

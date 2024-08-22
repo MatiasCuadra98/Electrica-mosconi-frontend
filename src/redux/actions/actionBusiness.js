@@ -8,9 +8,8 @@ import {
     UPDATE_BUSINESS
 } from '../types.js';
 
-// const URL = 'https://electrica_mosconi-server.onrender.com' || 'https://localhost:3000';
-// const URL = 'http://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
-const URL = 'https://electrica-mosconi-server.onrender.com';
+
+const URL = 'https://electrica-mosconi-server.onrender.com/';
 //RUTAS BUSINESS:
 //get by Id: /business/:id
 //create : /business/create

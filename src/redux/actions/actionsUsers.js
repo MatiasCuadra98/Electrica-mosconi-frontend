@@ -10,9 +10,8 @@ import {
     UPDATE_USER,
 } from '../types.js';
 
-// const URL = 'https://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
-// const URL = 'http://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
-const URL = 'https://electrica-mosconi-server.onrender.com';
+
+const URL = 'https://electrica-mosconi-server.onrender.com/';
 //RUTAS USER:
 // getAll: /user
 //getById: /user/:id
