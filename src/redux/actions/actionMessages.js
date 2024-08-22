@@ -15,9 +15,8 @@ import {
     NEW_MESSAGE_RECEIVED 
 } from "../types";
 
-// const URL = 'https://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
-// const URL = 'http://electrica_mosconi-server.onrender.com' || 'http://localhost:3000';
-const URL = 'https://electrica-mosconi-server.onrender.com';
+
+const URL = 'https://electrica-mosconi-server.onrender.com/';
 //RUTAS MENSAJES
 //RECIBIDOS:
 //getAll: /message/received/

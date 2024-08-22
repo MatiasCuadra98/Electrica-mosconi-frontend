@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET } from "../types";
 import { sweetAlertsError, sweetAlertsWarning } from "../../components/utils/alerts/alerts";
 
-const URL= "https://electrica-mosconi-server.onrender.com";
+const URL= "https://electrica-mosconi-server.onrender.com/";
 
 export const connectSocket = () => (dispatch) => {
     try {
