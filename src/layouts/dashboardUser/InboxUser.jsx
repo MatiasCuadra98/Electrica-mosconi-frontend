@@ -21,13 +21,8 @@ const InboxUser = () => {
   const businessId = businessRedux.id || localStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
-<<<<<<< HEAD
-  const messagesReceived = useSelector((state) => state.messagesReceived);
-  const socialMedia = useSelector((state) => state.socialMediaFilter);
-  const stateFilter = useSelector((state) => state.stateFilter);
-=======
   //const messagesReceived = useSelector((state) => state.messagesReceived);
->>>>>>> e43eab4fdebaaba422db863168c70062e4541422
+  const socket = useSelector((state) => state.socket);
 
   // const handleNewMessage = (message) => {
   //   dispatch(addNewMessageReceivedAction(message));
@@ -55,6 +50,17 @@ const InboxUser = () => {
       dispatch({ type: DISCONNECT_SOCKET });
     };
   }, [dispatch, businessId, userId]);
+
+  useEffect(() => {
+    // Conectar al socket
+    if (!socket) {
+      dispatch({ type: CONNECT_SOCKET });
+    }
+
+    return () => {
+      dispatch({ type: DISCONNECT_SOCKET });
+    };
+  }, [socket]);
 
   return (
     <div className="w-screen h-screen flex overflow-hidden">

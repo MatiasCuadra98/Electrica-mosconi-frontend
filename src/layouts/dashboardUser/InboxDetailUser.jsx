@@ -25,10 +25,9 @@ const InboxDetailUser = () => {
 
   const { messageId } = useParams();
   const contact = useSelector((state) => state.contact);
-  s;
+  const socket = useSelector((state) => state.socket);
+
   useEffect(() => {
-    // Conectar al socket
-    dispatch({ type: CONNECT_SOCKET });
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction());
@@ -41,12 +40,18 @@ const InboxDetailUser = () => {
       }
       dispatch(getAllUsersAction());
     }
-    // Limpieza al desmontar el componente
+  }, [dispatch, businessId, userId, messageId]);
+
+  useEffect(() => {
+    // Conectar al socket
+    if (!socket) {
+      dispatch({ type: CONNECT_SOCKET });
+    }
+
     return () => {
       dispatch({ type: DISCONNECT_SOCKET });
     };
-  }, [dispatch, businessId, userId, messageId, contact]);
-
+  }, [socket]);
   // useEffect(() => {
   //   const intervalId = setInterval(() => {
   //     if (businessId) {

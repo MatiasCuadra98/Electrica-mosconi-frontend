@@ -10,8 +10,9 @@ import {
     UPDATE_USER,
 } from '../types.js';
 
+//const URL = import.meta.env.VITE_API_URL;
 
-const URL = 'https://electrica-mosconi-server.onrender.com/';
+const URL = 'https://electrica-mosconi-server.onrender.com';
 //RUTAS USER:
 // getAll: /user
 //getById: /user/:id

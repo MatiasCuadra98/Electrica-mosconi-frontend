@@ -10,6 +10,8 @@ import {
     SEARCH_BY_CONTACT
 } from '../types.js';
 
+//const URL = import.meta.env.VITE_API_URL;
+
 export const filterBySocialMediaAction = (socialMedia) => {
     try {
         console.log('recibo el filtro con socialMedia', socialMedia);

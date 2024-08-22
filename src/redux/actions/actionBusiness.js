@@ -8,8 +8,9 @@ import {
     UPDATE_BUSINESS
 } from '../types.js';
 
+//const URL = import.meta.env.VITE_API_URL;
 
-const URL = 'https://electrica-mosconi-server.onrender.com/';
+const URL = 'https://electrica-mosconi-server.onrender.com';
 //RUTAS BUSINESS:
 //get by Id: /business/:id
 //create : /business/create
