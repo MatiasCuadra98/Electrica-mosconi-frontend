@@ -21,9 +21,13 @@ const InboxUser = () => {
   const businessId = businessRedux.id || localStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user);
   const userId = userRedux.id || localStorage.getItem("userId");
+<<<<<<< HEAD
   const messagesReceived = useSelector((state) => state.messagesReceived);
   const socialMedia = useSelector((state) => state.socialMediaFilter);
   const stateFilter = useSelector((state) => state.stateFilter);
+=======
+  //const messagesReceived = useSelector((state) => state.messagesReceived);
+>>>>>>> e43eab4fdebaaba422db863168c70062e4541422
 
   // const handleNewMessage = (message) => {
   //   dispatch(addNewMessageReceivedAction(message));
@@ -50,7 +54,7 @@ const InboxUser = () => {
     return () => {
       dispatch({ type: DISCONNECT_SOCKET });
     };
-  }, [dispatch, businessId, userId, messagesReceived]);
+  }, [dispatch, businessId, userId]);
 
   return (
     <div className="w-screen h-screen flex overflow-hidden">

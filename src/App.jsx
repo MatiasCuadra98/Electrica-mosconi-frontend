@@ -18,7 +18,7 @@ import {
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { connectSocket, disconnectSocket } from "./redux/actions/socketActions";
+import { connectSocket, disconnectSocket } from "./redux/actions/actionSocket";
 
 
 const App = () => {
