@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 //import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -87,8 +87,8 @@ const InboxCardUser = ({
                   <br />
                 </span>
                 <span className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
-                <FormattedTimestamp timestamp={timestamp} />
-                <br />
+                  <FormattedTimestamp timestamp={timestamp} />
+                  <br />
                 </span>
               </div>
             </div>
@@ -104,11 +104,11 @@ const InboxCardUser = ({
   );
 };
 
-InboxCardUser.propTypes = {
-  name: PropTypes.string.isRequired,
-  timestamp: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-};
+// InboxCardUser.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   timestamp: PropTypes.string.isRequired,
+//   state: PropTypes.string.isRequired,
+//   id: PropTypes.string.isRequired,
+// };
 
 export default InboxCardUser;

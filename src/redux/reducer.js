@@ -105,6 +105,7 @@ switch (action.type) {
             case GET_ALL_MESSAGES_RECIVED:
                 const messages = action.payload
                  const allMessagesFiltered = messages.filter(message => message.BusinessId === state.business.id)
+                 
                 return {
                     ...state,
                     messagesReceived: allMessagesFiltered,
@@ -132,9 +133,6 @@ switch (action.type) {
                 }
     //MENSAJES ENVIADOS
     case CREATE_MESSAGE_SEND: 
-
-    console.log('entro en el reducer, en case del input');
-
     return {
         ...state,
     };
@@ -224,13 +222,7 @@ switch (action.type) {
           ...state,
           socket: null,
         };
-  
-    //   case NEW_MESSAGE_RECEIVED:
-    //     return {
-    //       ...state,
-    //       messagesReceived: [...state.messagesReceived, action.payload],
-    //       allMessagesReceived: [...state.allMessagesReceived, action.payload],
-    //     };
+
     case ADD_NEW_MESSAGE_RECEIVED:
         return {
             ...state,
