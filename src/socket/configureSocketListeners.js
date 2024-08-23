@@ -16,7 +16,7 @@ const configureSocketListeners = (socket, dispatch, contactId) => {
     });
 
     return () => {
-        // Limpiar listeners cuando ya no sean necesarios
+        // Limpiar listeners cuando ya no sean necesariosnew
         socket.off("NEW_MESSAGE_RECEIVED");
         socket.off("NEW_MESSAGE_SENT");
     };
