@@ -47,7 +47,6 @@ const InboxDetailUser = () => {
     if (!socket) {
       dispatch({ type: CONNECT_SOCKET });
     }
-
     return () => {
       dispatch({ type: DISCONNECT_SOCKET });
     };

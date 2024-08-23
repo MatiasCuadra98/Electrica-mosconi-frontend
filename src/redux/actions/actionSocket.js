@@ -4,6 +4,7 @@ import { sweetAlertsError, sweetAlertsWarning } from "../../components/utils/ale
 
 //const URL = import.meta.env.VITE_API_URL;
 const URL= "https://electrica-mosconi-server.onrender.com";
+//const URL = 'http://localhost:3000';
 
 export const connectSocket = () => (dispatch) => {
     try {
@@ -44,7 +45,7 @@ export const disconnectSocket = () => (dispatch) => {
 
 export const addNewMessageReceivedAction = (message) => {
     try {
-        console.log('entro a la action de socket con payload', message);
+        console.log('Mensaje agregado a la store:', message);
         
         sweetAlertsWarning(
             "Atención",

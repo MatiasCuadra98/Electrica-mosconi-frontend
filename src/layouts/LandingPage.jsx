@@ -16,14 +16,14 @@ const LandingPage = () => {
   const businessId = "dcb75f4c-5c96-40c5-befc-3179c96535c2";
   const businessName = "Electrica Mosconi";
 
-  //busnisses para prueba de alerta
-  //const busnissesId = "";
-  // const businessName = "zarasa";
-
   useEffect(() => {
     localStorage.setItem("businessId", businessId);
-    dispatch(getBusinessByIdAction(businessId));
-    //console.log("despacho la action get business by Id");
+    dispatch(getBusinessByIdAction(businessId, businessName));
+    // console.log(
+    //   "despacho la action get business by Id",
+    //   businessId,
+    //   businessName
+    // );
   }, [dispatch]);
 
   const handlerOnClick = () => {

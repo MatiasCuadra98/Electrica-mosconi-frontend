@@ -18,12 +18,44 @@ import {
 //const URL = import.meta.env.VITE_API_URL;
 
 const URL = 'https://electrica-mosconi-server.onrender.com';
+//const URL = 'http://localhost:3000';
 //RUTAS MENSAJES
 //RECIBIDOS:
 //getAll: /message/received/
 //getById: /message/received/:id
 //cambiar active: /message/received/active/:id
 
+export const getAllMessagesReceivedAction = () => {
+    return async (dispatch, getState) => {
+        try {
+            const response = await axios.get(`${URL}/message/received`);
+            const messages = response.data;
+            //console.log('cantidad de mensajes en action getALL', messages.length);
+            
+            dispatch({ type: GET_ALL_MESSAGES_RECIVED, payload: messages });
+            
+            const { socket } = getState();  // socket desde el estado global
+            
+            // esucha nuevos mensajes a través del socket
+            if (socket) {
+                socket.on("NEW_MESSAGE_RECEIVED", (newMessage) => {
+                    // Despacha una acción para manejar el nuevo mensaje recibido
+                    dispatch({
+                        type: NEW_MESSAGE_RECEIVED,
+                        payload: newMessage
+                    });
+                });
+            }
+            
+        } catch (error) {
+            sweetAlertsError(
+                "Intenta de nuevo",
+                "No podemos mostrar tus mensajes recibidos",
+                "Ok"
+            );
+        }
+    }
+};
 //ENVIADOS:
 //create mensaje enviado: /telegram/sendMessage
 
@@ -42,36 +74,6 @@ const URL = 'https://electrica-mosconi-server.onrender.com';
 //           ); 
 //     }
 // };
-export const getAllMessagesReceivedAction = () => {
-    return async (dispatch, getState) => {
-        try {
-            const response = await axios.get(`${URL}/message/received`);
-            const messages = response.data;
-
-            dispatch({ type: GET_ALL_MESSAGES_RECIVED, payload: messages });
-
-            const { socket } = getState();  // socket desde el estado global
-
-            // esucha nuevos mensajes a través del socket
-            if (socket) {
-                socket.on("NEW_MESSAGE_RECEIVED", (newMessage) => {
-                    // Despacha una acción para manejar el nuevo mensaje recibido
-                    dispatch({
-                        type: NEW_MESSAGE_RECEIVED,
-                        payload: newMessage
-                    });
-                });
-            }
-
-        } catch (error) {
-            sweetAlertsError(
-                "Intenta de nuevo",
-                "No podemos mostrar tus mensajes recibidos",
-                "Ok"
-            );
-        }
-    }
-};
 
 export const getMessageReceivedByIdAction = (messageId) => {
     try {

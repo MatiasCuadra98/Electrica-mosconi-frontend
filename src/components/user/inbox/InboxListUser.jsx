@@ -1,13 +1,18 @@
 import InboxCardUser from "./InboxCardUser";
 import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import FilterText from "../../utils/filters/FilterText";
+import Spinner from "../../utils/spinners/Spinner";
 
 const InboxListUser = () => {
-  //const business = useSelector((state) => state.business);
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
-  // const messagesReceived = allMessagesReceived.filter(
-  //   (message) => message.BusinessId === business.id
-  // );
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  });
 
   const sortedMessages = allMessagesReceived
     .slice()
@@ -23,12 +28,12 @@ const InboxListUser = () => {
       seenContactIds.add(message.ContactId); // ==> agrego el contacto en el conjunto
     }
   }
-
   return (
     <div className="sticky w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
-      {allMessagesReceived.length ? (
+      {loading ? (
+        <Spinner />
+      ) : allMessagesReceived.length ? (
         messagesByContact.map((message, index) => {
-          //console.log("message", message);
           const {
             id,
             name,
@@ -38,7 +43,6 @@ const InboxListUser = () => {
             SocialMedium,
             ContactId,
           } = message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
-
           return (
             <div key={index}>
               <InboxCardUser
