@@ -11,7 +11,8 @@ import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
 import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
 import { CONNECT_SOCKET, DISCONNECT_SOCKET } from "../../redux/types";
 
-const InboxUser = () => {
+const InboxUser = React.memo(() => {
+  console.log("InboxUser render");
   const dispatch = useDispatch();
   const businessRedux = useSelector((state) => state.business);
   const businessId = businessRedux.id || localStorage.getItem("businessId");
@@ -22,6 +23,7 @@ const InboxUser = () => {
   console.log("mensajes recibidos", messagesReceived.length);
 
   useEffect(() => {
+    console.log("InboxUser useEffect");
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction());
@@ -45,18 +47,20 @@ const InboxUser = () => {
   }, [dispatch, socket]);
 
   return (
-    <div className="w-screen h-screen flex overflow-hidden">
+    <div className="w-screenh-screen-minus-navbar flex overflow-hidden">
       <div className="w-52 flex-shrink-0">
         <SideBarU />
       </div>
-      <div className="flex flex-col">
-        <InboxListUser />
+      <div className="flex flex-1 w-screen-minus-sidebar h-screen-minus-navbar overflow-hidden ">
+        <div className="flex flex-col">
+          <InboxListUser />
+        </div>
       </div>
-      <div className="flex flex-1 items-center justify-center overflow-y-auto overflow-x-hidden">
+      <div className="flex  items-center justify-center ">
         <img src="/public/imagenFondoCAInactiva.svg" className="-mt-12" />
       </div>
     </div>
   );
-};
+});
 
 export default InboxUser;
