@@ -12,8 +12,8 @@ import {
 
 //const URL = import.meta.env.VITE_API_URL;
 
-const URL = 'http://electrica-mosconi-server.onrender.com';
-//const URL = 'http://localhost:3000';
+//const URL = 'http://electrica-mosconi-server.onrender.com';
+const URL = 'http://localhost:3000';
 //RUTAS USER:
 // getAll: /user
 //getById: /user/:id

@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusinessByIdAction } from "../redux/actions/actionBusiness.js";
+import { getAllMessagesSentAction } from "../redux/actions/actionMessages.js";
 import { sweetAlertsError } from "../components/utils/alerts/alerts.jsx";
 import SpinnerLogin from "../components/utils/spinners/SpinnerLogin.jsx";
+import { getAllMessagesSentAction } from "../redux/actions/actionMessages.js";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ const LandingPage = () => {
   useEffect(() => {
     localStorage.setItem("businessId", businessId);
     dispatch(getBusinessByIdAction(businessId, businessName));
+    dispatch(getAllMessagesSentAction());
     // console.log(
     //   "despacho la action get business by Id",
     //   businessId,
