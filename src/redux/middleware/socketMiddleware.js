@@ -1,8 +1,8 @@
 import { io } from "socket.io-client";
 import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET, ADD_NEW_MESSAGE_SENT } from "../types";
 //const URL = import.meta.env.VITE_API_URL;
-//const URL= "https://electrica-mosconi-server.onrender.com";
-const URL = 'http://localhost:3000';
+const URL = 'https://electrica-mosconi-server.onrender.com';
+//const URL = 'http://localhost:3000';
 
 const socketMiddleware = (store) => {
   let socket = null;
@@ -22,9 +22,9 @@ const socketMiddleware = (store) => {
           console.log("Socket conectado:", socket.id);
         });
 
-        // socket.on("SE_EMITEN_OTRAS_COSAS", (mensaje) => {
-        //   console.log("Se emiten otras cosas:", mensaje);
-        // });
+        socket.on("SE_EMITEN_OTRAS_COSAS", (mensaje) => {
+          console.log("Se emiten otras cosas:", mensaje);
+        });
         socket.on("NEW_MESSAGE_RECEIVED", (message) => {
           console.log("Nuevo mensaje recibido:", message); //==> no entra en este console!!!
           store.dispatch({

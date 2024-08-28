@@ -18,8 +18,8 @@ import {
 
 //const URL = import.meta.env.VITE_API_URL;
 
-//const URL = 'https://electrica-mosconi-server.onrender.com';
-const URL = 'http://localhost:3000';
+const URL = 'https://electrica-mosconi-server.onrender.com';
+//const URL = 'http://localhost:3000';
 //RUTAS MENSAJES
 //RECIBIDOS:
 //getAll: /message/received/
@@ -49,11 +49,15 @@ export const getAllMessagesReceivedAction = () => {
             }
             
         } catch (error) {
-            sweetAlertsError(
-                "Intenta de nuevo",
-                "No podemos mostrar tus mensajes recibidos",
-                "Ok"
-            );
+            console.log(error);
+            
+            if(error.response.status !== 400) {
+                sweetAlertsError(
+                    "Intenta de nuevo",
+                    "No podemos mostrar tus mensajes recibidos",
+                    "Ok"
+                );
+            }
         }
     }
 };
@@ -145,13 +149,15 @@ export const getAllMessagesSentAction = () => {
     return async (dispatch) => {
         try {
             const response = await axios.get(`${URL}/message/sent`);
+            
             const messages = response.data;
-            //console.log('cantidad de mensajes en action getALL', messages.length);
+            console.log('cantidad de mensajes en action getALLMsgSENT', messages.length);
             
             dispatch({ type: GET_ALL_MESSAGES_SENT, payload: messages });
             
         } catch (error) {
-            console.log(error.message);
+            
+            console.log('messageSent', error);
         }
     }
 };

@@ -3,8 +3,8 @@ import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET, ADD_NEW_ME
 import { sweetAlertsError, sweetAlertsWarning } from "../../components/utils/alerts/alerts";
 
 //const URL = import.meta.env.VITE_API_URL;
-//const URL= "https://electrica-mosconi-server.onrender.com";
-const URL = 'http://localhost:3000';
+const URL = 'https://electrica-mosconi-server.onrender.com';
+//const URL = 'http://localhost:3000';
 
 export const connectSocket = () => (dispatch) => {
     try {
