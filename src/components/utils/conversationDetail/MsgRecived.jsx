@@ -6,7 +6,7 @@ import FormattedTimestamp from "../FormatedTimeStamp";
 const MsgRecived = ({ props, contact }) => {
   //console.log("propsMsgReceived", props);
 
-  //console.log("contactoMsgRecived", contact);
+  console.log("contactoMsgRecived", contact);
   // const dispatch = useDispatch();
   // const socket = useSelector((state) => state.socket);
 

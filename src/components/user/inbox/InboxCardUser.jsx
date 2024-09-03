@@ -24,7 +24,7 @@ const InboxCardUser = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const socialMediaName = SocialMedium.name.toUpperCase();
-  console.log("red social", socialMediaName);
+  //console.log("red social", socialMediaName);
 
   const msgActive =
     messagesReceived && messagesReceived.find((message) => message.active);
