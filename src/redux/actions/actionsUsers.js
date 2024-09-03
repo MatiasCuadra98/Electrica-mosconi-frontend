@@ -47,8 +47,8 @@ export const getUserByIdAction = (userId) => {
         try {
             const response = await axios.get(`${URL}/user/${userId}`);
             const user = response.data; 
-            //console.log(users);  
-            dispatch({type: GET_ALL_USERS, payload: user})
+            console.log(user);  
+            dispatch({type: GET_USER_BY_ID, payload: user})
             //console.log('entro en la accion y voy a reducer con payload: ', users);
         } catch (error) {
             console.log(error);
