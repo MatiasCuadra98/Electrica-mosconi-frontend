@@ -78,11 +78,9 @@ const InboxCardUser = ({
         <div className="w-72 h-28 relative shadow-inner bg-white flex items-center justify-between p-2">
           <div className="w-full h-full flex items-center justify-between bg-transparent border-l-4 border-t-4 border-b-4 border-amber-500">
             <div className="flex items-center">
-              <img
-                src={SocialMedium.icon}
-                alt={SocialMedium.name}
-                className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2"
-              />
+              <div className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2">
+                <SocialMediaIcons socialMediaName={socialMediaName} />
+              </div>
               <div className="flex flex-col justify-center ml-8">
                 <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
                   {name}
