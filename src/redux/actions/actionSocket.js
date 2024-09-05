@@ -1,9 +1,9 @@
 import { io } from "socket.io-client";
-import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET } from "../types";
+import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET, ADD_NEW_MESSAGE_SENT } from "../types";
 import { sweetAlertsError, sweetAlertsWarning } from "../../components/utils/alerts/alerts";
 
 //const URL = import.meta.env.VITE_API_URL;
-const URL= "https://electrica-mosconi-server.onrender.com";
+const URL = 'https://electrica-mosconi-server.onrender.com';
 //const URL = 'http://localhost:3000';
 
 export const connectSocket = () => (dispatch) => {
@@ -60,6 +60,21 @@ export const addNewMessageReceivedAction = (message) => {
         sweetAlertsError(
             "Intenta de nuevo",
             "No podemos agregar el nuevo mensaje",
+            "Ok"
+          );
+    }
+}
+
+export const addNewMessageSentAction = (message) => {
+    try {
+        return {
+            type: ADD_NEW_MESSAGE_SENT,
+            payload: message
+        }     
+    } catch (error) {
+        sweetAlertsError(
+            "Intenta de nuevo",
+            "No podemos mostrar el nuevo mensaje enviado",
             "Ok"
           );
     }

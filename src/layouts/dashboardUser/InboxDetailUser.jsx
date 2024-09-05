@@ -9,7 +9,10 @@ import {
   getUserByIdAction,
 } from "../../redux/actions/actionsUsers";
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
-import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
+import {
+  getAllMessagesReceivedAction,
+  getAllMessagesSentAction,
+} from "../../redux/actions/actionMessages";
 import { getContactByMessageReceivedAction } from "../../redux/actions/actionContact";
 import ConversationActive from "../../components/user/conversation/ConversationActive";
 import { CONNECT_SOCKET, DISCONNECT_SOCKET } from "../../redux/types";
@@ -26,6 +29,7 @@ const InboxDetailUser = () => {
   const { messageId } = useParams();
   const contact = useSelector((state) => state.contact);
   const socket = useSelector((state) => state.socket);
+  const msgSent = useSelector((state) => state.messagesSent);
 
   useEffect(() => {
     if (businessId) {
@@ -40,7 +44,7 @@ const InboxDetailUser = () => {
       }
       dispatch(getAllUsersAction());
     }
-  }, [dispatch, businessId, userId, messageId]);
+  }, [dispatch, businessId, userId, messageId, msgSent]);
 
   useEffect(() => {
     // Conectar al socket

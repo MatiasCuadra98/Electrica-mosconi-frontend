@@ -20,10 +20,11 @@ import { useDispatch } from "react-redux";
 
 import { connectSocket, disconnectSocket } from "./redux/actions/actionSocket";
 
-
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  console.log("APP: prueba doble renderizado");
+
   useEffect(() => {
     // Conectar el socket cuando el componente se monta
     dispatch(connectSocket());

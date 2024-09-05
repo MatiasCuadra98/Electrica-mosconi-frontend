@@ -3,6 +3,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
+import SocialMediaIcons from "../../utils/icons/socialMediaIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 import {
   updateStateMessageReceivedAction,
@@ -22,6 +23,8 @@ const InboxCardUser = ({
   //console.log("redSocial", SocialMedium.name);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const socialMediaName = SocialMedium.name.toUpperCase();
+  //console.log("red social", socialMediaName);
 
   const msgActive =
     messagesReceived && messagesReceived.find((message) => message.active);
@@ -51,11 +54,10 @@ const InboxCardUser = ({
     >
       {!active ? (
         <div className="w-72 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
-          <img
-            src={SocialMedium.icon}
-            alt={SocialMedium.name}
-            className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2"
-          />
+          <div className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2">
+            <SocialMediaIcons socialMediaName={socialMediaName} />
+          </div>
+
           <div className="flex flex-col justify-center">
             <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
               {name}
@@ -76,11 +78,9 @@ const InboxCardUser = ({
         <div className="w-72 h-28 relative shadow-inner bg-white flex items-center justify-between p-2">
           <div className="w-full h-full flex items-center justify-between bg-transparent border-l-4 border-t-4 border-b-4 border-amber-500">
             <div className="flex items-center">
-              <img
-                src={SocialMedium.icon}
-                alt={SocialMedium.name}
-                className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2"
-              />
+              <div className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2">
+                <SocialMediaIcons socialMediaName={socialMediaName} />
+              </div>
               <div className="flex flex-col justify-center ml-8">
                 <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
                   {name}

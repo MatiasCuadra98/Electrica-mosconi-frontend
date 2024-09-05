@@ -15,9 +15,10 @@ import {
     GET_CONTACT_BY_ID,
     GET_CONTACT_BY_MESSAGE_RECEIVED,
     CREATE_MESSAGE_SEND,
+    GET_ALL_MESSAGES_SENT,
     CLEAN_FILTERS,
     ADD_NEW_MESSAGE_RECEIVED,
-    // NEW_MESSAGE_RECEIVED, //socket
+    ADD_NEW_MESSAGE_SENT, //socket
     CONNECT_SOCKET,//socket
     DISCONNECT_SOCKET,//socket
 } from './types';
@@ -41,6 +42,8 @@ const initialState = {
           //**--CONTACTOS--**//
     //contacto por id // mensaje
     contact: {},
+    //mensajes enviados
+    messagesSent: [],
 
     //**--ESTADOS PARA CONTADOR DE MENSAJES-- */
     // deben modificarse segun seleccion de filtros y search => asignarle el action.payload
@@ -136,6 +139,14 @@ switch (action.type) {
     return {
         ...state,
     };
+    case GET_ALL_MESSAGES_SENT:
+        const messagesSent = action.payload
+         const allMessagesSentFiltered = messagesSent.filter(message => message.BusinessId === state.business.id)
+         
+        return {
+            ...state,
+            messagesSent: allMessagesSentFiltered,
+        };
     //REDUCER DE CONTACTOS
             case GET_CONTACT_BY_ID:
                 return {
@@ -229,7 +240,11 @@ switch (action.type) {
             messagesReceived: [...state.messagesReceived, action.payload],
             allMessagesReceived: [...state.allMessagesReceived, action.payload]
         };
-   
+    case ADD_NEW_MESSAGE_SENT:        
+        return {
+            ...state,
+            messagesSent: [...state.messagesSent, action.payload]
+            };
             default:
                 return {
                     ...state

@@ -12,6 +12,7 @@ import {
 
 //const URL = import.meta.env.VITE_API_URL;
 //const URL = 'http://localhost:3000';
+//const URL = 'https://electrica-mosconi-server.onrender.com';
 
 export const filterBySocialMediaAction = (socialMedia) => {
     try {

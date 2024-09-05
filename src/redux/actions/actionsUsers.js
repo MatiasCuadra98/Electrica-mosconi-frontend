@@ -44,11 +44,24 @@ export const getAllUsersAction = () => {
 
 export const getUserByIdAction = (userId) => {
     return async (dispatch) => {
+        try {
             const response = await axios.get(`${URL}/user/${userId}`);
             const user = response.data; 
-           // console.log('user: ', user);  
+            console.log(user);  
             dispatch({type: GET_USER_BY_ID, payload: user})
-            //console.log('entro en la accion y voy al reducer con payload: ', user);
+            //console.log('entro en la accion y voy a reducer con payload: ', users);
+        } catch (error) {
+            console.log(error);
+            if(!userId) {
+
+                sweetAlertsError(
+                    "Intenta de nuevo",
+                    "No encontramos el usuario solicitado",
+                    "Ok"
+                  ); 
+            }
+        }
+
     }
 };
 
