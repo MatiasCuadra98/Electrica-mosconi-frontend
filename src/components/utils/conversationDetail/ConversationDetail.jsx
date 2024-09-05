@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 // import { useSelector, useDispatch  } from "react-redux";
 import MsgRecived from "./MsgRecived";
 import MsgSent from "./MsgSent";
@@ -14,6 +14,10 @@ const ConversationDetail = ({ contact }) => {
     ...contact.MsgReceiveds,
     ...contact.MsgSents,
   ]);
+  // console.log(
+  //   "cantidad de mensajes enviados por contacto",
+  //   contact.MsgSents.length
+  // );
 
   // const socket = useSelector((state) => state.socket); // Obtenemos el socket desde Redux
   // const dispatch = useDispatch(); // Para despachar acciones
@@ -82,16 +86,16 @@ const ConversationDetail = ({ contact }) => {
 };
 
 // Definición de PropTypes para validar las props
-ConversationDetail.propTypes = {
-  contact: PropTypes.shape({
-    id: PropTypes.number.isRequired, // Asegúrate de que 'id' es un número y es requerido
-    MsgReceiveds: PropTypes.array.isRequired,
-    MsgSents: PropTypes.array.isRequired,
-    SocialMedium: PropTypes.shape({
-      icon: PropTypes.string,
-      name: PropTypes.string,
-    }),
-  }).isRequired,
-};
+// ConversationDetail.propTypes = {
+//   contact: PropTypes.shape({
+//     id: PropTypes.number.isRequired, // Asegúrate de que 'id' es un número y es requerido
+//     MsgReceiveds: PropTypes.array.isRequired,
+//     MsgSents: PropTypes.array.isRequired,
+//     SocialMedium: PropTypes.shape({
+//       icon: PropTypes.string,
+//       name: PropTypes.string,
+//     }),
+//   }).isRequired,
+// };
 
 export default ConversationDetail;

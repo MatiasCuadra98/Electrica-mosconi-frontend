@@ -10,10 +10,10 @@ const ClouseConversationButton = ({ msgReceiveds }) => {
     msgReceiveds && msgReceiveds.find((message) => message.active);
 
   const handlerOnClick = () => {
-    navigate("/inbox");
     if (msgActive) {
       dispatch(updateActiveMessageReceivedAction(msgActive.id));
     }
+    navigate("/inbox");
   };
 
   return (
