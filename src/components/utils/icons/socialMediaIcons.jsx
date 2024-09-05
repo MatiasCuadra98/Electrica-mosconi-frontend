@@ -15,6 +15,8 @@ const SocialMediaIcons = (socialMediaName) => {
         <img src="/socialMediaImage/mercadoLibre.svg" alt={socialMedia} />
       ) : socialMediaName && socialMedia === "WHATSAPP" ? (
         <img src="/socialMediaImage/whatsapp.svg" alt={socialMedia} />
+      ) : socialMediaName && socialMedia === "WATHSAPP" ? (
+        <img src="/socialMediaImage/whatsapp.svg" alt={socialMedia} />
       ) : socialMediaName && socialMedia === "FACEBOOK" ? (
         <img src="/socialMediaImage/facebook.svg" alt={socialMedia} />
       ) : (
