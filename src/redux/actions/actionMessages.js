@@ -12,7 +12,8 @@ import {
     //FILTER_BY_SOCIAL_MEDIA,
     //FILTER_BY_STATE,
     CREATE_MESSAGE_SEND,
-    NEW_MESSAGE_RECEIVED 
+    NEW_MESSAGE_RECEIVED,
+    GET_ALL_MESSAGES_SENT
 } from "../types";
 
 //const URL = import.meta.env.VITE_API_URL;
@@ -48,32 +49,18 @@ export const getAllMessagesReceivedAction = () => {
             }
             
         } catch (error) {
-            sweetAlertsError(
-                "Intenta de nuevo",
-                "No podemos mostrar tus mensajes recibidos",
-                "Ok"
-            );
+            console.log(error);
+            
+            if(error.response.status !== 400) {
+                sweetAlertsError(
+                    "Intenta de nuevo",
+                    "No podemos mostrar tus mensajes recibidos",
+                    "Ok"
+                );
+            }
         }
     }
 };
-//ENVIADOS:
-//create mensaje enviado: /telegram/sendMessage
-
-// export const getAllMessagesReceivedAction = () => {
-//     try {
-//         return async (dispatch) => {
-//             const response = await axios.get(`${URL}/message/received`);
-//             const messages = response.data;   
-//             dispatch({type: GET_ALL_MESSAGES_RECIVED, payload: messages})
-//         }
-//     } catch (error) {
-//         sweetAlertsError(
-//             "Intenta de nuevo",
-//             "No podemos mostrar tus mensajes recibidos",
-//             "Ok"
-//           ); 
-//     }
-// };
 
 export const getMessageReceivedByIdAction = (messageId) => {
     try {
@@ -130,20 +117,10 @@ export const deactivateAllMessagesReceivedAction = () => {
     };
   };
 
-
-//MENSAJES ENVIADOS:
-
-// export const createMessageSentAction = (input) => {
-//     return async (dispatch) => {
-//         const response = await axios.post(`${URL}/telegram/sendMessage`, input);
-//         dispatch({ type: CREATE_MESSAGE_SEND, })
-//         return response
-// }}
-
 export const createMessageSentAction = (input) => {
     console.log('entro en la action del input', input);
     return async (dispatch, getState) => {
-        const { socket } = getState();  // obtenemos el socket desde el estado global
+        // const { socket } = getState();  // obtenemos el socket desde el estado global
 
     try {
             const response = await axios.post(`${URL}/telegram/sendMessage`, input);
@@ -154,9 +131,9 @@ export const createMessageSentAction = (input) => {
             console.log('envio la action al reducer');
             // despacho al reducer y emitimos un evento de socket con el nuevo mensaje
             dispatch({ type: CREATE_MESSAGE_SEND, payload: message });
-            if (socket) {
-                socket.emit("NEW_MESSAGE_SENT", message);
-            }
+            // if (socket) {
+            //     socket.emit("NEW_MESSAGE_SENT", message);
+            // }
     } catch (error) {
         console.log('error de action', error);
         sweetAlertsError(
@@ -168,3 +145,19 @@ export const createMessageSentAction = (input) => {
 
 }}
 
+export const getAllMessagesSentAction = () => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(`${URL}/message/sent`);
+            
+            const messages = response.data;
+            console.log('cantidad de mensajes en action getALLMsgSENT', messages.length);
+            
+            dispatch({ type: GET_ALL_MESSAGES_SENT, payload: messages });
+            
+        } catch (error) {
+            
+            console.log('messageSent', error);
+        }
+    }
+};

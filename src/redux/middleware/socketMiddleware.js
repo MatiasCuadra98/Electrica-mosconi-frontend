@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
-import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET } from "../types";
+import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET, ADD_NEW_MESSAGE_SENT } from "../types";
 //const URL = import.meta.env.VITE_API_URL;
-const URL= "https://electrica-mosconi-server.onrender.com";
+const URL = 'https://electrica-mosconi-server.onrender.com';
 //const URL = 'http://localhost:3000';
 
 const socketMiddleware = (store) => {
@@ -32,9 +32,13 @@ const socketMiddleware = (store) => {
             payload: message,
           });
         });
-        // socket.on("disconnect", () => {
-          //   console.log("Socket desconectado");
-          // });
+        socket.on("ADD_NEW_MESSAGE_SENT", (message) => {
+          console.log("Nuevo mensaje enviado:", message); //==> no entra en este console!!!
+          store.dispatch({
+            type: ADD_NEW_MESSAGE_SENT,
+            payload: message,
+          });
+        });
         break;
 
       case DISCONNECT_SOCKET:
