@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +12,7 @@ const LandingPage = () => {
   const business = useSelector((state) => state.business);
   //console.log("landing: ", business);
   //estos datos deberian ser recibidos del login inicial
-  const businessId = "dcb75f4c-5c96-40c5-befc-3179c96535c2";
+  const businessId = "1dc868d6-70b4-4de0-91ee-495f4486d3ea";
   const businessName = "Electrica Mosconi";
 
   useEffect(() => {
@@ -83,6 +82,13 @@ const LandingPage = () => {
             >
               COMENCEMOS
             </button>
+              {/* este es el boton de fb, hay que meter la url en el .env */}
+            <a
+              href={`https://electrica-mosconi-server.onrender.com/auth/facebook`}
+              className="w-fit h-fit relative mx-auto mt-4 px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-lg font-normal font-['Oswald']"
+            >
+              INICIAR SESIÓN CON FACEBOOK
+            </a>
           </div>
         </div>
       )}
