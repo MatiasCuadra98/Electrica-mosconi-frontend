@@ -4,7 +4,7 @@ import {
   LandingPage,
   NavBar,
   InboxUser,
-  InboxDetailUser,
+  //InboxDetailUser,
   LoginAdmi,
   HomeAdmi,
   Profile,
@@ -48,10 +48,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/inbox" element={<InboxUser />} />
-        <Route
+        {/* <Route
           path="/inboxDetailUser/:messageId"
           element={<InboxDetailUser />}
-        />
+        /> */}
         <Route path="/loginAdmi" element={<LoginAdmi />} />
         <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
         <Route path="/dashboardAdmi/profile" element={<Profile />} />

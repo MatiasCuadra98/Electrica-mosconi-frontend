@@ -5,9 +5,9 @@ import FormattedTimestamp from "../FormatedTimeStamp";
 import SocialMediaIcons from "../icons/socialMediaIcons";
 
 const MsgRecived = ({ props, contact }) => {
-  console.log("contactoMsgRecived", contact);
+  //console.log("contactoMsgRecived", contact);
   const socialMediaName = contact.SocialMedium.name.toUpperCase();
-  console.log("red social del contato", socialMediaName);
+  //console.log("red social del contato", socialMediaName);
 
   return (
     <div className="w-[473px] h-auto bg-neutral-200 rounded-tl-[40px] rounded-tr-[40px] rounded-bl-[40px] p-4 flex flex-col justify-between self-start ml-12 mt-4">

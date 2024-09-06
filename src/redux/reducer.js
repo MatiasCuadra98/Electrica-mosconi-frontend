@@ -21,6 +21,7 @@ import {
     ADD_NEW_MESSAGE_SENT, //socket
     CONNECT_SOCKET,//socket
     DISCONNECT_SOCKET,//socket
+    SET_ACTIVE_MESSAGE
 } from './types';
 
 const initialState = {
@@ -39,6 +40,7 @@ const initialState = {
     allMessagesReceived: [],
     //mensaje por id
     messageReceived: {},
+    messageActive: '',
           //**--CONTACTOS--**//
     //contacto por id // mensaje
     contact: {},
@@ -120,8 +122,15 @@ switch (action.type) {
                     messageReceived: action.payload
                 }
             case UPDATE_ACTIVE_MESSAGE_RECEIVED: 
+            console.log('entro al reducer de UPDATE_ACTIVE_MESSAGE_RECEIVED');
                 return {
                     ...state,
+                };
+            case SET_ACTIVE_MESSAGE:
+                console.log('entro al reducer de SET_ACTIVE_MESSAGE', action.payload);
+                return {
+                    ...state,
+                    messageActive: action.payload
                 };
             case UPDATE_STATE_MESSAGE_RECEIVED: 
                 return {

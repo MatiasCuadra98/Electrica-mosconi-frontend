@@ -12,7 +12,7 @@ const InboxListUser = () => {
     setTimeout(() => {
       setLoading(false);
     }, 3000);
-  });
+  }, []);
 
   const sortedMessages = allMessagesReceived
     .slice()
@@ -28,6 +28,7 @@ const InboxListUser = () => {
       seenContactIds.add(message.ContactId); // ==> agrego el contacto en el conjunto
     }
   }
+
   return (
     <div className="sticky w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
       {loading ? (

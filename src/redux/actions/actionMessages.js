@@ -13,7 +13,8 @@ import {
     //FILTER_BY_STATE,
     CREATE_MESSAGE_SEND,
     NEW_MESSAGE_RECEIVED,
-    GET_ALL_MESSAGES_SENT
+    GET_ALL_MESSAGES_SENT,
+    SET_ACTIVE_MESSAGE
 } from "../types";
 
 //const URL = import.meta.env.VITE_API_URL;
@@ -82,6 +83,7 @@ export const updateActiveMessageReceivedAction = (messageId) => {
         return async (dispatch) => {
             const response = await axios.put(`${URL}/message/received/active/${messageId}`)
             dispatch({ type: UPDATE_ACTIVE_MESSAGE_RECEIVED, })
+            console.log('entro en la action UPDATE_ACTIVE_MESSAGE_RECEIVED', response);
             return response
           } 
     } catch (error) {
@@ -91,7 +93,14 @@ export const updateActiveMessageReceivedAction = (messageId) => {
             "Ok"
           );  
     }
+}
 
+export const setActiveMessageAction = (messageId) => {
+    console.log('entro en la action ACTIVE_MESSAGE', messageId);
+    return {
+        type: SET_ACTIVE_MESSAGE,
+        payload: messageId
+    }
 }
 
 export const updateStateMessageReceivedAction = (messageId) => {
@@ -127,7 +136,7 @@ export const createMessageSentAction = (input) => {
             console.log('respuesta de la action', response.data);
             const message = response.data;
 
-           
+            
             console.log('envio la action al reducer');
             // despacho al reducer y emitimos un evento de socket con el nuevo mensaje
             dispatch({ type: CREATE_MESSAGE_SEND, payload: message });
@@ -156,8 +165,9 @@ export const getAllMessagesSentAction = () => {
             dispatch({ type: GET_ALL_MESSAGES_SENT, payload: messages });
             
         } catch (error) {
-            
             console.log('messageSent', error);
-        }
+            }
+            
+            
     }
 };

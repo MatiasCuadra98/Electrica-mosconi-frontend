@@ -19,21 +19,21 @@ const socketMiddleware = (store) => {
         
         // Conectar con el servidor WebSocket
         socket.on("connect", () => {
-          console.log("Socket conectado:", socket.id);
+          //console.log("Socket conectado:", socket.id);
         });
 
         socket.on("SE_EMITEN_OTRAS_COSAS", (mensaje) => {
-          console.log("Se emiten otras cosas:", mensaje);
+          //console.log("Se emiten otras cosas:", mensaje);
         });
         socket.on("NEW_MESSAGE_RECEIVED", (message) => {
-          console.log("Nuevo mensaje recibido:", message); //==> no entra en este console!!!
+          //console.log("Nuevo mensaje recibido:", message); //==> no entra en este console!!!
           store.dispatch({
             type: ADD_NEW_MESSAGE_RECEIVED,
             payload: message,
           });
         });
         socket.on("ADD_NEW_MESSAGE_SENT", (message) => {
-          console.log("Nuevo mensaje enviado:", message); //==> no entra en este console!!!
+          //console.log("Nuevo mensaje enviado:", message); //==> no entra en este console!!!
           store.dispatch({
             type: ADD_NEW_MESSAGE_SENT,
             payload: message,

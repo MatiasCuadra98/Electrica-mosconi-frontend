@@ -1,13 +1,11 @@
-// import PropTypes from "prop-types";
-//import React from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
 import SocialMediaIcons from "../../utils/icons/socialMediaIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 import {
   updateStateMessageReceivedAction,
   updateActiveMessageReceivedAction,
+  setActiveMessageAction,
 } from "../../../redux/actions/actionMessages";
 
 const InboxCardUser = ({
@@ -20,16 +18,13 @@ const InboxCardUser = ({
   ContactId,
   messagesReceived,
 }) => {
-  //console.log("redSocial", SocialMedium.name);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const dispatch = useDispatch();
   const socialMediaName = SocialMedium ? SocialMedium.name : "red Social";
   //console.log("red social", socialMediaName);
   const upperSMName = socialMediaName && socialMediaName.toUpperCase();
-  console.log("red social en mayuscula", upperSMName, id);
-
-  const msgActive =
-    messagesReceived && messagesReceived.find((message) => message.active);
+  //console.log("red social en mayuscula", upperSMName, id);
+  const msgActive = useSelector((state) => state.messageActive);
 
   const allMsgByContact =
     messagesReceived &&
@@ -39,14 +34,22 @@ const InboxCardUser = ({
     allMsgByContact.filter((message) => message.state === "No Leidos");
 
   const onClickHandler = (id) => {
-    if (msgActive) {
-      dispatch(updateActiveMessageReceivedAction(msgActive.id));
+    //console.log("funciona el click", id);
+    console.log("activo al inicio", active);
+    dispatch(setActiveMessageAction(""));
+    //dispatch(activeMessageAction(id));
+    if (msgActive && msgActive !== id) {
+      // dispatch(activeMessageAction(""));
+      dispatch(updateActiveMessageReceivedAction(msgActive));
     }
     dispatch(updateActiveMessageReceivedAction(id));
-    navigate(`/inboxDetailUser/${id}`);
-    noReadMsg.forEach((message) =>
-      dispatch(updateStateMessageReceivedAction(message.id))
-    );
+
+    if (noReadMsg) {
+      noReadMsg.forEach((message) =>
+        dispatch(updateStateMessageReceivedAction(message.id))
+      );
+    }
+    console.log("activo despues del dispatch", active);
   };
 
   return (
@@ -62,7 +65,7 @@ const InboxCardUser = ({
 
           <div className="flex flex-col justify-center">
             <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
-              {name}
+              {name} -{id}
               <br />
             </span>
             <div className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
@@ -85,7 +88,7 @@ const InboxCardUser = ({
               </div>
               <div className="flex flex-col justify-center ml-8">
                 <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
-                  {name}
+                  {name} - {id}
                   <br />
                 </span>
                 <span className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
@@ -105,12 +108,5 @@ const InboxCardUser = ({
     </button>
   );
 };
-
-// InboxCardUser.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   timestamp: PropTypes.string.isRequired,
-//   state: PropTypes.string.isRequired,
-//   id: PropTypes.string.isRequired,
-// };
 
 export default InboxCardUser;

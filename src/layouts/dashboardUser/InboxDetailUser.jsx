@@ -55,19 +55,6 @@ const InboxDetailUser = () => {
       dispatch({ type: DISCONNECT_SOCKET });
     };
   }, [socket]);
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     if (businessId) {
-  //       dispatch(getAllMessagesReceivedAction());
-  //     }
-  //     if (messageId) {
-  //       //console.log("despacha la action con el mensaje con ID", messageId);
-  //       dispatch(getContactByMessageReceivedAction(messageId));
-  //     }
-  //   }, 15000); // Cada 15 segundos
-
-  //   return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
-  // }, [dispatch, businessId]);
 
   return (
     <div className="w-screen">
