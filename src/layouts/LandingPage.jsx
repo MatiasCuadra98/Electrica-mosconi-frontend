@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -85,6 +84,13 @@ const LandingPage = () => {
             >
               COMENCEMOS
             </button>
+              {/* este es el boton de fb, hay que meter la url en el .env */}
+            <a
+              href={`https://electrica-mosconi-server.onrender.com/auth/facebook`}
+              className="w-fit h-fit relative mx-auto mt-4 px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-lg font-normal font-['Oswald']"
+            >
+              INICIAR SESIÓN CON FACEBOOK
+            </a>
           </div>
         </div>
       )}
