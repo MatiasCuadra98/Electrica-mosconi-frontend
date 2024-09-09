@@ -51,7 +51,6 @@ const InboxListUser = () => {
                 name={name}
                 timestamp={timestamp}
                 state={state}
-                active={active}
                 SocialMedium={SocialMedium}
                 ContactId={ContactId}
                 messagesReceived={allMessagesReceived}

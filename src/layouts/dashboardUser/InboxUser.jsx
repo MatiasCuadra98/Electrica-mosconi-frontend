@@ -37,8 +37,8 @@ const InboxUser = () => {
   const msgSent = useSelector((state) => state.messagesSent);
 
   useEffect(() => {
-    console.log("InboxUser useEffect");
-    console.log("me monto por primera vez");
+    // console.log("InboxUser useEffect");
+    // console.log("me monto por primera vez");
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction());
@@ -48,18 +48,18 @@ const InboxUser = () => {
 
   useEffect(() => {
     if (userId) {
-      console.log("me monto si se elije un user o si userId cambia");
+      // console.log("me monto si se elije un user o si userId cambia");
       dispatch(getUserByIdAction(userId));
     }
   }, [dispatch, userId]);
 
   useEffect(() => {
     if (messageActive) {
-      console.log("cambio el mensaje activo, entonces me monto");
+      // console.log("cambio el mensaje activo, entonces me monto");
       dispatch(getAllMessagesReceivedAction());
-      console.log("5 -despacho los mensajes recibidos");
+      // console.log("5 -despacho los mensajes recibidos");
       dispatch(getContactByMessageReceivedAction(messageActive));
-      console.log("6-traigo el contacto por id");
+      // console.log("6-traigo el contacto por id");
     }
   }, [dispatch, messageActive, msgSent]);
 
@@ -75,23 +75,23 @@ const InboxUser = () => {
   }, [dispatch, socket]);
 
   return (
-    <div className="w-screenh-screen-minus-navbar flex overflow-hidden">
+    <div className="w-screen-screen-minus-navbar flex overflow-hidden">
       <div className="w-52 flex-shrink-0">
         <SideBarU />
       </div>
-      <div className="flex flex-1 w-screen-minus-sidebar h-screen-minus-navbar overflow-hidden ">
+      <div className="flex w-screen-minus-sidebar h-screen-minus-navbar overflow-hidden ">
         <div className="flex flex-col">
           <InboxListUser />
         </div>
       </div>
       <div className="flex  items-center justify-center ">
-        {/* {messageActive ? ( */}
-        <img src="/public/imagenFondoCAInactiva.svg" className="-mt-12" />
-        {/* ) : (
-          <div className="flex flex-1 items-center justify-center overflow-y-auto overflow-x-hidden">
+        {!messageActive ? (
+          <img src="/imagenFondoCAInactiva.svg" className="-mt-12" />
+        ) : (
+          <div className="flex  items-center justify-center overflow-y-auto overflow-x-hidden">
             <ConversationActive />
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );

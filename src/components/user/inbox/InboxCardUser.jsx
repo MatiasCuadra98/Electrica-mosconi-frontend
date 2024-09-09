@@ -13,7 +13,6 @@ const InboxCardUser = ({
   name,
   state,
   timestamp,
-  active,
   SocialMedium,
   ContactId,
   messagesReceived,
@@ -25,6 +24,9 @@ const InboxCardUser = ({
   const upperSMName = socialMediaName && socialMediaName.toUpperCase();
   //console.log("red social en mayuscula", upperSMName, id);
   const msgActive = useSelector((state) => state.messageActive);
+  msgActive
+    ? console.log("mensaje activo", msgActive)
+    : console.log("no hay mensaje activo");
 
   const allMsgByContact =
     messagesReceived &&
@@ -34,22 +36,17 @@ const InboxCardUser = ({
     allMsgByContact.filter((message) => message.state === "No Leidos");
 
   const onClickHandler = (id) => {
-    //console.log("funciona el click", id);
-    console.log("activo al inicio", active);
-    dispatch(setActiveMessageAction(""));
-    //dispatch(activeMessageAction(id));
     if (msgActive && msgActive !== id) {
-      // dispatch(activeMessageAction(""));
-      dispatch(updateActiveMessageReceivedAction(msgActive));
+      dispatch(setActiveMessageAction(""));
+      dispatch(setActiveMessageAction(id));
     }
-    dispatch(updateActiveMessageReceivedAction(id));
+    dispatch(setActiveMessageAction(id));
 
     if (noReadMsg) {
       noReadMsg.forEach((message) =>
         dispatch(updateStateMessageReceivedAction(message.id))
       );
     }
-    console.log("activo despues del dispatch", active);
   };
 
   return (
@@ -57,29 +54,7 @@ const InboxCardUser = ({
       className="bg-transparent border-none m-0 p-0"
       onClick={() => onClickHandler(id)}
     >
-      {!active ? (
-        <div className="w-72 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
-          <div className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2">
-            <SocialMediaIcons socialMediaName={upperSMName} />
-          </div>
-
-          <div className="flex flex-col justify-center">
-            <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
-              {name} -{id}
-              <br />
-            </span>
-            <div className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
-              <FormattedTimestamp timestamp={timestamp} />
-              <br />
-            </div>
-          </div>
-          <div className="flex flex-col items-end mr-6">
-            <div className="w-10 h-10 bg-white rounded-full mb-1">
-              <StateMessagesIcons state={state} />
-            </div>
-          </div>
-        </div>
-      ) : (
+      {msgActive && msgActive === id ? (
         <div className="w-72 h-28 relative shadow-inner bg-white flex items-center justify-between p-2">
           <div className="w-full h-full flex items-center justify-between bg-transparent border-l-4 border-t-4 border-b-4 border-amber-500">
             <div className="flex items-center">
@@ -88,7 +63,7 @@ const InboxCardUser = ({
               </div>
               <div className="flex flex-col justify-center ml-8">
                 <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
-                  {name} - {id}
+                  {name}
                   <br />
                 </span>
                 <span className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
@@ -101,6 +76,28 @@ const InboxCardUser = ({
               <div className="w-10 h-10 bg-white rounded-full mb-1">
                 <StateMessagesIcons state={state} />
               </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="w-72 h-28 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
+          <div className="w-12 h-12 opacity-90 rounded-full border-2 border-white mr-2">
+            <SocialMediaIcons socialMediaName={upperSMName} />
+          </div>
+
+          <div className="flex flex-col justify-center">
+            <span className="text-black text-lg font-normal font-['Oswald'] capitalize">
+              {name}
+              <br />
+            </span>
+            <div className="text-black text-[13px] font-normal font-['Oswald'] capitalize">
+              <FormattedTimestamp timestamp={timestamp} />
+              <br />
+            </div>
+          </div>
+          <div className="flex flex-col items-end mr-6">
+            <div className="w-10 h-10 bg-white rounded-full mb-1">
+              <StateMessagesIcons state={state} />
             </div>
           </div>
         </div>
