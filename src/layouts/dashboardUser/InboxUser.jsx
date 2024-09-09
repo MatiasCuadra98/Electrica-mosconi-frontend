@@ -75,23 +75,25 @@ const InboxUser = () => {
   }, [dispatch, socket]);
 
   return (
-    <div className="w-screen-screen-minus-navbar flex overflow-hidden">
+    <div className="w-screen h-screen-minus-navbar flex overflow-hidden">
       <div className="w-52 flex-shrink-0">
         <SideBarU />
       </div>
-      <div className="flex w-screen-minus-sidebar h-screen-minus-navbar overflow-hidden ">
-        <div className="flex flex-col">
+      <div className="flex flex-1 h-full overflow-hidden">
+        <div className="w-72 h-full overflow-y-auto  overflow-x-hidden flex-shrink-0">
           <InboxListUser />
         </div>
-      </div>
-      <div className="flex  items-center justify-center ">
-        {!messageActive ? (
-          <img src="/imagenFondoCAInactiva.svg" className="-mt-12" />
-        ) : (
-          <div className="flex  items-center justify-center overflow-y-auto overflow-x-hidden">
-            <ConversationActive />
-          </div>
-        )}
+        <div className="flex flex-1 h-full overflow-x-hidden">
+          {!messageActive ? (
+            <div className="flex items-center justify-center w-full h-full">
+              <img src="/imagenFondoCAInactiva.svg" className="-mt-12" />
+            </div>
+          ) : (
+            <div className=" h-full overflow-y-auto w-full">
+              <ConversationActive />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -63,9 +63,9 @@ const ConversationDetail = ({ contact }) => {
   //console.log("mensajes ordenados", sortedMessages);
 
   return (
-    <div className="relative flex flex-col overflow-y-auto overflow-x-hidden">
+    <div className="w-full h-screen-minus-navbar relative flex flex-col overflow-y-auto overflow-x-hidden">
       <div className="fixed top-16 right-10 mt-2">
-        <ClouseConversationButton msgReceiveds={contact.MsgReceiveds} />
+        <ClouseConversationButton />
       </div>
       {sortedMessages &&
         sortedMessages.map((message) =>

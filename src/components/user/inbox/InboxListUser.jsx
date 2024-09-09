@@ -35,15 +35,8 @@ const InboxListUser = () => {
         <Spinner />
       ) : allMessagesReceived.length ? (
         messagesByContact.map((message, index) => {
-          const {
-            id,
-            name,
-            timestamp,
-            state,
-            active,
-            SocialMedium,
-            ContactId,
-          } = message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
+          const { id, name, timestamp, state, SocialMedium, ContactId } =
+            message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
           return (
             <div key={index}>
               <InboxCardUser
