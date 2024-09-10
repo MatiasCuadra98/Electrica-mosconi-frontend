@@ -171,19 +171,23 @@ switch (action.type) {
     //FILTROS:
     case FILTER_BY_SOCIAL_MEDIA:
      const allMsgsReceived = state.allMessagesReceived;
-     console.log('todos los mensajes', allMsgsReceived);
-     if ( action.payload === 'TODOS') {
+    // allMsgsReceived.SocialMedium && console.log('todos los mensajes', allMsgsReceived.SocialMedium);
+    //   console.log('payload', action.payload);
+      const payload = action.payload === 'whatsapp' ? 'wathsapp' : action.payload
+     
+     if ( payload === 'TODOS') {
         return {
              ...state,
              messagesReceived: allMsgsReceived,
-             socialMediaFilter: action.payload
+             socialMediaFilter: payload
          }
     } else {
-        const messagesFilteredBySocialMedia = allMsgsReceived.filter(message => message.SocialMedium.name === action.payload)
+        const messagesFilteredBySocialMedia = allMsgsReceived.filter(message => message.SocialMedium && message.SocialMedium.name === payload)
+
             return {
                 ...state,
                 messagesReceived: messagesFilteredBySocialMedia,
-                socialMediaFilter: action.payload
+                socialMediaFilter: payload
             };
     };
     case FILTER_BY_STATE:
@@ -196,14 +200,14 @@ switch (action.type) {
                 stateFilter: action.payload
             }
        } else if (action.payload === 'TODOS' && state.socialMediaFilter !== 'TODOS'){
-        const msgsFiltered = allMessagesReceived.filter(message => message.SocialMedium.name === state.socialMediaFilter)
+        const msgsFiltered = allMessagesReceived.filter(message => message.SocialMedium && message.SocialMedium.name === state.socialMediaFilter)
         return {
             ...state,
             messagesReceived: msgsFiltered,
             stateFilter: action.payload
         }
        } else if (action.payload !== 'TODOS' && state.socialMediaFilter !== 'TODOS'){
-        const msgsFilteredSM = allMessagesReceived.filter(message => message.SocialMedium.name === state.socialMediaFilter)
+        const msgsFilteredSM = allMessagesReceived.filter(message => message.SocialMedium && message.SocialMedium.name === state.socialMediaFilter)
         const msgsFilteredByState = msgsFilteredSM.filter(message => 
             message.state === action.payload)
         return {

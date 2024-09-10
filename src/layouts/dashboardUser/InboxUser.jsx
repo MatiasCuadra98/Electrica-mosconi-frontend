@@ -16,29 +16,27 @@ import { CONNECT_SOCKET, DISCONNECT_SOCKET } from "../../redux/types";
 const InboxUser = () => {
   console.log("InboxUser render");
   const dispatch = useDispatch();
+
+  //traigo data de local storage
+  const businessByLocalStorage = localStorage.getItem("businessId");
+  const userByLocalStorage = localStorage.getItem("userId");
+  const messagesByLocalStorage = localStorage.getItem("lengthMessages");
   //businees
-  const businessRedux = useSelector((state) => state.business);
-  const businessId = businessRedux.id || localStorage.getItem("businessId");
+  const business = useSelector((state) => state.business);
+  const businessId = businessByLocalStorage || business.id;
   //user
-  const userRedux = useSelector((state) => state.user);
-  const userId = userRedux.id || localStorage.getItem("userId");
+  const user = useSelector((state) => state.user);
+  const userId = userByLocalStorage || user.id;
   //socket
   const socket = useSelector((state) => state.socket);
   //mensajes recibidos
   const messagesReceived = useSelector((state) => state.messagesReceived);
-  console.log("mensajes recibidos", messagesReceived.length);
+  console.log("mensajes recibidos", messagesReceived);
   const messageActive = useSelector((state) => state.messageActive);
-  // const messageActive =
-  //   messagesReceived && messagesReceived.find((message) => message.active);
-  // messageActive && console.log("mensajeActivo", messageActive);
-  // //const { messageId } = useParams();
-  // const msgId = messageActive && messageActive.id;
-  //mesajes enviados
+
   const msgSent = useSelector((state) => state.messagesSent);
 
   useEffect(() => {
-    // console.log("InboxUser useEffect");
-    // console.log("me monto por primera vez");
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction());
@@ -48,18 +46,14 @@ const InboxUser = () => {
 
   useEffect(() => {
     if (userId) {
-      // console.log("me monto si se elije un user o si userId cambia");
       dispatch(getUserByIdAction(userId));
     }
   }, [dispatch, userId]);
 
   useEffect(() => {
     if (messageActive) {
-      // console.log("cambio el mensaje activo, entonces me monto");
       dispatch(getAllMessagesReceivedAction());
-      // console.log("5 -despacho los mensajes recibidos");
       dispatch(getContactByMessageReceivedAction(messageActive));
-      // console.log("6-traigo el contacto por id");
     }
   }, [dispatch, messageActive, msgSent]);
 

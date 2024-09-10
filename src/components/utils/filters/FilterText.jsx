@@ -10,16 +10,17 @@ const FilterText = () => {
     <div>
       {socialMediaFilter === "TODOS" && stateFilter !== "TODOS" ? (
         <span className="text-black text-base font-normal font-['Oswald']">
-          No hay mensajes {stateFilter.toUpperCase()} en su OneInbox
+          No hay mensajes {stateFilter.toUpperCase()} en su <br /> OneInbox
         </span>
       ) : socialMediaFilter !== "TODOS" && stateFilter === "TODOS" ? (
         <span className="text-black text-base font-normal font-['Oswald']">
-          No hay mensajes de {socialMediaFilter.toUpperCase()} en su OneInbox
+          No hay mensajes de {socialMediaFilter.toUpperCase()} en su <br />{" "}
+          OneInbox
         </span>
       ) : socialMediaFilter !== "TODOS" && stateFilter !== "TODOS" ? (
         <span className="text-black text-base font-normal font-['Oswald']">
-          No hay mensajes {stateFilter.toUpperCase()} de{" "}
-          {socialMediaFilter.toUpperCase()} en su OneInbox
+          No hay mensajes {stateFilter.toUpperCase()} de <br />
+          {socialMediaFilter.toUpperCase()} en su <br /> OneInbox
         </span>
       ) : (
         <span className="text-black text-base font-normal font-['Oswald']">

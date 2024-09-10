@@ -6,13 +6,23 @@ import Spinner from "../../utils/spinners/Spinner";
 
 const InboxListUser = () => {
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
+  // console.log(allMessagesReceived.length);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
+    let timeoutId;
+    if (allMessagesReceived.length) {
       setLoading(false);
-    }, 3000);
-  }, []);
+    } else {
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
+    }
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId); // Limpia el timeout si el componente se desmonta
+    };
+  }, [allMessagesReceived]);
 
   const sortedMessages = allMessagesReceived
     .slice()
