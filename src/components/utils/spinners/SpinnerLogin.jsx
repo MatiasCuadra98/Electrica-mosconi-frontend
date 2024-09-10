@@ -1,7 +1,6 @@
 import React from "react";
 
 const SpinnerLogin = (props) => {
-  //console.log("spinner: ", props.props.name);
   const name = props.props.name;
   return (
     <div className="w-screen h-screen bg-sky-950 m-0">

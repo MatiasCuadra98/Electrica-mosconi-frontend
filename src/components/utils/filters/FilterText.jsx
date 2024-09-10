@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const FilterText = () => {
-  //const messages = useSelector((state) => state.messagesReceived);
   const socialMediaFilter = useSelector((state) => state.socialMediaFilter);
   const stateFilter = useSelector((state) => state.stateFilter);
 

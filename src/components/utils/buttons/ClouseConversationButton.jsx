@@ -1,10 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {
-  setActiveMessageAction,
-  updateActiveMessageReceivedAction,
-} from "../../../redux/actions/actionMessages";
+import { setActiveMessageAction } from "../../../redux/actions/actionMessages";
 
 const ClouseConversationButton = () => {
   const navigate = useNavigate();

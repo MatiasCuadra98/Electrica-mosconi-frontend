@@ -9,7 +9,6 @@ import { cleanFiltersAction } from "../../../redux/actions/actionFilters";
 const GoHomeButton = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //const msgsReceived = useSelector((state) => state.messagesReceived);
   const msgActive = useSelector((state) => state.messageActive);
 
   const handlerOnClick = () => {

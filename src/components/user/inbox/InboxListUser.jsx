@@ -6,7 +6,6 @@ import Spinner from "../../utils/spinners/Spinner";
 
 const InboxListUser = () => {
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
-  // console.log(allMessagesReceived.length);
 
   const [loading, setLoading] = useState(true);
 
@@ -46,7 +45,7 @@ const InboxListUser = () => {
       ) : allMessagesReceived.length ? (
         messagesByContact.map((message, index) => {
           const { id, name, timestamp, state, SocialMedium, ContactId } =
-            message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
+            message;
           return (
             <div key={index}>
               <InboxCardUser

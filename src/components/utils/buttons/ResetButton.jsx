@@ -5,8 +5,6 @@ import { cleanFiltersAction } from "../../../redux/actions/actionFilters";
 
 const ResetButton = () => {
   const dispatch = useDispatch();
-  // const businessRedux = useSelector((state) => state.business);
-  // const businessId = businessRedux.id || localStorage.getItem("businessId");
 
   const handlerOnClick = () => {
     dispatch(cleanFiltersAction());

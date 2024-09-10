@@ -79,28 +79,25 @@ switch (action.type) {
 //trae todos los usuarios de un negocio
         case GET_ALL_USERS:
             let allBusinessUsers = action.payload
-            //console.log('id business: ', state.business.id);
             const usersFiltered = allBusinessUsers.filter(user => user.Business.id === state.business.id)
-            //console.log('usersFiltered: ', usersFiltered);
             return {
                 ...state,
                 users: usersFiltered,
                 allUsers: usersFiltered
             };
             case GET_USER_BY_ID:
-
                 return {
                     ...state,
                     user: action.payload,
                 };
-                case UPDATE_USER:
-                    return {
-                      ...state,
-                      user: {
+            case UPDATE_USER:
+                return {
+                    ...state,
+                    user: {
                         ...state.user,
                         ...action.payload
-                      }
-                    };
+                    }
+                };
             case CLEAN_USER_BY_ID:
                 return {
                     ...state,
@@ -109,8 +106,7 @@ switch (action.type) {
 //**REDUCER MENSAJES RECIBIDOS */
             case GET_ALL_MESSAGES_RECIVED:
                 const messages = action.payload
-                 const allMessagesFiltered = messages.filter(message => message.BusinessId === state.business.id)
-                 
+                const allMessagesFiltered = messages.filter(message => message.BusinessId === state.business.id) 
                 return {
                     ...state,
                     messagesReceived: allMessagesFiltered,
@@ -122,12 +118,10 @@ switch (action.type) {
                     messageReceived: action.payload
                 }
             case UPDATE_ACTIVE_MESSAGE_RECEIVED: 
-            console.log('entro al reducer de UPDATE_ACTIVE_MESSAGE_RECEIVED');
                 return {
                     ...state,
                 };
             case SET_ACTIVE_MESSAGE:
-                console.log('entro al reducer de SET_ACTIVE_MESSAGE', action.payload);
                 return {
                     ...state,
                     messageActive: action.payload
@@ -171,8 +165,6 @@ switch (action.type) {
     //FILTROS:
     case FILTER_BY_SOCIAL_MEDIA:
      const allMsgsReceived = state.allMessagesReceived;
-    // allMsgsReceived.SocialMedium && console.log('todos los mensajes', allMsgsReceived.SocialMedium);
-    //   console.log('payload', action.payload);
       const payload = action.payload === 'whatsapp' ? 'wathsapp' : action.payload
      
      if ( payload === 'TODOS') {
@@ -192,7 +184,6 @@ switch (action.type) {
     };
     case FILTER_BY_STATE:
         const allMessagesReceived = state.allMessagesReceived;
-        console.log('todos los mensajes', allMessagesReceived);
         if ( action.payload === 'TODOS' && state.socialMediaFilter === 'TODOS') {
            return {
                 ...state,
@@ -218,8 +209,6 @@ switch (action.type) {
        } else{
            const messagesFilteredByState = allMessagesReceived.filter(message => 
             message.state === action.payload)
-           console.log('mensajes filtrados', messagesFilteredByState);
-    
                return {
                    ...state,
                    messagesReceived: messagesFilteredByState,

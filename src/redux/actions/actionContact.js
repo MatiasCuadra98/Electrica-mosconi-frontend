@@ -8,7 +8,6 @@ GET_CONTACT_BY_ID,
 GET_CONTACT_BY_MESSAGE_RECEIVED
 } from "../types";
 
-//const URL = import.meta.env.VITE_API_URL;
 const URL = 'https://electrica-mosconi-server.onrender.com';
 //const URL = 'http://localhost:3000';
 //RUTAS CONTACTOS: 
@@ -30,12 +29,9 @@ export const getContactByIdAction = (contactId) => {
     }
 };
 export const getContactByMessageReceivedAction = (messageId) => {
-    //console.log('entro en la action con mensaje Id', messageId);
     try {
         return async (dispatch) => {
-            //console.log('entro en la ruta de mensaje por id');
             const res = await axios.get(`${URL}/message/received/${messageId}`);
-            //console.log('dataMensaje', res);
             const message = res.data
             const contactId = message.Contact.id;
             const response = await axios.get(`${URL}/contact/${contactId}`);

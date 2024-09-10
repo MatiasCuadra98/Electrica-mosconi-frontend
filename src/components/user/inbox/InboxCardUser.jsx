@@ -17,16 +17,12 @@ const InboxCardUser = ({
   ContactId,
   messagesReceived,
 }) => {
-  //const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const socialMediaName = SocialMedium ? SocialMedium.name : "red Social";
-  //console.log("red social", socialMediaName);
   const upperSMName = socialMediaName && socialMediaName.toUpperCase();
-  //console.log("red social en mayuscula", upperSMName, id);
+
   const msgActive = useSelector((state) => state.messageActive);
-  msgActive
-    ? console.log("mensaje activo", msgActive)
-    : console.log("no hay mensaje activo");
 
   const allMsgByContact =
     messagesReceived &&

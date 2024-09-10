@@ -11,9 +11,7 @@ const store = createStore(rootReducer, composeWithDevTools(
 
 export default store;
 
-
-
-// Configuración para usar Redux DevTools si está disponible
+// Configuración para usar Redux DevTools vieja
 // const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // // middlewares de thunk y socket.io
