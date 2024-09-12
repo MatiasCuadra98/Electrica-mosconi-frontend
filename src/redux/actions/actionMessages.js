@@ -8,15 +8,12 @@ import {
     UPDATE_ACTIVE_MESSAGE_RECEIVED, 
     GET_MESSAGE_RECIVED_BY_ID,
     UPDATE_STATE_MESSAGE_RECEIVED,
-    //DESACTIVATE_ALL_MESSAGES_RECEIVED,
-    //FILTER_BY_SOCIAL_MEDIA,
-    //FILTER_BY_STATE,
     CREATE_MESSAGE_SEND,
     NEW_MESSAGE_RECEIVED,
-    GET_ALL_MESSAGES_SENT
+    GET_ALL_MESSAGES_SENT,
+    SET_ACTIVE_MESSAGE
 } from "../types";
 
-//const URL = import.meta.env.VITE_API_URL;
 
 const URL = 'https://electrica-mosconi-server.onrender.com';
 //const URL = 'http://localhost:3000';
@@ -31,16 +28,12 @@ export const getAllMessagesReceivedAction = () => {
         try {
             const response = await axios.get(`${URL}/message/received`);
             const messages = response.data;
-            //console.log('cantidad de mensajes en action getALL', messages.length);
-            
             dispatch({ type: GET_ALL_MESSAGES_RECIVED, payload: messages });
             
             const { socket } = getState();  // socket desde el estado global
-            
             // esucha nuevos mensajes a través del socket
             if (socket) {
                 socket.on("NEW_MESSAGE_RECEIVED", (newMessage) => {
-                    // Despacha una acción para manejar el nuevo mensaje recibido
                     dispatch({
                         type: NEW_MESSAGE_RECEIVED,
                         payload: newMessage
@@ -50,7 +43,6 @@ export const getAllMessagesReceivedAction = () => {
             
         } catch (error) {
             console.log(error);
-            
             if(error.response.status !== 400) {
                 sweetAlertsError(
                     "Intenta de nuevo",
@@ -91,7 +83,13 @@ export const updateActiveMessageReceivedAction = (messageId) => {
             "Ok"
           );  
     }
+}
 
+export const setActiveMessageAction = (messageId) => {
+    return {
+        type: SET_ACTIVE_MESSAGE,
+        payload: messageId
+    }
 }
 
 export const updateStateMessageReceivedAction = (messageId) => {
@@ -118,22 +116,11 @@ export const deactivateAllMessagesReceivedAction = () => {
   };
 
 export const createMessageSentAction = (input) => {
-    console.log('entro en la action del input', input);
-    return async (dispatch, getState) => {
-        // const { socket } = getState();  // obtenemos el socket desde el estado global
-
+    return async (dispatch) => {
     try {
             const response = await axios.post(`${URL}/telegram/sendMessage`, input);
-            console.log('respuesta de la action', response.data);
             const message = response.data;
-
-           
-            console.log('envio la action al reducer');
-            // despacho al reducer y emitimos un evento de socket con el nuevo mensaje
             dispatch({ type: CREATE_MESSAGE_SEND, payload: message });
-            // if (socket) {
-            //     socket.emit("NEW_MESSAGE_SENT", message);
-            // }
     } catch (error) {
         console.log('error de action', error);
         sweetAlertsError(
@@ -149,15 +136,10 @@ export const getAllMessagesSentAction = () => {
     return async (dispatch) => {
         try {
             const response = await axios.get(`${URL}/message/sent`);
-            
             const messages = response.data;
-            console.log('cantidad de mensajes en action getALLMsgSENT', messages.length);
-            
-            dispatch({ type: GET_ALL_MESSAGES_SENT, payload: messages });
-            
+            dispatch({ type: GET_ALL_MESSAGES_SENT, payload: messages });           
         } catch (error) {
-            
             console.log('messageSent', error);
-        }
+            }        
     }
 };

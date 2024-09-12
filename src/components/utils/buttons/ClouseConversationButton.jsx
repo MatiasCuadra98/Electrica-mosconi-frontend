@@ -1,18 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateActiveMessageReceivedAction } from "../../../redux/actions/actionMessages";
+import { setActiveMessageAction } from "../../../redux/actions/actionMessages";
 
-const ClouseConversationButton = ({ msgReceiveds }) => {
+const ClouseConversationButton = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const msgActive =
-    msgReceiveds && msgReceiveds.find((message) => message.active);
 
   const handlerOnClick = () => {
-    if (msgActive) {
-      dispatch(updateActiveMessageReceivedAction(msgActive.id));
-    }
+    dispatch(setActiveMessageAction(""));
     navigate("/inbox");
   };
 

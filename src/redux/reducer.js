@@ -21,6 +21,7 @@ import {
     ADD_NEW_MESSAGE_SENT, //socket
     CONNECT_SOCKET,//socket
     DISCONNECT_SOCKET,//socket
+    SET_ACTIVE_MESSAGE
 } from './types';
 
 const initialState = {
@@ -39,6 +40,7 @@ const initialState = {
     allMessagesReceived: [],
     //mensaje por id
     messageReceived: {},
+    messageActive: '',
           //**--CONTACTOS--**//
     //contacto por id // mensaje
     contact: {},
@@ -77,28 +79,25 @@ switch (action.type) {
 //trae todos los usuarios de un negocio
         case GET_ALL_USERS:
             let allBusinessUsers = action.payload
-            //console.log('id business: ', state.business.id);
             const usersFiltered = allBusinessUsers.filter(user => user.Business.id === state.business.id)
-            //console.log('usersFiltered: ', usersFiltered);
             return {
                 ...state,
                 users: usersFiltered,
                 allUsers: usersFiltered
             };
             case GET_USER_BY_ID:
-
                 return {
                     ...state,
                     user: action.payload,
                 };
-                case UPDATE_USER:
-                    return {
-                      ...state,
-                      user: {
+            case UPDATE_USER:
+                return {
+                    ...state,
+                    user: {
                         ...state.user,
                         ...action.payload
-                      }
-                    };
+                    }
+                };
             case CLEAN_USER_BY_ID:
                 return {
                     ...state,
@@ -107,8 +106,7 @@ switch (action.type) {
 //**REDUCER MENSAJES RECIBIDOS */
             case GET_ALL_MESSAGES_RECIVED:
                 const messages = action.payload
-                 const allMessagesFiltered = messages.filter(message => message.BusinessId === state.business.id)
-                 
+                const allMessagesFiltered = messages.filter(message => message.BusinessId === state.business.id) 
                 return {
                     ...state,
                     messagesReceived: allMessagesFiltered,
@@ -122,6 +120,11 @@ switch (action.type) {
             case UPDATE_ACTIVE_MESSAGE_RECEIVED: 
                 return {
                     ...state,
+                };
+            case SET_ACTIVE_MESSAGE:
+                return {
+                    ...state,
+                    messageActive: action.payload
                 };
             case UPDATE_STATE_MESSAGE_RECEIVED: 
                 return {
@@ -162,24 +165,25 @@ switch (action.type) {
     //FILTROS:
     case FILTER_BY_SOCIAL_MEDIA:
      const allMsgsReceived = state.allMessagesReceived;
-     console.log('todos los mensajes', allMsgsReceived);
-     if ( action.payload === 'TODOS') {
+      const payload = action.payload === 'whatsapp' ? 'wathsapp' : action.payload
+     
+     if ( payload === 'TODOS') {
         return {
              ...state,
              messagesReceived: allMsgsReceived,
-             socialMediaFilter: action.payload
+             socialMediaFilter: payload
          }
     } else {
-        const messagesFilteredBySocialMedia = allMsgsReceived.filter(message => message.SocialMedium.name === action.payload)
+        const messagesFilteredBySocialMedia = allMsgsReceived.filter(message => message.SocialMedium && message.SocialMedium.name === payload)
+
             return {
                 ...state,
                 messagesReceived: messagesFilteredBySocialMedia,
-                socialMediaFilter: action.payload
+                socialMediaFilter: payload
             };
     };
     case FILTER_BY_STATE:
         const allMessagesReceived = state.allMessagesReceived;
-        console.log('todos los mensajes', allMessagesReceived);
         if ( action.payload === 'TODOS' && state.socialMediaFilter === 'TODOS') {
            return {
                 ...state,
@@ -187,14 +191,14 @@ switch (action.type) {
                 stateFilter: action.payload
             }
        } else if (action.payload === 'TODOS' && state.socialMediaFilter !== 'TODOS'){
-        const msgsFiltered = allMessagesReceived.filter(message => message.SocialMedium.name === state.socialMediaFilter)
+        const msgsFiltered = allMessagesReceived.filter(message => message.SocialMedium && message.SocialMedium.name === state.socialMediaFilter)
         return {
             ...state,
             messagesReceived: msgsFiltered,
             stateFilter: action.payload
         }
        } else if (action.payload !== 'TODOS' && state.socialMediaFilter !== 'TODOS'){
-        const msgsFilteredSM = allMessagesReceived.filter(message => message.SocialMedium.name === state.socialMediaFilter)
+        const msgsFilteredSM = allMessagesReceived.filter(message => message.SocialMedium && message.SocialMedium.name === state.socialMediaFilter)
         const msgsFilteredByState = msgsFilteredSM.filter(message => 
             message.state === action.payload)
         return {
@@ -205,8 +209,6 @@ switch (action.type) {
        } else{
            const messagesFilteredByState = allMessagesReceived.filter(message => 
             message.state === action.payload)
-           console.log('mensajes filtrados', messagesFilteredByState);
-    
                return {
                    ...state,
                    messagesReceived: messagesFilteredByState,

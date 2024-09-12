@@ -10,8 +10,6 @@ import {
     UPDATE_USER,
 } from '../types.js';
 
-//const URL = import.meta.env.VITE_API_URL;
-
 const URL = 'https://electrica-mosconi-server.onrender.com';
 //const URL = 'http://localhost:3000';
 //RUTAS USER:
@@ -26,12 +24,9 @@ export const getAllUsersAction = () => {
     return async (dispatch) => {
                 try {
                 const response = await axios.get(`${URL}/user`);
-                const users = response.data; 
-                //console.log(users);  
+                const users = response.data;  
                 dispatch({type: GET_ALL_USERS, payload: users})
-                //console.log('entro en la accion y voy a reducer con payload: ', users);
             } catch (error) {
-                console.log(error.message);
                 sweetAlertsError(
                     "Intenta de nuevo",
                     "No podemos mostrar a los miembros de tu equipo",
@@ -46,14 +41,10 @@ export const getUserByIdAction = (userId) => {
     return async (dispatch) => {
         try {
             const response = await axios.get(`${URL}/user/${userId}`);
-            const user = response.data; 
-            console.log(user);  
+            const user = response.data;  
             dispatch({type: GET_USER_BY_ID, payload: user})
-            //console.log('entro en la accion y voy a reducer con payload: ', users);
         } catch (error) {
-            console.log(error);
             if(!userId) {
-
                 sweetAlertsError(
                     "Intenta de nuevo",
                     "No encontramos el usuario solicitado",
@@ -61,7 +52,6 @@ export const getUserByIdAction = (userId) => {
                   ); 
             }
         }
-
     }
 };
 
