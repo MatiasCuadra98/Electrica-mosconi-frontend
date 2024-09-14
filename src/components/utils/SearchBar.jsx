@@ -20,14 +20,14 @@ const SearchBar = () => {
   return (
     <div className="w-64 h-[1.75rem] bg-white drop-shadow rounded-[30px] flex items-center gap-1 pl-1">
       <input
-        className=" w-44 bg-white text-sm font-normal font-['Inter'] rounded-[30px]"
+        className=" w-44 bg-white text-black pl-2 font-normal font-['Inter'] rounded-[30px] focus:outline-none"
         type="search"
         value={contact}
         onChange={handlerChange}
         placeholder="contacto..."
       />
       <button
-        className="px-3 py-1 h-6 bg-white hover:bg-amber-500 rounded-[30px] shadow-inner text-sm font-normal font-['Oswald'] flex items-center"
+        className="px-3 py-1 h-6 bg-gray-500 hover:bg-amber-500 rounded-[30px] shadow-inner text-sm font-normal font-['Oswald'] flex items-center"
         onClick={handlerDispatch}
       >
         SEARCH

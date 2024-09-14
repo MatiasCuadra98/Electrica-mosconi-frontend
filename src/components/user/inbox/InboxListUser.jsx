@@ -6,13 +6,22 @@ import Spinner from "../../utils/spinners/Spinner";
 
 const InboxListUser = () => {
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
+    let timeoutId;
+    if (allMessagesReceived.length) {
       setLoading(false);
-    }, 3000);
-  });
+    } else {
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
+    }
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId); // Limpia el timeout si el componente se desmonta
+    };
+  }, [allMessagesReceived]);
 
   const sortedMessages = allMessagesReceived
     .slice()
@@ -28,21 +37,15 @@ const InboxListUser = () => {
       seenContactIds.add(message.ContactId); // ==> agrego el contacto en el conjunto
     }
   }
+
   return (
     <div className="sticky w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
       {loading ? (
         <Spinner />
       ) : allMessagesReceived.length ? (
         messagesByContact.map((message, index) => {
-          const {
-            id,
-            name,
-            timestamp,
-            state,
-            active,
-            SocialMedium,
-            ContactId,
-          } = message; // Desestructurar aca para pasar los props a inboxCardUser correctamente
+          const { id, name, timestamp, state, SocialMedium, ContactId } =
+            message;
           return (
             <div key={index}>
               <InboxCardUser
@@ -50,7 +53,6 @@ const InboxListUser = () => {
                 name={name}
                 timestamp={timestamp}
                 state={state}
-                active={active}
                 SocialMedium={SocialMedium}
                 ContactId={ContactId}
                 messagesReceived={allMessagesReceived}

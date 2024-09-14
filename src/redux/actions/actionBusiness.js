@@ -8,8 +8,6 @@ import {
     UPDATE_BUSINESS
 } from '../types.js';
 
-//const URL = import.meta.env.VITE_API_URL;
-
 const URL = 'https://electrica-mosconi-server.onrender.com';
 //const URL = 'http://localhost:3000';
 //RUTAS BUSINESS:
@@ -22,13 +20,9 @@ export const getBusinessByIdAction = (businessId, businessName) => {
         return async (dispatch) => {
             const response = await axios.get(`${URL}/business/${businessId}`);
             const business = response.data;   
-            //console.log(business);
-            
             dispatch({type: GET_BUSINESS_BY_ID, payload: business}) 
         }
     } catch (error) {
-        //console.log(error.message);
-        
         sweetAlertsError(
             "Intenta de nuevo",
             `No podemos encontrar a ${businessName}`,

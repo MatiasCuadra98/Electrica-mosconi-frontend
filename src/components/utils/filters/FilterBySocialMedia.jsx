@@ -23,7 +23,8 @@ const FilterBySocialMedia = () => {
   // Función para manejar el cambio de estado de un radio button
   const handlerOnChange = (e) => {
     setSelectedFilter(e.target.value);
-    // Despachar la acción de Redux con el valor del filtro seleccionado
+    console.log("filtro seleccionado", e.target.value);
+
     dispatch(filterBySocialMediaAction(e.target.value));
     localStorage.setItem("socialMedia", e.target.value);
   };

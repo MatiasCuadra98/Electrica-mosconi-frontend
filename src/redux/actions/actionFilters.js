@@ -10,13 +10,12 @@ import {
     SEARCH_BY_CONTACT
 } from '../types.js';
 
-//const URL = import.meta.env.VITE_API_URL;
+
 //const URL = 'http://localhost:3000';
-//const URL = 'https://electrica-mosconi-server.onrender.com';
+const URL = 'https://electrica-mosconi-server.onrender.com';
 
 export const filterBySocialMediaAction = (socialMedia) => {
     try {
-        console.log('recibo el filtro con socialMedia', socialMedia);
         return {
             type: FILTER_BY_SOCIAL_MEDIA,
             payload: socialMedia
@@ -32,7 +31,6 @@ export const filterBySocialMediaAction = (socialMedia) => {
 
 export const filterByStateAction = (state) => {
     try {
-        //console.log('recibo el filtro con state', state);
         return {
             type: FILTER_BY_STATE,
             payload: state
@@ -52,17 +50,17 @@ export const cleanFiltersAction = () => {
     };
   };
 
-export const searchByContactAction = (contact) => {
+export const searchByContactAction = (contact) => {  
     try {  
         return async (dispatch) => {
-            const response = await axios.get('ruta que trae un contacto con por nombre y sus mensajes asociados');
-            const messages = response.data;
-            dispatch({type: SEARCH_BY_CONTACT, payload: messages})
+            const response = await axios.get(`${URL}/contact?name=${contact}`);
+            const contacts = response.data;
+            dispatch({type: SEARCH_BY_CONTACT, payload: contacts})            
         };   
     } catch (error) {
         sweetAlertsError(
             "Intenta de nuevo",
-            "No hay mensajes de ese contacto",
+            "No hay mensajes asociados a ese contacto",
             "Ok"
           );
     }
