@@ -31,7 +31,7 @@ const InboxUser = () => {
   const socket = useSelector((state) => state.socket);
   //mensajes recibidos
   const messagesReceived = useSelector((state) => state.messagesReceived);
-  console.log("mensajes recibidos", messagesReceived);
+  console.log("mensajes recibidos", messagesReceived.length);
   const messageActive = useSelector((state) => state.messageActive);
 
   const msgSent = useSelector((state) => state.messagesSent);
