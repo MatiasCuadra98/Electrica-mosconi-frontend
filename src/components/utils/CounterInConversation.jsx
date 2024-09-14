@@ -1,7 +1,6 @@
 import React from "react";
 
 const CounterInConversation = ({ contact }) => {
-  // const contact = useSelector((state) => state.contact);
   const allMsgRecivedByContact = contact && contact.MsgReceiveds;
   const newMsgs =
     allMsgRecivedByContact &&

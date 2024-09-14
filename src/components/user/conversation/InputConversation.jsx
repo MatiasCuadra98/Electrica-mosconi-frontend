@@ -16,13 +16,11 @@ const InputConversation = () => {
   const dispatch = useDispatch();
 
   const contact = useSelector((state) => state.contact);
-  //console.log("contacto en input", contact);
 
   const contactChatId = contact ? contact.chatId : null;
   const messages = contact && contact.MsgReceiveds;
   const newMessages =
     messages && messages.filter((message) => message.state === "Leidos");
-  //console.log(newMessages);
 
   const user = useSelector((state) => state.user);
 
@@ -33,7 +31,6 @@ const InputConversation = () => {
       UserId: user && user.id,
     });
   };
-  // console.log("UserId", input.UserId);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +39,7 @@ const InputConversation = () => {
       newMessages.forEach((message) =>
         dispatch(updateStateMessageReceivedAction(message.id))
       );
-      //console.log("despacho la action del input:", input);
+
       setInput({
         chatId: "",
         message: "",
@@ -82,19 +79,13 @@ const InputConversation = () => {
       <div className="w-full h-20 bg-neutral-200 shadow-inner flex flex-row">
         <input
           className="w-10/12 h-10 bg-white rounded-[30px] shadow-xl mt-7 ml-6 mr-2 p-1 text-black"
-          // id="message"
-          // name="message"
           type="textarea"
           value={input.message}
           onChange={inputHandler}
           placeholder="Escribe tu mensaje..."
           onKeyPress={handleKeyPress} // Manejar la pulsación de tecla
         />
-        <button
-          type="submit"
-          // onClick={handleClick}
-          className="bg-transparent border-none m-0 p-0"
-        >
+        <button type="submit" className="bg-transparent border-none m-0 p-0">
           <img
             src="/send-icon.svg"
             className="w-8 h-auto mt-4"

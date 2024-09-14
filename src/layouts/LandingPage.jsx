@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getBusinessByIdAction } from "../redux/actions/actionBusiness.js";
-import { getAllMessagesSentAction } from "../redux/actions/actionMessages.js";
+import {
+  getAllMessagesReceivedAction,
+  getAllMessagesSentAction,
+} from "../redux/actions/actionMessages.js";
 import { sweetAlertsError } from "../components/utils/alerts/alerts.jsx";
 import SpinnerLogin from "../components/utils/spinners/SpinnerLogin.jsx";
 
@@ -11,7 +14,7 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const business = useSelector((state) => state.business);
-  //console.log("landing: ", business);
+
   //estos datos deberian ser recibidos del login inicial
   const businessId = "1dc868d6-70b4-4de0-91ee-495f4486d3ea";
   const businessName = "Electrica Mosconi";
@@ -19,12 +22,8 @@ const LandingPage = () => {
   useEffect(() => {
     localStorage.setItem("businessId", businessId);
     dispatch(getBusinessByIdAction(businessId, businessName));
+    dispatch(getAllMessagesReceivedAction());
     dispatch(getAllMessagesSentAction());
-    // console.log(
-    //   "despacho la action get business by Id",
-    //   businessId,
-    //   businessName
-    // );
   }, [dispatch]);
 
   const handlerOnClick = () => {
@@ -84,7 +83,7 @@ const LandingPage = () => {
             >
               COMENCEMOS
             </button>
-              {/* este es el boton de fb, hay que meter la url en el .env */}
+            {/* este es el boton de fb, hay que meter la url en el .env */}
             <a
               href={`https://electrica-mosconi-server.onrender.com/auth/facebook`}
               className="w-fit h-fit relative mx-auto mt-4 px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-lg font-normal font-['Oswald']"

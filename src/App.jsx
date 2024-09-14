@@ -4,7 +4,6 @@ import {
   LandingPage,
   NavBar,
   InboxUser,
-  InboxDetailUser,
   LoginAdmi,
   HomeAdmi,
   Profile,
@@ -28,7 +27,6 @@ const App = () => {
   useEffect(() => {
     // Conectar el socket cuando el componente se monta
     dispatch(connectSocket());
-
     return () => {
       // Desconectar el socket cuando el componente se desmonta
       dispatch(disconnectSocket());
@@ -48,10 +46,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/inbox" element={<InboxUser />} />
-        <Route
-          path="/inboxDetailUser/:messageId"
-          element={<InboxDetailUser />}
-        />
         <Route path="/loginAdmi" element={<LoginAdmi />} />
         <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
         <Route path="/dashboardAdmi/profile" element={<Profile />} />

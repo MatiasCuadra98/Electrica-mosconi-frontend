@@ -1,7 +1,7 @@
 import LandingPage from "./LandingPage";
 import NavBar from "../components/NavBar";
 import InboxUser from "./dashboardUser/InboxUser";
-import InboxDetailUser from "./dashboardUser/InboxDetailUser"
+//import InboxDetailUser from "./dashboardUser/InboxDetailUser"
 import LoginAdmi from "../components/LoginAdmi";
 import HomeAdmi from "./dashboardAdmi/HomeAdmi";
 import Profile from "./dashboardAdmi/Profile";
@@ -17,7 +17,7 @@ export {
   LandingPage,
   NavBar,
   InboxUser,
-  InboxDetailUser,
+  //InboxDetailUser,
   LoginAdmi,
   HomeAdmi,
   Profile,
