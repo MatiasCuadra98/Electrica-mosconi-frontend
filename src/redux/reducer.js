@@ -22,7 +22,8 @@ import {
     ADD_NEW_MESSAGE_SENT, //socket
     CONNECT_SOCKET,//socket
     DISCONNECT_SOCKET,//socket
-    SET_ACTIVE_MESSAGE
+    SET_ACTIVE_MESSAGE,
+    SET_UPLOAD_FILE
 } from './types';
 
 const initialState = {
@@ -58,6 +59,8 @@ const initialState = {
 
         //**--SOCKET--**//
     socket: null,
+    //para carga de imagen y archivos
+    uploadedFile: ''
 
 }
 
@@ -152,6 +155,14 @@ switch (action.type) {
             ...state,
             messagesSent: allMessagesSentFiltered,
         };
+    case SET_UPLOAD_FILE:
+        console.log('entro al reducer setUploadFile con payload:', action.payload);
+        
+        return {
+            ...state,
+            uploadedFile: action.payload
+        }
+    
 //CONTACTOS
     case GET_CONTACT_BY_ID:
         return {
