@@ -161,7 +161,8 @@ switch (action.type) {
         return {
             ...state,
             uploadedFile: action.payload
-        }
+        };
+    
     
 //CONTACTOS
     case GET_CONTACT_BY_ID:

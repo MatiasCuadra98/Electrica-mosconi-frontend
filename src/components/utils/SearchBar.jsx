@@ -27,7 +27,7 @@ const SearchBar = () => {
         placeholder="contacto..."
       />
       <button
-        className="px-3 py-1 h-6 bg-gray-500 hover:bg-amber-500 rounded-[30px] shadow-inner text-sm font-normal font-['Oswald'] flex items-center"
+        className="px-3 py-1 h-6 bg-stone-400 hover:bg-amber-500 rounded-[30px]  text-sm font-normal font-['Oswald'] flex items-center"
         onClick={handlerDispatch}
       >
         SEARCH

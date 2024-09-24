@@ -20,7 +20,7 @@ const InboxUser = () => {
   //traigo data de local storage
   const businessByLocalStorage = localStorage.getItem("businessId");
   const userByLocalStorage = localStorage.getItem("userId");
-  const messagesByLocalStorage = localStorage.getItem("lengthMessages");
+  // const messagesByLocalStorage = localStorage.getItem("lengthMessages");
   //businees
   const business = useSelector((state) => state.business);
   const businessId = businessByLocalStorage || business.id;
@@ -30,11 +30,12 @@ const InboxUser = () => {
   //socket
   const socket = useSelector((state) => state.socket);
   //mensajes recibidos
-  const messagesReceived = useSelector((state) => state.messagesReceived);
-  console.log("mensajes recibidos", messagesReceived.length);
+  //const messagesReceived = useSelector((state) => state.messagesReceived);
+  //console.log("mensajes recibidos", messagesReceived.length);
   const messageActive = useSelector((state) => state.messageActive);
 
   const msgSent = useSelector((state) => state.messagesSent);
+  console.log("mensajes enviados", msgSent.length);
 
   useEffect(() => {
     if (businessId) {
