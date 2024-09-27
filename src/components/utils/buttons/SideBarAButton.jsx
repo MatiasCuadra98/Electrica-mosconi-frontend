@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const SideBarAButton = ({ route, nameRoute }) => {
   const location = useLocation();
-  console.log("location", location.pathname);
+  //console.log("location", location.pathname);
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(
     route === location.pathname ? true : false

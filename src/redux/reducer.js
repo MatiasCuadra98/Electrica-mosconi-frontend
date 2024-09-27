@@ -23,7 +23,8 @@ import {
     CONNECT_SOCKET,//socket
     DISCONNECT_SOCKET,//socket
     SET_ACTIVE_MESSAGE,
-    SET_UPLOAD_FILE
+    SET_UPLOAD_FILE,
+    ADMI_LOGIN
 } from './types';
 
 const initialState = {
@@ -36,6 +37,8 @@ const initialState = {
     allUsers: [],
     //usuario por id
     user: {},
+    //admi login-logout
+    admiLogin: false, 
       //**--MENSAJES--**//
     //todos los mensajes recibidos (+ copia para filtros)
     messagesReceived: [],
@@ -67,7 +70,6 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
 switch (action.type) {
     //***--REDUCER DE NEGOCIOS-- */
-//trae un negocio por id//
     case GET_BUSINESS_BY_ID:
         return {
             ...state,
@@ -82,7 +84,6 @@ switch (action.type) {
             }
         };
     //***--REDUCER DE USUARIOS-- */
-//trae todos los usuarios de un negocio
     case GET_ALL_USERS:
         let allBusinessUsers = action.payload
         const usersFiltered = allBusinessUsers.filter(user => user.Business.id === state.business.id)
@@ -92,6 +93,7 @@ switch (action.type) {
             allUsers: usersFiltered
         };
     case GET_USER_BY_ID:
+        //console.log('3A - entro al reducer de GET_USER_BY_ID', action.payload);
         return {
             ...state,
             user: action.payload,
@@ -109,6 +111,12 @@ switch (action.type) {
             ...state,
             user: {}
         }
+//**login logout Administrador **/
+    case ADMI_LOGIN:      
+    return {
+        ...state,
+        admiLogin : action.payload   
+    };
 //**REDUCER MENSAJES RECIBIDOS */
     case GET_ALL_MESSAGES_RECIVED:
         const messages = action.payload
@@ -123,10 +131,6 @@ switch (action.type) {
             ...state,
             messageReceived: action.payload
         }
-    // case UPDATE_ACTIVE_MESSAGE_RECEIVED: 
-    //     return {
-    //         ...state,
-    //     };
     case SET_ACTIVE_MESSAGE:
         return {
             ...state,

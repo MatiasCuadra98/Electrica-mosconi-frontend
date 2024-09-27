@@ -2,6 +2,7 @@ export const GET_ALL_USERS = 'GET_ALL_USERS'
 export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 export const CLEAN_USER_BY_ID = 'CLEAN_USER_BY_ID';
 export const UPDATE_USER = 'UPDATE_USER';
+export const ADMI_LOGIN = 'ADMI_LOGIN';
 
 //filtros
 export const FILTER_BY_SOCIAL_MEDIA = 'FILTER_BY_SOCIAL_MEDIA';

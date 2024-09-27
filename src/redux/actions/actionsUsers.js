@@ -8,6 +8,7 @@ import {
     GET_ALL_USERS,
     GET_USER_BY_ID,
     UPDATE_USER,
+    ADMI_LOGIN,
 } from '../types.js';
 
 const URL = 'https://electrica-mosconi-server.onrender.com';
@@ -38,6 +39,7 @@ export const getAllUsersAction = () => {
 
 
 export const getUserByIdAction = (userId) => {
+    //console.log('2A- entro en getUserByIdAction con ID', userId);
     return async (dispatch) => {
         try {
             const response = await axios.get(`${URL}/user/${userId}`);
@@ -80,3 +82,9 @@ export const updateUserAction = (userId, input) => {
         }
     }
 }
+export const admiLoginAction = (boolean) => {
+    return {
+        type: ADMI_LOGIN,
+        payload: boolean ,
+    }
+};
