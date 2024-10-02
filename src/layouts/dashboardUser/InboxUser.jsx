@@ -14,7 +14,7 @@ import { getContactByMessageReceivedAction } from "../../redux/actions/actionCon
 import { CONNECT_SOCKET, DISCONNECT_SOCKET } from "../../redux/types";
 
 const InboxUser = () => {
-  console.log("InboxUser render");
+  //console.log("InboxUser render");
   const dispatch = useDispatch();
 
   //traigo data de local storage
@@ -29,13 +29,9 @@ const InboxUser = () => {
   const userId = userByLocalStorage || user.id;
   //socket
   const socket = useSelector((state) => state.socket);
-  //mensajes recibidos
-  //const messagesReceived = useSelector((state) => state.messagesReceived);
-  //console.log("mensajes recibidos", messagesReceived.length);
+  //mensajes
   const messageActive = useSelector((state) => state.messageActive);
-
   const msgSent = useSelector((state) => state.messagesSent);
-  console.log("mensajes enviados", msgSent.length);
 
   useEffect(() => {
     if (businessId) {

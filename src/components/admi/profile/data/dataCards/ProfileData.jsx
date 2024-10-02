@@ -1,7 +1,9 @@
 import React from "react";
 import IconUserProfile from "../../IconUserProfile";
+import { useSelector } from "react-redux";
 
-const ProfileData = ({ user }) => {
+const ProfileData = () => {
+  const user = useSelector((state) => state.user);
   return (
     <div className="w-[777px] h-auto bg-neutral-200 rounded-tl-[50px] rounded-tr-[50px] rounded-bl-[50px] relative">
       <div className="left-6 top-5 absolute">

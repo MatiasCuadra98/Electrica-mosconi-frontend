@@ -24,7 +24,8 @@ import {
     DISCONNECT_SOCKET,//socket
     SET_ACTIVE_MESSAGE,
     SET_UPLOAD_FILE,
-    ADMI_LOGIN
+    ADMI_LOGIN,
+    GET_ALL_SOCIAL_MEDIA_BY_BUSINESS
 } from './types';
 
 const initialState = {
@@ -46,13 +47,15 @@ const initialState = {
     //mensaje por id
     messageReceived: {},
     messageActive: '',
+    //mensajes enviados
+    messagesSent: [],
           //**--CONTACTOS--**//
     //contacto por id // mensaje
     contact: {},
     //searchContacts
     //contacts: [],
-    //mensajes enviados
-    messagesSent: [],
+    //**--REDES SOCIALES--* *//
+    socialMedia: [],
 
     //**--ESTADOS PARA CONTADOR DE MENSAJES-- */
     // deben modificarse segun seleccion de filtros y search => asignarle el action.payload
@@ -271,7 +274,18 @@ switch (action.type) {
             ...state,
             messagesSent: [...state.messagesSent, action.payload]
         };
-
+    //** REDUCER DE REDES SOCIALES */
+        case GET_ALL_SOCIAL_MEDIA_BY_BUSINESS:
+            let allSocialMedia = action.payload
+            console.log('ingreso al reducer con payload', allSocialMedia);
+            
+            const socialMediaFiltered =  allSocialMedia.filter(sm => sm.Businesses[0].id === state.business.id)
+            console.log('redes sociales filtradas', socialMediaFiltered);
+            
+            return {
+                ...state,
+                socialMedia: socialMediaFiltered
+            };
 
     default:
         return {

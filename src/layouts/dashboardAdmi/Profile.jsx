@@ -26,7 +26,7 @@ const Profile = () => {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="w-screen h-screen flex overflow-hidden">
+    <div className="w-screen h-screen-minus-navbar flex overflow-hidden">
       <div className="w-52 flex-shrink-0">
         <SideBarA user={user} />
       </div>
