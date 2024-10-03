@@ -83,8 +83,8 @@ const EditSocialMedia = () => {
             </h4>
             {!socialMedia.length ? (
               <div className="flex flex-col items-center my-6 pb-6">
-                <p className="text-base font-normal font-['Inter'] ">
-                  Aún no hay Redes Sociales activas en {business.name}
+                <p className="text-base font-normal font-['Inter'] text-white ">
+                  Aún no hay Redes Sociales activas
                 </p>
               </div>
             ) : !groupB ? (
