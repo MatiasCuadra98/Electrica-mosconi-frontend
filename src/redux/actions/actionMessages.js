@@ -11,7 +11,8 @@ import {
     CREATE_MESSAGE_SEND,
     NEW_MESSAGE_RECEIVED,
     GET_ALL_MESSAGES_SENT,
-    SET_ACTIVE_MESSAGE
+    SET_ACTIVE_MESSAGE,
+    SET_UPLOAD_FILE
 } from "../types";
 
 
@@ -143,3 +144,12 @@ export const getAllMessagesSentAction = () => {
             }        
     }
 };
+
+export const setUploadFileAction = (file) => {
+    console.log('entro en la action setUploadFile con data:', file);
+    
+    return {
+        type: SET_UPLOAD_FILE,
+        payload: file    
+    }
+}

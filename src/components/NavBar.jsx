@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import MessagesCounter from "./utils/MessagesCounter";
 import SearchBar from "./utils/SearchBar";
@@ -7,9 +7,7 @@ import LogoutButton from "./utils/buttons/LogoutButton";
 
 const NavBar = () => {
   const business = useSelector((state) => state.business);
-  const user = useSelector((state) => state.user);
-  const privilege = user ? user.privilege : null;
-  const login = user && user.login;
+  const login = useSelector((state) => state.admiLogin);
 
   return (
     <div className="sticky w-screen h-16 flex">
@@ -23,12 +21,8 @@ const NavBar = () => {
           <br />
           <MessagesCounter />
         </span>
-        {user && privilege === "Admin" && login ? null : <SearchBar />}
-        {user && privilege === "Admin" && login ? (
-          <LogoutButton />
-        ) : (
-          <LoginButton />
-        )}
+        {login ? null : <SearchBar />}
+        {login ? <LogoutButton /> : <LoginButton />}
       </div>
     </div>
   );

@@ -30,12 +30,12 @@ const socketMiddleware = (store) => {
             payload: message,
           });
         });
-        // socket.on("ADD_NEW_MESSAGE_SENT", (message) => {
-        //   store.dispatch({
-        //     type: ADD_NEW_MESSAGE_SENT,
-        //     payload: message,
-        //   });
-        // });
+        socket.on("ADD_NEW_MESSAGE_SENT", (message) => {
+          store.dispatch({
+            type: ADD_NEW_MESSAGE_SENT,
+            payload: message,
+          });
+        });
         break;
 
       case DISCONNECT_SOCKET:

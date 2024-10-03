@@ -2,6 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  getUserByIdAction,
+  admiLoginAction,
+} from "../redux/actions/actionsUsers";
+import { sweetAlertsError } from "./utils/alerts/alerts";
 
 const LoginAdmi = () => {
   const navigate = useNavigate();
@@ -20,16 +25,19 @@ const LoginAdmi = () => {
     });
   };
 
-  const handlerLoginSubmit = (e) => {
+  const handlerLoginSubmit = async (e) => {
     e.preventDefault();
     const user = input.name
-      ? allUsers.find((user) => user.name === input.name)
+      ? allUsers.find(
+          (user) => user.name.toUpperCase() === input.name.toUpperCase()
+        )
       : null;
     if (user && user.password === input.password && user.privilege == "Admin") {
+      dispatch(getUserByIdAction(user.id));
+      dispatch(admiLoginAction(true));
       localStorage.removeItem("userId");
       localStorage.getItem("userId", user.id);
-      dispatch(getUserByIdAction(user.id));
-      navigate("dashboardAdmi/homeAdmi");
+      navigate("/dashboardAdmi/homeAdmi");
     } else {
       sweetAlertsError(
         `${input.name} no tiene privilegios`,
