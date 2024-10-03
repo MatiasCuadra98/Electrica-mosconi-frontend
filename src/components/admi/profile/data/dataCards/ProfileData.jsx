@@ -30,7 +30,7 @@ const ProfileData = () => {
               PRIVILEGIOS:
             </h4>
             <span className="text-base font-normal font-['Inter'] ml-2">
-              {user.privilege ? user.privilege : "Administrador"}
+              {user.privilege === "Admin" ? "Administrador" : "Usuario"}
             </span>
           </div>
           <div className="flex flex-row">
