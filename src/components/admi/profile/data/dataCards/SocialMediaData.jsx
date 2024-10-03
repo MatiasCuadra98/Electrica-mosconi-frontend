@@ -121,46 +121,4 @@ const SocialMediaData = () => {
   );
 };
 
-//         <div className="flex flex-row justify-between px-12 mt-6">
-//           <div className="flex flex-col mb-12">
-//             {groupA &&
-//               groupA.map((sm, index) => (
-//                 <div className="flex flex-row mt-2" key={index}>
-//                   <SocialMediaData
-//                     socialMedia={sm.SocialMedia.name}
-//                     className="w-10 h-10"
-//                   />
-//                   <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2">
-//                     {sm.SocialMedia.name}:
-//                   </h4>
-//                   <span className="text-base font-normal font-['Inter'] ml-2">
-//                     {sm.dataUser}
-//                   </span>
-//                 </div>
-//               ))}
-//           </div>
-//           <div className="flex flex-col px-12 mb-12">
-//             {groupB &&
-//               groupB.map((sm, index) => (
-//                 <div className="flex flex-row mt-2" key={index}>
-//                   <SocialMediaData
-//                     socialMedia={sm.SocialMedia.name}
-//                     className="w-10 h-10"
-//                   />
-//                   <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2">
-//                     {sm.SocialMedia.name}:
-//                   </h4>
-//                   <span className="text-base font-normal font-['Inter'] ml-2">
-//                     {sm.dataUser}
-//                   </span>
-//                 </div>
-//               ))}
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   </div>
-// );
-//};
-
 export default SocialMediaData;

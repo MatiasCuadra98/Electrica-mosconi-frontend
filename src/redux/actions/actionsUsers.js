@@ -65,20 +65,16 @@ export const cleanUserByIdAction = () => {
 
 export const updateUserAction = (userId, input) => {
     return async (dispatch) => {
+        console.log('entro a la action del', userId, 'con data', input);
+        
         try {
-            await axios.put(`${URL}/user/update//${userId}`, input);
-            dispatch({type: UPDATE_USER, payload: input})
-            sweetAlertsSuccessfully(
-                `Felicitaciones ${input.name}!`,
-                `tus datos se actualizaron corectamente: ${res.data.message}.Sigamos con los datos de la empresa`,
-                 "Ok"
-                )
+            await axios.put(`${URL}/user/update/${userId}`, input);
+            dispatch({type: UPDATE_USER })
+            console.log('salgo al reducer');
+
         } catch (error) {
-            sweetAlertsError(
-                `${input.name},  intenta de nuevo...`,
-                "No pudimos actualizar tus datos",
-                "Ok"
-            ); 
+        console.log(error.message);
+ 
         }
     }
 }

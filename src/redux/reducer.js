@@ -25,7 +25,8 @@ import {
     SET_ACTIVE_MESSAGE,
     SET_UPLOAD_FILE,
     ADMI_LOGIN,
-    GET_ALL_SOCIAL_MEDIA_BY_BUSINESS
+    GET_ALL_SOCIAL_MEDIA_BY_BUSINESS,
+    UPDATE_SOCIAL_MEDIA
 } from './types';
 
 const initialState = {
@@ -81,10 +82,6 @@ switch (action.type) {
     case UPDATE_BUSINESS:
         return {
             ...state,
-            user: {
-            ...state.business,
-            ...action.payload
-            }
         };
     //***--REDUCER DE USUARIOS-- */
     case GET_ALL_USERS:
@@ -104,10 +101,6 @@ switch (action.type) {
     case UPDATE_USER:
         return {
             ...state,
-            user: {
-                ...state.user,
-                ...action.payload
-            }
         };
     case CLEAN_USER_BY_ID:
         return {
@@ -280,12 +273,20 @@ switch (action.type) {
             console.log('ingreso al reducer con payload', allSocialMedia);
             
             const socialMediaFiltered =  allSocialMedia.filter(sm => sm.Businesses[0].id === state.business.id)
+            // const socialMediaFiltered =  allSocialMedia.filter(sm => console.log(sm.Businesses[0].id)
+            // )
+
             console.log('redes sociales filtradas', socialMediaFiltered);
             
             return {
                 ...state,
                 socialMedia: socialMediaFiltered
             };
+
+            case UPDATE_SOCIAL_MEDIA:
+        return {
+            ...state,
+        };
 
     default:
         return {

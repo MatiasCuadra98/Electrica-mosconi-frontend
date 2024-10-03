@@ -35,18 +35,9 @@ export const updateBusnisessAction = (busnisessId, input) => {
     return async (dispatch) => {
         try {
             await axios.put(`${URL}/business/update/${busnisessId}`, input);
-            dispatch({type: UPDATE_BUSINESS, payload: input})
-            sweetAlertsSuccessfully(
-                `Felicitaciones!`,
-                `Los datos de ${input.name} se actualizaron corectamente: ${res.data.message}.Sigamos con la palataforma de redes sociales`,
-                 "Ok"
-                )
+            dispatch({type: UPDATE_BUSINESS})
         } catch (error) {
-            sweetAlertsError(
-                'Intenta de nuevo...',
-                `No pudimos actualizar los datos de ${input.name}`,
-                "Ok"
-            ); 
+            console.log(error.message);
         }
     }
 }

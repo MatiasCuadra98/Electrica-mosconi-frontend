@@ -50,7 +50,7 @@ const LoginAdmi = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center">
+    <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
       <div className="w-[368px] h-[414px] bg-sky-950 rounded-tl-[80px] rounded-tr-[80px] rounded-bl-[80px]  flex flex-col items-center justify-center relative">
         <form onSubmit={handlerLoginSubmit}>
           <h1 className="text-white text-2xl font-semibold font-['Inter'] capitalize text-center">
