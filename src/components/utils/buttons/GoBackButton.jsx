@@ -1,11 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const GoBackButton = () => {
+const GoBackButton = (path) => {
   const navigate = useNavigate();
 
   const handlerOnClick = () => {
-    navigate(-1);
+    //console.log("path", path);
+    navigate(path.path);
   };
 
   return (
