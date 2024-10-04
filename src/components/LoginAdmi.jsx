@@ -7,6 +7,7 @@ import {
   admiLoginAction,
 } from "../redux/actions/actionsUsers";
 import { sweetAlertsError } from "./utils/alerts/alerts";
+import FormExitButton from "./utils/buttons/FormExitButton";
 
 const LoginAdmi = () => {
   const navigate = useNavigate();
@@ -53,6 +54,9 @@ const LoginAdmi = () => {
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
       <div className="w-[368px] h-[414px] bg-sky-950 rounded-tl-[80px] rounded-tr-[80px] rounded-bl-[80px]  flex flex-col items-center justify-center relative">
         <form onSubmit={handlerLoginSubmit}>
+          <div className="absolute top-12 right-10">
+            <FormExitButton path={-1} />
+          </div>
           <h1 className="text-white text-2xl font-semibold font-['Inter'] capitalize text-center">
             Bienvenido
           </h1>
