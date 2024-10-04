@@ -77,7 +77,11 @@ const InboxUser = () => {
         <div className="flex flex-1 h-full overflow-x-hidden">
           {!messageActive ? (
             <div className="flex items-center justify-center w-full h-full">
-              <img src="/imagenFondoCAInactiva.svg" className="-mt-12" />
+              <img
+                src="/imagenFondoCAInactiva.svg"
+                className="-mt-12"
+                alt="imagen de fondo"
+              />
             </div>
           ) : (
             <div className=" h-full overflow-y-auto w-full">
