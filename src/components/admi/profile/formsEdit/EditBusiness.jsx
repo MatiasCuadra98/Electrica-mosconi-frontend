@@ -7,6 +7,7 @@ import {
   sweetAlertsSuccessfully,
   sweetAlertsError,
 } from "../../../utils/alerts/alerts";
+import FormExitButton from "../../../utils/buttons/FormExitButton";
 
 const EditBusiness = () => {
   const business = useSelector((state) => state.business);
@@ -53,7 +54,10 @@ const EditBusiness = () => {
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
       <div className="w-[777px] h-auto bg-sky-950 rounded-tr-[50px] rounded-bl-[50px] relative">
         <form onSubmit={handlerEditSubmit}>
-          <div className="flex flex-col items-center pt-6 mt-6">
+          <div className="absolute top-6 right-10">
+            <FormExitButton path={"/dashboardAdmi/homeAdmi"} />
+          </div>
+          <div className="flex flex-col items-center pt-4 mt-4">
             <h4 className="text-white text-sm font-normal font-['Oswald'] uppercase">
               datos de la empresa
             </h4>

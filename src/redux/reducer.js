@@ -272,8 +272,8 @@ switch (action.type) {
             let allSocialMedia = action.payload
             console.log('ingreso al reducer con payload', allSocialMedia);
             
-            const socialMediaFiltered =  allSocialMedia.filter(sm => sm.Businesses[0].id === state.business.id)
-            // const socialMediaFiltered =  allSocialMedia.filter(sm => console.log(sm.Businesses[0].id)
+            const socialMediaFiltered =  allSocialMedia.filter(sm =>sm.Businesses.length && sm.Businesses[0].id === state.business.id)
+            // const socialMediaFiltered =  allSocialMedia.forEach(sm => console.log(sm.Businesses[0].id)
             // )
 
             console.log('redes sociales filtradas', socialMediaFiltered);

@@ -8,6 +8,7 @@ import {
   sweetAlertsSuccessfully,
   sweetAlertsError,
 } from "../../../utils/alerts/alerts";
+import FormExitButton from "../../../utils/buttons/FormExitButton";
 
 const EditProfile = () => {
   const user = useSelector((state) => state.user);
@@ -69,6 +70,9 @@ const EditProfile = () => {
                 className=" w-12 h-auto"
               />
             </div> */}
+          </div>
+          <div className="absolute top-6 right-10">
+            <FormExitButton path={"/dashboardAdmi/homeAdmi"} />
           </div>
           <div className="flex flex-col items-center pt-6 mt-6">
             <h4 className=" text-white text-sm font-normal font-['Oswald'] uppercase">

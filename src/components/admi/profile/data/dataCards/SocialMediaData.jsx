@@ -49,15 +49,18 @@ const SocialMediaData = () => {
                 <div className="w-10 h-10">
                   <SocialMediaIcons
                     socialMedia={
-                      sm.SocialMedia &&
-                      sm.SocialMedia.map((e) => {
-                        return e.name.toUpperCase();
-                      })
+                      !sm.SocialMedia.length
+                        ? "red social"
+                        : sm.SocialMedia.map((e) => {
+                            return e.name.toUpperCase();
+                          })
                     }
                   />
                 </div>
                 <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2 mt-2">
-                  {sm.SocialMedia && sm.SocialMedia.map((e) => e.name)}
+                  {!sm.SocialMedia.length
+                    ? "red social"
+                    : sm.SocialMedia.map((e) => e.name)}
                 </h4>
                 <span className="text-base font-normal font-['Inter'] ml-2 mt-2">
                   {sm.dataUser}
@@ -74,16 +77,19 @@ const SocialMediaData = () => {
                     <div className="w-10 h-10">
                       <SocialMediaIcons
                         socialMedia={
-                          sm.SocialMedia &&
-                          sm.SocialMedia.map((e) => {
-                            return e.name.toUpperCase();
-                          })
+                          !sm.SocialMedia.length
+                            ? "red social"
+                            : sm.SocialMedia.map((e) => {
+                                return e.name.toUpperCase();
+                              })
                         }
                       />
                     </div>
 
                     <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2 mt-2">
-                      {sm.SocialMedia && sm.SocialMedia.map((e) => e.name)}
+                      {!sm.SocialMedia.length
+                        ? "red social"
+                        : sm.SocialMedia.map((e) => e.name)}
                     </h4>
                     <span className="text-base font-normal font-['Inter'] ml-2 mt-2">
                       {sm.dataUser}
@@ -98,15 +104,18 @@ const SocialMediaData = () => {
                     <div className="w-10 h-10">
                       <SocialMediaIcons
                         socialMedia={
-                          sm.SocialMedia &&
-                          sm.SocialMedia.map((e) => {
-                            return e.name.toUpperCase();
-                          })
+                          !sm.SocialMedia.length
+                            ? "red social"
+                            : sm.SocialMedia.map((e) => {
+                                return e.name.toUpperCase();
+                              })
                         }
                       />
                     </div>
                     <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2 mt-2">
-                      {sm.SocialMedia && sm.SocialMedia.map((e) => e.name)}
+                      {!sm.SocialMedia.length
+                        ? "red social"
+                        : sm.SocialMedia.map((e) => e.name)}
                     </h4>
                     <span className="text-base font-normal font-['Inter'] ml-2 mt-2">
                       {sm.dataUser}
