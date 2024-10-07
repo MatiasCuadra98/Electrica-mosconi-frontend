@@ -1,7 +1,7 @@
 const socialMediaJson = [
     {
         id: 1,
-        name: "Mercado Libre",
+        name: "mercado libre",
         icon: "/socialMediaImage/mercadoLibre.svg",
         dataUser: "email@email.com"
     },

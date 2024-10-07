@@ -79,7 +79,7 @@ const EditSocialMedia = () => {
       <div className="w-[777px] h-auto bg-sky-950 rounded-tl-[50px] rounded-tr-[50px] rounded-bl-[50px] relative">
         <form onSubmit={handlerEditSubmit}>
           <div className="absolute top-6 right-10">
-            <FormExitButton path={"/dashboardAdmi/homeAdmi"} />
+            <FormExitButton path={"/dashboardAdmi/profile"} />
           </div>
           <div className="flex flex-col items-center pt-6 mt-6">
             <h4 className=" text-white text-lg font-normal font-['Oswald'] uppercase">
