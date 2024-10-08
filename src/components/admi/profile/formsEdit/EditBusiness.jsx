@@ -3,6 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateBusnisessAction } from "../../../../redux/actions/actionBusiness";
+import {
+  sweetAlertsSuccessfully,
+  sweetAlertsError,
+} from "../../../utils/alerts/alerts";
+import FormExitButton from "../../../utils/buttons/FormExitButton";
 
 const EditBusiness = () => {
   const business = useSelector((state) => state.business);
@@ -28,16 +33,31 @@ const EditBusiness = () => {
   };
   const handlerEditSubmit = (e) => {
     e.preventDefault();
-    // dispatch(updateBusnisessAction(busnisess.id, input));
-    console.log("hay submit");
-    navigate("/dashboardAdmi/profile/edit-socialMedia");
+    try {
+      dispatch(updateBusnisessAction(business.id, input));
+      sweetAlertsSuccessfully(
+        `Felicitaciones!`,
+        `Los datos de ${input.name} se actualizaron corectamente...Sigamos con la palataforma de redes sociales`,
+        "Ok"
+      );
+      navigate("/dashboardAdmi/profile/edit-socialMedia");
+    } catch (error) {
+      sweetAlertsError(
+        "Intenta de nuevo...",
+        `No pudimos actualizar los datos de ${input.name}`,
+        "Ok"
+      );
+    }
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center">
+    <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
       <div className="w-[777px] h-auto bg-sky-950 rounded-tr-[50px] rounded-bl-[50px] relative">
         <form onSubmit={handlerEditSubmit}>
-          <div className="flex flex-col items-center pt-6 mt-6">
+          <div className="absolute top-6 right-10">
+            <FormExitButton path={"/dashboardAdmi/homeAdmi"} />
+          </div>
+          <div className="flex flex-col items-center pt-4 mt-4">
             <h4 className="text-white text-sm font-normal font-['Oswald'] uppercase">
               datos de la empresa
             </h4>

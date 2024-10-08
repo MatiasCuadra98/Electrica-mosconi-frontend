@@ -38,7 +38,8 @@ const App = () => {
       {location.pathname === "/" ||
       location.pathname === "/loginAdmi" ||
       location.pathname === "/dashboardAdmi/profile/edit" ||
-      location.pathname === "/dashboardAdmi/profile/edit-business" ? null : (
+      location.pathname === "/dashboardAdmi/profile/edit-business" ||
+      location.pathname === "/dashboardAdmi/profile/edit-socialMedia" ? null : (
         <div>
           <NavBar />
         </div>
