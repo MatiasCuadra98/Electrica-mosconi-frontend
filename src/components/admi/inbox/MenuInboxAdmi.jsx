@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "../../utils/SearchBar";
 import SelectUser from "../../utils/selectUser/SelectUser";
+import FilterByUser from "./FilterByUser";
 import FilterBySocialMedia from "../../utils/filters/FilterBySocialMedia";
 import FilterByState from "../../utils/filters/FilterByState";
 import ResetButton from "../../utils/buttons/ResetButton";
@@ -30,9 +31,9 @@ import ResetButton from "../../utils/buttons/ResetButton";
 const MenuInboxAdmi = () => {
   return (
     <div className="sticky w-64 h-screen overflow-y-auto overflow-x-hidden bg-green-400 flex flex-col py-4">
-      <div className="flex flex-col justify-between pt-8">
-        <SearchBar />
-        <SelectUser />
+      <div className="flex flex-col justify-between pt-6">
+        <SearchBar customWidth="w-48" />
+        <FilterByUser />
         <div className="mt-4">
           <FilterBySocialMedia />
         </div>
@@ -41,7 +42,7 @@ const MenuInboxAdmi = () => {
         </div>
         <div className="flex flex-col items-center mt-6">
           <div className="mb-2">
-            <ResetButton />
+            <ResetButton customBg="bg-green-400" />
           </div>
         </div>
       </div>
