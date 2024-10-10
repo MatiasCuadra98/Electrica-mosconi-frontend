@@ -7,10 +7,13 @@ import SocialMediaIcons from "../../utils/icons/socialMediaIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 import ArchivedButton from "./ArchivedButton";
 import FilterText from "../../utils/filters/FilterText";
+import IconUser from "../../utils/selectUser/IconUser";
 
 const InboxAdmiTable = () => {
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
-  console.log("mensajes en inboxAdmi", allMessagesReceived);
+  // allMessagesReceived.forEach((msg) => {
+  //   console.log("mensajes en inboxAdmi", msg.Contact);
+  // });
 
   const [loading, setLoading] = useState(true);
 
@@ -42,6 +45,10 @@ const InboxAdmiTable = () => {
       seenContactIds.add(message.ContactId); // ==> agrego el contacto en el conjunto
     }
   }
+
+  messagesByContact.forEach((msg) => {
+    console.log("mensajes por contacto", msg.Contact);
+  });
 
   return (
     <div>
@@ -90,11 +97,6 @@ const InboxAdmiTable = () => {
               </tr>
             ) : (
               messagesByContact.map((message, index) => {
-                {
-                  console.log(
-                    message.SocialMedium && message.SocialMedium.name
-                  );
-                }
                 return (
                   <tr key={index} className="odd:bg-white even:bg-stone-300 ">
                     <td className="pl-6 pr-4 py-2 text-center">
@@ -102,7 +104,16 @@ const InboxAdmiTable = () => {
                     </td>
                     {/* esta deberia ser la fecha en la que se recibio el primer mensaje del contacto */}
                     <td className="px-4 py-2 text-center text-xs font-normal font-['Inter'] capitalize">
-                      <FormattedTimestamp timestamp={message.timestamp} />
+                      <FormattedTimestamp
+                        timestamp={
+                          message.Contact &&
+                          message.Contact.MsgReceiveds.length > 0
+                            ? message.Contact.MsgReceiveds.sort(
+                                (a, b) => a.timestamp - b.timestamp
+                              )[0].timestamp
+                            : null
+                        }
+                      />
                     </td>
                     <td className="px-4 py-2 text-center w-8 h-8">
                       <SocialMediaIcons
@@ -117,9 +128,27 @@ const InboxAdmiTable = () => {
                       {message.name}
                     </td>
                     {/* esta deberia traer el icono del usuario que respondio */}
-                    <td className="px-4 py-2 text-center"> ICONO USER </td>
+                    <td className="pl-6 pr-4 py-2 text-center w-8 h-8 ">
+                      <IconUser
+                        name={
+                          message.Contact &&
+                          message.Contact.MsgSents.length > 0 &&
+                          message.Contact.MsgSents.Users
+                            ? message.Contact.MsgSents.Users.name
+                            : null
+                        }
+                      />
+                    </td>
                     <td className="px-4 py-2 text-center text-xs font-normal font-['Inter'] capitalize">
-                      <FormattedTimestamp timestamp={message.timestamp} />
+                      <FormattedTimestamp
+                        timestamp={
+                          message.Contact && message.Contact.MsgSents.length > 0
+                            ? message.Contact.MsgSents.sort(
+                                (a, b) => b.timestamp - a.timestamp
+                              )[0].timestamp
+                            : null
+                        }
+                      />
                     </td>
                     <td className="pl-8 pr-4 py-2 text-center ">
                       <ArchivedButton />
