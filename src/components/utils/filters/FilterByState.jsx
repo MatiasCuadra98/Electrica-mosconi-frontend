@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import statesJson from "../../../../public/json/statesJson";
 import { filterByStateAction } from "../../../redux/actions/actionFilters";
 
-const FilterByState = () => {
+const FilterByState = ({ statesList }) => {
+  console.log("statesList", statesList);
+
   const dispatch = useDispatch();
 
   // Estado para almacenar el filtro seleccionado
@@ -22,8 +23,8 @@ const FilterByState = () => {
 
   return (
     <div>
-      {statesJson &&
-        statesJson.map((state, index) => {
+      {statesList &&
+        statesList.map((state, index) => {
           return (
             <div key={index} className="flex items-center m-2">
               <img src={state.icon} className="w-8 h-8" />

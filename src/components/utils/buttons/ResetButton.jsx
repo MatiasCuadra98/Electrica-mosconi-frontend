@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllMessagesReceivedAction } from "../../../redux/actions/actionMessages";
 import { cleanFiltersAction } from "../../../redux/actions/actionFilters";
 
-const ResetButton = () => {
+const ResetButton = ({ customBg = "bg-sky-950 border-gray-700" }) => {
   const dispatch = useDispatch();
 
   const handlerOnClick = () => {
@@ -15,7 +15,7 @@ const ResetButton = () => {
     <div>
       <button
         onClick={handlerOnClick}
-        className="w-fit h-fit  px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-sm font-normal font-['Oswald']"
+        className={`w-fit h-fit  px-8 py-1 ${customBg} hover:bg-amber-500 rounded-[30px] shadow-inner text-white text-sm font-normal font-['Oswald']`}
       >
         RESET
       </button>

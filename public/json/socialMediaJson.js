@@ -1,13 +1,13 @@
 const socialMediaJson = [
     {
         id: 1,
-        name: "Mercado Libre",
+        name: "mercado libre",
         icon: "/socialMediaImage/mercadoLibre.svg",
         dataUser: "email@email.com"
     },
     {
         id: 2,
-        name: "Instagram",
+        name: "instagram",
         icon: "/socialMediaImage/instagram.svg",
         dataUser: "nombre user"
     },
@@ -22,6 +22,12 @@ const socialMediaJson = [
         name: "telegram",
         icon: "/socialMediaImage/telegram.svg",
         dataUser: "usuario" 
+    },
+    {
+        id: 5, 
+        name: "facebook",
+        icon: "/socialMediaImage/facebook.svg",
+        dataUser: "usuario"
     }
 
 ]

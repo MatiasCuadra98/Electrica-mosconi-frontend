@@ -20,7 +20,7 @@ const FormattedTimestamp = ({ timestamp }) => {
   // Verificar si la fecha es válida
   if (isNaN(date.getTime())) {
     //console.error("Invalid date:", timestamp);
-    return <span>Invalid Date</span>;
+    return <span>sin fecha</span>;
   }
 
   // Formatear la fecha

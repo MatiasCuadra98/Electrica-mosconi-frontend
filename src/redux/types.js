@@ -1,14 +1,15 @@
 export const GET_ALL_USERS = 'GET_ALL_USERS'
 export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 export const CLEAN_USER_BY_ID = 'CLEAN_USER_BY_ID';
-export const UPDATE_USER = 'UPDATE_USER';
 export const ADMI_LOGIN = 'ADMI_LOGIN';
+export const UPDATE_USER = 'UPDATE_USER';
 
 //filtros
 export const FILTER_BY_SOCIAL_MEDIA = 'FILTER_BY_SOCIAL_MEDIA';
 export const FILTER_BY_STATE = 'FILTER_BY_STATE';
 export const SEARCH_BY_CONTACT = 'SEARCH_BY_CONTACT';
 export const CLEAN_FILTERS =  'CLEAN_FILTERS';
+export const FILTER_BY_USER = 'FILTER_BY_USER';
 
 //mensajes recibidos
 export const GET_ALL_MESSAGES_RECIVED = 'GET_ALL_MESSAGES_RECIVED';
@@ -42,3 +43,6 @@ export const DISCONNECT_SOCKET = 'DISCONNECT_SOCKET';
 //mios:
 export const ADD_NEW_MESSAGE_RECEIVED = 'ADD_NEW_MESSAGE_RECEIVED';
 export const ADD_NEW_MESSAGE_SENT = 'ADD_NEW_MESSAGE_SENT'
+
+
+

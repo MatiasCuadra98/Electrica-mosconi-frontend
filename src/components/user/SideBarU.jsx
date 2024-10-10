@@ -4,6 +4,7 @@ import FilterBySocialMedia from "../utils/filters/FilterBySocialMedia";
 import FilterByState from "../utils/filters/FilterByState";
 import ResetButtom from "../utils/buttons/ResetButton";
 import GoHomeButton from "../utils/buttons/GoHomeButton";
+import statesJson2 from "../../../public/json/statesJson2";
 
 const SideBarU = () => {
   return (
@@ -19,7 +20,7 @@ const SideBarU = () => {
           <FilterBySocialMedia />
         </div>
         <div className="mt-4">
-          <FilterByState />
+          <FilterByState statesList={statesJson2} />
         </div>
         <div className="flex flex-col items-center mt-6">
           <div className="mb-2">

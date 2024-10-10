@@ -72,7 +72,7 @@ const EditProfile = () => {
             </div> */}
           </div>
           <div className="absolute top-6 right-10">
-            <FormExitButton path={"/dashboardAdmi/homeAdmi"} />
+            <FormExitButton path={"/dashboardAdmi/profile"} />
           </div>
           <div className="flex flex-col items-center pt-6 mt-6">
             <h4 className=" text-white text-sm font-normal font-['Oswald'] uppercase">

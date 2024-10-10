@@ -7,7 +7,8 @@ import {
     FILTER_BY_SOCIAL_MEDIA,
     FILTER_BY_STATE,
     CLEAN_FILTERS, 
-    SEARCH_BY_CONTACT
+    SEARCH_BY_CONTACT,
+    FILTER_BY_USER
 } from '../types.js';
 
 
@@ -65,3 +66,19 @@ export const searchByContactAction = (contact) => {
           );
     }
 };
+
+export const filterByUserAction = (userId) => {
+try {
+    return {
+        type: FILTER_BY_USER,
+        payload: userId
+    } 
+} catch (error) {
+    sweetAlertsError(
+        "Intenta de nuevo",
+        "No podemos mostrar tu selección",
+        "Ok"
+      );
+    
+}
+}
