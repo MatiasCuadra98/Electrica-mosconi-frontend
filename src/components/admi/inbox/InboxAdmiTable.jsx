@@ -71,12 +71,19 @@ const InboxAdmiTable = () => {
           </tr>
         </thead>
         {loading ? (
-          <Spinner />
+          <tr>
+            <td colSpan="7" className="text-center py-4 h-[600px]">
+              <Spinner />
+            </td>
+          </tr>
         ) : (
           <tbody className="overflow-x-auto">
             {!allMessagesReceived.length ? (
               <tr>
-                <td colSpan="7" className="text-center py-4">
+                <td
+                  colSpan="7"
+                  className="text-center py-4 h-[600px] font-normal font-['Inter']"
+                >
                   No hay datos disponibles
                 </td>
               </tr>

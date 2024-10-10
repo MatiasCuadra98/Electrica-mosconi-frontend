@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import statesJson from "../../../../public/json/statesJson";
 import { filterByStateAction } from "../../../redux/actions/actionFilters";
 
 const FilterByState = ({ statesList }) => {

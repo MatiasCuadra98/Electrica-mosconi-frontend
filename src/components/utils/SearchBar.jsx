@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByContactAction } from "../../redux/actions/actionFilters";
 
-const SearchBar = ({ customWidth = "w-64" }) => {
+const SearchBar = ({ customWidth = "w-64", customButton = "bg-stone-400" }) => {
   const dispatch = useDispatch();
   const [contact, setContact] = useState("");
 
@@ -29,7 +29,7 @@ const SearchBar = ({ customWidth = "w-64" }) => {
         placeholder="contacto..."
       />
       <button
-        className="px-3 py-1 h-6 bg-stone-400 hover:bg-amber-500 rounded-[30px]  text-sm font-normal font-['Oswald'] flex items-center"
+        className={`px-3 py-1 h-6 ${customButton} hover:bg-amber-500 rounded-[30px]  text-sm font-normal font-['Oswald'] flex items-center`}
         onClick={handlerDispatch}
       >
         SEARCH
