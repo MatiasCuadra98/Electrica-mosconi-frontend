@@ -6,6 +6,7 @@ import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
 import SocialMediaIcons from "../../utils/icons/socialMediaIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 import ArchivedButton from "./ArchivedButton";
+import FilterText from "../../utils/filters/FilterText";
 
 const InboxAdmiTable = () => {
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
@@ -84,7 +85,7 @@ const InboxAdmiTable = () => {
                   colSpan="7"
                   className="text-center py-4 h-[600px] font-normal font-['Inter']"
                 >
-                  No hay datos disponibles
+                  <FilterText />
                 </td>
               </tr>
             ) : (
