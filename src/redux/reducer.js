@@ -26,7 +26,8 @@ import {
     SET_UPLOAD_FILE,
     ADMI_LOGIN,
     GET_ALL_SOCIAL_MEDIA_BY_BUSINESS,
-    UPDATE_SOCIAL_MEDIA
+    UPDATE_SOCIAL_MEDIA,
+    FILTER_BY_USER
 } from './types';
 
 const initialState = {
@@ -62,6 +63,7 @@ const initialState = {
     // deben modificarse segun seleccion de filtros y search => asignarle el action.payload
     socialMediaFilter: 'TODOS',
     stateFilter: 'TODOS',
+    userFilter: ' usuario...',
     inputContact: '',
 
         //**--SOCKET--**//
@@ -242,6 +244,23 @@ switch (action.type) {
             socialMediaFilter: 'TODOS',
             //contacts: []
         }
+
+        case FILTER_BY_USER:
+            const allMsgsRecd = state.allMessagesReceived;
+            if ( payload === ' usuario...') {
+                return {
+                    ...state,
+                    messagesReceived: allMsgsRecd,
+                    userFilter: payload
+                }
+            } else {
+                const messagesFilteredByUser = allMsgsRecd.filter(message => message.SocialMedium && message.SocialMedium.name === payload)
+                return {
+                    ...state,
+                    messagesReceived: messagesFilteredByUser,
+                    userFilter: payload
+                };
+            };
 
 // CASOS PARA socket
     case CONNECT_SOCKET:

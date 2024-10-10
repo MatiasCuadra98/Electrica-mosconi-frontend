@@ -1,10 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {
-  getUserByIdAction,
-  cleanUserByIdAction,
-} from "../../../redux/actions/actionsUsers";
+import { filterByUserAction } from "../../../redux/actions/actionFilters";
 
 const FilterByUser = () => {
   const dispatch = useDispatch();
@@ -14,11 +11,10 @@ const FilterByUser = () => {
   const selectHandler = async (e) => {
     const value = e.target.value;
     if (value === "") {
-      localStorage.removeItem("userId");
-      dispatch(cleanUserByIdAction());
+      localStorage.removeItem("filterUser");
     } else {
-      localStorage.setItem("userId", value);
-      dispatch(getUserByIdAction(value));
+      localStorage.setItem("filterUser", value);
+      dispatch(filterByUserAction(value));
     }
   };
 
