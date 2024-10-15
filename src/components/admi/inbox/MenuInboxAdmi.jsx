@@ -12,7 +12,7 @@ const MenuInboxAdmi = () => {
       <div className="flex flex-col justify-between">
         <SearchBar
           customWidth="w-44 mx-auto"
-          customButton="bg-green-400 -ml-16 text-white"
+          customButton="bg-green-400 -ml-[4.7rem] text-white"
         />
         <FilterByUser />
         <div className="mt-6">
