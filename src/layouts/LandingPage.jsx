@@ -39,10 +39,12 @@ const LandingPage = () => {
       //este dispatch deberia ejecutarse con un login inicial NIY
       dispatch(getBusinessByIdAction(businessId, businessName));
       setLoading(true);
-      setTimeout(() => {
-        navigate("/inbox");
-        setLoading(false);
-      }, 4000);
+      if(businessName) {
+        setTimeout(() => {
+          navigate("/inbox");
+          setLoading(false);
+        }, 4000);
+      }
     }
   };
 
