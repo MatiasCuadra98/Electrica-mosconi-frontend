@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "../../utils/SearchBar";
-import FilterByUser from "./FilterByUser";
+import FilterByUser from "../FilterByUser";
 import FilterBySocialMedia from "../../utils/filters/FilterBySocialMedia";
 import FilterByState from "../../utils/filters/FilterByState";
 import ResetButton from "../../utils/buttons/ResetButton";

@@ -53,15 +53,15 @@ const InboxAdmiTable = () => {
   return (
     <div>
       <table className="min-w-full table-auto bg-white ">
-        <thead className="bg-stone-400 shadow-md">
+        <thead className="bg-stone-200 shadow-md relative z-10">
           <tr>
             <th className=" px-4 py-2 text-sm text-center text-normal font-['Oswald']">
               ESTADO
             </th>
             <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
-              FECHA INICIAL
+              INICIO
             </th>
-            <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald'] whitespace-nowrap">
               RED SOCIAL
             </th>
             <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
@@ -71,7 +71,7 @@ const InboxAdmiTable = () => {
               USUARIO
             </th>
             <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
-              FECHA RESPUESTA
+              RESPUESTA
             </th>
             <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
               ARCHIVAR
@@ -115,7 +115,7 @@ const InboxAdmiTable = () => {
                         }
                       />
                     </td>
-                    <td className="px-4 py-2 text-center w-8 h-8">
+                    <td className="px-[1.75rem] py-2 text-center w-6 h-6">
                       <SocialMediaIcons
                         socialMedia={
                           message.SocialMedium
