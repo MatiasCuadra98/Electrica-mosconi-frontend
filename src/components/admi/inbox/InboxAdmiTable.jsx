@@ -127,7 +127,6 @@ const InboxAdmiTable = () => {
                     <td className="px-4 py-2 text-center text-sm font-normal font-['Inter'] capitalize">
                       {message.name}
                     </td>
-                    {/* esta deberia traer el icono del usuario que respondio */}
                     <td className="pl-6 pr-4 py-2 text-center w-8 h-8 ">
                       <IconUser
                         name={

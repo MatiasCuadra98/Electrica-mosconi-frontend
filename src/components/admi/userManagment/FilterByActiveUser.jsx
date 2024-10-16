@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 import userActiveJson from "../../../../public/json/userActiveJson";
-import { useState} from 'react';
+import { useState } from "react";
 
 const FilterByActiveUser = () => {
-    const [selectedFilter, setSelectedFilter] = useState("TODOS");
+  const [selectedFilter, setSelectedFilter] = useState("TODOS");
 
-    const handlerOnChange = (e) => {
-        setSelectedFilter(e.target.value)
-        console.log('elijo a: ', selectedFilter);    
-    }
-  
-    return (
-        <div>
-            <span> FILTER BY ACTIVE USER: <br/> No Implement Yet </span>
-        {userActiveJson &&
-            userActiveJson.map((element, index) => {
-            return (
+  const handlerOnChange = (e) => {
+    setSelectedFilter(e.target.value);
+    console.log("elijo a: ", selectedFilter);
+  };
+
+  return (
+    <div>
+      {/* <span> FILTER BY ACTIVE USER: <br/> No Implement Yet </span> */}
+      {userActiveJson &&
+        userActiveJson.map((element, index) => {
+          return (
             <div key={index} className="flex items-center m-2">
               <img src={element.icon} className="w-8 h-8" />
               <label className=" text-white text-sm font-normal font-['Oswald'] capitalize ml-3 ">
@@ -32,8 +32,8 @@ const FilterByActiveUser = () => {
             </div>
           );
         })}
-        </div>
-    )
+    </div>
+  );
 };
 
 export default FilterByActiveUser;
