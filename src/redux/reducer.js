@@ -25,7 +25,10 @@ import {
     SET_ACTIVE_MESSAGE,
     SET_UPLOAD_FILE,
     ADMI_LOGIN,
-    GET_ALL_SOCIAL_MEDIA_BY_BUSINESS
+    GET_ALL_SOCIAL_MEDIA_BY_BUSINESS,
+    UPDATE_SOCIAL_MEDIA,
+    FILTER_BY_USER, 
+    GET_USER_BY_ADMI
 } from './types';
 
 const initialState = {
@@ -38,6 +41,7 @@ const initialState = {
     allUsers: [],
     //usuario por id
     user: {},
+    userByAdmi: {},
     //admi login-logout
     admiLogin: false, 
       //**--MENSAJES--**//
@@ -61,6 +65,7 @@ const initialState = {
     // deben modificarse segun seleccion de filtros y search => asignarle el action.payload
     socialMediaFilter: 'TODOS',
     stateFilter: 'TODOS',
+    userFilter: 'TODOS',
     inputContact: '',
 
         //**--SOCKET--**//
@@ -81,10 +86,6 @@ switch (action.type) {
     case UPDATE_BUSINESS:
         return {
             ...state,
-            user: {
-            ...state.business,
-            ...action.payload
-            }
         };
     //***--REDUCER DE USUARIOS-- */
     case GET_ALL_USERS:
@@ -104,16 +105,18 @@ switch (action.type) {
     case UPDATE_USER:
         return {
             ...state,
-            user: {
-                ...state.user,
-                ...action.payload
-            }
         };
     case CLEAN_USER_BY_ID:
         return {
             ...state,
             user: {}
         }
+        case GET_USER_BY_ADMI:
+        //console.log('3A - entro al reducer de GET_USER_BY_ID', action.payload);
+        return {
+            ...state,
+            userByAdmi: action.payload,
+        };
 //**login logout Administrador **/
     case ADMI_LOGIN:      
     return {
@@ -250,6 +253,23 @@ switch (action.type) {
             //contacts: []
         }
 
+        case FILTER_BY_USER:
+            const allMsgsRecd = state.allMessagesReceived;
+            if ( action.payload === 'TODOS') {
+                return {
+                    ...state,
+                    messagesReceived: allMsgsRecd,
+                    userFilter: action.payload
+                }
+            } else {
+                const messagesFilteredByUser = allMsgsRecd.filter(message => message.Contact && message.Contact.MsgSent && message.Contact.MsgSent.User && message.Contact.MsgSents.Users.id === action.payload)
+                return {
+                    ...state,
+                    messagesReceived: messagesFilteredByUser,
+                    userFilter: action.payload
+                };
+            };
+
 // CASOS PARA socket
     case CONNECT_SOCKET:
         return {
@@ -279,13 +299,21 @@ switch (action.type) {
             let allSocialMedia = action.payload
             console.log('ingreso al reducer con payload', allSocialMedia);
             
-            const socialMediaFiltered =  allSocialMedia.filter(sm => sm.Businesses[0].id === state.business.id)
+            const socialMediaFiltered =  allSocialMedia.filter(sm =>sm.Businesses.length && sm.Businesses[0].id === state.business.id)
+            // const socialMediaFiltered =  allSocialMedia.forEach(sm => console.log(sm.Businesses[0].id)
+            // )
+
             console.log('redes sociales filtradas', socialMediaFiltered);
             
             return {
                 ...state,
                 socialMedia: socialMediaFiltered
             };
+
+            case UPDATE_SOCIAL_MEDIA:
+        return {
+            ...state,
+        };
 
     default:
         return {
