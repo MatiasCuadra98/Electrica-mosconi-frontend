@@ -1,4 +1,3 @@
-import React from "react";
 import SelectUser from "../utils/selectUser/SelectUser";
 import FilterBySocialMedia from "../utils/filters/FilterBySocialMedia";
 import FilterByState from "../utils/filters/FilterByState";
