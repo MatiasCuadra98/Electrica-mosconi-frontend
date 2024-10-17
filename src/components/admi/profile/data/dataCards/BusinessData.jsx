@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-const BusinessData = ({ business }) => {
+const BusinessData = () => {
+  const business = useSelector((state) => state.business);
   return (
     <div className="w-[777px] h-auto bg-neutral-200 rounded-tr-[50px] rounded-bl-[50px] relative">
       <div className="flex flex-col items-center pt-6 mt-6">

@@ -4,6 +4,11 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateUserAction } from "../../../../redux/actions/actionsUsers";
+import {
+  sweetAlertsSuccessfully,
+  sweetAlertsError,
+} from "../../../utils/alerts/alerts";
+import FormExitButton from "../../../utils/buttons/FormExitButton";
 
 const EditProfile = () => {
   const user = useSelector((state) => state.user);
@@ -28,12 +33,26 @@ const EditProfile = () => {
 
   const handlerEditSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUserAction(user.id, input));
-    navigate("/dashboardAdmi/profile/edit-business");
+    try {
+      console.log("despacho la action al", user.id, "con data", input);
+      dispatch(updateUserAction(user.id, input));
+      sweetAlertsSuccessfully(
+        `Felicitaciones ${input.name}!`,
+        `tus datos se actualizaron corectamente...Sigamos con los datos de la empresa`,
+        "Ok"
+      );
+      navigate("/dashboardAdmi/profile/edit-business");
+    } catch (error) {
+      sweetAlertsError(
+        `${input.name},  intenta de nuevo...`,
+        "No pudimos actualizar tus datos",
+        "Ok"
+      );
+    }
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center">
+    <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
       <div className="w-[777px] h-auto bg-sky-950 rounded-tl-[50px] rounded-tr-[50px] rounded-bl-[50px] relative">
         <form onSubmit={handlerEditSubmit}>
           {/* NIY edit imagen: falta implementar cloudinary para la imagen */}
@@ -45,12 +64,15 @@ const EditProfile = () => {
             ) : (
               <IconUserProfile name={user.name} />
             )}
-            <div className="left-10 top-7 absolute">
+            {/* <div className="left-10 top-7 absolute">
               <img
                 src="/actionIcons/pencilEdit-icon.svg"
                 className=" w-12 h-auto"
               />
-            </div>
+            </div> */}
+          </div>
+          <div className="absolute top-6 right-10">
+            <FormExitButton path={"/dashboardAdmi/profile"} />
           </div>
           <div className="flex flex-col items-center pt-6 mt-6">
             <h4 className=" text-white text-sm font-normal font-['Oswald'] uppercase">

@@ -1,7 +1,12 @@
-import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  getUserByIdAction,
+  admiLoginAction,
+} from "../redux/actions/actionsUsers";
+import { sweetAlertsError } from "./utils/alerts/alerts";
+import FormExitButton from "./utils/buttons/FormExitButton";
 
 const LoginAdmi = () => {
   const navigate = useNavigate();
@@ -20,16 +25,19 @@ const LoginAdmi = () => {
     });
   };
 
-  const handlerLoginSubmit = (e) => {
+  const handlerLoginSubmit = async (e) => {
     e.preventDefault();
     const user = input.name
-      ? allUsers.find((user) => user.name === input.name)
+      ? allUsers.find(
+          (user) => user.name.toUpperCase() === input.name.toUpperCase()
+        )
       : null;
     if (user && user.password === input.password && user.privilege == "Admin") {
+      dispatch(getUserByIdAction(user.id));
+      dispatch(admiLoginAction(true));
       localStorage.removeItem("userId");
       localStorage.getItem("userId", user.id);
-      dispatch(getUserByIdAction(user.id));
-      navigate("dashboardAdmi/homeAdmi");
+      navigate("/dashboardAdmi/homeAdmi");
     } else {
       sweetAlertsError(
         `${input.name} no tiene privilegios`,
@@ -42,16 +50,19 @@ const LoginAdmi = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center">
+    <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
       <div className="w-[368px] h-[414px] bg-sky-950 rounded-tl-[80px] rounded-tr-[80px] rounded-bl-[80px]  flex flex-col items-center justify-center relative">
         <form onSubmit={handlerLoginSubmit}>
+          <div className="absolute top-12 right-10">
+            <FormExitButton path={-1} />
+          </div>
           <h1 className="text-white text-2xl font-semibold font-['Inter'] capitalize text-center">
             Bienvenido
           </h1>
           <div className="flex flex-col items-center justify-center my-10">
             <input
               placeholder="Usuario"
-              className="w-72 h-8 bg-white rounded-[30px] shadow-inner p-4"
+              className="w-72 h-8 bg-white rounded-[30px] shadow-inner p-4 text-black"
               id="name"
               type="text"
               value={input.name}
@@ -60,7 +71,7 @@ const LoginAdmi = () => {
             />
             <input
               placeholder="Contraseña"
-              className="w-72 h-8 bg-white rounded-[30px] shadow-inner mt-4 p-4"
+              className="w-72 h-8 bg-white rounded-[30px] shadow-inner mt-4 p-4 text-black"
               type="password"
               id="password"
               name="password"

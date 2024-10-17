@@ -22,7 +22,13 @@ import {
     ADD_NEW_MESSAGE_SENT, //socket
     CONNECT_SOCKET,//socket
     DISCONNECT_SOCKET,//socket
-    SET_ACTIVE_MESSAGE
+    SET_ACTIVE_MESSAGE,
+    SET_UPLOAD_FILE,
+    ADMI_LOGIN,
+    GET_ALL_SOCIAL_MEDIA_BY_BUSINESS,
+    UPDATE_SOCIAL_MEDIA,
+    FILTER_BY_USER, 
+    GET_USER_BY_ADMI
 } from './types';
 
 const initialState = {
@@ -35,6 +41,9 @@ const initialState = {
     allUsers: [],
     //usuario por id
     user: {},
+    userByAdmi: {},
+    //admi login-logout
+    admiLogin: false, 
       //**--MENSAJES--**//
     //todos los mensajes recibidos (+ copia para filtros)
     messagesReceived: [],
@@ -42,29 +51,33 @@ const initialState = {
     //mensaje por id
     messageReceived: {},
     messageActive: '',
+    //mensajes enviados
+    messagesSent: [],
           //**--CONTACTOS--**//
     //contacto por id // mensaje
     contact: {},
     //searchContacts
     //contacts: [],
-    //mensajes enviados
-    messagesSent: [],
+    //**--REDES SOCIALES--* *//
+    socialMedia: [],
 
     //**--ESTADOS PARA CONTADOR DE MENSAJES-- */
     // deben modificarse segun seleccion de filtros y search => asignarle el action.payload
     socialMediaFilter: 'TODOS',
     stateFilter: 'TODOS',
+    userFilter: 'TODOS',
     inputContact: '',
 
         //**--SOCKET--**//
     socket: null,
+    //para carga de imagen y archivos
+    uploadedFile: ''
 
 }
 
 const rootReducer = (state = initialState, action) => {
 switch (action.type) {
     //***--REDUCER DE NEGOCIOS-- */
-//trae un negocio por id//
     case GET_BUSINESS_BY_ID:
         return {
             ...state,
@@ -73,13 +86,8 @@ switch (action.type) {
     case UPDATE_BUSINESS:
         return {
             ...state,
-            user: {
-            ...state.business,
-            ...action.payload
-            }
         };
     //***--REDUCER DE USUARIOS-- */
-//trae todos los usuarios de un negocio
     case GET_ALL_USERS:
         let allBusinessUsers = action.payload
         const usersFiltered = allBusinessUsers.filter(user => user.Business.id === state.business.id)
@@ -89,6 +97,7 @@ switch (action.type) {
             allUsers: usersFiltered
         };
     case GET_USER_BY_ID:
+        //console.log('3A - entro al reducer de GET_USER_BY_ID', action.payload);
         return {
             ...state,
             user: action.payload,
@@ -96,16 +105,24 @@ switch (action.type) {
     case UPDATE_USER:
         return {
             ...state,
-            user: {
-                ...state.user,
-                ...action.payload
-            }
         };
     case CLEAN_USER_BY_ID:
         return {
             ...state,
             user: {}
         }
+        case GET_USER_BY_ADMI:
+        //console.log('3A - entro al reducer de GET_USER_BY_ID', action.payload);
+        return {
+            ...state,
+            userByAdmi: action.payload,
+        };
+//**login logout Administrador **/
+    case ADMI_LOGIN:      
+    return {
+        ...state,
+        admiLogin : action.payload   
+    };
 //**REDUCER MENSAJES RECIBIDOS */
     case GET_ALL_MESSAGES_RECIVED:
         const messages = action.payload
@@ -120,10 +137,6 @@ switch (action.type) {
             ...state,
             messageReceived: action.payload
         }
-    // case UPDATE_ACTIVE_MESSAGE_RECEIVED: 
-    //     return {
-    //         ...state,
-    //     };
     case SET_ACTIVE_MESSAGE:
         return {
             ...state,
@@ -152,6 +165,15 @@ switch (action.type) {
             ...state,
             messagesSent: allMessagesSentFiltered,
         };
+    case SET_UPLOAD_FILE:
+        console.log('entro al reducer setUploadFile con payload:', action.payload);
+        
+        return {
+            ...state,
+            uploadedFile: action.payload
+        };
+    
+    
 //CONTACTOS
     case GET_CONTACT_BY_ID:
         return {
@@ -231,6 +253,23 @@ switch (action.type) {
             //contacts: []
         }
 
+        case FILTER_BY_USER:
+            const allMsgsRecd = state.allMessagesReceived;
+            if ( action.payload === 'TODOS') {
+                return {
+                    ...state,
+                    messagesReceived: allMsgsRecd,
+                    userFilter: action.payload
+                }
+            } else {
+                const messagesFilteredByUser = allMsgsRecd.filter(message => message.Contact && message.Contact.MsgSent && message.Contact.MsgSent.User && message.Contact.MsgSents.Users.id === action.payload)
+                return {
+                    ...state,
+                    messagesReceived: messagesFilteredByUser,
+                    userFilter: action.payload
+                };
+            };
+
 // CASOS PARA socket
     case CONNECT_SOCKET:
         return {
@@ -255,7 +294,26 @@ switch (action.type) {
             ...state,
             messagesSent: [...state.messagesSent, action.payload]
         };
+    //** REDUCER DE REDES SOCIALES */
+        case GET_ALL_SOCIAL_MEDIA_BY_BUSINESS:
+            let allSocialMedia = action.payload
+            console.log('ingreso al reducer con payload', allSocialMedia);
+            
+            const socialMediaFiltered =  allSocialMedia.filter(sm =>sm.Businesses.length && sm.Businesses[0].id === state.business.id)
+            // const socialMediaFiltered =  allSocialMedia.forEach(sm => console.log(sm.Businesses[0].id)
+            // )
 
+            console.log('redes sociales filtradas', socialMediaFiltered);
+            
+            return {
+                ...state,
+                socialMedia: socialMediaFiltered
+            };
+
+            case UPDATE_SOCIAL_MEDIA:
+        return {
+            ...state,
+        };
 
     default:
         return {

@@ -8,6 +8,7 @@ import {
 } from "../redux/actions/actionMessages.js";
 import { sweetAlertsError } from "../components/utils/alerts/alerts.jsx";
 import SpinnerLogin from "../components/utils/spinners/SpinnerLogin.jsx";
+import { getAllSocialMediaByBusinessAction } from "../redux/actions/actionSocialMedia.js";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const LandingPage = () => {
   const business = useSelector((state) => state.business);
 
   //estos datos deberian ser recibidos del login inicial
-  const businessId = "1dc868d6-70b4-4de0-91ee-495f4486d3ea";
+  const businessId = "53c2e647-ce26-41f7-915e-aac13b11c92a";
   const businessName = "Electrica Mosconi";
 
   useEffect(() => {
@@ -24,7 +25,8 @@ const LandingPage = () => {
     dispatch(getBusinessByIdAction(businessId, businessName));
     dispatch(getAllMessagesReceivedAction());
     dispatch(getAllMessagesSentAction());
-  }, [dispatch]);
+    dispatch(getAllSocialMediaByBusinessAction());
+  }, [dispatch, businessId]);
 
   const handlerOnClick = () => {
     if (!businessId) {
@@ -37,10 +39,12 @@ const LandingPage = () => {
       //este dispatch deberia ejecutarse con un login inicial NIY
       dispatch(getBusinessByIdAction(businessId, businessName));
       setLoading(true);
-      setTimeout(() => {
-        navigate("/inbox");
-        setLoading(false);
-      }, 4000);
+      if(businessName) {
+        setTimeout(() => {
+          navigate("/inbox");
+          setLoading(false);
+        }, 4000);
+      }
     }
   };
 

@@ -14,13 +14,13 @@ import { getContactByMessageReceivedAction } from "../../redux/actions/actionCon
 import { CONNECT_SOCKET, DISCONNECT_SOCKET } from "../../redux/types";
 
 const InboxUser = () => {
-  console.log("InboxUser render");
+  //console.log("InboxUser render");
   const dispatch = useDispatch();
 
   //traigo data de local storage
   const businessByLocalStorage = localStorage.getItem("businessId");
   const userByLocalStorage = localStorage.getItem("userId");
-  const messagesByLocalStorage = localStorage.getItem("lengthMessages");
+  // const messagesByLocalStorage = localStorage.getItem("lengthMessages");
   //businees
   const business = useSelector((state) => state.business);
   const businessId = businessByLocalStorage || business.id;
@@ -29,11 +29,8 @@ const InboxUser = () => {
   const userId = userByLocalStorage || user.id;
   //socket
   const socket = useSelector((state) => state.socket);
-  //mensajes recibidos
-  const messagesReceived = useSelector((state) => state.messagesReceived);
-  console.log("mensajes recibidos", messagesReceived.length);
+  //mensajes
   const messageActive = useSelector((state) => state.messageActive);
-
   const msgSent = useSelector((state) => state.messagesSent);
 
   useEffect(() => {
@@ -80,7 +77,11 @@ const InboxUser = () => {
         <div className="flex flex-1 h-full overflow-x-hidden">
           {!messageActive ? (
             <div className="flex items-center justify-center w-full h-full">
-              <img src="/imagenFondoCAInactiva.svg" className="-mt-12" />
+              <img
+                src="/imagenFondoCAInactiva.svg"
+                className="-mt-12"
+                alt="imagen de fondo"
+              />
             </div>
           ) : (
             <div className=" h-full overflow-y-auto w-full">

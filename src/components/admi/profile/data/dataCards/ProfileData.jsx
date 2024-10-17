@@ -1,7 +1,9 @@
 import React from "react";
 import IconUserProfile from "../../IconUserProfile";
+import { useSelector } from "react-redux";
 
-const ProfileData = ({ user }) => {
+const ProfileData = () => {
+  const user = useSelector((state) => state.user);
   return (
     <div className="w-[777px] h-auto bg-neutral-200 rounded-tl-[50px] rounded-tr-[50px] rounded-bl-[50px] relative">
       <div className="left-6 top-5 absolute">
@@ -28,7 +30,7 @@ const ProfileData = ({ user }) => {
               PRIVILEGIOS:
             </h4>
             <span className="text-base font-normal font-['Inter'] ml-2">
-              {user.privilege ? user.privilege : "Administrador"}
+              {user.privilege === "Admin" ? "Administrador" : "Usuario"}
             </span>
           </div>
           <div className="flex flex-row">

@@ -1,15 +1,32 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import SocialMediaIcons from "../../../../utils/icons/socialMediaIcons";
 
-const SocialMediaData = ({ socialMedia }) => {
-  const sort =
-    socialMedia.length > 1
+const SocialMediaData = () => {
+  const business = useSelector((state) => state.business);
+  const socialMedia = useSelector((state) => state.socialMedia);
+
+  console.log("redes sociales", socialMedia);
+
+  const socialMediaSortered =
+    socialMedia && socialMedia.length > 1
       ? socialMedia.sort((a, b) => {
-          a.name - b.name;
+          // a.SocialMedia.name - b.SocialMedia.name;
+          return a.SocialMedia[0].name.localeCompare(b.SocialMedia[0].name);
         })
       : socialMedia;
-  const half = Math.ceil(sort.length / 2);
-  const groupA = socialMedia.length > 1 ? sort.slice(0, half) : sort;
-  const groupB = socialMedia.length > 1 ? sort.slice(half) : false;
+  console.log("sortered", socialMediaSortered);
+
+  const half = Math.ceil(socialMediaSortered.length / 2);
+  const groupA =
+    socialMedia.length > 1
+      ? socialMediaSortered.slice(0, half)
+      : socialMediaSortered;
+
+  const groupB =
+    socialMedia.length > 1 ? socialMediaSortered.slice(half) : false;
+  // console.log("grupoA", groupA);
+  // console.log("grupoB", groupB);
 
   return (
     <div className="w-[777px] h-auto bg-neutral-200 rounded-br-[50px] rounded-tr-[50px] rounded-bl-[50px] relative">
@@ -19,22 +36,37 @@ const SocialMediaData = ({ socialMedia }) => {
             plataforma redes sociales
           </h1>
         </div>
-        {!groupB ? (
-          <div div className="flex flex-col justify-between px-12 mt-6">
-            <div className="mb-12">
-              {groupA &&
-                groupA.map((sm, index) => (
-                  <div className="flex flex-row mt-2" key={index}>
-                    <img src={sm.icon} className="w-10 h-10" />
-                    <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2">
-                      {sm.name}:
-                    </h4>
-                    <span className="text-base font-normal font-['Inter'] ml-2">
-                      {sm.dataUser}
-                    </span>
-                  </div>
-                ))}
-            </div>
+        {!socialMedia.length ? (
+          <div className="flex flex-col items-center my-6 pb-6">
+            <p className="text-base font-normal font-['Inter'] ">
+              Aún no hay Redes Sociales activas en {business.name}
+            </p>
+          </div>
+        ) : !groupB ? (
+          <div>
+            {socialMedia.map((sm, index) => (
+              <div className="flex flex-row mt-2" key={index}>
+                <div className="w-10 h-10">
+                  <SocialMediaIcons
+                    socialMedia={
+                      !sm.SocialMedia.length
+                        ? "red social"
+                        : sm.SocialMedia.map((e) => {
+                            return e.name.toUpperCase();
+                          })
+                    }
+                  />
+                </div>
+                <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2 mt-2">
+                  {!sm.SocialMedia.length
+                    ? "red social"
+                    : sm.SocialMedia.map((e) => e.name)}
+                </h4>
+                <span className="text-base font-normal font-['Inter'] ml-2 mt-2">
+                  {sm.dataUser}
+                </span>
+              </div>
+            ))}
           </div>
         ) : (
           <div className="flex flex-row justify-between px-12 mt-6">
@@ -42,11 +74,24 @@ const SocialMediaData = ({ socialMedia }) => {
               {groupA &&
                 groupA.map((sm, index) => (
                   <div className="flex flex-row mt-2" key={index}>
-                    <img src={sm.icon} className="w-10 h-10" />
-                    <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2">
-                      {sm.name}:
+                    <div className="w-10 h-10">
+                      <SocialMediaIcons
+                        socialMedia={
+                          !sm.SocialMedia.length
+                            ? "red social"
+                            : sm.SocialMedia.map((e) => {
+                                return e.name.toUpperCase();
+                              })
+                        }
+                      />
+                    </div>
+
+                    <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2 mt-2">
+                      {!sm.SocialMedia.length
+                        ? "red social"
+                        : sm.SocialMedia.map((e) => e.name)}
                     </h4>
-                    <span className="text-base font-normal font-['Inter'] ml-2">
+                    <span className="text-base font-normal font-['Inter'] ml-2 mt-2">
                       {sm.dataUser}
                     </span>
                   </div>
@@ -56,11 +101,23 @@ const SocialMediaData = ({ socialMedia }) => {
               {groupB &&
                 groupB.map((sm, index) => (
                   <div className="flex flex-row mt-2" key={index}>
-                    <img src={sm.icon} className="w-10 h-10" />
-                    <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2">
-                      {sm.name}:
+                    <div className="w-10 h-10">
+                      <SocialMediaIcons
+                        socialMedia={
+                          !sm.SocialMedia.length
+                            ? "red social"
+                            : sm.SocialMedia.map((e) => {
+                                return e.name.toUpperCase();
+                              })
+                        }
+                      />
+                    </div>
+                    <h4 className="text-m font-normal font-['Oswald'] uppercase ml-2 mt-2">
+                      {!sm.SocialMedia.length
+                        ? "red social"
+                        : sm.SocialMedia.map((e) => e.name)}
                     </h4>
-                    <span className="text-base font-normal font-['Inter'] ml-2">
+                    <span className="text-base font-normal font-['Inter'] ml-2 mt-2">
                       {sm.dataUser}
                     </span>
                   </div>

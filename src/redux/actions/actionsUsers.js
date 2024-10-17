@@ -8,6 +8,7 @@ import {
     GET_ALL_USERS,
     GET_USER_BY_ID,
     UPDATE_USER,
+    ADMI_LOGIN,
 } from '../types.js';
 
 const URL = 'https://electrica-mosconi-server.onrender.com';
@@ -38,6 +39,7 @@ export const getAllUsersAction = () => {
 
 
 export const getUserByIdAction = (userId) => {
+    //console.log('2A- entro en getUserByIdAction con ID', userId);
     return async (dispatch) => {
         try {
             const response = await axios.get(`${URL}/user/${userId}`);
@@ -55,6 +57,7 @@ export const getUserByIdAction = (userId) => {
     }
 };
 
+
 export const cleanUserByIdAction = () => {
         return {
             type: CLEAN_USER_BY_ID,
@@ -63,20 +66,39 @@ export const cleanUserByIdAction = () => {
 
 export const updateUserAction = (userId, input) => {
     return async (dispatch) => {
+        console.log('entro a la action del', userId, 'con data', input);
+        
         try {
-            await axios.put(`${URL}/user/update//${userId}`, input);
-            dispatch({type: UPDATE_USER, payload: input})
-            sweetAlertsSuccessfully(
-                `Felicitaciones ${input.name}!`,
-                `tus datos se actualizaron corectamente: ${res.data.message}.Sigamos con los datos de la empresa`,
-                 "Ok"
-                )
+            await axios.put(`${URL}/user/update/${userId}`, input);
+            dispatch({type: UPDATE_USER })
+            console.log('salgo al reducer');
+
         } catch (error) {
-            sweetAlertsError(
-                `${input.name},  intenta de nuevo...`,
-                "No pudimos actualizar tus datos",
-                "Ok"
-            ); 
+        console.log(error.message);
+ 
         }
     }
 }
+export const admiLoginAction = (boolean) => {
+    return {
+        type: ADMI_LOGIN,
+        payload: boolean ,
+    }
+};
+
+export const getUserByAdmiAction = (userId) => {
+    //console.log('2A- entro en getUserByIdAction con ID', userId);
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(`${URL}/user/${userId}`);
+            const user = response.data;  
+            dispatch({type: GET_USER_BY_ADMI, payload: user})
+        } catch (error) {
+                sweetAlertsError(
+                    "Intenta de nuevo",
+                    "No encontramos el usuario solicitado",
+                    "Ok"
+                  ); 
+            }
+        }
+};

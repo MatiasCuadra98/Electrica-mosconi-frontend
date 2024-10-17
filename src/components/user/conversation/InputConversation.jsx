@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createMessageSentAction,
+  setUploadFileAction,
   updateStateMessageReceivedAction,
 } from "../../../redux/actions/actionMessages";
 import { sweetAlertsError } from "../../utils/alerts/alerts";
+import UploadFiles from "../../utils/UploadFiles";
 
 const InputConversation = () => {
   const [input, setInput] = useState({
@@ -16,13 +18,34 @@ const InputConversation = () => {
   const dispatch = useDispatch();
 
   const contact = useSelector((state) => state.contact);
+  const user = useSelector((state) => state.user);
+  const uploadedFile = useSelector((state) => state.uploadedFile);
+  // console.log("uploadFile en InputConversation", uploadedFile);
+  // const [preview, setPreview] = useState(uploadedFile ? true : false);
+  // console.log("preview", preview);
 
   const contactChatId = contact ? contact.chatId : null;
   const messages = contact && contact.MsgReceiveds;
   const newMessages =
     messages && messages.filter((message) => message.state === "Leidos");
 
-  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    if (uploadedFile) {
+      // Si hay archivo subido, establece el mensaje como la URL del archivo
+      setInput((prev) => ({
+        ...prev,
+        message: uploadedFile,
+        UserId: user && user.id,
+        chatId: contactChatId,
+      }));
+    } else {
+      // Si se borra el archivo subido, limpia el campo de mensaje
+      setInput((prev) => ({
+        ...prev,
+        message: "",
+      }));
+    }
+  }, [uploadedFile, user, contactChatId]);
 
   const inputHandler = (e) => {
     setInput({
@@ -30,21 +53,31 @@ const InputConversation = () => {
       message: e.target.value,
       UserId: user && user.id,
     });
+    //}
+    //console.log("input", input);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (uploadedFile) {
+      setInput({
+        chatId: contactChatId,
+        message: uploadedFile,
+        UserId: user && user.id,
+      });
+    }
+    //setPreview(false);
     if (input.UserId && input.message && input.chatId) {
       dispatch(createMessageSentAction(input));
       newMessages.forEach((message) =>
         dispatch(updateStateMessageReceivedAction(message.id))
       );
-
       setInput({
         chatId: "",
         message: "",
         UserId: "",
       });
+      uploadedFile && dispatch(setUploadFileAction(""));
     } else if (!input.UserId && input.message && input.chatId) {
       sweetAlertsError(
         "Seleccioná un Usuario!",
@@ -85,7 +118,11 @@ const InputConversation = () => {
           placeholder="Escribe tu mensaje..."
           onKeyPress={handleKeyPress} // Manejar la pulsación de tecla
         />
-        <button type="submit" className="bg-transparent border-none m-0 p-0">
+        <UploadFiles />
+        <button
+          type="submit"
+          className="bg-transparent border-none mx-0 my-2 p-0"
+        >
           <img
             src="/send-icon.svg"
             className="w-8 h-auto mt-4"

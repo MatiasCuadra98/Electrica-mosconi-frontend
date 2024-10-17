@@ -22,7 +22,7 @@ import { connectSocket, disconnectSocket } from "./redux/actions/actionSocket";
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  console.log("APP: prueba doble renderizado");
+  //console.log("APP: prueba doble renderizado");
 
   useEffect(() => {
     // Conectar el socket cuando el componente se monta
@@ -38,7 +38,8 @@ const App = () => {
       {location.pathname === "/" ||
       location.pathname === "/loginAdmi" ||
       location.pathname === "/dashboardAdmi/profile/edit" ||
-      location.pathname === "/dashboardAdmi/profile/edit-business" ? null : (
+      location.pathname === "/dashboardAdmi/profile/edit-business" ||
+      location.pathname === "/dashboardAdmi/profile/edit-socialMedia" ? null : (
         <div>
           <NavBar />
         </div>

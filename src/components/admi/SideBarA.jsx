@@ -4,7 +4,7 @@ import SideBarAButton from "../utils/buttons/SideBarAButton";
 import routes from "../../../public/json/routes";
 
 const SideBarA = ({ user }) => {
-  //   const user = useSelector((state) => state.user);
+  //const user = useSelector((state) => state.user);
   //   console.log("user", user);
   return (
     <div className="w-52 h-screen bg-sky-950 fixed top-0">
@@ -15,8 +15,8 @@ const SideBarA = ({ user }) => {
       />
       <div className="flex flex-col justify-between pt-8">
         <div className="flex items-center justify-center">
-          <IconUser name={user.name} />
-          {user.name ? (
+          <IconUser name={user && user.name} />
+          {user && user.name ? (
             <h4 className="text-md text-white text-base font-normal font-['Oswald'] capitalize ">
               {user.name}
             </h4>
