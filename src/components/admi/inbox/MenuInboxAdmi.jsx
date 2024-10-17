@@ -1,23 +1,31 @@
 import React from "react";
 import SearchBar from "../../utils/SearchBar";
-import SelectUser from "../../utils/selectUser/SelectUser";
-import FilterBySociaMedia from "../../utils/filters/FilterBySocialMedia";
+import FilterByUser from "../FilterByUser";
+import FilterBySocialMedia from "../../utils/filters/FilterBySocialMedia";
 import FilterByState from "../../utils/filters/FilterByState";
 import ResetButton from "../../utils/buttons/ResetButton";
+import statesJson from "../../../../public/json/statesJson";
 
 const MenuInboxAdmi = () => {
   return (
-    <div className="sticky w-64 h-screen overflow-y-auto overflow-x-hidden bg-green-400 flex flex-col justify-between items-center">
-      <div className="flex flex-col justify-center items-center space-y-2 w-full mt-10">
-        <SearchBar />
-        <SelectUser />
-      </div>
-      <div className=" flex flex-col flex-grow justify-center items-center space-y-2 w-full">
-        <FilterBySociaMedia />
-        <FilterByState />
-      </div>
-      <div className="w-full">
-        <ResetButton />
+    <div className="sticky w-64 h-screen overflow-y-auto overflow-x-hidden bg-green-400 flex flex-col py-4">
+      <div className="flex flex-col justify-between">
+        <SearchBar
+          customWidth="w-44 mx-auto"
+          customButton="bg-green-400 -ml-[4.7rem] text-white"
+        />
+        <FilterByUser />
+        <div className="mt-6">
+          <FilterBySocialMedia />
+        </div>
+        <div className="mt-4">
+          <FilterByState statesList={statesJson} />
+        </div>
+        <div className="flex flex-col items-center mt-6">
+          <div className="mb-2">
+            <ResetButton customBg="bg-green-400" />
+          </div>
+        </div>
       </div>
     </div>
   );

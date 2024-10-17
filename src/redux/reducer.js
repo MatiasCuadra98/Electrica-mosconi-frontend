@@ -26,7 +26,9 @@ import {
     SET_UPLOAD_FILE,
     ADMI_LOGIN,
     GET_ALL_SOCIAL_MEDIA_BY_BUSINESS,
-    UPDATE_SOCIAL_MEDIA
+    UPDATE_SOCIAL_MEDIA,
+    FILTER_BY_USER, 
+    GET_USER_BY_ADMI
 } from './types';
 
 const initialState = {
@@ -39,6 +41,7 @@ const initialState = {
     allUsers: [],
     //usuario por id
     user: {},
+    userByAdmi: {},
     //admi login-logout
     admiLogin: false, 
       //**--MENSAJES--**//
@@ -62,6 +65,7 @@ const initialState = {
     // deben modificarse segun seleccion de filtros y search => asignarle el action.payload
     socialMediaFilter: 'TODOS',
     stateFilter: 'TODOS',
+    userFilter: 'TODOS',
     inputContact: '',
 
         //**--SOCKET--**//
@@ -107,6 +111,12 @@ switch (action.type) {
             ...state,
             user: {}
         }
+        case GET_USER_BY_ADMI:
+        //console.log('3A - entro al reducer de GET_USER_BY_ID', action.payload);
+        return {
+            ...state,
+            userByAdmi: action.payload,
+        };
 //**login logout Administrador **/
     case ADMI_LOGIN:      
     return {
@@ -242,6 +252,23 @@ switch (action.type) {
             socialMediaFilter: 'TODOS',
             //contacts: []
         }
+
+        case FILTER_BY_USER:
+            const allMsgsRecd = state.allMessagesReceived;
+            if ( action.payload === 'TODOS') {
+                return {
+                    ...state,
+                    messagesReceived: allMsgsRecd,
+                    userFilter: action.payload
+                }
+            } else {
+                const messagesFilteredByUser = allMsgsRecd.filter(message => message.Contact && message.Contact.MsgSent && message.Contact.MsgSent.User && message.Contact.MsgSents.Users.id === action.payload)
+                return {
+                    ...state,
+                    messagesReceived: messagesFilteredByUser,
+                    userFilter: action.payload
+                };
+            };
 
 // CASOS PARA socket
     case CONNECT_SOCKET:

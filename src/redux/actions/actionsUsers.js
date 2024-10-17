@@ -57,6 +57,7 @@ export const getUserByIdAction = (userId) => {
     }
 };
 
+
 export const cleanUserByIdAction = () => {
         return {
             type: CLEAN_USER_BY_ID,
@@ -83,4 +84,21 @@ export const admiLoginAction = (boolean) => {
         type: ADMI_LOGIN,
         payload: boolean ,
     }
+};
+
+export const getUserByAdmiAction = (userId) => {
+    //console.log('2A- entro en getUserByIdAction con ID', userId);
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(`${URL}/user/${userId}`);
+            const user = response.data;  
+            dispatch({type: GET_USER_BY_ADMI, payload: user})
+        } catch (error) {
+                sweetAlertsError(
+                    "Intenta de nuevo",
+                    "No encontramos el usuario solicitado",
+                    "Ok"
+                  ); 
+            }
+        }
 };
