@@ -88,12 +88,12 @@ const LandingPage = () => {
               COMENCEMOS
             </button>
             {/* este es el boton de fb, hay que meter la url en el .env y unir al boton de comencemos */}
-            {/* <a
+            <a
               href={`https://electrica-mosconi-server.onrender.com/auth/facebook`}
               className="w-fit h-fit relative mx-auto mt-4 px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
             >
               INICIAR SESIÓN CON FACEBOOK
-            </a> */}
+            </a>
           </div>
         </div>
       )}
