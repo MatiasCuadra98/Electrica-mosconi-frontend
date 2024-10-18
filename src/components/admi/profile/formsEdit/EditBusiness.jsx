@@ -52,18 +52,18 @@ const EditBusiness = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
-      <div className="w-[777px] h-auto bg-sky-950 rounded-tr-[50px] rounded-bl-[50px] relative">
+      <div className="w-[48.5rem] h-auto bg-sky-950 rounded-tr-[50px] rounded-bl-[50px] relative">
         <form onSubmit={handlerEditSubmit}>
           <div className="absolute top-6 right-10">
             <FormExitButton path={"/dashboardAdmi/profile"} />
           </div>
           <div className="flex flex-col items-center pt-4 mt-4">
-            <h4 className="text-white text-sm font-normal font-['Oswald'] uppercase">
+            <h4 className="text-white text-xs font-normal font-['Oswald'] uppercase">
               datos de la empresa
             </h4>
             <input
               placeholder={input.name}
-              className="w-72 h-8 bg-white rounded-[30px] shadow-inner px-6 text-lg font-normal font-['Oswald'] uppercase"
+              className="w-56 h-5 bg-white rounded-[30px] shadow-inner px-6 text-base font-normal font-['Oswald'] uppercase"
               id="name"
               type="text"
               value={input.name}
@@ -76,13 +76,13 @@ const EditBusiness = () => {
               <div className="flex flex-row">
                 <label
                   htmlFor="password"
-                  className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                  className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                 >
                   password:
                 </label>
                 <input
                   placeholder={input.password}
-                  className="w-56 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                  className="w-52 h-5 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
                   id="password"
                   type="password"
                   value={input.password}
@@ -93,13 +93,13 @@ const EditBusiness = () => {
               <div className="flex flex-row mt-2">
                 <label
                   htmlFor="address"
-                  className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                  className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                 >
                   direccion:
                 </label>
                 <input
                   placeholder={input.address}
-                  className="w-56 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                  className="w-52 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                   id="address"
                   type="text"
                   value={input.address}
@@ -110,14 +110,14 @@ const EditBusiness = () => {
               <div className="flex flex-row mt-2">
                 <label
                   htmlFor="country"
-                  className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                  className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                 >
                   pais:
                 </label>
                 {/* podria cambiarse por un select de paises usando un api */}
                 <input
                   placeholder={input.country}
-                  className="w-56 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-12 "
+                  className="w-52 h-5 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-12 "
                   id="country"
                   type="text"
                   value={input.country}
@@ -130,13 +130,13 @@ const EditBusiness = () => {
               <div className="flex flex-row">
                 <label
                   htmlFor="email"
-                  className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                  className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                 >
                   e-mail:
                 </label>
                 <input
                   placeholder={input.email}
-                  className="w-[16.5rem] h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                  className="w-64 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                   id="email"
                   type="email"
                   value={input.email}
@@ -148,13 +148,13 @@ const EditBusiness = () => {
                 {/* idem pais; podria ser un select con ciudades de una api */}
                 <label
                   htmlFor="city"
-                  className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                  className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                 >
                   provincia/estado:
                 </label>
                 <input
                   placeholder={input.city}
-                  className="w-48 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                  className="w-44 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                   id="city"
                   type="text"
                   value={input.city}
@@ -165,13 +165,13 @@ const EditBusiness = () => {
               <div className="flex flex-row mt-2">
                 <label
                   htmlFor="phone"
-                  className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                  className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                 >
                   telefono:
                 </label>
                 <input
                   placeholder={input.phone}
-                  className="w-64 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                  className="w-56 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                   id="phone"
                   type="text"
                   value={input.phone}
@@ -181,7 +181,7 @@ const EditBusiness = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-10">
             <button
               type="submit"
               className="bg-transparent border-none outline-none"
@@ -202,7 +202,7 @@ const EditBusiness = () => {
         </form>
         <img
           src="/logos/logo.svg"
-          className="w-24 h-auto absolute bottom-8 right-8"
+          className="w-20 h-auto absolute bottom-8 right-8"
         />
       </div>
     </div>

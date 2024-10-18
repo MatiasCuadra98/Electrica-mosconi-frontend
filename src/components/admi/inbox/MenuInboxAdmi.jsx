@@ -8,11 +8,11 @@ import statesJson from "../../../../public/json/statesJson";
 
 const MenuInboxAdmi = () => {
   return (
-    <div className="sticky w-64 h-screen overflow-y-auto overflow-x-hidden bg-green-400 flex flex-col py-4">
+    <div className="sticky w-56 h-screen overflow-y-auto overflow-x-hidden bg-green-400 flex flex-col py-4">
       <div className="flex flex-col justify-between">
         <SearchBar
-          customWidth="w-44 mx-auto"
-          customButton="bg-green-400 -ml-[4.7rem] text-white"
+          customWidth="w-36 mx-auto"
+          customButton="bg-green-400 -ml-16 text-white"
         />
         <FilterByUser />
         <div className="mt-6">

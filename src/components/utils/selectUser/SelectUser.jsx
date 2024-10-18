@@ -39,7 +39,7 @@ const SelectUser = () => {
           name="selectUser"
           onChange={selectHandler}
           value={user ? user.id : ""}
-          className="text-md bg-sky-950 rounded-2xl text-white text-base font-normal font-['Oswald'] capitalize ml-3"
+          className="text-md bg-sky-950 rounded-2xl text-white text-sm font-normal font-['Oswald'] capitalize ml-3"
         >
           <option value="" hidden={!user}>
             usuario...

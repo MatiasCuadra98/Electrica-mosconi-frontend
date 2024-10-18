@@ -42,7 +42,7 @@ const ConversationDetail = ({ contact }) => {
 
   return (
     <div className="w-full h-screen-minus-navbar relative flex flex-col overflow-y-auto overflow-x-hidden">
-      <div className="fixed top-16 right-10 mt-2">
+      <div className="fixed top-24 right-10 mt-2">
         <ClouseConversationButton />
       </div>
       {sortedMessages &&

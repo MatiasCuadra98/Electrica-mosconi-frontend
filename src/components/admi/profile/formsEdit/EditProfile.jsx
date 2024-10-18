@@ -53,10 +53,10 @@ const EditProfile = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
-      <div className="w-[777px] h-auto bg-sky-950 rounded-tl-[50px] rounded-tr-[50px] rounded-bl-[50px] relative">
+      <div className="w-[48.5rem] h-auto bg-sky-950 rounded-tl-[50px] rounded-tr-[50px] rounded-bl-[50px] relative">
         <form onSubmit={handlerEditSubmit}>
           {/* NIY edit imagen: falta implementar cloudinary para la imagen */}
-          <div className="left-6 top-5 absolute">
+          <div className="left-10 top-8 absolute">
             {!user ? (
               <img className="w-18 h-18" src="/noUser.svg" />
             ) : user.image ? (
@@ -75,12 +75,12 @@ const EditProfile = () => {
             <FormExitButton path={"/dashboardAdmi/profile"} />
           </div>
           <div className="flex flex-col items-center pt-6 mt-6">
-            <h4 className=" text-white text-sm font-normal font-['Oswald'] uppercase">
+            <h4 className=" text-white text-xs font-normal font-['Oswald'] uppercase">
               mis datos
             </h4>
             <input
               placeholder={input.name}
-              className="w-72 h-8 bg-white rounded-[30px] shadow-inner px-6 text-lg font-normal font-['Oswald'] uppercase"
+              className="w-56 h-5 bg-white rounded-[30px] shadow-inner px-6 text-base font-normal font-['Oswald'] uppercase"
               id="name"
               type="text"
               value={input.name}
@@ -88,17 +88,17 @@ const EditProfile = () => {
               onChange={handlerInputChange}
             />
           </div>
-          <div className="flex flex-row justify-between px-12 mt-12 mb-12">
+          <div className="flex flex-row justify-between px-12 mt-6 mb-6">
             <div className="flex flex-col">
               <div className="flex flex-row">
                 <fieldset className="flex flex-row">
-                  <legend className=" text-white text-m font-normal font-['Oswald'] uppercase">
+                  <legend className=" text-white text-sm font-normal font-['Oswald'] uppercase">
                     PRIVILEGIOS:
                   </legend>
                   <div className=" flex flex-col">
                     <div className="flex flex-row">
                       <input
-                        className="w-5 h-5 accent-amber-400 px-2"
+                        className="w-4 h-4 accent-amber-400 px-2"
                         id="Admin"
                         type="radio"
                         value="Admin"
@@ -108,7 +108,7 @@ const EditProfile = () => {
                       />
                       <label
                         htmlFor="Admin"
-                        className=" text-white text-base font-normal font-['Inter'] px-2"
+                        className=" text-white text-sm font-normal font-['Inter'] px-2 "
                       >
                         administrador
                       </label>
@@ -116,7 +116,7 @@ const EditProfile = () => {
                   </div>
                   <div className="flex flex-row">
                     <input
-                      className="ml-10 w-5 h-5 accent-amber-400"
+                      className="ml-10 w-4 h-4 accent-amber-400"
                       id="Member"
                       type="radio"
                       value="Member"
@@ -126,7 +126,7 @@ const EditProfile = () => {
                     />
                     <label
                       htmlFor="Member"
-                      className=" text-white text-base font-normal font-['Inter'] px-2"
+                      className=" text-white text-sm font-normal font-['Inter'] px-2"
                     >
                       usuario
                     </label>
@@ -136,13 +136,13 @@ const EditProfile = () => {
               <div className="flex flex-row mt-2">
                 <label
                   htmlFor="email"
-                  className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                  className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                 >
                   E-mail:
                 </label>
                 <input
                   placeholder={input.email}
-                  className="w-56 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                  className="w-52 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                   id="email"
                   type="email"
                   value={input.email}
@@ -151,17 +151,17 @@ const EditProfile = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-col px-12">
+            <div className="flex flex-col px-12 mt-2">
               <div className="flex flex-row">
                 <label
                   htmlFor="password"
-                  className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                  className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                 >
                   password:
                 </label>
                 <input
                   placeholder={input.password}
-                  className="w-56 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                  className="w-52 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                   id="password"
                   type="text"
                   value={input.password}
@@ -172,13 +172,13 @@ const EditProfile = () => {
               <div className="flex flex-row mt-8">
                 <label
                   htmlFor="phone"
-                  className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                  className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                 >
                   phone:
                 </label>
                 <input
                   placeholder={input.phone}
-                  className="w-64 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                  className="w-56 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                   id="phone"
                   type="text"
                   value={input.phone}
@@ -188,7 +188,7 @@ const EditProfile = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-10">
             <button
               type="submit"
               className="bg-transparent border-none outline-none"
@@ -209,7 +209,7 @@ const EditProfile = () => {
         </form>
         <img
           src="/logos/logo.svg"
-          className="w-24 h-auto absolute bottom-8 right-8"
+          className="w-20 h-auto absolute bottom-8 right-8"
         />
       </div>
     </div>
