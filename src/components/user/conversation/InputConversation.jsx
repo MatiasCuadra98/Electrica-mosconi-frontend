@@ -125,7 +125,7 @@ const InputConversation = () => {
         >
           <img
             src="/send-icon.svg"
-            className="w-8 h-auto mt-3"
+            className="w-[1.75rem] h-auto mt-3"
             onMouseOver={(e) => (e.currentTarget.src = "/send-hover-icon.svg")}
             onMouseOut={(e) => (e.currentTarget.src = "/send-icon.svg")}
             alt="enviar"

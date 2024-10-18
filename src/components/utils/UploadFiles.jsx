@@ -67,12 +67,12 @@ const UploadFiles = () => {
       <button
         type="button"
         onClick={handleButtonClick} // Al hacer clic, simula el clic en el input
-        className="bg-transparent border-none m-4 p-0"
+        className="bg-transparent border-none m-0 p-0"
       >
         <img
           src="/public/adjuntar.svg"
           alt="Adjuntar archivo"
-          className="w-8 h-auto mt-2 my-4"
+          className="w-8 h-auto mt-[1.35rem] mr-6 ml-4"
         />
       </button>
 
