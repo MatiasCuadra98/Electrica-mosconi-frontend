@@ -7,9 +7,12 @@ export default {
   theme: {
     extend: {
       height: {
-        'screen-minus-navbar': 'calc(100vh - 4rem)',
-        'screen-minus-sidebar': 'calc(100vh - 13rem)',
+        'screen-minus-navbar': 'calc(100vh - 3.5rem)',
+        'screen-minus-sidebar': 'calc(100vh - 12rem)',
       },
+      width: {
+        'screen-minus-sidebar': 'calc(100vh - 12rem)',
+      }
     },
   plugins: [],
 }

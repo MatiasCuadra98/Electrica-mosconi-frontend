@@ -10,8 +10,8 @@ const FilterByUser = () => {
 
   const selectHandler = async (e) => {
     const value = e.target.value;
-    console.log('en filter', value);
-    
+    console.log("en filter", value);
+
     if (value === "") {
       localStorage.removeItem("filterUser");
     } else {
@@ -27,7 +27,7 @@ const FilterByUser = () => {
           name="selectUser"
           onChange={selectHandler}
           value={user ? user.id : ""}
-          className="text-md bg-green-400 shadow-inner mt-2 ml-10 px-4 rounded-2xl text-white text-base font-normal font-['Oswald'] capitalize"
+          className="bg-green-400 shadow-inner mt-2 ml-10 px-4 rounded-2xl text-white text-sm font-normal font-['Oswald'] capitalize"
         >
           <option value="TODOS" hidden={!user}>
             usuario...

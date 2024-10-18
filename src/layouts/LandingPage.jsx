@@ -39,7 +39,7 @@ const LandingPage = () => {
       //este dispatch deberia ejecutarse con un login inicial NIY
       dispatch(getBusinessByIdAction(businessId, businessName));
       setLoading(true);
-      if(businessName) {
+      if (businessName) {
         setTimeout(() => {
           navigate("/inbox");
           setLoading(false);
@@ -59,38 +59,38 @@ const LandingPage = () => {
             src="/landing.svg"
             alt="OneInbox landing"
           />
-          <div className="w-[800px] h-[150px] absolute top-10 left-28">
+          <div className="w-[800px] h-[150px] absolute top-8 left-28">
             <img
-              className="w-[168px] h-[107px]"
+              className="w-40 h-24"
               src="/logos/logo.svg"
               alt="OneInbox logo"
             />
-            <span className="text-white text-lg font-normal font-['Inter'] absolute top-0 left-28">
+            <span className="text-white text-base font-normal font-['Inter'] absolute top-0 left-28">
               Dale la bienvenida a la tranquilidad en tu vida digital
               <br />
             </span>
-            <span className="text-white text-lg font-normal font-['Inter'] absolute top-7 left-28">
+            <span className="text-white text-base font-normal font-['Inter'] absolute top-7 left-28">
               Unifica, Organiza, conecta
               <br />
             </span>
-            <div className="text-white text-5xl font-semibold font-['Inter'] capitalize absolute top-16 left-44">
+            <div className="text-white text-4xl font-semibold font-['Inter'] capitalize absolute top-16 left-44">
               oneInbox
             </div>
-            <div className="text-white text-lg font-normal font-['Inter'] absolute top-28 left-20">
+            <div className="text-white text-base font-normal font-['Inter'] absolute top-28 left-20">
               Tu bandeja de entrada social definitiva
             </div>
           </div>
-          <div className="absolute bottom-9 left-0 right-0 flex justify-center">
+          <div className="absolute bottom-14 left-0 right-0 flex justify-center">
             <button
               onClick={handlerOnClick}
-              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-lg font-normal font-['Oswald']"
+              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
             >
               COMENCEMOS
             </button>
-            {/* este es el boton de fb, hay que meter la url en el .env */}
+            {/* este es el boton de fb, hay que meter la url en el .env y unir al boton de comencemos */}
             <a
               href={`https://electrica-mosconi-server.onrender.com/auth/facebook`}
-              className="w-fit h-fit relative mx-auto mt-4 px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-lg font-normal font-['Oswald']"
+              className="w-fit h-fit relative mx-auto mt-4 px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
             >
               INICIAR SESIÓN CON FACEBOOK
             </a>

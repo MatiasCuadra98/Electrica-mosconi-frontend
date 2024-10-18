@@ -32,22 +32,22 @@ const UsersTable = () => {
       <table className="min-w-full w-full table-auto bg-white ">
         <thead className="bg-stone-200 shadow-md relative z-10">
           <tr>
-            <th className="   py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className="py-2 text-xs text-center text-normal font-['Oswald']">
               USUARIO
             </th>
-            <th className=" pr-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className=" pr-4 py-2 text-xs text-center text-normal font-['Oswald']">
               ACTIVO
             </th>
-            <th className=" px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className=" px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               TELEFONO
             </th>
-            <th className=" px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className=" px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               E-MAIL
             </th>
-            <th className=" px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className=" px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               PRIVILEGIO
             </th>
-            <th className=" px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className=" px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               <span className="hidden">acciones</span>
             </th>
           </tr>
@@ -75,12 +75,15 @@ const UsersTable = () => {
                 return (
                   <tr key={index} className="odd:bg-white even:bg-stone-300 ">
                     <td className=" pl-8 py-2 text-center text-xs font-normal">
-                      <div className=" flex items-center justify-start space-x-6 ml-4 font-['Inter'] capitalize w-auto h-8">
-                        <IconUser name={user.name} />
+                      <div className=" flex items-center justify-start space-x-6 ml-4 font-['Inter'] capitalize w-auto h-6">
+                        <IconUser
+                          name={user.name}
+                          customSize="w-8 h-8 text-lg"
+                        />
                         <span>{user.name.toUpperCase()}</span>
                       </div>
                     </td>
-                    <td className=" pr-4 py-2 text-center text-sm font-normal font-['Inter'] capitalize w-8 h-auto">
+                    <td className=" pr-4 py-2 text-center text-xs font-normal font-['Inter'] capitalize w-6 h-auto">
                       <img
                         src={"/managmentIcons/userActive-icon.svg"}
                         alt="activo"

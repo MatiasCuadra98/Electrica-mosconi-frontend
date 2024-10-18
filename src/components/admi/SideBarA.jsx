@@ -7,21 +7,21 @@ const SideBarA = ({ user }) => {
   //const user = useSelector((state) => state.user);
   //   console.log("user", user);
   return (
-    <div className="w-52 h-screen bg-sky-950 fixed top-0">
+    <div className="w-48 h-screen bg-sky-950 fixed top-0">
       <img
         src="/logos/logo.svg"
         alt="Logo"
-        className="w-24 h-auto mt-4 mx-auto z-50"
+        className="w-20 h-auto mt-4 mx-auto z-50"
       />
       <div className="flex flex-col justify-between pt-8">
         <div className="flex items-center justify-center">
           <IconUser name={user && user.name} />
           {user && user.name ? (
-            <h4 className="text-md text-white text-base font-normal font-['Oswald'] capitalize ">
+            <h4 className=" text-white text-sm font-normal font-['Oswald'] capitalize ">
               {user.name}
             </h4>
           ) : (
-            <p className="text-md text-white text-base font-normal font-['Oswald'] capitalize ml-3">
+            <p className=" text-white text-sm font-normal font-['Oswald'] capitalize ml-3">
               nombreAdministrador
             </p>
           )}

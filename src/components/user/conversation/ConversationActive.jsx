@@ -24,7 +24,7 @@ const ConversationActive = () => {
           <Spinner />
         ) : (
           <div>
-            <div className="w-3/5 h-6 fixed top-16 z-40  ml-4 mt-2">
+            <div className="w-3/5 h-5 fixed top-16 z-40  ml-6 mt-2">
               <CounterInConversation contact={contact} />
             </div>
             <ConversationDetail

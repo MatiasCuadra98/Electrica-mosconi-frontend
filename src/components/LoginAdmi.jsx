@@ -51,18 +51,18 @@ const LoginAdmi = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
-      <div className="w-[368px] h-[414px] bg-sky-950 rounded-tl-[80px] rounded-tr-[80px] rounded-bl-[80px]  flex flex-col items-center justify-center relative">
+      <div className="w-96 h-[26rem] bg-sky-950 rounded-tl-[80px] rounded-tr-[80px] rounded-bl-[80px]  flex flex-col items-center justify-center relative">
         <form onSubmit={handlerLoginSubmit}>
           <div className="absolute top-12 right-10">
             <FormExitButton path={-1} />
           </div>
-          <h1 className="text-white text-2xl font-semibold font-['Inter'] capitalize text-center">
+          <h1 className="text-white text-xl font-semibold font-['Inter'] capitalize text-center">
             Bienvenido
           </h1>
           <div className="flex flex-col items-center justify-center my-10">
             <input
               placeholder="Usuario"
-              className="w-72 h-8 bg-white rounded-[30px] shadow-inner p-4 text-black"
+              className="w-64 h-6 bg-white rounded-[30px] shadow-inner p-4 text-sm"
               id="name"
               type="text"
               value={input.name}
@@ -71,7 +71,7 @@ const LoginAdmi = () => {
             />
             <input
               placeholder="Contraseña"
-              className="w-72 h-8 bg-white rounded-[30px] shadow-inner mt-4 p-4 text-black"
+              className="w-64 h-6 bg-white rounded-[30px] shadow-inner mt-4 p-4 text-sm"
               type="password"
               id="password"
               name="password"
@@ -82,14 +82,14 @@ const LoginAdmi = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-fit h-fit  px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-sm font-normal font-['Oswald']"
+              className="w-fit h-fit  px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-xs font-normal font-['Oswald']"
             >
               LOGIN
             </button>
           </div>
           <img
             src="/logos/logo.svg"
-            className="w-24 h-auto absolute bottom-8 right-8"
+            className="w-20 h-auto absolute bottom-8 right-8"
           />
         </form>
       </div>

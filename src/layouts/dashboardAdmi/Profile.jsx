@@ -27,7 +27,7 @@ const Profile = () => {
 
   return (
     <div className="w-screen h-screen-minus-navbar flex overflow-hidden">
-      <div className="w-52 flex-shrink-0">
+      <div className="w-48 flex-shrink-0">
         <SideBarA user={user} />
       </div>
       <div className="flex flex-col">

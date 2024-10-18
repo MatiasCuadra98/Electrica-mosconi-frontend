@@ -109,9 +109,9 @@ const InputConversation = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="w-full h-20 bg-neutral-200 shadow-inner flex flex-row">
+      <div className="w-full h-16 bg-neutral-200 shadow-inner flex flex-row">
         <input
-          className="w-10/12 h-10 bg-white rounded-[30px] shadow-xl mt-7 ml-6 mr-2 p-1 text-black"
+          className="w-10/12 h-8 bg-white rounded-[30px] shadow-xl mt-6 mb-2 ml-6 mr-2 p-1 text-black"
           type="textarea"
           value={input.message}
           onChange={inputHandler}
@@ -125,7 +125,7 @@ const InputConversation = () => {
         >
           <img
             src="/send-icon.svg"
-            className="w-8 h-auto mt-4"
+            className="w-8 h-auto mt-3"
             onMouseOver={(e) => (e.currentTarget.src = "/send-hover-icon.svg")}
             onMouseOut={(e) => (e.currentTarget.src = "/send-icon.svg")}
             alt="enviar"

@@ -10,7 +10,7 @@ const EditUserButton = () => {
       <img
         src={"/managmentIcons/edit-icon.svg"}
         alt="edit user"
-        className="w-10 h-auto"
+        className="w-8 h-auto"
         onClick={handlerOnClick}
       />
     </div>

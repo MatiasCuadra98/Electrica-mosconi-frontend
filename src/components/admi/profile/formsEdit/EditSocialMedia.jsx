@@ -76,18 +76,18 @@ const EditSocialMedia = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
-      <div className="w-[777px] h-auto bg-sky-950 rounded-tl-[50px] rounded-tr-[50px] rounded-bl-[50px] relative">
+      <div className="w-[48.5rem] h-auto bg-sky-950 rounded-tl-[50px] rounded-tr-[50px] rounded-bl-[50px] relative">
         <form onSubmit={handlerEditSubmit}>
           <div className="absolute top-6 right-10">
             <FormExitButton path={"/dashboardAdmi/profile"} />
           </div>
-          <div className="flex flex-col items-center pt-6 mt-6">
-            <h4 className=" text-white text-lg font-normal font-['Oswald'] uppercase">
+          <div className="flex flex-col items-center pt-4 mt-4">
+            <h4 className=" text-white text-base font-normal font-['Oswald'] uppercase">
               plataforma de redes sociales
             </h4>
             {!socialMedia.length ? (
               <div className="flex flex-col items-center my-6 pb-6">
-                <p className="text-base font-normal font-['Inter'] text-white ">
+                <p className="text-sm font-normal font-['Inter'] text-white ">
                   Aún no hay Redes Sociales activas
                 </p>
               </div>
@@ -95,7 +95,7 @@ const EditSocialMedia = () => {
               <div>
                 {socialMedia.map((sm, index) => (
                   <div className="flex flex-row mt-2" key={index}>
-                    <div className="w-10 h-10">
+                    <div className="w-8 h-8">
                       <SocialMediaIcons
                         socialMedia={
                           sm.SocialMedia &&
@@ -110,13 +110,13 @@ const EditSocialMedia = () => {
                         htmlFor={
                           sm.SocialMedia && sm.SocialMedia.map((e) => e.name)
                         }
-                        className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                        className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                       >
                         {sm.SocialMedia && sm.SocialMedia.map((e) => e.name)}:
                       </label>
                       <input
                         placeholder={sm.dataUser}
-                        className="w-56 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                        className="w-52 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                         id={sm.SocialMedia && sm.SocialMedia.map((e) => e.name)}
                         type="text"
                         value={input[sm.id] || ""}
@@ -130,12 +130,12 @@ const EditSocialMedia = () => {
                 ))}
               </div>
             ) : (
-              <div className="flex flex-row justify-between px-12 mt-6">
-                <div className="flex flex-col mb-12">
+              <div className="flex flex-row justify-between px-12 mt-4">
+                <div className="flex flex-col mb-10">
                   {groupA &&
                     groupA.map((sm, index) => (
                       <div className="flex flex-row mt-2" key={index}>
-                        <div className="w-10 h-10">
+                        <div className="w-8 h-8">
                           <SocialMediaIcons
                             socialMedia={
                               sm.SocialMedia &&
@@ -152,7 +152,7 @@ const EditSocialMedia = () => {
                               sm.SocialMedia &&
                               sm.SocialMedia.map((e) => e.name)
                             }
-                            className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                            className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                           >
                             {sm.SocialMedia &&
                               sm.SocialMedia.map((e) => e.name)}
@@ -160,7 +160,7 @@ const EditSocialMedia = () => {
                           </label>
                           <input
                             placeholder={sm.dataUser}
-                            className="w-56 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                            className="w-52 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                             id={
                               sm.SocialMedia &&
                               sm.SocialMedia.map((e) => e.name)
@@ -177,11 +177,11 @@ const EditSocialMedia = () => {
                       </div>
                     ))}
                 </div>
-                <div className="flex flex-col px-12 mb-12">
+                <div className="flex flex-col px-12 mb-10">
                   {groupB &&
                     groupB.map((sm, index) => (
                       <div className="flex flex-row mt-2" key={index}>
-                        <div className="w-10 h-10">
+                        <div className="w-8 h-8">
                           <SocialMediaIcons
                             socialMedia={
                               sm.SocialMedia &&
@@ -197,7 +197,7 @@ const EditSocialMedia = () => {
                               sm.SocialMedia &&
                               sm.SocialMedia.map((e) => e.name)
                             }
-                            className=" text-white text-m font-normal font-['Oswald'] uppercase"
+                            className=" text-white text-sm font-normal font-['Oswald'] uppercase"
                           >
                             {sm.SocialMedia &&
                               sm.SocialMedia.map((e) => e.name)}
@@ -205,7 +205,7 @@ const EditSocialMedia = () => {
                           </label>
                           <input
                             placeholder={sm.dataUser}
-                            className="w-56 h-6 bg-white rounded-[30px] shadow-inner px-2 text-base font-normal font-['Inter'] ml-2 "
+                            className="w-52 h-5 bg-white rounded-[30px] shadow-inner px-2 text-sm font-normal font-['Inter'] ml-2 "
                             id={
                               sm.SocialMedia &&
                               sm.SocialMedia.map((e) => e.name)
@@ -225,7 +225,7 @@ const EditSocialMedia = () => {
               </div>
             )}
           </div>
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-10">
             <button
               type="submit"
               className="bg-transparent border-none outline-none"
@@ -246,7 +246,7 @@ const EditSocialMedia = () => {
         </form>
         <img
           src="/logos/logo.svg"
-          className="w-24 h-auto absolute bottom-8 right-8"
+          className="w-20 h-auto absolute bottom-8 right-8"
         />
       </div>
     </div>

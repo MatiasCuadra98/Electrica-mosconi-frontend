@@ -13,14 +13,14 @@ const ArchivedButton = () => {
       {isArchived ? (
         <img
           src={"/managmentIcons/unarchive-icon.svg"}
-          className="w-10 h-auto"
+          className="w-8 h-auto"
           onClick={handlerOnClick}
           alt="desarchivar"
         />
       ) : (
         <img
           src={"/managmentIcons/archive-icon.svg"}
-          className="w-10 h-auto"
+          className="w-8 h-auto"
           onClick={handlerOnClick}
           alt="archivar"
         />
