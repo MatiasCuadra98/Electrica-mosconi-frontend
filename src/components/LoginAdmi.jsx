@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -63,7 +62,11 @@ const LoginAdmi = () => {
           <div className="flex flex-col items-center justify-center my-10">
             <input
               placeholder="Usuario"
+<<<<<<< HEAD
               className="w-64 h-6 bg-white rounded-[30px] shadow-inner p-4 text-sm"
+=======
+              className="w-72 h-8 bg-white rounded-[30px] shadow-inner p-4 text-black"
+>>>>>>> 5e7db6210fed3d4c22e36fc784d47877ea65a0dd
               id="name"
               type="text"
               value={input.name}
@@ -72,7 +75,11 @@ const LoginAdmi = () => {
             />
             <input
               placeholder="Contraseña"
+<<<<<<< HEAD
               className="w-64 h-6 bg-white rounded-[30px] shadow-inner mt-4 p-4 text-sm"
+=======
+              className="w-72 h-8 bg-white rounded-[30px] shadow-inner mt-4 p-4 text-black"
+>>>>>>> 5e7db6210fed3d4c22e36fc784d47877ea65a0dd
               type="password"
               id="password"
               name="password"
