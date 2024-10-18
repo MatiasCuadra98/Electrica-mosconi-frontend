@@ -25,7 +25,7 @@ const HomeAdmi = () => {
 
   return (
     <div className="w-screen h-screen flex overflow-hidden">
-      <div className="w-52 flex-shrink-0">
+      <div className="w-48 flex-shrink-0">
         <SideBarA user={user} />
       </div>
       <div className="flex-1 flex justify-center items-center">

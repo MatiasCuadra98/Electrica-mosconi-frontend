@@ -28,17 +28,18 @@ const UserManagment = () => {
   }, [dispatch, businessId, userId]);
 
   const user = useSelector((state) => state.user);
+
   return (
     <div className="w-screen h-screen-minus-navbar flex overflow-hidden">
       {/* Sidebar */}
-      <div className="w-52 flex-shrink-0">
+      <div className="w-48 flex-shrink-0">
         <SideBarA user={user} />
       </div>
 
       {/* Contenedor del menú y tabla */}
       <div className="flex flex-row flex-grow overflow-hidden">
         {/* Menu fijo */}
-        <div className="w-60 flex-shrink-0 bg-white shadow-md h-full relative z-20">
+        <div className="w-56 flex-shrink-0 bg-white shadow-md h-full relative z-20">
           <MenuUserManagment />
         </div>
 

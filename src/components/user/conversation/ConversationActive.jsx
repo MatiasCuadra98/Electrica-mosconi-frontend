@@ -17,28 +17,63 @@ const ConversationActive = () => {
     }
   }, [contact.id]);
 
+  // return (
+  //   <div className="w-full h-full flex flex-col overflow-hidden">
+  //     <div className="flex-grow overflow-y-auto">
+  //       {loading ? (
+  //         <Spinner />
+  //       ) : (
+  //         <div>
+  //           <div className="w-3/5 h-5 fixed top-16 z-40  ml-6 mt-2">
+  //             <CounterInConversation contact={contact} />
+  //           </div>
+  //           <ConversationDetail
+  //             isActive={isActive}
+  //             setIsActive={setIsActive}
+  //             contact={{
+  //               ...contact,
+  //               id: Number(contact.id), // Convertimos contact.id a número para evitar el warning
+  //             }}
+  //           />
+  //         </div>
+  //       )}
+  //     </div>
+  //     <div className="w-full">
+  //       <InputConversation />
+  //     </div>
+  //   </div>
+  // );
+
   return (
     <div className="w-full h-full flex flex-col overflow-hidden">
+      {/* Contenedor de la conversación */}
       <div className="flex-grow overflow-y-auto">
         {loading ? (
           <Spinner />
         ) : (
-          <div>
-            <div className="w-3/5 h-6 fixed top-16 z-40  ml-4 mt-2">
+          <div className="flex flex-col h-full relative">
+            {/* Contador en la conversación */}
+            <div className="w-3/5 h-5 fixed top-16 z-40 ml-6 mt-2">
               <CounterInConversation contact={contact} />
             </div>
-            <ConversationDetail
-              isActive={isActive}
-              setIsActive={setIsActive}
-              contact={{
-                ...contact,
-                id: Number(contact.id), // Convertimos contact.id a número para evitar el warning
-              }}
-            />
+
+            {/* Contenido de la conversación */}
+            <div className="flex-grow overflow-y-auto">
+              <ConversationDetail
+                isActive={isActive}
+                setIsActive={setIsActive}
+                contact={{
+                  ...contact,
+                  id: Number(contact.id), // Convertimos contact.id a número para evitar el warning
+                }}
+              />
+            </div>
           </div>
         )}
       </div>
-      <div className="w-full">
+
+      {/* Input de conversación */}
+      <div className="w-full flex-shrink-0">
         <InputConversation />
       </div>
     </div>

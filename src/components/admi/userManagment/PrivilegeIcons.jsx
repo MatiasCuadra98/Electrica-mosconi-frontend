@@ -2,7 +2,7 @@ import React from "react";
 
 const PrivilegeIcons = ({ privilege }) => {
   return (
-    <div className="w-10 h-auto">
+    <div className="w-8 h-auto">
       {privilege && privilege === "Admin" ? (
         <img src={"/managmentIcons/admin-icon.svg"} alt="administrador" />
       ) : privilege && privilege === "Member" ? (

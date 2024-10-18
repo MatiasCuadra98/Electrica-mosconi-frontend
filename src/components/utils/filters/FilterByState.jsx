@@ -28,7 +28,7 @@ const FilterByState = ({ statesList }) => {
           return (
             <div key={index} className="flex items-center m-2">
               <img src={state.icon} className="w-8 h-8" />
-              <label className=" text-white text-sm font-normal font-['Oswald'] capitalize ml-3 ">
+              <label className=" text-white text-xs font-normal font-['Oswald'] capitalize ml-3 ">
                 {/* {console.log("nombre", state.name)} */}
                 {state.name.toUpperCase()}
                 <input
@@ -36,7 +36,7 @@ const FilterByState = ({ statesList }) => {
                   value={state.name}
                   checked={selectedFilter === `${state.name}`}
                   onChange={handlerOnChange}
-                  className="absolute right-3 w-5 h-5 accent-amber-400"
+                  className="absolute right-3 w-4 h-4 accent-amber-400"
                 />
               </label>
               <br />
@@ -45,14 +45,14 @@ const FilterByState = ({ statesList }) => {
         })}
       <div className="flex items-center m-2">
         <img src="/logos/iconoLogoBlanco.svg" className="w-8 h-8" />
-        <label className=" text-white text-sm font-normal font-['Oswald'] capitalize ml-3 ">
+        <label className=" text-white text-xs font-normal font-['Oswald'] capitalize ml-3 ">
           TODOS
           <input
             type="radio"
             value="TODOS"
             checked={selectedFilter === "TODOS"}
             onChange={handlerOnChange}
-            className="absolute right-3 w-5 h-5 accent-amber-400"
+            className="absolute right-3 w-4 h-4 accent-amber-400"
           />
         </label>
         <br />

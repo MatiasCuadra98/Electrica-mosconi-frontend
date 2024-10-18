@@ -3,7 +3,7 @@ import React from "react";
 const StateMessagesIcons = ({ state }) => {
   //falta desestructurar props segun modelo y pasar ese dato a UpperCase
   return (
-    <div className="w-10 h-10">
+    <div className="w-8 h-8">
       {state === "No Leidos" ? (
         <img src="/states\noLeido.svg" />
       ) : state === "Leidos" ? (

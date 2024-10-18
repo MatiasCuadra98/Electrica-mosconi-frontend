@@ -10,7 +10,7 @@ const DeleteUserButton = () => {
       <img
         src={"/managmentIcons/trash-icon.svg"}
         alt="delete user"
-        className="w-10 h-auto"
+        className="w-8 h-auto"
         onClick={handlerOnClick}
       />
     </div>

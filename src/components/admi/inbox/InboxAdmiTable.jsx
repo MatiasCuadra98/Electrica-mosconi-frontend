@@ -55,25 +55,25 @@ const InboxAdmiTable = () => {
       <table className="min-w-full table-auto bg-white ">
         <thead className="bg-stone-200 shadow-md relative z-10">
           <tr>
-            <th className=" px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className=" px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               ESTADO
             </th>
-            <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className="px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               INICIO
             </th>
-            <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald'] whitespace-nowrap">
+            <th className="px-4 py-2 text-xs text-center text-normal font-['Oswald'] whitespace-nowrap">
               RED SOCIAL
             </th>
-            <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className="px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               DATOS DEL CONTACTO
             </th>
-            <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className="px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               USUARIO
             </th>
-            <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className="px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               RESPUESTA
             </th>
-            <th className="px-4 py-2 text-sm text-center text-normal font-['Oswald']">
+            <th className="px-4 py-2 text-xs text-center text-normal font-['Oswald']">
               ARCHIVAR
             </th>
           </tr>
@@ -103,7 +103,7 @@ const InboxAdmiTable = () => {
                       <StateMessagesIcons state={message.state} />
                     </td>
                     {/* esta deberia ser la fecha en la que se recibio el primer mensaje del contacto */}
-                    <td className="px-4 py-2 text-center text-xs font-normal font-['Inter'] capitalize">
+                    <td className="px-4 py-2 text-center text-[0.65rem] font-normal font-['Inter'] capitalize">
                       <FormattedTimestamp
                         timestamp={
                           message.Contact &&
@@ -115,7 +115,7 @@ const InboxAdmiTable = () => {
                         }
                       />
                     </td>
-                    <td className="px-[1.75rem] py-2 text-center w-6 h-6">
+                    <td className="px-[1.75rem] py-2 text-center w-5 h-5">
                       <SocialMediaIcons
                         socialMedia={
                           message.SocialMedium
@@ -124,10 +124,10 @@ const InboxAdmiTable = () => {
                         }
                       />
                     </td>
-                    <td className="px-4 py-2 text-center text-sm font-normal font-['Inter'] capitalize">
+                    <td className="px-4 py-2 text-center text-xs font-normal font-['Inter'] capitalize">
                       {message.name}
                     </td>
-                    <td className="pl-6 pr-4 py-2 text-center w-8 h-8 ">
+                    <td className="pl-6 pr-4 py-2 text-center w-6 h-6 ">
                       <IconUser
                         name={
                           message.Contact &&
@@ -138,7 +138,7 @@ const InboxAdmiTable = () => {
                         }
                       />
                     </td>
-                    <td className="px-4 py-2 text-center text-xs font-normal font-['Inter'] capitalize">
+                    <td className="px-4 py-2 text-center text-[0.65rem] font-normal font-['Inter'] capitalize">
                       <FormattedTimestamp
                         timestamp={
                           message.Contact && message.Contact.MsgSents.length > 0

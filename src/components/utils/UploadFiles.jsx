@@ -67,12 +67,12 @@ const UploadFiles = () => {
       <button
         type="button"
         onClick={handleButtonClick} // Al hacer clic, simula el clic en el input
-        className="bg-transparent border-none m-4 p-0"
+        className="bg-transparent border-none m-0 p-0"
       >
         <img
           src="/public/adjuntar.svg"
           alt="Adjuntar archivo"
-          className="w-8 h-auto mt-4 my-4"
+          className="w-8 h-auto mt-[1.35rem] mr-6 ml-4"
         />
       </button>
 
@@ -89,7 +89,7 @@ const UploadFiles = () => {
       {/* Mostrar la imagen subida */}
 
       {loading ? (
-        <div className=" relative -mt-52 -ml-12 w-32 h-auto bg-white rounded-md py-4 px-8">
+        <div className=" relative -mt-52 -ml-12 w-28 h-auto bg-white rounded-md py-4 px-8">
           <Spinner />
         </div>
       ) : (
@@ -97,14 +97,14 @@ const UploadFiles = () => {
           <div className="relative -mt-52 -ml-12">
             <button
               onClick={deleteFilesHandler}
-              className="absolute top-0 right-0 bg-amber-500 text-sm text-white rounded-full py-1 shadow-2xl hover:bg-red-600 transition-colors z-50"
+              className="absolute top-0 right-0 bg-amber-500 text-xs text-white rounded-full py-1 shadow-2xl hover:bg-red-600 transition-colors z-50"
             >
               X
             </button>
             <img
               // src={dataFormat === "pdf" ? "/public/pdf.svg" : URLfile}
               src={URLfile}
-              className="w-32 h-auto rounded-md shadow-lg"
+              className="w-28 h-auto rounded-md shadow-lg"
               alt="Imagen subida"
             />
           </div>

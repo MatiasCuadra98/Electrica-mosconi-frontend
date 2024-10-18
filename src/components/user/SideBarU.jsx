@@ -7,11 +7,11 @@ import statesJson2 from "../../../public/json/statesJson2";
 
 const SideBarU = () => {
   return (
-    <div className="w-52 h-screen bg-sky-950 fixed top-0">
+    <div className="w-48 h-screen bg-sky-950 fixed top-0">
       <img
         src="/logos/logo.svg"
         alt="Logo"
-        className="w-24 h-auto mt-4 mx-auto z-50"
+        className="w-20 h-auto mt-4 mx-auto z-50"
       />
       <div className="flex flex-col justify-between pt-8">
         <SelectUser />

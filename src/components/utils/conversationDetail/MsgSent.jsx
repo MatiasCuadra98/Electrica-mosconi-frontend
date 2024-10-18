@@ -14,14 +14,14 @@ const MsgSent = (props) => {
 
   return (
     <div className="w-full flex justify-end">
-      <div className="w-[473px] h-auto bg-stone-300 rounded-tr-[40px] rounded-bl-[40px] rounded-br-[40px] p-4 flex flex-col justify-between m-4 self-end mr-10">
+      <div className="w-[26rem] h-auto bg-stone-300 rounded-tr-[40px] rounded-bl-[40px] rounded-br-[40px] p-4 flex flex-col justify-between m-4 self-end mr-10">
         <div className="text-center mb-4">
           {firstCharMsg === "http" ? (
             <div>
               <img
                 src={message}
                 alt="archivo enviado"
-                className="w-56 h-auto mx-auto"
+                className="w-52 h-auto mx-auto"
                 onError={(e) => {
                   e.target.src = "/public/pdf.svg";
                   setIsPDF(true); // Cambia a imagen de PDF si no se puede cargar
@@ -32,20 +32,20 @@ const MsgSent = (props) => {
                   href={message}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-xs text-blue-500 underline break-words"
+                  className="block text-[0.5] text-blue-500 underline break-words"
                 >
                   {message}
                 </a>
               )}
             </div>
           ) : (
-            <h2 className="w-[432px] h-auto text-black text-base font-normal font-['Inter']">
+            <h2 className="w-[26rem] h-auto text-black text-sm font-normal font-['Inter']">
               {message}
             </h2>
           )}
         </div>
         <div className="flex items-center justify-end gap-4">
-          <div className="w-[74px] h-[18px] text-black text-[13px] font-normal font-['Oswald'] capitalize">
+          <div className="w-[4.25rem] h-4 text-black text-[0.65rem] font-normal font-['Oswald'] capitalize">
             <FormattedTimestamp timestamp={props.props.timestamp} />
           </div>
           <IconUser name={userName} />

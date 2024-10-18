@@ -67,11 +67,11 @@ const InboxUser = () => {
 
   return (
     <div className="w-screen h-screen-minus-navbar flex overflow-hidden">
-      <div className="w-52 flex-shrink-0">
+      <div className="w-48 flex-shrink-0">
         <SideBarU />
       </div>
       <div className="flex flex-1 h-full overflow-hidden">
-        <div className="w-72 h-full overflow-y-auto  overflow-x-hidden flex-shrink-0">
+        <div className="w-64 h-full overflow-y-auto  overflow-x-hidden flex-shrink-0">
           <InboxListUser />
         </div>
         <div className="flex flex-1 h-full overflow-x-hidden">
@@ -79,7 +79,7 @@ const InboxUser = () => {
             <div className="flex items-center justify-center w-full h-full">
               <img
                 src="/imagenFondoCAInactiva.svg"
-                className="-mt-12"
+                className="-mt-10"
                 alt="imagen de fondo"
               />
             </div>

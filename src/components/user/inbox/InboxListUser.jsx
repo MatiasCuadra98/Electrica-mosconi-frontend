@@ -40,7 +40,7 @@ const InboxListUser = () => {
   }
 
   return (
-    <div className="sticky w-72 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
+    <div className="sticky w-64 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
       {loading ? (
         <Spinner />
       ) : allMessagesReceived.length ? (
