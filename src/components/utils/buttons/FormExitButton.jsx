@@ -12,7 +12,7 @@ const FormExitButton = (path) => {
   return (
     <div>
       <img
-        src={"/public/buttons/goBlack-hover-icon.svg"}
+        src={"/buttons/goBlack-hover-icon.svg"}
         className="w-6 h-auto"
         onClick={handlerOnClick}
         alt="Go back"
