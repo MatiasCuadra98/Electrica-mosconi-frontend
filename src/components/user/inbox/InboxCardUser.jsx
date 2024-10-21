@@ -62,7 +62,7 @@ const InboxCardUser = ({
                   {name}
                   <br />
                 </span>
-                <span className="text-black text-xs font-normal font-['Oswald'] capitalize">
+                <span className="text-black  text-[0.65rem] font-normal font-['Oswald'] capitalize">
                   <FormattedTimestamp timestamp={timestamp} />
                   <br />
                 </span>
@@ -86,7 +86,7 @@ const InboxCardUser = ({
               {name}
               <br />
             </span>
-            <div className="text-black text-xs font-normal font-['Oswald'] capitalize">
+            <div className="text-black text-[0.65rem] font-normal font-['Oswald'] capitalize">
               <FormattedTimestamp timestamp={timestamp} />
               <br />
             </div>
