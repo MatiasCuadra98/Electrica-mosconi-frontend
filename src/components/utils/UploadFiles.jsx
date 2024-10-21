@@ -70,9 +70,9 @@ const UploadFiles = () => {
         className="bg-transparent border-none m-0 p-0"
       >
         <img
-          src="/public/adjuntar.svg"
+          src="/actionIcons/adjuntar.svg"
           alt="Adjuntar archivo"
-          className="w-8 h-auto mt-[1.35rem] mr-6 ml-4"
+          className="w-8 h-8 mt-[1.35rem] mr-6 ml-4"
         />
       </button>
 

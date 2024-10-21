@@ -16,7 +16,7 @@ const GoBackButton = (path) => {
         className="w-6 h-auto"
         onClick={handlerOnClick}
         onMouseOver={(e) =>
-          (e.currentTarget.src = "/public/buttons/goBlack-hover-icon.svg")
+          (e.currentTarget.src = "/buttons/goBlack-hover-icon.svg")
         }
         onMouseOut={(e) => (e.currentTarget.src = "/buttons/goBack-icon.svg")}
         alt="Go back"
