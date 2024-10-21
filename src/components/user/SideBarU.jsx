@@ -11,18 +11,18 @@ const SideBarU = () => {
       <img
         src="/logos/logo.svg"
         alt="Logo"
-        className="w-20 h-auto mt-4 mx-auto z-50"
+        className="w-20 h-auto mt-2 mx-auto z-50"
       />
-      <div className="flex flex-col justify-between pt-6">
+      <div className="flex flex-col justify-between pt-4">
         <SelectUser />
-        <div className="mt-3.5">
+        <div className="mt-3">
           <FilterBySocialMedia />
         </div>
-        <div className="mt-3.5">
+        <div className="mt-3">
           <FilterByState statesList={statesJson2} />
         </div>
-        <div className="flex flex-col items-center mt-5">
-          <div className="mb-2">
+        <div className="flex flex-col items-center mt-4">
+          <div className="mb-1">
             <ResetButtom />
           </div>
           <GoHomeButton />
