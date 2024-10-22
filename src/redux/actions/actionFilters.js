@@ -16,6 +16,7 @@ import {
 const URL = 'https://electrica-mosconi-server.onrender.com';
 
 export const filterBySocialMediaAction = (socialMedia) => {
+    //console.log('llega a action: ', socialMedia);
     try {
         return {
             type: FILTER_BY_SOCIAL_MEDIA,
