@@ -119,7 +119,7 @@ export const deactivateAllMessagesReceivedAction = () => {
 export const createMessageSentAction = (input) => {
     return async (dispatch) => {
     try {
-            const response = await axios.post(`${URL}/telegram/sendMessage`, input);
+            const response = await axios.post(`${URL}/messageSend`, input);
             const message = response.data;
             dispatch({ type: CREATE_MESSAGE_SEND, payload: message });
     } catch (error) {

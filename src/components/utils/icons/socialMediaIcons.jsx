@@ -2,12 +2,12 @@ import React from "react";
 // este archivo de deberia oder usar para asignar iconos de redes sociales a los mensajes
 const SocialMediaIcons = (socialMediaName) => {
   //falta desestructurar props segun modelo y pasar ese dato a UpperCase
-  console.log("socialMediaIcons", socialMediaName.socialMedia);
+  //console.log("socialMediaIcons", socialMediaName.socialMedia);
   const socialMedia =
     socialMediaName && socialMediaName.socialMediaName
       ? socialMediaName.socialMediaName
       : socialMediaName.socialMedia[0];
-  console.log("socialMname", socialMedia);
+  //console.log("socialMname", socialMedia);
 
   return (
     <div>
