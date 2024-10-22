@@ -13,7 +13,7 @@ const socialMediaJson = [
     },
     {
         id: 3,
-        name: "Whatsapp",
+        name: "WhatsApp",
         icon: "/socialMediaImage/whatsapp.svg",
         dataUser: "123-456-7890"
     },
