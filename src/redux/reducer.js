@@ -297,13 +297,13 @@ switch (action.type) {
     //** REDUCER DE REDES SOCIALES */
         case GET_ALL_SOCIAL_MEDIA_BY_BUSINESS:
             let allSocialMedia = action.payload
-            console.log('ingreso al reducer con payload', allSocialMedia);
+            //console.log('ingreso al reducer con payload', allSocialMedia);
             
             const socialMediaFiltered =  allSocialMedia.filter(sm =>sm.Businesses.length && sm.Businesses[0].id === state.business.id)
             // const socialMediaFiltered =  allSocialMedia.forEach(sm => console.log(sm.Businesses[0].id)
             // )
 
-            console.log('redes sociales filtradas', socialMediaFiltered);
+            //console.log('redes sociales filtradas', socialMediaFiltered);
             
             return {
                 ...state,
