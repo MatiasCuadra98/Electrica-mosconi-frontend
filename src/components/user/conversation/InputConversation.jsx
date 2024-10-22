@@ -66,12 +66,12 @@ const InputConversation = () => {
         UserId: user && user.id,
       });
     }
-    console.log("LOG1-este es el input: ", input);
+    //console.log("LOG1-este es el input: ", input);
 
     //setPreview(false);
     if (input.UserId && input.message && input.chatId) {
       dispatch(createMessageSentAction(input));
-      console.log("LOG2-envio el mensaje: ", input);
+      //console.log("LOG2-envio el mensaje: ", input);
       newMessages.forEach((message) =>
         dispatch(updateStateMessageReceivedAction(message.id))
       );
