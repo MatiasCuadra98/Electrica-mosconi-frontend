@@ -6,7 +6,7 @@ import Spinner from "../../utils/spinners/Spinner";
 
 const InboxListUser = () => {
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
-  console.log("mensajes", allMessagesReceived);
+  //console.log("mensajes", allMessagesReceived);
 
   const [loading, setLoading] = useState(true);
 

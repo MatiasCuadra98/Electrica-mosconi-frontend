@@ -4,7 +4,7 @@ import { useState } from "react";
 import { filterByStateAction } from "../../../redux/actions/actionFilters";
 
 const FilterByState = ({ statesList }) => {
-  console.log("statesList", statesList);
+  //console.log("statesList", statesList);
 
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const FilterByState = ({ statesList }) => {
     setSelectedFilter(e.target.value);
     dispatch(filterByStateAction(e.target.value));
     localStorage.setItem("state", e.target.value);
-    console.log("despacho el filtro por state con payload", e.target.value);
+    //console.log("despacho el filtro por state con payload", e.target.value);
   };
 
   return (
