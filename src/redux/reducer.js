@@ -189,7 +189,9 @@ switch (action.type) {
 //FILTROS:
     case FILTER_BY_SOCIAL_MEDIA:
         const allMsgsReceived = state.allMessagesReceived;
-        const payload = action.payload === 'whatsapp' ? 'wathsapp' : action.payload 
+        const payload = action.payload === 'Facebook' ? 'Messenger' : action.payload 
+        //console.log('payload: ', payload);
+        
         if ( payload === 'TODOS') {
             return {
                 ...state,
