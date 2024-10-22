@@ -23,10 +23,11 @@ const SocialMediaIcons = (socialMediaName) => {
       ) : (socialMediaName && socialMediaName.socialMedia === "WHATSAPP") ||
         (socialMediaName && socialMedia === "WHATSAPP") ? (
         <img src="/socialMediaImage/whatsapp.svg" alt={socialMedia} />
-      ) : // ) : socialMediaName && socialMedia === "WATHSAPP" ? (
-      //   <img src="/socialMediaImage/whatsapp.svg" alt={socialMedia} />
-      (socialMediaName && socialMediaName.socialMedia === "MESSENGER") ||
+      ) : (socialMediaName && socialMediaName.socialMedia === "MESSENGER") ||
         (socialMediaName && socialMedia === "MESSENGER") ? (
+        <img src="/socialMediaImage/facebook.svg" alt={socialMedia} />
+      ) : (socialMediaName && socialMediaName.socialMedia === "FACEBOOK") ||
+        (socialMediaName && socialMedia === "FACEBOOK") ? (
         <img src="/socialMediaImage/facebook.svg" alt={socialMedia} />
       ) : (
         <img src="/logos/iconoLogoAzul.svg" alt="RedSocial" />
