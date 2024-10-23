@@ -299,17 +299,29 @@ switch (action.type) {
     //** REDUCER DE REDES SOCIALES */
         case GET_ALL_SOCIAL_MEDIA_BY_BUSINESS:
             let allSocialMedia = action.payload
-            //console.log('ingreso al reducer con payload', allSocialMedia);
+            // console.log('ingreso al reducer con payload', allSocialMedia);
             
-            const socialMediaFiltered =  allSocialMedia.filter(sm =>sm.Businesses.length && sm.Businesses[0].id === state.business.id)
-            // const socialMediaFiltered =  allSocialMedia.forEach(sm => console.log(sm.Businesses[0].id)
-            // )
+            // console.log('businessId', state.business.id);
+            const socialMediaFiltered = state.business && allSocialMedia.filter(sm => sm.Businesses.length && sm.Businesses[0].id === state.business.id)
+            const socialMediaActive = socialMediaFiltered.map(sma => 
+                sma.SocialMedia.length > 0 && sma.SocialMedia[0].name === 'Messenger' ? 
+                {
+                    ...sma,
+                    SocialMedia: [{
+                        ...sma.SocialMedia[0],
+                        name: 'Facebook'
+                    }, ...sma.SocialMedia.slice(1)]
+                  } 
+                : sma
+            )
+            const socialMediaNotNull = socialMediaActive.filter(smf => smf.dataUser !== 'null')
+            // console.log('redes sociales filtered', socialMediaFiltered);
+            // console.log('redes sociales active', socialMediaActive);
+            // console.log('redes sociales no null', socialMediaNotNull);
 
-            //console.log('redes sociales filtradas', socialMediaFiltered);
-            
             return {
                 ...state,
-                socialMedia: socialMediaFiltered
+                socialMedia: socialMediaNotNull
             };
 
             case UPDATE_SOCIAL_MEDIA:

@@ -47,12 +47,19 @@ const SocialMediaData = () => {
             <div className="flex flex-row mt-2" key={index}>
               <div className="w-8 h-8">
                 <SocialMediaIcons
+                  // socialMedia={
+                  //   !sm.SocialMedia.length
+                  //     ? "red social"
+                  //     : sm.SocialMedia.map((e) => {
+                  //         return e.name.toUpperCase();
+                  //       })
+                  // }
                   socialMedia={
-                    !sm.SocialMedia.length
-                      ? "red social"
-                      : sm.SocialMedia.map((e) => {
-                          return e.name.toUpperCase();
-                        })
+                    sm.SocialMedia.length &&
+                    sm.socialMedia[0] &&
+                    sm.SocialMedia[0].name
+                      ? sm.SocialMedia[0].name.toUpperCase()
+                      : "RED SOCIAL"
                   }
                 />
               </div>

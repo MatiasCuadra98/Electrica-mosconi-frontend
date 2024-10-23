@@ -8,7 +8,7 @@ import {
 } from "../redux/actions/actionMessages.js";
 import { sweetAlertsError } from "../components/utils/alerts/alerts.jsx";
 import SpinnerLogin from "../components/utils/spinners/SpinnerLogin.jsx";
-import { getAllSocialMediaByBusinessAction } from "../redux/actions/actionSocialMedia.js";
+//import { getAllSocialMediaByBusinessAction } from "../redux/actions/actionSocialMedia.js";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const LandingPage = () => {
     dispatch(getBusinessByIdAction(businessId, businessName));
     dispatch(getAllMessagesReceivedAction());
     dispatch(getAllMessagesSentAction());
-    dispatch(getAllSocialMediaByBusinessAction());
+    //dispatch(getAllSocialMediaByBusinessAction());
   }, [dispatch, businessId]);
 
   const handlerOnClick = () => {
