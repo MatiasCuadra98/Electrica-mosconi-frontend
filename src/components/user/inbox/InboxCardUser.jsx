@@ -19,8 +19,12 @@ const InboxCardUser = ({
 }) => {
   const dispatch = useDispatch();
 
-  const socialMediaName = SocialMedium ? SocialMedium.name : "red Social";
-  const upperSMName = socialMediaName && socialMediaName.toUpperCase();
+  const socialMediaName =
+    SocialMedium && SocialMedium.name
+      ? SocialMedium.name.toUpperCase()
+      : "RED SOCIAL";
+  //const upperSMName = socialMediaName && socialMediaName.toUpperCase();
+  console.log("inboxUser", socialMediaName);
 
   const msgActive = useSelector((state) => state.messageActive);
 
@@ -55,7 +59,7 @@ const InboxCardUser = ({
           <div className="w-full h-full flex items-center justify-between bg-transparent border-l-4 border-t-4 border-b-4 border-amber-500">
             <div className="flex items-center">
               <div className="w-10 h-10 opacity-90 rounded-full border-2 border-white mr-2">
-                <SocialMediaIcons socialMediaName={upperSMName} />
+                <SocialMediaIcons socialMedia={socialMediaName} />
               </div>
               <div className="flex flex-col justify-center ml-8">
                 <span className="text-black text-base font-normal font-['Oswald'] capitalize">
@@ -78,7 +82,7 @@ const InboxCardUser = ({
       ) : (
         <div className="w-64 h-24 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
           <div className="w-10 h-10 opacity-90 rounded-full border-2 border-white mr-2">
-            <SocialMediaIcons socialMediaName={upperSMName} />
+            <SocialMediaIcons socialMedia={socialMediaName} />
           </div>
 
           <div className="flex flex-col justify-center">

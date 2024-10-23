@@ -46,9 +46,7 @@ const InboxAdmiTable = () => {
     }
   }
 
-  messagesByContact.forEach((msg) => {
-    console.log("mensajes por contacto", msg.Contact);
-  });
+  console.log("messagesByContact", messagesByContact);
 
   return (
     <div>
@@ -79,11 +77,13 @@ const InboxAdmiTable = () => {
           </tr>
         </thead>
         {loading ? (
-          <tr>
-            <td colSpan="7" className="text-center py-4 h-[600px]">
-              <Spinner />
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td colSpan="7" className="text-center py-4 h-[600px]">
+                <Spinner />
+              </td>
+            </tr>
+          </tbody>
         ) : (
           <tbody className="overflow-x-auto">
             {!allMessagesReceived.length ? (
@@ -118,7 +118,7 @@ const InboxAdmiTable = () => {
                     <td className="px-[1.75rem] py-2 text-center w-5 h-5">
                       <SocialMediaIcons
                         socialMedia={
-                          message.SocialMedium
+                          message.SocialMedium && message.SocialMedium.name
                             ? message.SocialMedium.name.toUpperCase()
                             : "RED SOCIAL"
                         }
