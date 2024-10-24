@@ -5,17 +5,21 @@ import SocialMediaIcons from "../../../../utils/icons/socialMediaIcons";
 const SocialMediaData = () => {
   const business = useSelector((state) => state.business);
   const socialMedia = useSelector((state) => state.socialMedia);
-
-  console.log("redes sociales", socialMedia);
-
-  const socialMediaSortered =
-    socialMedia && socialMedia.length > 1
-      ? socialMedia.sort((a, b) => {
-          // a.SocialMedia.name - b.SocialMedia.name;
-          return a.SocialMedia[0].name.localeCompare(b.SocialMedia[0].name);
-        })
-      : socialMedia;
-  console.log("sortered", socialMediaSortered);
+  //console.log("redes sociales", socialMedia);
+  const socialMediaUserNotNull = socialMedia.filter(
+    (sm) => sm.dataUser !== "null"
+  );
+  //console.log("socialMediaUserNotNull", socialMediaUserNotNull);
+  const socialMediaNotNull = socialMediaUserNotNull.filter(
+    (sm) => sm.SocialMedia.length >= 1
+  );
+  //console.log("socialMediaNotNull", socialMediaNotNull);
+  const socialMediaSortered = socialMediaNotNull
+    ? socialMediaNotNull.sort((a, b) => {
+        return a.SocialMedia[0].name.localeCompare(b.SocialMedia[0].name);
+      })
+    : socialMediaNotNull;
+  //console.log("sortered", socialMediaSortered);
 
   const half = Math.ceil(socialMediaSortered.length / 2);
   const groupA =

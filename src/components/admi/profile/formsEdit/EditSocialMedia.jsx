@@ -16,14 +16,22 @@ const EditSocialMedia = () => {
   //logica para ordenar las redes sociales activas
   //ver de refactorizar y pasar esta logica a un archivo aparte
   const socialMedia = useSelector((state) => state.socialMedia);
+  //console.log("redes sociales", socialMedia);
+  const socialMediaUserNotNull = socialMedia.filter(
+    (sm) => sm.dataUser !== "null"
+  );
+  //console.log("socialMediaUserNotNull", socialMediaUserNotNull);
+  const socialMediaNotNull = socialMediaUserNotNull.filter(
+    (sm) => sm.SocialMedia.length >= 1
+  );
+  //console.log("socialMediaNotNull", socialMediaNotNull);
+  const socialMediaSortered = socialMediaNotNull
+    ? socialMediaNotNull.sort((a, b) => {
+        return a.SocialMedia[0].name.localeCompare(b.SocialMedia[0].name);
+      })
+    : socialMediaNotNull;
+  //console.log("sortered", socialMediaSortered);
 
-  const socialMediaSortered =
-    socialMedia && socialMedia.length > 1
-      ? socialMedia.sort((a, b) => {
-          // a.SocialMedia.name - b.SocialMedia.name;
-          return a.SocialMedia[0].name.localeCompare(b.SocialMedia[0].name);
-        })
-      : socialMedia;
   const half = Math.ceil(socialMediaSortered.length / 2);
   const groupA =
     socialMedia.length > 1

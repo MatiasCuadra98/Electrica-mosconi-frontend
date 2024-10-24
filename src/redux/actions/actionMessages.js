@@ -117,10 +117,14 @@ export const deactivateAllMessagesReceivedAction = () => {
   };
 
 export const createMessageSentAction = (input) => {
+    console.log('input en action', input);
+    
     return async (dispatch) => {
     try {
             const response = await axios.post(`${URL}/messageSend`, input);
             const message = response.data;
+            console.log('mensaje en action', message);
+            
             dispatch({ type: CREATE_MESSAGE_SEND, payload: message });
     } catch (error) {
         console.log('error de action', error);

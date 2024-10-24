@@ -24,7 +24,7 @@ const InboxCardUser = ({
       ? SocialMedium.name.toUpperCase()
       : "RED SOCIAL";
   //const upperSMName = socialMediaName && socialMediaName.toUpperCase();
-  console.log("inboxUser", socialMediaName);
+  // console.log("inboxUser", socialMediaName);
 
   const msgActive = useSelector((state) => state.messageActive);
 
