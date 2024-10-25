@@ -15,6 +15,7 @@ const InputConversation = () => {
     UserId: "",
     accessToken: "",
     businessId: "",
+    IdSocialMedia: "",
   });
 
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const InputConversation = () => {
         chatId: contactChatId,
         accessToken: token,
         businessId: business.id,
+        IdSocialMedia: contact.SocialMediumId,
       }));
     } else {
       // Si se borra el archivo subido, limpia el campo de mensaje
@@ -81,6 +83,7 @@ const InputConversation = () => {
       UserId: user && user.id,
       accessToken: token,
       businessId: business.id,
+      IdSocialMedia: contact.SocialMediumId,
     });
     //}
     console.log("input", input);
@@ -95,6 +98,7 @@ const InputConversation = () => {
         UserId: user && user.id,
         accessToken: token,
         businessId: business.id,
+        IdSocialMedia: contact.SocialMediumId,
       });
     }
     console.log("input SUBMIT: ", input);
@@ -112,6 +116,7 @@ const InputConversation = () => {
         UserId: "",
         accessToken: "",
         businessId: "",
+        IdSocialMedia: "",
       });
       uploadedFile && dispatch(setUploadFileAction(""));
     } else if (!input.UserId && input.message && input.chatId) {
