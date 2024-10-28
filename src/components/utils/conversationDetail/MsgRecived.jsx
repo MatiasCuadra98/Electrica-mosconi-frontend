@@ -9,7 +9,7 @@ const MsgRecived = ({ props, contact }) => {
     <div className="w-[26rem] h-auto bg-neutral-200 rounded-tl-[40px] rounded-tr-[40px] rounded-bl-[40px] p-4 flex flex-col justify-between self-start ml-12 mt-4">
       <div className="flex items-center mb-4">
         <div className="w-12 h-12 rounded-[33.50px] shadow-xl mr-4">
-          <SocialMediaIcons socialMediaName={socialMediaName} />
+          <SocialMediaIcons socialMedia={socialMediaName} />
         </div>
         <h2 className="text-black text-base font-normal font-['Oswald'] capitalize">
           {props.name}

@@ -23,8 +23,7 @@ const FilterBySocialMedia = () => {
   // Función para manejar el cambio de estado de un radio button
   const handlerOnChange = (e) => {
     setSelectedFilter(e.target.value);
-    console.log("filtro seleccionado", e.target.value);
-
+    //console.log("filtro seleccionado", e.target.value);
     dispatch(filterBySocialMediaAction(e.target.value));
     localStorage.setItem("socialMedia", e.target.value);
   };

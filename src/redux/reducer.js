@@ -155,6 +155,8 @@ switch (action.type) {
             }
 //MENSAJES ENVIADOS
     case CREATE_MESSAGE_SEND: 
+    console.log('entro en el reducer, envio el objeto al back');
+    
     return {
         ...state,
     };
@@ -299,17 +301,25 @@ switch (action.type) {
     //** REDUCER DE REDES SOCIALES */
         case GET_ALL_SOCIAL_MEDIA_BY_BUSINESS:
             let allSocialMedia = action.payload
-            //console.log('ingreso al reducer con payload', allSocialMedia);
-            
-            const socialMediaFiltered =  allSocialMedia.filter(sm =>sm.Businesses.length && sm.Businesses[0].id === state.business.id)
-            // const socialMediaFiltered =  allSocialMedia.forEach(sm => console.log(sm.Businesses[0].id)
-            // )
+//esta parte del codigo debera descomentarse cuando la actualizacion del token de Meli cambie la red social activa en lugar de crear una nueva
+            //const socialMediaFiltered = state.business && allSocialMedia.filter(sm => sm.Businesses.length && sm.Businesses[0].id === state.business.id)
+            //const socialMediaActive = socialMediaFiltered.map(sma => 
+            const socialMediaActive = allSocialMedia.map(sma => 
+                sma.SocialMedia.length > 0 && sma.SocialMedia[0].name === 'Messenger' ? 
+                {
+                    ...sma,
+                    SocialMedia: [{
+                        ...sma.SocialMedia[0],
+                        name: 'Facebook'
+                    }, ...sma.SocialMedia.slice(1)]
+                  } 
+                : sma
+            )
+            //const socialMediaNotNull = socialMediaActive.filter(smf => smf.dataUser !== 'null')
 
-            //console.log('redes sociales filtradas', socialMediaFiltered);
-            
             return {
                 ...state,
-                socialMedia: socialMediaFiltered
+                socialMedia: socialMediaActive
             };
 
             case UPDATE_SOCIAL_MEDIA:

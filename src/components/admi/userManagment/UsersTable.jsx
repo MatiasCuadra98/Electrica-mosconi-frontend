@@ -92,7 +92,7 @@ const UsersTable = () => {
                     <td className=" px-4 py-2 text-center text-xs font-normal font-['Inter'] capitalize">
                       {user.phone}
                     </td>
-                    <td className=" px-4 py-2 text-center text-xs font-normal font-['Inter'] capitalize">
+                    <td className=" px-4 py-2 text-center text-xs font-normal font-['Inter'] ">
                       {user.email}
                     </td>
                     <td className=" pl-12 py-2 text-center ">
