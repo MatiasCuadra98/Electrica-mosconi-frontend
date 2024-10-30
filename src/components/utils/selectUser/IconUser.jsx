@@ -3,7 +3,7 @@ import React from "react";
 const IconUser = ({ name, customSize = "w-10 h-10 text-xl" }) => {
   const nameArray = name ? name.split(" ") : null;
   const firstNameI = name ? nameArray[0][0].toUpperCase() : null;
-  const lastNameI = name ? nameArray[1][0] : null;
+  const lastNameI = name && nameArray[1] ? nameArray[1][0] : firstNameI;
 
   const fullNameI = name ? `${firstNameI}${lastNameI}` : null;
 

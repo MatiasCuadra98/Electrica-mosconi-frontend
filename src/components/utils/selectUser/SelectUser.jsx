@@ -10,6 +10,8 @@ import IconUser from "./IconUser";
 const SelectUser = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
+  console.log("usuarios", users);
+
   const user = useSelector((state) => state.user);
 
   const selectHandler = async (e) => {
