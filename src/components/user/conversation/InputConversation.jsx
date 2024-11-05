@@ -21,24 +21,28 @@ const InputConversation = () => {
 
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.contact);
-  //console.log("contacto", contact.SocialMediumId);
+  console.log("contacto", contact.SocialMediumId);
 
   const socialMedia = useSelector((state) => state.socialMedia);
-  //console.log("socialMedia", socialMedia);
+  console.log("socialMedia", socialMedia);
 
   //esta parte del codigo esta hecha porque al cambiar el token de MeLi, se crea una nueva red social Activa
   const meLiId = 5;
+  const hardcodeToken =
+    // "APP_USR-1309613645970920-110115-ca1083225b9f52dce1a519011856b88a-232533265";
+    //"APP_USR-1309613645970920-110408-3112560a09d09eb6b7bf275119056a07-232533265";
+    //"APP_USR-1309613645970920-110509-b790abb63a1f52459c1fc397be23bbdb-232533265";
+    "APP_USR-1309613645970920-110516-68b5eb49bf3e483ac6b6ac6d5f09972c-232533265";
   const meLiArray =
     contact.SocialMediumId === meLiId &&
     socialMedia &&
     socialMedia
       .filter((sm) => sm.socialMediaId === meLiId)
-      .sort((a, b) => a.id - b.id);
-  //console.log("mercadoLibreArray", meLiArray);
-  const token = meLiArray.length
-    ? meLiArray[meLiArray.length - 1].accessToken
-    : null;
-  //console.log("token", token);
+      .sort((a, b) => b.id - a.id);
+  console.log("mercadoLibreArray", meLiArray);
+  //const token = meLiArray.length ? meLiArray[0].accessToken : null;
+  const token = hardcodeToken;
+  console.log("token", token);
 
   //ESTE ES EL CODIGO QUE DEBERIA ESTAR CUANDO SE ARREGLE:
   //const findSocialMedia = socialMedia && socialMedia.find(sm => sm.socialMediaId === contact.socialMediumId)
@@ -51,8 +55,14 @@ const InputConversation = () => {
   // const [preview, setPreview] = useState(uploadedFile ? true : false);
   // console.log("preview", preview);
 
-  const contactChatId = contact ? contact.chatId : null;
-  const messages = contact && contact.MsgReceiveds;
+  const messages =
+    contact && contact.MsgReceiveds && contact.MsgReceiveds.length > 1
+      ? contact.MsgReceiveds.sort((a, b) => b.timestamp - a.timestamp)
+      : contact.MsgReceiveds;
+  console.log("mensajes", messages);
+  const contactChatId = messages ? messages[0].chatId : null;
+  console.log("chatId", contactChatId);
+
   const newMessages =
     messages && messages.filter((message) => message.state === "Leidos");
 
@@ -77,6 +87,7 @@ const InputConversation = () => {
       }));
     }
   }, [uploadedFile, user, contactChatId]);
+  // }, [uploadedFile, user]);
 
   const inputHandler = (e) => {
     setInput({
@@ -89,7 +100,7 @@ const InputConversation = () => {
       contactId: contact.id,
     });
     //}
-    //console.log("input", input);
+    console.log("input", input);
   };
 
   const handleSubmit = (e) => {

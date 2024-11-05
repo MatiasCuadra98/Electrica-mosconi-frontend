@@ -24,7 +24,7 @@ const InboxCardUser = ({
       ? SocialMedium.name.toUpperCase()
       : "RED SOCIAL";
   //const upperSMName = socialMediaName && socialMediaName.toUpperCase();
-  // console.log("inboxUser", socialMediaName);
+  console.log("inboxUser", socialMediaName);
 
   const msgActive = useSelector((state) => state.messageActive);
 
@@ -34,6 +34,7 @@ const InboxCardUser = ({
   const noReadMsg =
     allMsgByContact &&
     allMsgByContact.filter((message) => message.state === "No Leidos");
+  console.log("mensajes", allMsgByContact);
 
   const onClickHandler = (id) => {
     if (msgActive && msgActive !== id) {
