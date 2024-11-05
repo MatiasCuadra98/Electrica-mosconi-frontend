@@ -26,7 +26,10 @@ export const getAllUsersAction = () => {
                 try {
                 const response = await axios.get(`${URL}/user`);
                 const users = response.data;  
+                console.log('entro en la action GetAllUsersAction');
                 dispatch({type: GET_ALL_USERS, payload: users})
+                console.log('voy al reducer');
+                
             } catch (error) {
                 sweetAlertsError(
                     "Intenta de nuevo",
