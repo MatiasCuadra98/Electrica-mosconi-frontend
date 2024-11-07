@@ -13,6 +13,7 @@ import {
   InboxAdmi,
   InboxDetailAdmi,
   UsersManagement,
+  MetricsAnalysis,
 } from "./layouts";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -68,6 +69,7 @@ const App = () => {
           path="/dashboardAdmi/usersManagement"
           element={<UsersManagement />}
         />
+        <Route path="/dashboardAdmi/metrics" element={<MetricsAnalysis />} />
       </Routes>
     </div>
   );

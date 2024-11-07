@@ -11,6 +11,7 @@ import EditSocialMedia from "../components/admi/profile/formsEdit/EditSocialMedi
 import InboxAdmi from "./dashboardAdmi/InboxAdmi";
 import InboxDetailAdmi from "./dashboardAdmi/InboxDetailAdmi";
 import UsersManagement from "./dashboardAdmi/UsersManagement";
+import MetricsAnalysis from "./dashboardAdmi/MetricsAnalysis";
 
 
 export {
@@ -27,4 +28,5 @@ export {
   InboxAdmi,
   InboxDetailAdmi,
   UsersManagement,
+  MetricsAnalysis
 };
