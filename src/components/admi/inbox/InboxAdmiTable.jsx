@@ -97,6 +97,12 @@ const InboxAdmiTable = () => {
               </tr>
             ) : (
               messagesByContact.map((message, index) => {
+                const lastMsgSent =
+                  message.Contact && message.Contact.MsgSents.length > 0
+                    ? message.Contact.MsgSents.sort(
+                        (a, b) => b.timestamp - a.timestamp
+                      )[0]
+                    : null;
                 return (
                   <tr key={index} className="odd:bg-white even:bg-stone-300 ">
                     <td className="pl-6 pr-4 py-2 text-center">
@@ -130,22 +136,22 @@ const InboxAdmiTable = () => {
                     <td className="pl-6 pr-4 py-2 text-center w-6 h-6 ">
                       <IconUser
                         name={
-                          message.Contact &&
-                          message.Contact.MsgSents.length > 0 &&
-                          message.Contact.MsgSents.Users
-                            ? message.Contact.MsgSents.Users.name
+                          lastMsgSent && lastMsgSent.User
+                            ? lastMsgSent.User.name
                             : null
                         }
+                        customSize="w-8 h-8 text-base"
                       />
                     </td>
                     <td className="px-4 py-2 text-center text-[0.65rem] font-normal font-['Inter'] capitalize">
                       <FormattedTimestamp
                         timestamp={
-                          message.Contact && message.Contact.MsgSents.length > 0
-                            ? message.Contact.MsgSents.sort(
-                                (a, b) => b.timestamp - a.timestamp
-                              )[0].timestamp
-                            : null
+                          lastMsgSent
+                          // message.Contact && message.Contact.MsgSents.length > 0
+                          //   ? message.Contact.MsgSents.sort(
+                          //       (a, b) => b.timestamp - a.timestamp
+                          //     )[0].timestamp
+                          //   : null
                         }
                       />
                     </td>
