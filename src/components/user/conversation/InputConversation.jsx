@@ -28,12 +28,7 @@ const InputConversation = () => {
 
   //esta parte del codigo esta hecha porque al cambiar el token de MeLi, se crea una nueva red social Activa
   const meLiId = 5;
-  const hardcodeToken =
-    // "APP_USR-1309613645970920-110115-ca1083225b9f52dce1a519011856b88a-232533265";
-    //"APP_USR-1309613645970920-110408-3112560a09d09eb6b7bf275119056a07-232533265";
-    //"APP_USR-1309613645970920-110509-b790abb63a1f52459c1fc397be23bbdb-232533265";
-    //"APP_USR-1309613645970920-110516-68b5eb49bf3e483ac6b6ac6d5f09972c-232533265";
-    "APP_USR-1309613645970920-110709-3ce20f28a6c7cdcf20a26c2b68f570e5-232533265";
+  //const hardcodeToken = "APP_USR-1309613645970920-110709-3ce20f28a6c7cdcf20a26c2b68f570e5-232533265";
   const meLiArray =
     contact.SocialMediumId === meLiId &&
     socialMedia &&
@@ -41,8 +36,8 @@ const InputConversation = () => {
       .filter((sm) => sm.socialMediaId === meLiId)
       .sort((a, b) => b.id - a.id);
   console.log("mercadoLibreArray", meLiArray);
-  //const token = meLiArray.length ? meLiArray[0].accessToken : null;
-  const token = hardcodeToken;
+  const token = meLiArray.length ? meLiArray[0].accessToken : null;
+  //const token = hardcodeToken;
   console.log("token", token);
 
   //ESTE ES EL CODIGO QUE DEBERIA ESTAR CUANDO SE ARREGLE:
