@@ -30,9 +30,10 @@ const MetricsAnalysis = () => {
       </div>
       <div className="flex-1 flex justify-center items-center">
         <img
-          src="https://www1.upme.gov.co/simco/PublishingImages/Pagina_en_construccion.jpg"
+          //src="https://www1.upme.gov.co/simco/PublishingImages/Pagina_en_construccion.jpg"
+          src="/pagina en construccion.png"
           alt="sector en construccion"
-          className="w-full h-3/4"
+          className="w-auto h-3/4"
         />
       </div>
     </div>
