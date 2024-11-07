@@ -17,7 +17,7 @@ const routes = [
     {
         id: 4,
         name: "analisis - metricas",
-        route: ""
+        route: "/dashboardAdmi/metrics"
     }
 
 ]

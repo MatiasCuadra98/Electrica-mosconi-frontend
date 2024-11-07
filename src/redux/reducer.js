@@ -89,8 +89,16 @@ switch (action.type) {
         };
     //***--REDUCER DE USUARIOS-- */
     case GET_ALL_USERS:
+        console.log('entro al reducer');
+        
         let allBusinessUsers = action.payload
-        const usersFiltered = allBusinessUsers.filter(user => user.Business.id === state.business.id)
+        console.log('payload', allBusinessUsers);
+        console.log('business Id', state.business.id);
+        let businessId = state.business.id || '9860a906-5e9f-4e6e-953e-e6622f24fa2d'; 
+        
+        const usersFiltered = allBusinessUsers.filter(user => user.BusinessId === businessId)
+        console.log('usuarios filtrados por business', usersFiltered);
+        
         return {
             ...state,
             users: usersFiltered,
