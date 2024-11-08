@@ -29,6 +29,7 @@ const InputConversation = () => {
   const findSocialMedia = socialMedia && contact && socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
   console.log('find socialMedia', findSocialMedia);
   const token = findSocialMedia && findSocialMedia.accessToken
+  
   console.log('token', token);
   
   
