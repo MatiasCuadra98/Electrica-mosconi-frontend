@@ -27,22 +27,24 @@ const InputConversation = () => {
   console.log("socialMedia", socialMedia);
 
   //esta parte del codigo esta hecha porque al cambiar el token de MeLi, se crea una nueva red social Activa
-  const meLiId = 5;
-  //const hardcodeToken = "APP_USR-1309613645970920-110709-3ce20f28a6c7cdcf20a26c2b68f570e5-232533265";
-  const meLiArray =
-    contact.SocialMediumId === meLiId &&
-    socialMedia &&
-    socialMedia
-      .filter((sm) => sm.socialMediaId === meLiId)
-      .sort((a, b) => b.id - a.id);
-  console.log("mercadoLibreArray", meLiArray);
-  const token = meLiArray.length ? meLiArray[0].accessToken : null;
-  //const token = hardcodeToken;
-  console.log("token", token);
+  // const meLiId = 5;
+  // //const hardcodeToken = "APP_USR-1309613645970920-110709-3ce20f28a6c7cdcf20a26c2b68f570e5-232533265";
+  // const meLiArray =
+  //   contact.SocialMediumId === meLiId &&
+  //   socialMedia &&
+  //   socialMedia
+  //     .filter((sm) => sm.socialMediaId === meLiId)
+  //     .sort((a, b) => b.id - a.id);
+  // console.log("mercadoLibreArray", meLiArray);
+  // const token = meLiArray.length ? meLiArray[0].accessToken : null;
+  // //const token = hardcodeToken;
+  // console.log("token", token);
 
   //ESTE ES EL CODIGO QUE DEBERIA ESTAR CUANDO SE ARREGLE:
-  //const findSocialMedia = socialMedia && socialMedia.find(sm => sm.socialMediaId === contact.socialMediumId)
-  //const token = findSocialMedia.accessToken
+  const findSocialMedia =
+    socialMedia &&
+    socialMedia.find((sm) => sm.socialMediaId === contact.socialMediumId);
+  const token = findSocialMedia.accessToken;
 
   const user = useSelector((state) => state.user);
   const uploadedFile = useSelector((state) => state.uploadedFile);
