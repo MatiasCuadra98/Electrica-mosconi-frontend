@@ -17,7 +17,7 @@ const LandingPage = () => {
   const business = useSelector((state) => state.business);
 
   //estos datos deberian ser recibidos del login inicial
-  const businessId = "478ddfaa-0b7c-4a5d-9bbc-0ae5eb837f49";
+  const businessId = "4b3171a4-7d37-44ce-a9fe-96bac07c8843";
   const businessName = "Electrica Mosconi";
 
   useEffect(() => {
