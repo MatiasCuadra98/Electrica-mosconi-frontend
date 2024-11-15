@@ -17,7 +17,10 @@ const InputConversation = () => {
     businessId: "",
     IdSocialMedia: "",
     contactId: "",
+    phone:""
   });
+
+console.log("Esto es lo que sale del input:", InputConversation)
 
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.contact);
@@ -86,6 +89,7 @@ const InputConversation = () => {
         businessId: business.id,
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
+        phone: contact.phone
       }));
     } else {
       // Si se borra el archivo subido, limpia el campo de mensaje
@@ -106,6 +110,7 @@ const InputConversation = () => {
       businessId: business.id,
       IdSocialMedia: contact.SocialMediumId,
       contactId: contact.id,
+      phone: contact.phone
     });
     //}
     //console.log("input", input);
@@ -122,6 +127,7 @@ const InputConversation = () => {
         businessId: business.id,
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
+        phone: contact.phone
       });
     }
     //console.log("input SUBMIT: ", input);
@@ -141,6 +147,7 @@ const InputConversation = () => {
         businessId: "",
         IdSocialMedia: "",
         contactId: "",
+        phone: ""
       });
       uploadedFile && dispatch(setUploadFileAction(""));
     } else if (!input.UserId && input.message && input.chatId) {
