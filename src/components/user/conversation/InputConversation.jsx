@@ -20,20 +20,19 @@ const InputConversation = () => {
     phone:""
   });
 
-  
+  console.log("Esto es lo que sale del input:", input)
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.contact);
-  console.log("contacto", contact.SocialMediumId);
+  console.log("contacto", contact);
   
   const socialMedia = useSelector((state) => state.socialMedia);
-  console.log("socialMedia", socialMedia[0].socialMediaId);
+  //console.log("socialMedia", socialMedia[0].socialMediaId);
 
   const findSocialMedia = socialMedia && contact && socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
-  console.log('find socialMedia', findSocialMedia);
+  //console.log('find socialMedia', findSocialMedia);
   const token = findSocialMedia && findSocialMedia.accessToken
   
-  console.log('token', token);
-  
+  //console.log('token', token);
   
   
   //esta parte del codigo esta hecha porque al cambiar el token de MeLi, se crea una nueva red social Activa
@@ -112,7 +111,7 @@ const InputConversation = () => {
       phone: contact.phone
     });
     //}
-    console.log("Esto es lo que sale del input:", input)
+    //console.log("Esto es lo que sale del input:", input)
     //console.log("input", input);
   };
 
