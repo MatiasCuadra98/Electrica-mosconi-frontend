@@ -10,10 +10,11 @@ const SocialMediaData = () => {
     (sm) => sm.dataUser !== "null"
   );
   //console.log("socialMediaUserNotNull", socialMediaUserNotNull);
+
   const socialMediaNotNull = socialMediaUserNotNull.filter(
     (sm) => sm.SocialMedia.length >= 1
   );
-  //console.log("socialMediaNotNull", socialMediaNotNull);
+  console.log("socialMediaNotNull", socialMediaNotNull);
   const socialMediaSortered = socialMediaNotNull
     ? socialMediaNotNull.sort((a, b) => {
         return a.SocialMedia[0].name.localeCompare(b.SocialMedia[0].name);
