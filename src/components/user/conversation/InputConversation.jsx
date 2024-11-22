@@ -26,10 +26,10 @@ const InputConversation = () => {
   console.log("contacto", contact);
   
   const socialMedia = useSelector((state) => state.socialMedia);
-  console.log("socialMedia", socialMedia[0].socialMediaId);
+  console.log("socialMedia", socialMedia);
 
-  const findSocialMedia = socialMedia && contact && socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
-  console.log('find socialMedia', findSocialMedia);
+   const findSocialMedia = socialMedia && contact && socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
+  // console.log('find socialMedia', findSocialMedia);
   const token = findSocialMedia && findSocialMedia.accessToken
   
   console.log('token', token);
