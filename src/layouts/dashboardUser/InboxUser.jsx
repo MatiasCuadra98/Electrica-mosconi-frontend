@@ -12,7 +12,7 @@ import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
 import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
 import { getContactByMessageReceivedAction } from "../../redux/actions/actionContact";
 import { CONNECT_SOCKET, DISCONNECT_SOCKET } from "../../redux/types";
-//import { getAllSocialMediaByBusinessAction } from "../../redux/actions/actionSocialMedia.js";
+import { getAllSocialMediaByBusinessAction } from "../../redux/actions/actionSocialMedia.js";
 
 const InboxUser = () => {
   //console.log("InboxUser render");
@@ -41,7 +41,7 @@ const InboxUser = () => {
       dispatch(getAllUsersAction());
       console.log("despacho getAllUsersAction");
 
-      //dispatch(getAllSocialMediaByBusinessAction());
+      dispatch(getAllSocialMediaByBusinessAction());
     }
   }, [dispatch, businessId]);
 
