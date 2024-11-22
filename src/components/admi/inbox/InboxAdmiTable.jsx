@@ -103,6 +103,8 @@ const InboxAdmiTable = () => {
                         (a, b) => b.timestamp - a.timestamp
                       )[0]
                     : null;
+                    console.log('ultimo mensaje enviado', lastMsgSent);
+                    
                 return (
                   <tr key={index} className="odd:bg-white even:bg-stone-300 ">
                     <td className="pl-6 pr-4 py-2 text-center">
@@ -145,14 +147,7 @@ const InboxAdmiTable = () => {
                     </td>
                     <td className="px-4 py-2 text-center text-[0.65rem] font-normal font-['Inter'] capitalize">
                       <FormattedTimestamp
-                        timestamp={
-                          lastMsgSent
-                          // message.Contact && message.Contact.MsgSents.length > 0
-                          //   ? message.Contact.MsgSents.sort(
-                          //       (a, b) => b.timestamp - a.timestamp
-                          //     )[0].timestamp
-                          //   : null
-                        }
+                        timestamp={lastMsgSent ? lastMsgSent.timestamp : null}
                       />
                     </td>
                     <td className="pl-8 pr-4 py-2 text-center ">
