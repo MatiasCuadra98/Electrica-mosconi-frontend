@@ -11,10 +11,12 @@ const HomeAdmi = () => {
   const businessId = businessRedux || localStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user.id);
   const userId = userRedux || localStorage.getItem("userId");
-
+  const socialMedia = useSelector((state) => state.socialMedia)
+  
   useEffect(() => {
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
+      localStorage.setItem('SocialMedia', JSON.stringify(socialMedia))
       if (userId) {
         dispatch(getUserByIdAction(userId));
       }

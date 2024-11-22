@@ -9,6 +9,8 @@ const LogoutButton = () => {
 
   const admiLogoutHandler = () => {
     dispatch(admiLoginAction(false));
+    localStorage.removeItem('Admi')
+    localStorage.removeItem('SocialMedia')
     navigate("/inbox");
   };
 

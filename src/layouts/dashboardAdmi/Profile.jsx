@@ -12,7 +12,8 @@ const Profile = () => {
   const businessRedux = useSelector((state) => state.business.id);
   const businessId = businessRedux || localStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user.id);
-  const userId = userRedux || localStorage.getItem("userId");
+  const userId = userRedux || localStorage.getItem("Admi");
+ 
 
   useEffect(() => {
     if (businessId) {
