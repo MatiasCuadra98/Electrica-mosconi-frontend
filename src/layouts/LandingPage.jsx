@@ -21,7 +21,7 @@ const LandingPage = () => {
   const businessName = "Electrica Mosconi";
 
   useEffect(() => {
-    localStorage.setItem("businessId", businessId);
+    // localStorage.setItem("businessId", businessId);
     dispatch(getBusinessByIdAction(businessId, businessName));
     dispatch(getAllMessagesReceivedAction());
     dispatch(getAllMessagesSentAction());
@@ -38,6 +38,7 @@ const LandingPage = () => {
     } else {
       //este dispatch deberia ejecutarse con un login inicial NIY
       dispatch(getBusinessByIdAction(businessId, businessName));
+      localStorage.setItem("businessId", businessId);
       setLoading(true);
       if (businessName) {
         setTimeout(() => {
