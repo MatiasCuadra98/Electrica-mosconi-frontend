@@ -309,6 +309,8 @@ switch (action.type) {
     //** REDUCER DE REDES SOCIALES */
         case GET_ALL_SOCIAL_MEDIA_BY_BUSINESS:
             let allSocialMedia = action.payload
+            console.log('redes sociales desde el reducer', allSocialMedia);
+            
 //esta parte del codigo debera descomentarse cuando la actualizacion del token de Meli cambie la red social activa en lugar de crear una nueva
             //const socialMediaFiltered = state.business && allSocialMedia.filter(sm => sm.Businesses.length && sm.Businesses[0].id === state.business.id)
             //const socialMediaActive = socialMediaFiltered.map(sma => 
