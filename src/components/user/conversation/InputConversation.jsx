@@ -17,23 +17,24 @@ const InputConversation = () => {
     businessId: "",
     IdSocialMedia: "",
     contactId: "",
+    phone:""
   });
 
+  console.log("Esto es lo que sale del input:", input)
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.contact);
-  console.log("contacto", contact.SocialMediumId);
-
+  console.log("contacto", contact);
+  
   const socialMedia = useSelector((state) => state.socialMedia);
-  console.log("socialMedia", socialMedia[0].socialMediaId);
+  //console.log("socialMedia", socialMedia[0].socialMediaId);
 
   const findSocialMedia = socialMedia && contact && socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
-  console.log('find socialMedia', findSocialMedia);
+  //console.log('find socialMedia', findSocialMedia);
   const token = findSocialMedia && findSocialMedia.accessToken
   
-  console.log('token', token);
+  //console.log('token', token);
   
   
-
   //esta parte del codigo esta hecha porque al cambiar el token de MeLi, se crea una nueva red social Activa
   // const meLiId = 5;
   // //const hardcodeToken = "APP_USR-1309613645970920-110709-3ce20f28a6c7cdcf20a26c2b68f570e5-232533265";
@@ -55,25 +56,25 @@ const InputConversation = () => {
   // const token = findSocialMedia.accessToken;
   //console.log('red social del contacto', socialMedia);
   
-
+  
   const user = useSelector((state) => state.user);
   const uploadedFile = useSelector((state) => state.uploadedFile);
   const business = useSelector((state) => state.business);
   // console.log("uploadFile en InputConversation", uploadedFile);
   // const [preview, setPreview] = useState(uploadedFile ? true : false);
   // console.log("preview", preview);
-
+  
   const messages =
-    contact && contact.MsgReceiveds && contact.MsgReceiveds.length > 1
-      ? contact.MsgReceiveds.sort((a, b) => b.timestamp - a.timestamp)
-      : contact.MsgReceiveds;
+  contact && contact.MsgReceiveds && contact.MsgReceiveds.length > 1
+  ? contact.MsgReceiveds.sort((a, b) => b.timestamp - a.timestamp)
+  : contact.MsgReceiveds;
   //console.log("mensajes", messages);
   const contactChatId = messages ? messages[0].chatId : null;
   //console.log("chatId", contactChatId);
-
+  
   const newMessages =
-    messages && messages.filter((message) => message.state === "Leidos");
-
+  messages && messages.filter((message) => message.state === "Leidos");
+  
   useEffect(() => {
     if (uploadedFile) {
       // Si hay archivo subido, establece el mensaje como la URL del archivo
@@ -86,6 +87,7 @@ const InputConversation = () => {
         businessId: business.id,
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
+        phone: contact.phone
       }));
     } else {
       // Si se borra el archivo subido, limpia el campo de mensaje
@@ -96,7 +98,7 @@ const InputConversation = () => {
     }
   }, [uploadedFile, user, contactChatId]);
   // }, [uploadedFile, user]);
-
+  
   const inputHandler = (e) => {
     setInput({
       chatId: contactChatId,
@@ -106,8 +108,10 @@ const InputConversation = () => {
       businessId: business.id,
       IdSocialMedia: contact.SocialMediumId,
       contactId: contact.id,
+      phone: contact.phone
     });
     //}
+    //console.log("Esto es lo que sale del input:", input)
     //console.log("input", input);
   };
 
@@ -122,6 +126,7 @@ const InputConversation = () => {
         businessId: business.id,
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
+        phone: contact.phone
       });
     }
     //console.log("input SUBMIT: ", input);
@@ -141,6 +146,7 @@ const InputConversation = () => {
         businessId: "",
         IdSocialMedia: "",
         contactId: "",
+        phone: ""
       });
       uploadedFile && dispatch(setUploadFileAction(""));
     } else if (!input.UserId && input.message && input.chatId) {

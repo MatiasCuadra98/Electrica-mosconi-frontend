@@ -21,7 +21,7 @@ const LandingPage = () => {
   const businessName = "Electrica Mosconi";
 
   useEffect(() => {
-    localStorage.setItem("businessId", businessId);
+    // localStorage.setItem("businessId", businessId);
     dispatch(getBusinessByIdAction(businessId, businessName));
     dispatch(getAllMessagesReceivedAction());
     dispatch(getAllMessagesSentAction());
@@ -38,6 +38,7 @@ const LandingPage = () => {
     } else {
       //este dispatch deberia ejecutarse con un login inicial NIY
       dispatch(getBusinessByIdAction(businessId, businessName));
+      localStorage.setItem("businessId", businessId);
       setLoading(true);
       if (businessName) {
         setTimeout(() => {
@@ -87,13 +88,20 @@ const LandingPage = () => {
             >
               COMENCEMOS
             </button>
+            <a
+              href={`https://electrica-mosconi-server.onrender.com/mercadolibre/auth`}
+              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-yellow-600 hover:bg-yellow-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
+            >
+              INICIAR SESIÓN CON MERCADO LIBRE
+            </a>
             {/* este es el boton de fb, hay que meter la url en el .env y unir al boton de comencemos */}
             <a
               href={`https://electrica-mosconi-server.onrender.com/auth/facebook`}
-              className="w-fit h-fit relative mx-auto mt-4 px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
+              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
             >
               INICIAR SESIÓN CON FACEBOOK
             </a>
+            
           </div>
         </div>
       )}

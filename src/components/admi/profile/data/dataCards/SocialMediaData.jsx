@@ -4,16 +4,28 @@ import SocialMediaIcons from "../../../../utils/icons/socialMediaIcons";
 
 const SocialMediaData = () => {
   const business = useSelector((state) => state.business);
-  const socialMedia = useSelector((state) => state.socialMedia);
+  const socialMediabyRedux = useSelector((state) => state.socialMedia);
+  // Recuperar y parsear datos del localStorage
+  const socialMediabyStorage = localStorage.getItem('SocialMedia');
+  const parsedSocialMedia = socialMediabyStorage
+    ? JSON.parse(socialMediabyStorage)
+    : [];
+
+  // Usar datos de Redux si están disponibles, de lo contrario usar localStorage
+  const socialMedia =
+    socialMediabyRedux && socialMediabyRedux.length > 0
+      ? socialMediabyRedux
+      : parsedSocialMedia;
   //console.log("redes sociales", socialMedia);
   const socialMediaUserNotNull = socialMedia.filter(
     (sm) => sm.dataUser !== "null"
   );
   //console.log("socialMediaUserNotNull", socialMediaUserNotNull);
+
   const socialMediaNotNull = socialMediaUserNotNull.filter(
     (sm) => sm.SocialMedia.length >= 1
   );
-  //console.log("socialMediaNotNull", socialMediaNotNull);
+  console.log("socialMediaNotNull", socialMediaNotNull);
   const socialMediaSortered = socialMediaNotNull
     ? socialMediaNotNull.sort((a, b) => {
         return a.SocialMedia[0].name.localeCompare(b.SocialMedia[0].name);

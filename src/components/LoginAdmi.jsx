@@ -5,6 +5,7 @@ import {
   getUserByIdAction,
   admiLoginAction,
 } from "../redux/actions/actionsUsers";
+import {getAllSocialMediaByBusinessAction} from "../redux/actions/actionSocialMedia"
 import { sweetAlertsError } from "./utils/alerts/alerts";
 import FormExitButton from "./utils/buttons/FormExitButton";
 
@@ -35,8 +36,9 @@ const LoginAdmi = () => {
     if (user && user.password === input.password && user.privilege == "Admin") {
       dispatch(getUserByIdAction(user.id));
       dispatch(admiLoginAction(true));
+      dispatch(getAllSocialMediaByBusinessAction())
       localStorage.removeItem("userId");
-      localStorage.getItem("userId", user.id);
+      localStorage.setItem("Admi", user.id);
       navigate("/dashboardAdmi/homeAdmi");
     } else {
       sweetAlertsError(

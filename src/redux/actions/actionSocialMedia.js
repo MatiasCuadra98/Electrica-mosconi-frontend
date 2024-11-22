@@ -28,7 +28,7 @@ export const getAllSocialMediaByBusinessAction = () => {
     export const updateSocialMediaAction = (socialMediaId, input) => {
         return async(dispatch) => {
             try {
-                await axios.put(`${URL}/socialMedia/active/${socialMediaId}`, input);
+                await axios.put(`${URL}/socialMedia/active/update/${socialMediaId}`, input);
                 dispatch({type: UPDATE_SOCIAL_MEDIA})  
             } catch (error) {
                 console.log(error.message);
