@@ -28,6 +28,7 @@ export const GET_ALL_MESSAGES_SENT = 'GET_ALL_MESSAGES_SENT';
 //busnisess
 export const GET_BUSINESS_BY_ID = 'GET_BUSINESS_BY_ID';
 export const UPDATE_BUSINESS = 'UPDATE_BUSINESS';
+export const LOGIN_BUSINESS = 'LOGIN_BUSINESS';
 
 //contactos
 export const GET_CONTACT_BY_ID = 'GET_CONTACT_BY_ID';

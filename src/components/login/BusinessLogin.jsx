@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getUserByIdAction,
-  admiLoginAction,
-} from "../redux/actions/actionsUsers";
+import { loginBusinessAction } from "../../redux/actions/actionBusiness";
+// import {
+//   getUserByIdAction,
+//   admiLoginAction,
+// } from "../redux/actions/actionsUsers";
 //import {getAllSocialMediaByBusinessAction} from "../redux/actions/actionSocialMedia"
-import { sweetAlertsError } from "./utils/alerts/alerts";
-import FormExitButton from "./utils/buttons/FormExitButton";
+import { sweetAlertsError } from "../utils/alerts/alerts";
+//import FormExitButton from "./utils/buttons/FormExitButton";
 
-const LoginAdmi = () => {
+const BusinessLogin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const allUsers = useSelector((state) => state.users);
+  //const allBusiness = useSelector((state) => state.business);
 
   const [input, setInput] = useState({
-    name: "",
+    businessName: "",
     password: "",
   });
 
@@ -28,47 +29,26 @@ const LoginAdmi = () => {
 
   const handlerLoginSubmit = async (e) => {
     e.preventDefault();
-    const user = input.name
-      ? allUsers.find(
-          (user) => user.name.toUpperCase() === input.name.toUpperCase()
-        )
-      : null;
-    if (user && user.password === input.password && user.privilege == "Admin") {
-      dispatch(getUserByIdAction(user.id));
-      dispatch(admiLoginAction(true));
-      //dispatch(getAllSocialMediaByBusinessAction())
-      localStorage.removeItem("userId");
-      localStorage.setItem("Admi", user.id);
-      navigate("/dashboardAdmi/homeAdmi");
-    } else {
-      sweetAlertsError(
-        `${input.name} no tiene privilegios`,
-        "comprueba que el nombre y la contraseña sean los correctos",
-        "Ok"
-      );
-      //este navigate deberia cerrar el modal --- hecho asi para prueba de desarrollo
-      navigate(-1);
-    }
+    dispatch(loginBusinessAction(input));
+    localStorage.setItem('loginBusiness', true)
+    navigate(-1)
   };
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
       <div className="w-96 h-[26rem] bg-sky-950 rounded-tl-[80px] rounded-tr-[80px] rounded-bl-[80px]  flex flex-col items-center justify-center relative">
         <form onSubmit={handlerLoginSubmit}>
-          <div className="absolute top-12 right-10">
-            <FormExitButton path={-1} />
-          </div>
           <h1 className="text-white text-xl font-semibold font-['Inter'] capitalize text-center">
             Bienvenido
           </h1>
           <div className="flex flex-col items-center justify-center my-10">
             <input
-              placeholder="Usuario"
+              placeholder="Nombre Empresa"
               className="w-64 h-6 bg-white rounded-[30px] shadow-inner p-4 text-sm"
-              id="name"
+              id="businessName"
               type="text"
-              value={input.name}
-              name="name"
+              value={input.businessName}
+              name="businessName"
               onChange={handlerInputChange}
             />
             <input
@@ -99,4 +79,4 @@ const LoginAdmi = () => {
   );
 };
 
-export default LoginAdmi;
+export default BusinessLogin;

@@ -5,6 +5,7 @@ import {
   } from '../../components/utils/alerts/alerts.jsx'
 import {
     GET_BUSINESS_BY_ID,
+    LOGIN_BUSINESS,
     UPDATE_BUSINESS
 } from '../types.js';
 
@@ -38,6 +39,22 @@ export const updateBusnisessAction = (busnisessId, input) => {
             dispatch({type: UPDATE_BUSINESS})
         } catch (error) {
             console.log(error.message);
+        }
+    }
+};
+
+export const loginBusinessAction = (input) => {
+    return async (dispatch) => {
+        try {
+            const business = await axios.post(`${URL}/business/login`, input);
+            dispatch({type: LOGIN_BUSINESS, payload: business})
+            //getBusinessByIdAction(busnisessId, input.businessname)
+        } catch (error) {
+            sweetAlertsError(
+                `${input.businessName} no puede acceder a OneInbox`,
+                "comprueba que el nombre y la contraseña sean los correctos",
+                "Ok"
+            );    
         }
     }
 }

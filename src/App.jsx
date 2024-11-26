@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import {
+  BusinessLogin,
   LandingPage,
   NavBar,
   InboxUser,
@@ -36,7 +37,8 @@ const App = () => {
 
   return (
     <div>
-      {location.pathname === "/" ||
+      {location.pathname === "/" || 
+      location.pathname === "/login" ||
       location.pathname === "/loginAdmi" ||
       location.pathname === "/dashboardAdmi/profile/edit" ||
       location.pathname === "/dashboardAdmi/profile/edit-business" ||
@@ -47,6 +49,7 @@ const App = () => {
       )}
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<BusinessLogin />} />
         <Route path="/inbox" element={<InboxUser />} />
         <Route path="/loginAdmi" element={<LoginAdmi />} />
         <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />

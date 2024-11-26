@@ -28,7 +28,8 @@ import {
     GET_ALL_SOCIAL_MEDIA_BY_BUSINESS,
     UPDATE_SOCIAL_MEDIA,
     FILTER_BY_USER, 
-    GET_USER_BY_ADMI
+    GET_USER_BY_ADMI,
+    LOGIN_BUSINESS
 } from './types';
 
 const initialState = {
@@ -87,6 +88,11 @@ switch (action.type) {
         return {
             ...state,
         };
+    case LOGIN_BUSINESS:
+        return {
+            ...state,
+            business: action.payload
+        }
     //***--REDUCER DE USUARIOS-- */
     case GET_ALL_USERS:
         console.log('entro al reducer');

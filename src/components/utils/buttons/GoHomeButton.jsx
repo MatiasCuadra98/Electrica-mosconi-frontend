@@ -21,6 +21,7 @@ const GoHomeButton = () => {
     localStorage.removeItem("businessId");
     localStorage.removeItem("userId");
     localStorage.removeItem("state");
+    localStorage.removeItem("loginBusiness")
   };
 
   return (
