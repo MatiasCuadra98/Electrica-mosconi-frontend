@@ -26,6 +26,7 @@ const BusinessLogin = () => {
       [e.target.name]: e.target.value,
     });
   };
+console.log(input);
 
   const handlerLoginSubmit = async (e) => {
     e.preventDefault();

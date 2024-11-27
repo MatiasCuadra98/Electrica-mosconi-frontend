@@ -5,6 +5,7 @@ import { cleanUserByIdAction } from "../../../redux/actions/actionsUsers";
 //import { updateActiveMessageReceivedAction } from "../../../redux/actions/actionMessages";
 import { setActiveMessageAction } from "../../../redux/actions/actionMessages";
 import { cleanFiltersAction } from "../../../redux/actions/actionFilters";
+import { logoutBusinessAction } from "../../../redux/actions/actionBusiness";
 
 const GoHomeButton = () => {
   const navigate = useNavigate();
@@ -12,9 +13,10 @@ const GoHomeButton = () => {
   const msgActive = useSelector((state) => state.messageActive);
 
   const handlerOnClick = () => {
-    navigate("/");
+    dispatch(logoutBusinessAction());
     dispatch(cleanUserByIdAction());
     dispatch(cleanFiltersAction());
+    navigate("/");
     if (msgActive) {
       dispatch(setActiveMessageAction(""));
     }

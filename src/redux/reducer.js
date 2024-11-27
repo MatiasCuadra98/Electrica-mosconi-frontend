@@ -29,13 +29,15 @@ import {
     UPDATE_SOCIAL_MEDIA,
     FILTER_BY_USER, 
     GET_USER_BY_ADMI,
-    LOGIN_BUSINESS
+    LOGIN_BUSINESS, 
+    LOGOUT_BUSINESS
 } from './types';
 
 const initialState = {
     //**--BUSNISSES-- */
     //negocio por id
     business: {},
+    businessLogin: false,
     //**--USERS--**//
     //todos los usuarios deun negocio(+ copia para filtros)
     users: [],
@@ -91,7 +93,14 @@ switch (action.type) {
     case LOGIN_BUSINESS:
         return {
             ...state,
-            business: action.payload
+            business: action.payload,
+            businessLogin: true
+        };
+    case LOGOUT_BUSINESS:
+        return {
+            ...state,
+            busines: {},
+            businessLogin: false
         }
     //***--REDUCER DE USUARIOS-- */
     case GET_ALL_USERS:

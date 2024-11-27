@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import "./App.css";
 import {
   BusinessLogin,
@@ -24,7 +25,8 @@ import { connectSocket, disconnectSocket } from "./redux/actions/actionSocket";
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  //console.log("APP: prueba doble renderizado");
+  const admiLogin = useSelector((state) => state.admiLogin)
+
 
   useEffect(() => {
     // Conectar el socket cuando el componente se monta
@@ -47,7 +49,27 @@ const App = () => {
           <NavBar />
         </div>
       )}
+{/* RUTAS DAHSBOARD ADMI PROTEGIDAS */}
       <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<BusinessLogin />} />
+        <Route path="/inbox" element={<InboxUser />} />
+        <Route path="/loginAdmi" element={<LoginAdmi />} />
+        <Route element={<ProtectRoutes isAllowed={admiLogin}/>}>
+          <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
+          <Route path="/dashboardAdmi/profile" element={<Profile />} />
+          <Route path="/dashboardAdmi/profile/edit" element={<EditProfile />} />
+          <Route path="/dashboardAdmi/profile/edit-business" element={<EditBusiness />}/>
+          <Route path="/dashboardAdmi/profile/edit-socialMedia" element={<EditSocialMedia />}/>
+          <Route path="/dashboardAdmi/inboxAdmi" element={<InboxAdmi />} />
+          <Route path="/inboxDetailAdmi/:detailId" element={<InboxDetailAdmi />}/>
+          <Route path="/dashboardAdmi/usersManagement" element={<UsersManagement />}/>
+          <Route path="/dashboardAdmi/metrics" element={<MetricsAnalysis />} />
+        </Route>
+      </Routes>
+
+{/* RUTAS SIN PROTEGER */}
+      {/* <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<BusinessLogin />} />
         <Route path="/inbox" element={<InboxUser />} />
@@ -55,25 +77,13 @@ const App = () => {
         <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
         <Route path="/dashboardAdmi/profile" element={<Profile />} />
         <Route path="/dashboardAdmi/profile/edit" element={<EditProfile />} />
-        <Route
-          path="/dashboardAdmi/profile/edit-business"
-          element={<EditBusiness />}
-        />
-        <Route
-          path="/dashboardAdmi/profile/edit-socialMedia"
-          element={<EditSocialMedia />}
-        />
+        <Route path="/dashboardAdmi/profile/edit-business" element={<EditBusiness />}/>
+        <Route path="/dashboardAdmi/profile/edit-socialMedia" element={<EditSocialMedia />}/>
         <Route path="/dashboardAdmi/inboxAdmi" element={<InboxAdmi />} />
-        <Route
-          path="/inboxDetailAdmi/:detailId"
-          element={<InboxDetailAdmi />}
-        />
-        <Route
-          path="/dashboardAdmi/usersManagement"
-          element={<UsersManagement />}
-        />
+        <Route path="/inboxDetailAdmi/:detailId" element={<InboxDetailAdmi />}/>
+        <Route path="/dashboardAdmi/usersManagement" element={<UsersManagement />}/>
         <Route path="/dashboardAdmi/metrics" element={<MetricsAnalysis />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 };

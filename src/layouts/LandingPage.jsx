@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBusinessByIdAction } from "../redux/actions/actionBusiness.js";
+//import { getBusinessByIdAction } from "../redux/actions/actionBusiness.js";
 import {
   getAllMessagesReceivedAction,
   getAllMessagesSentAction,
@@ -14,20 +14,26 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  
+  const login = useSelector((state) => state.businessLogin);
   const business = useSelector((state) => state.business);
-  const loginBusiness = localStorage.getItem(loginBusiness)
-  //estos datos deberian ser recibidos del login inicial
+  console.log('empresa en landing', business);
+  
   const businessId = business ? business.id : null;
   const businessName = business ? business.name :  null;
+
+  //estos datos deberian ser recibidos del login inicial
   //const businessId = "4b3171a4-7d37-44ce-a9fe-96bac07c8843";
   //const businessName = "Electrica Mosconi";
 
   useEffect(() => {
     // localStorage.setItem("businessId", businessId);
     //dispatch(getBusinessByIdAction(businessId, businessName));
-    dispatch(getAllMessagesReceivedAction());
-    dispatch(getAllMessagesSentAction());
-    //dispatch(getAllSocialMediaByBusinessAction());
+    if (businessId) {
+      dispatch(getAllMessagesReceivedAction());
+      dispatch(getAllMessagesSentAction());
+      //dispatch(getAllSocialMediaByBusinessAction());
+    }
   }, [dispatch, businessId]);
 
   const loginHandler = () => {
@@ -87,7 +93,7 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="absolute bottom-14 left-0 right-0 flex justify-center">
-            {!loginBusiness ? <button onClick={loginHandler} className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"> LOGIN </button> 
+            {!login ? <button onClick={loginHandler} className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"> LOGIN </button> 
             : <div> 
             <button
               onClick={handlerOnClick}

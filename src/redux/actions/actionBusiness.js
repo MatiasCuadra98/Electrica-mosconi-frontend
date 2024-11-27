@@ -6,7 +6,8 @@ import {
 import {
     GET_BUSINESS_BY_ID,
     LOGIN_BUSINESS,
-    UPDATE_BUSINESS
+    UPDATE_BUSINESS,
+    LOGOUT_BUSINESS
 } from '../types.js';
 
 const URL = 'https://electrica-mosconi-server.onrender.com';
@@ -46,8 +47,10 @@ export const updateBusnisessAction = (busnisessId, input) => {
 export const loginBusinessAction = (input) => {
     return async (dispatch) => {
         try {
-            const business = await axios.post(`${URL}/business/login`, input);
-            dispatch({type: LOGIN_BUSINESS, payload: business})
+            const response = await axios.post(`${URL}/business/login`, input, {withCredentials: true});
+            console.log('business en action', response.data.business);
+            
+            dispatch({type: LOGIN_BUSINESS, payload: response.data.business})
             //getBusinessByIdAction(busnisessId, input.businessname)
         } catch (error) {
             sweetAlertsError(
@@ -57,4 +60,11 @@ export const loginBusinessAction = (input) => {
             );    
         }
     }
+}
+
+export const logoutBusinessAction = () => {
+ return async (dispatch) => {
+    await axios.post(`${URL}/business/logout`, {}, {withCredentials: true})
+    dispatch ({ type: LOGOUT_BUSINESS})
+ }
 }
