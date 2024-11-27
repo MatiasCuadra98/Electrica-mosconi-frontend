@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loginBusinessAction } from "../../redux/actions/actionBusiness";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 // import {
 //   getUserByIdAction,
 //   admiLoginAction,
@@ -15,6 +16,8 @@ const BusinessLogin = () => {
   const dispatch = useDispatch();
   //const allBusiness = useSelector((state) => state.business);
 
+  const [showPassword, setShowPassword] = useState(false)
+
   const [input, setInput] = useState({
     businessName: "",
     password: "",
@@ -27,6 +30,11 @@ const BusinessLogin = () => {
     });
   };
 console.log(input);
+
+const toggleShowPassword = (e) => {
+  e.preventDefault()
+  setShowPassword(!showPassword); 
+ }
 
   const handlerLoginSubmit = async (e) => {
     e.preventDefault();
@@ -52,15 +60,20 @@ console.log(input);
               name="businessName"
               onChange={handlerInputChange}
             />
-            <input
-              placeholder="Contraseña"
-              className="w-64 h-6 bg-white rounded-[30px] shadow-inner mt-4 p-4 text-sm"
-              type="password"
-              id="password"
-              name="password"
-              value={input.password}
-              onChange={handlerInputChange}
-            />
+            <div className="relative w-64 mt-4">
+             <input
+                placeholder="Contraseña"
+                className="w-64 h-6 bg-white rounded-[30px] shadow-inner mt-4 p-4 text-sm"
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="password"
+                value={input.password}
+                onChange={handlerInputChange}
+              />
+            <button onClick={toggleShowPassword} className="absolute right-4 top-1/4  text-gray-500 bg-transparent border-none mx-0 my-2 p-0">   
+              {showPassword ? (<EyeSlashIcon className="w-5 h-5" />) : (<EyeIcon className="w-5 h-5" />)} 
+            </button>
+            </div>
           </div>
           <div className="flex justify-center">
             <button

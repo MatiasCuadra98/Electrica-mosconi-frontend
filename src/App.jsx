@@ -19,14 +19,15 @@ import {
 } from "./layouts";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { ProtectRoutes } from "./components/login/ProtectedRoutes";
 
 import { connectSocket, disconnectSocket } from "./redux/actions/actionSocket";
 
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  const admiLogin = useSelector((state) => state.admiLogin)
-
+  const admiLogin = useSelector((state) => state.admiLogin);
+  const businessLogin = useSelector((state) => state.businessLogin);
 
   useEffect(() => {
     // Conectar el socket cuando el componente se monta
@@ -49,22 +50,24 @@ const App = () => {
           <NavBar />
         </div>
       )}
-{/* RUTAS DAHSBOARD ADMI PROTEGIDAS */}
+{/* RUTAS  PROTEGIDAS */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<BusinessLogin />} />
-        <Route path="/inbox" element={<InboxUser />} />
-        <Route path="/loginAdmi" element={<LoginAdmi />} />
-        <Route element={<ProtectRoutes isAllowed={admiLogin}/>}>
-          <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
-          <Route path="/dashboardAdmi/profile" element={<Profile />} />
-          <Route path="/dashboardAdmi/profile/edit" element={<EditProfile />} />
-          <Route path="/dashboardAdmi/profile/edit-business" element={<EditBusiness />}/>
-          <Route path="/dashboardAdmi/profile/edit-socialMedia" element={<EditSocialMedia />}/>
-          <Route path="/dashboardAdmi/inboxAdmi" element={<InboxAdmi />} />
-          <Route path="/inboxDetailAdmi/:detailId" element={<InboxDetailAdmi />}/>
-          <Route path="/dashboardAdmi/usersManagement" element={<UsersManagement />}/>
-          <Route path="/dashboardAdmi/metrics" element={<MetricsAnalysis />} />
+        <Route element={<ProtectRoutes isAllowed={businessLogin} route={'/'}/>}>
+          <Route path="/inbox" element={<InboxUser />} />
+          <Route path="/loginAdmi" element={<LoginAdmi />} />
+          <Route element={<ProtectRoutes isAllowed={admiLogin} route={'/inbox'}/>}>
+            <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
+            <Route path="/dashboardAdmi/profile" element={<Profile />} />
+            <Route path="/dashboardAdmi/profile/edit" element={<EditProfile />} />
+            <Route path="/dashboardAdmi/profile/edit-business" element={<EditBusiness />}/>
+            <Route path="/dashboardAdmi/profile/edit-socialMedia" element={<EditSocialMedia />}/>
+            <Route path="/dashboardAdmi/inboxAdmi" element={<InboxAdmi />} />
+            <Route path="/inboxDetailAdmi/:detailId" element={<InboxDetailAdmi />}/>
+            <Route path="/dashboardAdmi/usersManagement" element={<UsersManagement />}/>
+            <Route path="/dashboardAdmi/metrics" element={<MetricsAnalysis />} />
+          </Route>
         </Route>
       </Routes>
 
