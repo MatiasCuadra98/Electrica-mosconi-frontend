@@ -25,6 +25,8 @@ const EditBusiness = () => {
     phone: business.phone || "",
   });
 
+  const previewData = input;
+
   const handlerInputChange = (e) => {
     setInput({
       ...input,
@@ -34,13 +36,17 @@ const EditBusiness = () => {
   const handlerEditSubmit = (e) => {
     e.preventDefault();
     try {
-      dispatch(updateBusnisessAction(business.id, input));
-      sweetAlertsSuccessfully(
-        `Felicitaciones!`,
-        `Los datos de ${input.name} se actualizaron corectamente...Sigamos con la palataforma de redes sociales`,
-        "Ok"
-      );
-      navigate("/dashboardAdmi/profile/edit-socialMedia");
+      if (previewData === input) {
+        navigate("/dashboardAdmi/profile/edit-socialMedia");
+      } else {
+        dispatch(updateBusnisessAction(business.id, input));
+        sweetAlertsSuccessfully(
+          `Felicitaciones!`,
+          `Los datos de ${input.name} se actualizaron corectamente...Sigamos con la palataforma de redes sociales`,
+          "Ok"
+        );
+        navigate("/dashboardAdmi/profile/edit-socialMedia");
+      }
     } catch (error) {
       sweetAlertsError(
         "Intenta de nuevo...",

@@ -7,7 +7,8 @@ import {
     GET_BUSINESS_BY_ID,
     LOGIN_BUSINESS,
     UPDATE_BUSINESS,
-    LOGOUT_BUSINESS
+    LOGOUT_BUSINESS, 
+    AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA
 } from '../types.js';
 
 const URL = 'https://electrica-mosconi-server.onrender.com';
@@ -67,4 +68,12 @@ export const logoutBusinessAction = () => {
     await axios.post(`${URL}/business/logout`, {}, {withCredentials: true})
     dispatch ({ type: LOGOUT_BUSINESS})
  }
+}
+
+export const authBusinessByAllSocialMediaAction =  (businessId) => {
+    return async (dispatch) => {
+        const meli = await axios.get(`${URL}/mercadolibre/auth`, businessId);
+        if (meli) {await axios.get(`${URL}/auth/facebook`, businessId);}
+        dispatch({type: AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA})
+    }
 }

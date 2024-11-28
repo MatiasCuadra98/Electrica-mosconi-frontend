@@ -22,7 +22,7 @@ const EditProfile = () => {
     password: user.password || "",
     phone: user.phone || "",
   });
-
+  const previewData = input;
   const handlerInputChange = (e) => {
     setInput({
       ...input,
@@ -34,14 +34,18 @@ const EditProfile = () => {
   const handlerEditSubmit = (e) => {
     e.preventDefault();
     try {
-      console.log("despacho la action al", user.id, "con data", input);
-      dispatch(updateUserAction(user.id, input));
-      sweetAlertsSuccessfully(
-        `Felicitaciones ${input.name}!`,
-        `tus datos se actualizaron corectamente...Sigamos con los datos de la empresa`,
-        "Ok"
-      );
-      navigate("/dashboardAdmi/profile/edit-business");
+      if(previewData === input) {
+        navigate("/dashboardAdmi/profile/edit-business")
+      } else {
+        console.log("despacho la action al", user.id, "con data", input);
+        dispatch(updateUserAction(user.id, input));
+        sweetAlertsSuccessfully(
+          `Felicitaciones ${input.name}!`,
+          `tus datos se actualizaron corectamente...Sigamos con los datos de la empresa`,
+          "Ok"
+        );
+        navigate("/dashboardAdmi/profile/edit-business");
+      }
     } catch (error) {
       sweetAlertsError(
         `${input.name},  intenta de nuevo...`,

@@ -50,6 +50,8 @@ const EditSocialMedia = () => {
     return initialState;
   });
 
+  const previewData = input;
+
   const handlerInputChange = (e, id) => {
     setInput({
       ...input,
@@ -64,15 +66,19 @@ const EditSocialMedia = () => {
       dataUser: input[id], // El valor modificado por el usuario
     }));
     try {
-      updatedSocialMedia.map((sm) =>
-        dispatch(updateSocialMediaAction(sm.id, sm.dataUser))
-      );
-      sweetAlertsSuccessfully(
-        `Felicitaciones!`,
-        `los datos de tus redes sociales se actualizaron corectamente...`,
-        "Ok"
-      );
-      navigate("/dashboardAdmi/profile");
+      if(previewData === input) {
+        navigate("/dashboardAdmi/profile");
+      } else {
+        updatedSocialMedia.map((sm) =>
+          dispatch(updateSocialMediaAction(sm.id, sm.dataUser))
+        );
+        sweetAlertsSuccessfully(
+          `Felicitaciones!`,
+          `los datos de tus redes sociales se actualizaron corectamente...`,
+          "Ok"
+        );
+        navigate("/dashboardAdmi/profile");
+      }
     } catch (error) {
       sweetAlertsError(
         `Intenta de nuevo...`,
