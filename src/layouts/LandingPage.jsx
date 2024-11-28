@@ -39,85 +39,85 @@ const LandingPage = () => {
   const loginHandler = () => {
     navigate("/login")
   }
-  // const handlerOnClick = () => {
-  //   if (!businessId) {
-  //     sweetAlertsError(
-  //       "Intenta de nuevo",
-  //       `No podemos encontrar a ${businessName}`,
-  //       "Ok"
-  //     );
-  //   } else {
-  //     //dispatch(authBusinessByAllSocialMediaAction(businessId))
-  //     setLoading(true);
-  //     localStorage.setItem("businessId", businessId);
-  //     if (businessName) {
-  //       setTimeout(() => {
-  //         navigate("/inbox");
-  //         setLoading(false);
-  //       }, 4000);
-  //     }
-  //   }
-  // };
-
-
-  const handlerOnClick = async () => {
+  const handlerOnClick = () => {
     if (!businessId) {
       sweetAlertsError(
         "Intenta de nuevo",
         `No podemos encontrar a ${businessName}`,
         "Ok"
       );
-      return;
-    }
-  
-    setLoading(true);
-    try {
+    } else {
+      //dispatch(authBusinessByAllSocialMediaAction(businessId))
+      setLoading(true);
       localStorage.setItem("businessId", businessId);
-  
-      // Redirección para autenticar con Mercado Libre
-      const mercadoLibreAuthUrl = `https://electrica-mosconi-server.onrender.com/mercadolibre/auth`;
-      window.location.href = mercadoLibreAuthUrl;
-  
-      // Espera a que el usuario termine la autenticación en Mercado Libre.
-      await new Promise((resolve) => {
-        const checkMercadoLibreAuth = setInterval(() => {
-          const isAuthenticatedMercadoLibre = localStorage.getItem(
-            "mercadoLibreAuth"
-          ); // Debes configurar este en el backend una vez autentificado
-          if (isAuthenticatedMercadoLibre) {
-            clearInterval(checkMercadoLibreAuth);
-            resolve();
-          }
-        }, 1000);
-      });
-  
-      // Redirección para autenticar con Facebook
-      const facebookAuthUrl = `https://electrica-mosconi-server.onrender.com/auth/facebook`;
-      window.location.href = facebookAuthUrl;
-  
-      // Espera a que el usuario termine la autenticación en Facebook.
-      await new Promise((resolve) => {
-        const checkFacebookAuth = setInterval(() => {
-          const isAuthenticatedFacebook = localStorage.getItem("facebookAuth"); // Debes configurar este en el backend una vez autentificado
-          if (isAuthenticatedFacebook) {
-            clearInterval(checkFacebookAuth);
-            resolve();
-          }
-        }, 1000);
-      });
-  
-      // Redirección final a /inbox
-      navigate("/inbox");
-    } catch (error) {
-      sweetAlertsError(
-        "Error de autenticación",
-        "Hubo un problema durante el proceso de autenticación.",
-        "Ok"
-      );
-    } finally {
-      setLoading(false);
+      if (businessName) {
+        setTimeout(() => {
+          navigate("/inbox");
+          setLoading(false);
+        }, 4000);
+      }
     }
   };
+
+
+  // const handlerOnClick = async () => {
+  //   if (!businessId) {
+  //     sweetAlertsError(
+  //       "Intenta de nuevo",
+  //       `No podemos encontrar a ${businessName}`,
+  //       "Ok"
+  //     );
+  //     return;
+  //   }
+  
+  //   setLoading(true);
+  //   try {
+  //     localStorage.setItem("businessId", businessId);
+  
+  //     // Redirección para autenticar con Mercado Libre
+  //     const mercadoLibreAuthUrl = `https://electrica-mosconi-server.onrender.com/mercadolibre/auth`;
+  //     window.location.href = mercadoLibreAuthUrl;
+  
+  //     // Espera a que el usuario termine la autenticación en Mercado Libre.
+  //     await new Promise((resolve) => {
+  //       const checkMercadoLibreAuth = setInterval(() => {
+  //         const isAuthenticatedMercadoLibre = localStorage.getItem(
+  //           "mercadoLibreAuth"
+  //         ); // Debes configurar este en el backend una vez autentificado
+  //         if (isAuthenticatedMercadoLibre) {
+  //           clearInterval(checkMercadoLibreAuth);
+  //           resolve();
+  //         }
+  //       }, 1000);
+  //     });
+  
+  //     // Redirección para autenticar con Facebook
+  //     const facebookAuthUrl = `https://electrica-mosconi-server.onrender.com/auth/facebook`;
+  //     window.location.href = facebookAuthUrl;
+  
+  //     // Espera a que el usuario termine la autenticación en Facebook.
+  //     await new Promise((resolve) => {
+  //       const checkFacebookAuth = setInterval(() => {
+  //         const isAuthenticatedFacebook = localStorage.getItem("facebookAuth"); // Debes configurar este en el backend una vez autentificado
+  //         if (isAuthenticatedFacebook) {
+  //           clearInterval(checkFacebookAuth);
+  //           resolve();
+  //         }
+  //       }, 1000);
+  //     });
+  
+  //     // Redirección final a /inbox
+  //     navigate("/inbox");
+  //   } catch (error) {
+  //     sweetAlertsError(
+  //       "Error de autenticación",
+  //       "Hubo un problema durante el proceso de autenticación.",
+  //       "Ok"
+  //     );
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
 
   return (
