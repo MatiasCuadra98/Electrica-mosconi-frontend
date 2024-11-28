@@ -5,7 +5,10 @@ import {
   } from '../../components/utils/alerts/alerts.jsx'
 import {
     GET_BUSINESS_BY_ID,
-    UPDATE_BUSINESS
+    LOGIN_BUSINESS,
+    UPDATE_BUSINESS,
+    LOGOUT_BUSINESS, 
+    AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA
 } from '../types.js';
 
 const URL = 'https://electrica-mosconi-server.onrender.com';
@@ -39,5 +42,38 @@ export const updateBusnisessAction = (busnisessId, input) => {
         } catch (error) {
             console.log(error.message);
         }
+    }
+};
+
+export const loginBusinessAction = (input) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.post(`${URL}/business/login`, input, {withCredentials: true});
+            console.log('business en action', response.data.business);
+            
+            dispatch({type: LOGIN_BUSINESS, payload: response.data.business})
+            //getBusinessByIdAction(busnisessId, input.businessname)
+        } catch (error) {
+            sweetAlertsError(
+                `${input.businessName} no puede acceder a OneInbox`,
+                "comprueba que el nombre y la contraseña sean los correctos",
+                "Ok"
+            );    
+        }
+    }
+}
+
+export const logoutBusinessAction = () => {
+ return async (dispatch) => {
+    await axios.post(`${URL}/business/logout`, {}, {withCredentials: true})
+    dispatch ({ type: LOGOUT_BUSINESS})
+ }
+}
+
+export const authBusinessByAllSocialMediaAction =  (businessId) => {
+    return async (dispatch) => {
+        const meli = await axios.get(`${URL}/mercadolibre/auth`, businessId);
+        if (meli) {await axios.get(`${URL}/auth/facebook`, businessId);}
+        dispatch({type: AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA})
     }
 }
