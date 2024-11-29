@@ -46,14 +46,18 @@ export const updateBusnisessAction = (busnisessId, input) => {
 };
 
 export const loginBusinessAction = (input) => {
+    console.log('input en action', input);
+    
     return async (dispatch) => {
         try {
-            const response = await axios.post(`${URL}/business/login`, input, {withCredentials: true});
+            const response = await axios.post(`${URL}/auth/login`, input, {withCredentials: true});
             console.log('business en action', response.data.business);
             
             dispatch({type: LOGIN_BUSINESS, payload: response.data.business})
             //getBusinessByIdAction(busnisessId, input.businessname)
         } catch (error) {
+            console.log(error);
+            
             sweetAlertsError(
                 `${input.businessName} no puede acceder a OneInbox`,
                 "comprueba que el nombre y la contraseña sean los correctos",

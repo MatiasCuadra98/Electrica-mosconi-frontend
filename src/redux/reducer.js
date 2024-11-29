@@ -92,6 +92,8 @@ switch (action.type) {
             ...state,
         };
     case LOGIN_BUSINESS:
+        console.log('entro en el reducer del login con payload', action.payload);
+        
         return {
             ...state,
             business: action.payload,
