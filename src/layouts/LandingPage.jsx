@@ -1,33 +1,44 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getBusinessByIdAction } from "../redux/actions/actionBusiness.js";
+//import { getBusinessByIdAction } from "../redux/actions/actionBusiness.js";
 import {
   getAllMessagesReceivedAction,
   getAllMessagesSentAction,
 } from "../redux/actions/actionMessages.js";
 import { sweetAlertsError } from "../components/utils/alerts/alerts.jsx";
 import SpinnerLogin from "../components/utils/spinners/SpinnerLogin.jsx";
-//import { getAllSocialMediaByBusinessAction } from "../redux/actions/actionSocialMedia.js";
+import { authBusinessByAllSocialMediaAction } from "../redux/actions/actionBusiness.js";
 
 const LandingPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  
+  const login = useSelector((state) => state.businessLogin);
   const business = useSelector((state) => state.business);
+  console.log('empresa en landing', business);
+  
+  const businessId = business ? business.id : null;
+  const businessName = business ? business.name :  null;
 
   //estos datos deberian ser recibidos del login inicial
-  const businessId = "4b3171a4-7d37-44ce-a9fe-96bac07c8843";
-  const businessName = "Electrica Mosconi";
+  //const businessId = "4b3171a4-7d37-44ce-a9fe-96bac07c8843";
+  //const businessName = "Electrica Mosconi";
 
   useEffect(() => {
     // localStorage.setItem("businessId", businessId);
-    dispatch(getBusinessByIdAction(businessId, businessName));
-    dispatch(getAllMessagesReceivedAction());
-    dispatch(getAllMessagesSentAction());
-    //dispatch(getAllSocialMediaByBusinessAction());
+    //dispatch(getBusinessByIdAction(businessId, businessName));
+    if (businessId) {
+      dispatch(getAllMessagesReceivedAction());
+      dispatch(getAllMessagesSentAction());
+      //dispatch(getAllSocialMediaByBusinessAction());
+    }
   }, [dispatch, businessId]);
 
+  const loginHandler = () => {
+    navigate("/login")
+  }
   const handlerOnClick = () => {
     if (!businessId) {
       sweetAlertsError(
@@ -36,10 +47,9 @@ const LandingPage = () => {
         "Ok"
       );
     } else {
-      //este dispatch deberia ejecutarse con un login inicial NIY
-      dispatch(getBusinessByIdAction(businessId, businessName));
-      localStorage.setItem("businessId", businessId);
+      //dispatch(authBusinessByAllSocialMediaAction(businessId))
       setLoading(true);
+      localStorage.setItem("businessId", businessId);
       if (businessName) {
         setTimeout(() => {
           navigate("/inbox");
@@ -48,6 +58,67 @@ const LandingPage = () => {
       }
     }
   };
+
+
+  // const handlerOnClick = async () => {
+  //   if (!businessId) {
+  //     sweetAlertsError(
+  //       "Intenta de nuevo",
+  //       `No podemos encontrar a ${businessName}`,
+  //       "Ok"
+  //     );
+  //     return;
+  //   }
+  
+  //   setLoading(true);
+  //   try {
+  //     localStorage.setItem("businessId", businessId);
+  
+  //     // Redirección para autenticar con Mercado Libre
+  //     const mercadoLibreAuthUrl = `https://electrica-mosconi-server.onrender.com/mercadolibre/auth`;
+  //     window.location.href = mercadoLibreAuthUrl;
+  
+  //     // Espera a que el usuario termine la autenticación en Mercado Libre.
+  //     await new Promise((resolve) => {
+  //       const checkMercadoLibreAuth = setInterval(() => {
+  //         const isAuthenticatedMercadoLibre = localStorage.getItem(
+  //           "mercadoLibreAuth"
+  //         ); // Debes configurar este en el backend una vez autentificado
+  //         if (isAuthenticatedMercadoLibre) {
+  //           clearInterval(checkMercadoLibreAuth);
+  //           resolve();
+  //         }
+  //       }, 1000);
+  //     });
+  
+  //     // Redirección para autenticar con Facebook
+  //     const facebookAuthUrl = `https://electrica-mosconi-server.onrender.com/auth/facebook`;
+  //     window.location.href = facebookAuthUrl;
+  
+  //     // Espera a que el usuario termine la autenticación en Facebook.
+  //     await new Promise((resolve) => {
+  //       const checkFacebookAuth = setInterval(() => {
+  //         const isAuthenticatedFacebook = localStorage.getItem("facebookAuth"); // Debes configurar este en el backend una vez autentificado
+  //         if (isAuthenticatedFacebook) {
+  //           clearInterval(checkFacebookAuth);
+  //           resolve();
+  //         }
+  //       }, 1000);
+  //     });
+  
+  //     // Redirección final a /inbox
+  //     navigate("/inbox");
+  //   } catch (error) {
+  //     sweetAlertsError(
+  //       "Error de autenticación",
+  //       "Hubo un problema durante el proceso de autenticación.",
+  //       "Ok"
+  //     );
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
 
   return (
     <div>
@@ -82,26 +153,28 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="absolute bottom-14 left-0 right-0 flex justify-center">
+            {!login ? <button onClick={loginHandler} className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"> LOGIN </button> 
+            : <div> 
             <button
               onClick={handlerOnClick}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
             >
               COMENCEMOS
             </button>
-            <a
+            {/* <a
               href={`https://electrica-mosconi-server.onrender.com/mercadolibre/auth`}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-yellow-600 hover:bg-yellow-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
             >
               INICIAR SESIÓN CON MERCADO LIBRE
-            </a>
-            {/* este es el boton de fb, hay que meter la url en el .env y unir al boton de comencemos */}
-            <a
+            </a> */}
+             {/* este es el boton de fb, hay que meter la url en el .env y unir al boton de comencemos */}
+            {/* <a
               href={`https://electrica-mosconi-server.onrender.com/auth/facebook`}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
             >
               INICIAR SESIÓN CON FACEBOOK
-            </a>
-            
+            </a>  */}
+              </div>}
           </div>
         </div>
       )}
