@@ -23,8 +23,8 @@ const LandingPage = () => {
   
   const businessId = business ? business.id : null;
   const businessName = business ? business.name :  null;
-  let path = location.pathname
-  console.log('mi ruta actual1', path);
+  let path = location
+  console.log('mi ruta actual', path);
   
   //estos datos deberian ser recibidos del login inicial
   //const businessId = "4b3171a4-7d37-44ce-a9fe-96bac07c8843";
@@ -64,7 +64,7 @@ const LandingPage = () => {
       }
     }
   };
-  console.log('mi ruta actual', path);
+  
   return (
     <div>
       {loading ? (
@@ -98,7 +98,7 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="absolute bottom-14 left-0 right-0 flex justify-center">
-            {!login ? <button onClick={loginHandler} className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"> LOGIN </button> 
+            {!login ? (<button onClick={loginHandler} className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"> LOGIN </button> )
             : (<div> 
             <button
               onClick={handlerOnClick}
