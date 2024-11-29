@@ -31,10 +31,10 @@ const BusinessLogin = () => {
   };
 console.log(input);
 
-// const toggleShowPassword = (e) => {
-//   e.preventDefault()
-//   setShowPassword(!showPassword); 
-//  }
+const toggleShowPassword = (e) => {
+  e.preventDefault()
+  setShowPassword(!showPassword); 
+ }
 
   const handlerLoginSubmit = async (e) => {
     e.preventDefault();
@@ -71,9 +71,9 @@ console.log(input);
                 value={input.password}
                 onChange={handlerInputChange}
               />
-            {/* <button onClick={toggleShowPassword} className="absolute right-4 top-1/4  text-gray-500 bg-transparent border-none mx-0 my-2 p-0">   
+            <button onClick={toggleShowPassword} className="absolute right-4 top-1/4  text-gray-500 bg-transparent border-none mx-0 my-2 p-0">   
               {showPassword ? (<EyeSlashIcon className="w-5 h-5" />) : (<EyeIcon className="w-5 h-5" />)} 
-            </button> */}
+            </button>
             </div>
           </div>
           <div className="flex justify-center">
