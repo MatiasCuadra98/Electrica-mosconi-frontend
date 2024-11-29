@@ -39,6 +39,7 @@ const toggleShowPassword = (e) => {
   const handlerLoginSubmit = async (e) => {
     e.preventDefault();
     dispatch(loginBusinessAction(input));
+    console.log('despacho la action del login con input', input);
     localStorage.setItem('loginBusiness', true)
     navigate(-1)
   };
