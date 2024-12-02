@@ -8,7 +8,6 @@ import {
 } from "../redux/actions/actionMessages.js";
 import { sweetAlertsError } from "../components/utils/alerts/alerts.jsx";
 import SpinnerLogin from "../components/utils/spinners/SpinnerLogin.jsx";
-
 //import { authBusinessByAllSocialMediaAction } from "../redux/actions/actionBusiness.js";
 
 const LandingPage = () => {
@@ -18,17 +17,13 @@ const LandingPage = () => {
   const [loading, setLoading] = useState(false);
   
   const login = useSelector((state) => state.businessLogin);
+  console.log('login', login);
   const business = useSelector((state) => state.business);
-  console.log('empresa en landing', business);
-  
+  //console.log('empresa en landing', business);
   const businessId = business ? business.id : null;
   const businessName = business ? business.name :  null;
-  let path = location
+  let path = location.search ? location.search : null;
   console.log('mi ruta actual', path);
-  
-  //estos datos deberian ser recibidos del login inicial
-  //const businessId = "15c7dce9-39b5-4b7a-98ac-cfd0e3cdcb85";
-  //const businessName = "Electrica Mosconi";
 
   useEffect(() => {
     // localStorage.setItem("businessId", businessId);
@@ -53,7 +48,7 @@ const LandingPage = () => {
         "Ok"
       );
     } else {
-      //dispatch(authBusinessByAllSocialMediaAction(businessId))
+      //dispatch(authBusinessByAllSocialMediaAction(businessId, path))
       setLoading(true);
       localStorage.setItem("businessId", businessId);
       if (businessName) {
@@ -99,7 +94,14 @@ const LandingPage = () => {
           </div>
           <div className="absolute bottom-14 left-0 right-0 flex justify-center">
             {!login ? (<button onClick={loginHandler} className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"> LOGIN </button> )
-            : (<div> 
+            : (login && path !== null ?
+            <a
+            href={`https://electrica-mosconi-server.onrender.com/mercadolibre/auth`}
+            className="w-fit h-fit  relative mx-auto px-8 py-1 bg-yellow-600 hover:bg-yellow-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
+            >
+              INICIAR SESIÓN CON MERCADO LIBRE
+            </a> : 
+              <div> 
             <button
               onClick={handlerOnClick}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
@@ -112,7 +114,11 @@ const LandingPage = () => {
             >
               INICIAR SESIÓN CON MERCADO LIBRE
             </a>
+
              {/* este es el boton de fb */}
+
+             {/* este es el boton de fb, hay que meter la url en el .env y unir al boton de comencemos */}
+
             <a
               href={`https://electrica-mosconi-backend.onrender.com/auth/facebook`}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
