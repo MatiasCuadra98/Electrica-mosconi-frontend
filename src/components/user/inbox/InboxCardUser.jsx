@@ -58,11 +58,11 @@ const InboxCardUser = ({
       {msgActive && msgActive === id ? (
         <div className="w-64 h-24 relative shadow-inner bg-white flex items-center justify-between p-2">
           <div className="w-full h-full flex items-center justify-between bg-transparent border-l-4 border-t-4 border-b-4 border-amber-500">
-            <div className="flex items-center">
-              <div className="w-10 h-10 opacity-90 rounded-full border-2 border-white mr-2">
+            <div className="flex items-center">  
+              <div className="w-11 h-auto opacity-90 rounded-full border-2 border-white ml-2">
                 <SocialMediaIcons socialMedia={socialMediaName} />
               </div>
-              <div className="flex flex-col justify-center ml-8">
+              <div className="flex flex-col justify-center ">
                 <span className="text-black text-base font-normal font-['Oswald'] capitalize">
                   {name}
                   <br />
@@ -82,7 +82,8 @@ const InboxCardUser = ({
         </div>
       ) : (
         <div className="w-64 h-24 relative shadow-inner bg-green-400 flex items-center justify-between p-2">
-          <div className="w-10 h-10 opacity-90 rounded-full border-2 border-white mr-2">
+          
+          <div className="w-11 h-auto opacity-90 rounded-full border-2 border-white mr-2">
             <SocialMediaIcons socialMedia={socialMediaName} />
           </div>
 
