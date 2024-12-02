@@ -125,12 +125,14 @@ const LandingPage = () => {
             >
               INICIAR SESIÓN CON FACEBOOK
             </a>
-                <button
-                onClick={handlerOnClick}
-                className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
-              >
-                INICIAR SESION CON INSTAGRAM
-              </button> 
+            <a
+              href={`https://electrica-mosconi-backend.onrender.com/auth/instagram`}
+              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
+              
+            >
+              INICIAR SESIÓN CON INSTAGRAM
+            </a>
+               
               <button
                 onClick={handlerOnClick}
                 className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
