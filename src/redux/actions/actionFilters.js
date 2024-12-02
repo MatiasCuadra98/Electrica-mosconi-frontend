@@ -13,7 +13,7 @@ import {
 
 
 //const URL = 'http://localhost:3000';
-const URL = 'https://electrica-mosconi-server.onrender.com';
+const URL = 'https://electrica-mosconi-backend.onrender.com';
 
 export const filterBySocialMediaAction = (socialMedia) => {
     //console.log('llega a action: ', socialMedia);

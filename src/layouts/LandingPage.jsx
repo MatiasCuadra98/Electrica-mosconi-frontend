@@ -27,7 +27,7 @@ const LandingPage = () => {
   console.log('mi ruta actual', path);
   
   //estos datos deberian ser recibidos del login inicial
-  //const businessId = "4b3171a4-7d37-44ce-a9fe-96bac07c8843";
+  //const businessId = "15c7dce9-39b5-4b7a-98ac-cfd0e3cdcb85";
   //const businessName = "Electrica Mosconi";
 
   useEffect(() => {
@@ -107,14 +107,14 @@ const LandingPage = () => {
               COMENCEMOS
             </button>
             <a
-              href={`https://electrica-mosconi-server.onrender.com/mercadolibre/auth`}
+              href={`https://electrica-mosconi-backend.onrender.com/mercadolibre/auth`}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-yellow-600 hover:bg-yellow-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
             >
               INICIAR SESIÓN CON MERCADO LIBRE
             </a>
-             {/* este es el boton de fb, hay que meter la url en el .env y unir al boton de comencemos */}
+             {/* este es el boton de fb */}
             <a
-              href={`https://electrica-mosconi-server.onrender.com/auth/facebook`}
+              href={`https://electrica-mosconi-backend.onrender.com/auth/facebook`}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
             >
               INICIAR SESIÓN CON FACEBOOK

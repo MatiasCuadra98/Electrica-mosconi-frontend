@@ -23,7 +23,7 @@ const InputConversation = () => {
   console.log("Esto es lo que sale del input:", input)
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.contact);
-  console.log("contacto", contact);
+  //console.log("contacto", contact);
   
   const socialMedia = useSelector((state) => state.socialMedia);
   console.log("socialMedia", socialMedia);
@@ -32,7 +32,7 @@ const InputConversation = () => {
   // console.log('find socialMedia', findSocialMedia);
   const token = findSocialMedia && findSocialMedia.accessToken
   
-  console.log('token', token);
+  //console.log('token', token);
   
   
   //esta parte del codigo esta hecha porque al cambiar el token de MeLi, se crea una nueva red social Activa
