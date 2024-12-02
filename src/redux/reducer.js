@@ -116,7 +116,7 @@ switch (action.type) {
         let allBusinessUsers = action.payload
         console.log('payload', allBusinessUsers);
         console.log('business Id', state.business.id);
-        let businessId = state.business.id || '9860a906-5e9f-4e6e-953e-e6622f24fa2d'; 
+        let businessId = state.business.id || '15c7dce9-39b5-4b7a-98ac-cfd0e3cdcb85'; 
         
         const usersFiltered = allBusinessUsers.filter(user => user.BusinessId === businessId)
         console.log('usuarios filtrados por business', usersFiltered);

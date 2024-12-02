@@ -16,7 +16,7 @@ import {
 } from "../types";
 
 
-const URL = 'https://electrica-mosconi-server.onrender.com';
+const URL = 'https://electrica-mosconi-backend.onrender.com';
 //const URL = 'http://localhost:3000';
 //RUTAS MENSAJES
 //RECIBIDOS:

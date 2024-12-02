@@ -8,7 +8,7 @@ import {
     UPDATE_SOCIAL_MEDIA
 } from '../types.js';
 
-const URL = 'https://electrica-mosconi-server.onrender.com';
+const URL = 'https://electrica-mosconi-backend.onrender.com';
 
 export const getAllSocialMediaByBusinessAction = () => {
     return async (dispatch) => {

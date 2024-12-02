@@ -11,7 +11,7 @@ import {
     AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA
 } from '../types.js';
 
-const URL = 'https://electrica-mosconi-server.onrender.com';
+const URL = 'https://electrica-mosconi-backend.onrender.com';
 //const URL = 'http://localhost:3000';
 //RUTAS BUSINESS:
 //get by Id: /business/:id
