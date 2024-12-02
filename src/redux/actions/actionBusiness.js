@@ -47,7 +47,6 @@ export const updateBusnisessAction = (busnisessId, input) => {
 
 export const loginBusinessAction = (input) => {
     console.log('input en action', input);
-    
     return async (dispatch) => {
         try {
             const response = await axios.post(`${URL}/auth/login`, input, {withCredentials: true});

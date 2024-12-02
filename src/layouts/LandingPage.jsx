@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,27 +9,26 @@ import {
 } from "../redux/actions/actionMessages.js";
 import { sweetAlertsError } from "../components/utils/alerts/alerts.jsx";
 import SpinnerLogin from "../components/utils/spinners/SpinnerLogin.jsx";
-
 //import { authBusinessByAllSocialMediaAction } from "../redux/actions/actionBusiness.js";
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  //const location = useLocation();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   
   const login = useSelector((state) => state.businessLogin);
+  console.log('login', login);
   const business = useSelector((state) => state.business);
-  console.log('empresa en landing', business);
-  
+  //console.log('empresa en landing', business);
   const businessId = business ? business.id : null;
   const businessName = business ? business.name :  null;
-  let path = location
-  console.log('mi ruta actual', path);
-  
-  //estos datos deberian ser recibidos del login inicial
-  //const businessId = "15c7dce9-39b5-4b7a-98ac-cfd0e3cdcb85";
-  //const businessName = "Electrica Mosconi";
+  // let path = location.search ? location.search : null;
+  // console.log('mi ruta actual', path);
+
+  // const [landingButton, setLandingButton] = useState(
+  //   localStorage.getItem("landingButton") || "login"
+  // );
 
   useEffect(() => {
     // localStorage.setItem("businessId", businessId);
@@ -42,6 +42,8 @@ const LandingPage = () => {
 
   const loginHandler = () => {
     navigate("/login")
+    // setLandingButton("meli")
+    // localStorage.setItem('landingButton', "meli")
   }
 
   //ver de tomar el path
@@ -53,7 +55,7 @@ const LandingPage = () => {
         "Ok"
       );
     } else {
-      //dispatch(authBusinessByAllSocialMediaAction(businessId))
+      //dispatch(authBusinessByAllSocialMediaAction(businessId, path))
       setLoading(true);
       localStorage.setItem("businessId", businessId);
       if (businessName) {
@@ -64,6 +66,13 @@ const LandingPage = () => {
       }
     }
   };
+
+  //habria que agregar una funcion que compruebe si tiene activo meli, faceboo e instagram y hacer esos botones condicionales
+  // const changeButtonHandler = (button) => {
+  //   setLandingButton(button)
+  //   localStorage.setItem("landingButton", button);
+  // }
+  // console.log('boton', landingButton);
   
   return (
     <div>
@@ -98,28 +107,39 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="absolute bottom-14 left-0 right-0 flex justify-center">
-            {!login ? (<button onClick={loginHandler} className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"> LOGIN </button> )
-            : (<div> 
-            <button
-              onClick={handlerOnClick}
-              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
-            >
-              COMENCEMOS
-            </button>
-            <a
+            {
+              !login ? (
+                <button onClick={loginHandler} className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"> LOGIN </button>
+              ) : (
+                <div>
+                      <a
               href={`https://electrica-mosconi-backend.onrender.com/mercadolibre/auth`}
-              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-yellow-600 hover:bg-yellow-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
-            >
+              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
+              >
               INICIAR SESIÓN CON MERCADO LIBRE
-            </a>
-             {/* este es el boton de fb */}
-            <a
+              </a>
+              <a
               href={`https://electrica-mosconi-backend.onrender.com/auth/facebook`}
-              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-blue-600 hover:bg-blue-700 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
+              className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
+              
             >
               INICIAR SESIÓN CON FACEBOOK
-            </a> 
-              </div>)}
+            </a>
+                <button
+                onClick={handlerOnClick}
+                className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
+              >
+                INICIAR SESION CON INSTAGRAM
+              </button> 
+              <button
+                onClick={handlerOnClick}
+                className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
+              >
+                COMENCEMOS
+              </button>
+                </div>
+              )
+            }
           </div>
         </div>
       )}
@@ -128,3 +148,4 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+
