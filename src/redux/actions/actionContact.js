@@ -8,7 +8,7 @@ GET_CONTACT_BY_ID,
 GET_CONTACT_BY_MESSAGE_RECEIVED
 } from "../types";
 
-const URL = 'https://electrica-mosconi-server.onrender.com';
+const URL = 'https://electrica-mosconi-backend.onrender.com';
 //const URL = 'http://localhost:3000';
 //RUTAS CONTACTOS: 
 ///getById : /contact/:id
