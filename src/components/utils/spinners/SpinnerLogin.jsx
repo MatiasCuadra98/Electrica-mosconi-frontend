@@ -1,7 +1,10 @@
 import React from "react";
 
 const SpinnerLogin = (props) => {
-  const name = props.props.name;
+  const name = props.props.name ? props.props.name : null;
+
+  
+
   return (
     <div className="w-screen h-screen bg-sky-950 m-0">
       <div className="flex flex-col items-center justify-center h-full">
