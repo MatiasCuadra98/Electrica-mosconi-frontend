@@ -4,7 +4,6 @@ import SocialMediaIcons from "../../utils/icons/socialMediaIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 import {
   updateStateMessageReceivedAction,
-  updateActiveMessageReceivedAction,
   setActiveMessageAction,
 } from "../../../redux/actions/actionMessages";
 
