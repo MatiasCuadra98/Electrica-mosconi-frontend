@@ -19,15 +19,15 @@ const InboxUser = () => {
   const dispatch = useDispatch();
 
   //traigo data de local storage
-  const businessByLocalStorage = localStorage.getItem("businessId");
-  const userByLocalStorage = localStorage.getItem("userId");
-  // const messagesByLocalStorage = localStorage.getItem("lengthMessages");
+  const businessBySessionStorage = sessionStorage.getItem("businessId");
+  const userBySessionStorage = sessionStorage.getItem("userId");
+  // const messagesBysessionStorage = sessionStorage.getItem("lengthMessages");
   //businees
   const business = useSelector((state) => state.business);
-  const businessId = businessByLocalStorage || business.id;
+  const businessId = businessBySessionStorage || business.id;
   //user
   const user = useSelector((state) => state.user);
-  const userId = userByLocalStorage || user.id;
+  const userId = userBySessionStorage || user.id;
   //socket
   const socket = useSelector((state) => state.socket);
   //mensajes

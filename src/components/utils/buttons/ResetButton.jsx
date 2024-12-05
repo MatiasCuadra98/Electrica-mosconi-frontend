@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllMessagesReceivedAction } from "../../../redux/actions/actionMessages";
 import { cleanFiltersAction } from "../../../redux/actions/actionFilters";
 
@@ -9,6 +9,8 @@ const ResetButton = ({ customBg = "bg-sky-950 border-gray-700" }) => {
   const handlerOnClick = () => {
     dispatch(cleanFiltersAction());
     dispatch(getAllMessagesReceivedAction());
+    sessionStorage.removeItem('socialMedia')
+    sessionStorage.removeItem('state')
   };
 
   return (

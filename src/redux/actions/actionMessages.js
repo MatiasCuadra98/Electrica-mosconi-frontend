@@ -97,6 +97,8 @@ export const updateStateMessageReceivedAction = (messageId) => {
     try {
         return async (dispatch) => {
             const response = await axios.put(`${URL}/message/received/state/${messageId}`)
+            console.log("Respuesta del backend:", response);
+            console.log("Error capturado en la acción:", error.response || error.message);
             dispatch({ type: UPDATE_STATE_MESSAGE_RECEIVED, })
             return response
           } 
@@ -122,6 +124,8 @@ export const createMessageSentAction = (input) => {
     return async (dispatch) => {
     try {
             const response = await axios.post(`${URL}/messageSend`, input);
+            console.log('respusta telegram', response);
+            
             const message = response.data;
             console.log('mensaje en action', message);
             

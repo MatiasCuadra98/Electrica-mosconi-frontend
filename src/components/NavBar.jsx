@@ -8,7 +8,7 @@ import LogoutButton from "./utils/buttons/LogoutButton";
 const NavBar = () => {
   const business = useSelector((state) => state.business);
   const login = useSelector((state) => state.admiLogin);
-  const admi = localStorage.getItem('Admi')
+  const admi = sessionStorage.getItem('Admi')
 
   return (
     <div className="sticky w-screen h-14 flex">

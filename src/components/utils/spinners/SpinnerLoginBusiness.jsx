@@ -18,8 +18,11 @@ const SpinnerLoginBusiness = () => {
     if (businessId) {
       dispatch(getAllMessagesReceivedAction());
       dispatch(getAllMessagesSentAction());
+      sessionStorage.setItem('businessId', business.id)
     }
   }, [dispatch, businessId]);
+    
+ businessId &&   sessionStorage.setItem('loginBusiness', true)
 
   return (
     <div className="w-screen h-screen bg-sky-950 m-0">

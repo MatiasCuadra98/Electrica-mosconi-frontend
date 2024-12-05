@@ -25,7 +25,7 @@ const FilterBySocialMedia = () => {
     setSelectedFilter(e.target.value);
     //console.log("filtro seleccionado", e.target.value);
     dispatch(filterBySocialMediaAction(e.target.value));
-    localStorage.setItem("socialMedia", e.target.value);
+    sessionStorage.setItem("socialMedia", e.target.value);
   };
 
   return (

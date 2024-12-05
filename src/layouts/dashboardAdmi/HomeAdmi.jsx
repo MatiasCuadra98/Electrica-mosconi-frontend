@@ -8,15 +8,15 @@ import { getUserByIdAction } from "../../redux/actions/actionsUsers";
 const HomeAdmi = () => {
   const dispatch = useDispatch();
   const businessRedux = useSelector((state) => state.business.id);
-  const businessId = businessRedux || localStorage.getItem("businessId");
+  const businessId = businessRedux || sessionStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user.id);
-  const userId = userRedux || localStorage.getItem("userId");
+  const userId = userRedux || sessionStorage.getItem("userId");
   const socialMedia = useSelector((state) => state.socialMedia)
   
   useEffect(() => {
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
-      localStorage.setItem('SocialMedia', JSON.stringify(socialMedia))
+      sessionStorage.setItem('SocialMedia', JSON.stringify(socialMedia))
       if (userId) {
         dispatch(getUserByIdAction(userId));
       }

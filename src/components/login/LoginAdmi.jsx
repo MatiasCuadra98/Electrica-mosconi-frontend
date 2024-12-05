@@ -45,8 +45,9 @@ const LoginAdmi = () => {
       dispatch(getUserByIdAction(user.id));
       dispatch(admiLoginAction(true));
       //dispatch(getAllSocialMediaByBusinessAction())
-      localStorage.removeItem("userId");
-      localStorage.setItem("Admi", user.id);
+      sessionStorage.removeItem("userId");
+      sessionStorage.setItem("Admi", user.id);
+      sessionStorage.setItem('loginAdmi', true)
       navigate("/dashboardAdmi/homeAdmi");
     } else {
       sweetAlertsError(

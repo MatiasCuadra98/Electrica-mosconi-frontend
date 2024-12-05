@@ -8,7 +8,6 @@ import SpinnerLoginBusiness from "../utils/spinners/SpinnerLoginBusiness";
 const BusinessLogin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //const allBusiness = useSelector((state) => state.business);
 
   const [isLoading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false)
@@ -37,8 +36,6 @@ const toggleShowPassword = (e) => {
     setLoading(true)
     dispatch(loginBusinessAction(input));
     console.log('despacho la action del login con input', input);
-    localStorage.setItem('loginBusiness', true)
-    localStorage.setItem('businessId', business.id)
     setTimeout(() => {
       navigate("/inbox");
       setLoading(false);
@@ -48,7 +45,6 @@ const toggleShowPassword = (e) => {
 
   return (
     <div>
-      {/* {isLoading ? (<SpinnerLogin props={business}/>) : ( */}
         {isLoading ? (<SpinnerLoginBusiness/>) : (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-stone-300">
       <div className="w-96 h-[26rem] bg-sky-950 rounded-tl-[80px] rounded-tr-[80px] rounded-bl-[80px]  flex flex-col items-center justify-center relative">
