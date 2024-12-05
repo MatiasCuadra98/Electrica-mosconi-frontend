@@ -10,14 +10,15 @@ import UploadFiles from "../../utils/UploadFiles";
 
 const InputConversation = () => {
   const [input, setInput] = useState({
-    chatId: "",
-    message: "",
-    UserId: "",
-    accessToken: "",
-    businessId: "",
-    IdSocialMedia: "",
-    contactId: "",
-    phone:""
+    chatId: "", //id de la conversacion/ mensaje
+    message: "", //el mensaje en si mismo
+    UserId: "", // id de quien responde el mensaje
+    accessToken: "",//token
+    businessId: "", // id de la empresa
+    IdSocialMedia: "", //id de la red social
+    contactId: "", //id del contacto creado
+    phone:"", //telefono del quien envia el mensaje
+    userName: "" //usuario que envia el mensaje contacto (id del usuario que envia el mensaje de instagram)
   });
 
   console.log("Esto es lo que sale del input:", input)
@@ -74,6 +75,7 @@ const InputConversation = () => {
   
   const newMessages =
   messages && messages.filter((message) => message.state === "Leidos");
+  const userNameContact = messages ? messages[0].userName : null;
   
   useEffect(() => {
     if (uploadedFile) {
@@ -87,7 +89,8 @@ const InputConversation = () => {
         businessId: business.id,
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
-        phone: contact.phone
+        phone: contact.phone,
+        userName: userNameContact
       }));
     } else {
       // Si se borra el archivo subido, limpia el campo de mensaje
@@ -108,7 +111,8 @@ const InputConversation = () => {
       businessId: business.id,
       IdSocialMedia: contact.SocialMediumId,
       contactId: contact.id,
-      phone: contact.phone
+      phone: contact.phone,
+      userName: userNameContact
     });
     //}
     //console.log("Esto es lo que sale del input:", input)
@@ -126,7 +130,8 @@ const InputConversation = () => {
         businessId: business.id,
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
-        phone: contact.phone
+        phone: contact.phone,
+        userName: userNameContact
       });
     }
     //console.log("input SUBMIT: ", input);
@@ -146,7 +151,8 @@ const InputConversation = () => {
         businessId: "",
         IdSocialMedia: "",
         contactId: "",
-        phone: ""
+        phone: "",
+        userName: ""
       });
       uploadedFile && dispatch(setUploadFileAction(""));
     } else if (!input.UserId && input.message && input.chatId) {
