@@ -33,8 +33,7 @@ const InputConversation = () => {
     
 if(contact && socialMedia) {
       if(contact.SocialMediumId !== 3) {
-        console.log('red social elegida', contact.SocialMediumId);
-        
+        //console.log('red social elegida', contact.SocialMediumId); 
         const findSocialMedia = socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
         token = findSocialMedia && findSocialMedia.accessToken
       } else {
@@ -44,44 +43,10 @@ if(contact && socialMedia) {
 
     console.log('token', token);
     
-  //  const findSocialMedia = socialMedia && contact && socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
-  //  console.log('findSM', findSocialMedia);
-   
-  // console.log('find socialMedia', findSocialMedia);
-  
-  //const token = findSocialMedia && findSocialMedia.accessToken
-  
-  //console.log('token', token);
-  
-  
-  //esta parte del codigo esta hecha porque al cambiar el token de MeLi, se crea una nueva red social Activa
-  // const meLiId = 5;
-  // //const hardcodeToken = "APP_USR-1309613645970920-110709-3ce20f28a6c7cdcf20a26c2b68f570e5-232533265";
-  // const meLiArray =
-  //   contact.SocialMediumId === meLiId &&
-  //   socialMedia &&
-  //   socialMedia
-  //     .filter((sm) => sm.socialMediaId === meLiId)
-  //     .sort((a, b) => b.id - a.id);
-  // console.log("mercadoLibreArray", meLiArray);
-  // const token = meLiArray.length ? meLiArray[0].accessToken : null;
-  // //const token = hardcodeToken;
-  // console.log("token", token);
-
-  //ESTE ES EL CODIGO QUE DEBERIA ESTAR CUANDO SE ARREGLE:
-  // const findSocialMedia =
-  //   socialMedia &&
-  //   socialMedia.find((sm) => sm.socialMediaId === contact.socialMediumId);
-  // const token = findSocialMedia.accessToken;
-  //console.log('red social del contacto', socialMedia);
-  
-  
+ 
   const user = useSelector((state) => state.user);
   const uploadedFile = useSelector((state) => state.uploadedFile);
   const business = useSelector((state) => state.business);
-  // console.log("uploadFile en InputConversation", uploadedFile);
-  // const [preview, setPreview] = useState(uploadedFile ? true : false);
-  // console.log("preview", preview);
   
   const messages =
   contact && contact.MsgReceiveds && contact.MsgReceiveds.length > 1
