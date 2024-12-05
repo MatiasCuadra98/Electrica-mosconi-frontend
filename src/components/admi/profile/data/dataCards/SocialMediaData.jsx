@@ -5,13 +5,13 @@ import SocialMediaIcons from "../../../../utils/icons/socialMediaIcons";
 const SocialMediaData = () => {
   const business = useSelector((state) => state.business);
   const socialMediabyRedux = useSelector((state) => state.socialMedia);
-  // Recuperar y parsear datos del localStorage
-  const socialMediabyStorage = localStorage.getItem('SocialMedia');
+  // Recuperar y parsear datos del sessionStorage
+  const socialMediabyStorage = sessionStorage.getItem('SocialMedia');
   const parsedSocialMedia = socialMediabyStorage
     ? JSON.parse(socialMediabyStorage)
     : [];
 
-  // Usar datos de Redux si están disponibles, de lo contrario usar localStorage
+  // Usar datos de Redux si están disponibles, de lo contrario usar sessionStorage
   const socialMedia =
     socialMediabyRedux && socialMediabyRedux.length > 0
       ? socialMediabyRedux

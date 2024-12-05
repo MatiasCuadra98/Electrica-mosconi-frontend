@@ -13,9 +13,9 @@ const FilterByUser = () => {
     console.log("en filter", value);
 
     if (value === "") {
-      localStorage.removeItem("filterUser");
+      sessionStorage.removeItem("filterUser");
     } else {
-      localStorage.setItem("filterUser", value);
+      sessionStorage.setItem("filterUser", value);
       dispatch(filterByUserAction(value));
     }
   };

@@ -21,6 +21,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ProtectRoutes } from "./components/login/ProtectedRoutes";
 
+
 import { connectSocket, disconnectSocket } from "./redux/actions/actionSocket";
 
 const App = () => {
@@ -38,6 +39,8 @@ const App = () => {
     };
   }, [dispatch]);
 
+  
+
   return (
     <div>
       {location.pathname === "/" || 
@@ -50,14 +53,15 @@ const App = () => {
           <NavBar />
         </div>
       )}
-{/* RUTAS  PROTEGIDAS */}
+
+      {/* RUTAS  PROTEGIDAS 1 */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<BusinessLogin />} />
-        <Route element={<ProtectRoutes isAllowed={businessLogin} route={'/'}/>}>
+        <Route element={<ProtectRoutes type={"business"}/>}>
           <Route path="/inbox" element={<InboxUser />} />
           <Route path="/loginAdmi" element={<LoginAdmi />} />
-          <Route element={<ProtectRoutes isAllowed={admiLogin} route={'/inbox'}/>}>
+          <Route element={<ProtectRoutes type={"admi"} />}>
             <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />
             <Route path="/dashboardAdmi/profile" element={<Profile />} />
             <Route path="/dashboardAdmi/profile/edit" element={<EditProfile />} />

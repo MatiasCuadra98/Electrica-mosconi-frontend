@@ -186,7 +186,6 @@ switch (action.type) {
 //MENSAJES ENVIADOS
     case CREATE_MESSAGE_SEND: 
     console.log('entro en el reducer, envio el objeto al back');
-    
     return {
         ...state,
     };

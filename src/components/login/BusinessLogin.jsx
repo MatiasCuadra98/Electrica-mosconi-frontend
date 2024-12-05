@@ -36,8 +36,6 @@ const toggleShowPassword = (e) => {
     setLoading(true)
     dispatch(loginBusinessAction(input));
     console.log('despacho la action del login con input', input);
-    localStorage.setItem('loginBusiness', true)
-    localStorage.setItem('businessId', business.id)
     setTimeout(() => {
       navigate("/inbox");
       setLoading(false);

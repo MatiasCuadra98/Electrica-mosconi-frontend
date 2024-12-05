@@ -17,10 +17,10 @@ const SelectUser = () => {
   const selectHandler = async (e) => {
     const value = e.target.value;
     if (value === "") {
-      localStorage.removeItem("userId");
+      sessionStorage.removeItem("userId");
       dispatch(cleanUserByIdAction());
     } else {
-      localStorage.setItem("userId", value);
+      sessionStorage.setItem("userId", value);
       dispatch(getUserByIdAction(value));
     }
   };

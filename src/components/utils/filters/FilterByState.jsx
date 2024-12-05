@@ -10,14 +10,14 @@ const FilterByState = ({ statesList }) => {
 
   // Estado para almacenar el filtro seleccionado
   const [selectedFilter, setSelectedFilter] = useState(
-    localStorage.getItem("state") || "TODOS"
+    sessionStorage.getItem("state") || "TODOS"
   );
 
   // Función para manejar el cambio de estado de un radio button
   const handlerOnChange = (e) => {
     setSelectedFilter(e.target.value);
     dispatch(filterByStateAction(e.target.value));
-    localStorage.setItem("state", e.target.value);
+    sessionStorage.setItem("state", e.target.value);
     //console.log("despacho el filtro por state con payload", e.target.value);
   };
 
