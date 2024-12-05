@@ -20,15 +20,11 @@ import {
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ProtectRoutes } from "./components/login/ProtectedRoutes";
-
-
 import { connectSocket, disconnectSocket } from "./redux/actions/actionSocket";
 
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  const admiLogin = useSelector((state) => state.admiLogin);
-  const businessLogin = useSelector((state) => state.businessLogin);
 
   useEffect(() => {
     // Conectar el socket cuando el componente se monta
@@ -38,8 +34,6 @@ const App = () => {
       dispatch(disconnectSocket());
     };
   }, [dispatch]);
-
-  
 
   return (
     <div>
@@ -54,7 +48,7 @@ const App = () => {
         </div>
       )}
 
-      {/* RUTAS  PROTEGIDAS 1 */}
+      {/* RUTAS  PROTEGIDAS  */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<BusinessLogin />} />
