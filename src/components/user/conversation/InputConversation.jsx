@@ -7,7 +7,7 @@ import {
 } from "../../../redux/actions/actionMessages";
 import { sweetAlertsError } from "../../utils/alerts/alerts";
 import UploadFiles from "../../utils/UploadFiles";
-
+const instagramToken = 'IGQWRQd1BJeDVoaEhzOUZAsOTdZAWTR5RHlHOURmelltNHBBYV8wYXF6TDd1VWZAzTWFlay01bEJiekNZAbnZABaFc1QTd2NHVSamhmaUg2X0N1N3hxbU5FZAEZAqdUpNcmdEMnd3elo2SmI5OW1PRFFlY25hQWNxcVZAWVWsZD'
 const InputConversation = () => {
   const [input, setInput] = useState({
     chatId: "", //id de la conversacion/ mensaje
@@ -24,14 +24,32 @@ const InputConversation = () => {
   console.log("Esto es lo que sale del input:", input)
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.contact);
-  //console.log("contacto", contact);
+  console.log("contacto", contact);
   
   const socialMedia = useSelector((state) => state.socialMedia);
   console.log("socialMedia", socialMedia);
 
-   const findSocialMedia = socialMedia && contact && socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
+  let token = ""; 
+    
+if(contact && socialMedia) {
+      if(contact.SocialMediumId !== 3) {
+        console.log('red social elegida', contact.SocialMediumId);
+        
+        const findSocialMedia = socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
+        token = findSocialMedia && findSocialMedia.accessToken
+      } else {
+        token = instagramToken
+      }
+    };
+
+    console.log('token', token);
+    
+  //  const findSocialMedia = socialMedia && contact && socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
+  //  console.log('findSM', findSocialMedia);
+   
   // console.log('find socialMedia', findSocialMedia);
-  const token = findSocialMedia && findSocialMedia.accessToken
+  
+  //const token = findSocialMedia && findSocialMedia.accessToken
   
   //console.log('token', token);
   
