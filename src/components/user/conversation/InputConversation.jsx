@@ -7,7 +7,9 @@ import {
 } from "../../../redux/actions/actionMessages";
 import { sweetAlertsError } from "../../utils/alerts/alerts";
 import UploadFiles from "../../utils/UploadFiles";
+
 const instagramToken = 'IGQWRQd1BJeDVoaEhzOUZAsOTdZAWTR5RHlHOURmelltNHBBYV8wYXF6TDd1VWZAzTWFlay01bEJiekNZAbnZABaFc1QTd2NHVSamhmaUg2X0N1N3hxbU5FZAEZAqdUpNcmdEMnd3elo2SmI5OW1PRFFlY25hQWNxcVZAWVWsZD'
+
 const InputConversation = () => {
   const [input, setInput] = useState({
     chatId: "", //id de la conversacion/ mensaje
