@@ -20,10 +20,7 @@ const GoHomeButton = () => {
     if (msgActive) {
       dispatch(setActiveMessageAction(""));
     }
-    localStorage.removeItem("businessId");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("state");
-    localStorage.removeItem("loginBusiness")
+    sessionStorage.clear()
   };
 
   return (

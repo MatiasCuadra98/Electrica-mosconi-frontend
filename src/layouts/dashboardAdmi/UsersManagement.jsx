@@ -13,9 +13,9 @@ import UsersTable from "../../components/admi/userManagment/UsersTable";
 const UserManagment = () => {
   const dispatch = useDispatch();
   const businessRedux = useSelector((state) => state.business.id);
-  const businessId = businessRedux || localStorage.getItem("businessId");
+  const businessId = businessRedux || sessionStorage.getItem("businessId");
   const userRedux = useSelector((state) => state.user.id);
-  const userId = userRedux || localStorage.getItem("userId");
+  const userId = userRedux || sessionStorage.getItem("userId");
 
   useEffect(() => {
     if (businessId) {

@@ -11,10 +11,6 @@ import IconUser from "../../utils/selectUser/IconUser";
 
 const InboxAdmiTable = () => {
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
-  // allMessagesReceived.forEach((msg) => {
-  //   console.log("mensajes en inboxAdmi", msg.Contact);
-  // });
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -45,8 +41,7 @@ const InboxAdmiTable = () => {
       seenContactIds.add(message.ContactId); // ==> agrego el contacto en el conjunto
     }
   }
-
-  console.log("messagesByContact", messagesByContact);
+  //console.log("messagesByContact", messagesByContact);
 
   return (
     <div>
@@ -110,7 +105,6 @@ const InboxAdmiTable = () => {
                     <td className="pl-6 pr-4 py-2 text-center">
                       <StateMessagesIcons state={message.state} />
                     </td>
-                    {/* esta deberia ser la fecha en la que se recibio el primer mensaje del contacto */}
                     <td className="px-4 py-2 text-center text-[0.65rem] font-normal font-['Inter'] capitalize">
                       <FormattedTimestamp
                         timestamp={
