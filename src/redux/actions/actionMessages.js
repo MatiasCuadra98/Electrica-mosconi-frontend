@@ -98,11 +98,11 @@ export const updateStateMessageReceivedAction = (messageId) => {
         return async (dispatch) => {
             const response = await axios.put(`${URL}/message/received/state/${messageId}`)
             console.log("Respuesta del backend:", response);
+            //console.log("Error capturado en la acción:", error.response || error.message);
             dispatch({ type: UPDATE_STATE_MESSAGE_RECEIVED, })
             return response
           } 
     } catch (error) {
-        
         sweetAlertsError(
             "Intenta de nuevo",
             "No podemos cambiar el estado del mensaje seleccionado",
