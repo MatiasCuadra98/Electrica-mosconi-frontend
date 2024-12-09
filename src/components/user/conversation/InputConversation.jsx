@@ -8,7 +8,7 @@ import {
 import { sweetAlertsError } from "../../utils/alerts/alerts";
 import UploadFiles from "../../utils/UploadFiles";
 
-const instagramToken = import.meta.env.VITE_INSTAGRAM_ACCESS_TOKEN;
+//const instagramToken = import.meta.env.VITE_INSTAGRAM_ACCESS_TOKEN;
 
 const InputConversation = () => {
   const [input, setInput] = useState({
@@ -33,15 +33,15 @@ const InputConversation = () => {
 
   let token = ""; 
     
-if(contact && socialMedia) {
-      if(contact.SocialMediumId !== 3) {
-        //console.log('red social elegida', contact.SocialMediumId); 
+// if(contact && socialMedia) {
+//       if(contact.SocialMediumId !== 3) {
+//         //console.log('red social elegida', contact.SocialMediumId); 
         const findSocialMedia = socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
-        token = findSocialMedia && findSocialMedia.accessToken
-      } else {
-        token = instagramToken
-      }
-    }
+        token = findSocialMedia && findSocialMedia.accessToken ? findSocialMedia.accessToken : null; 
+    //   } else {
+    //     token = instagramToken
+    //   }
+    // }
 
     console.log('token', token);
     
