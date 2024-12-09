@@ -20,7 +20,7 @@ const InputConversation = () => {
     IdSocialMedia: "", //id de la red social
     contactId: "", //id del contacto creado
     phone:"", //telefono del quien envia el mensaje
-    userName: "" //usuario que envia el mensaje contacto (id del usuario que envia el mensaje de instagram)
+    idUser: "" //usuario que envia el mensaje contacto (id del usuario que envia el mensaje de instagram)
   });
 
   console.log("Esto es lo que sale del input:", input)
@@ -60,7 +60,7 @@ const InputConversation = () => {
   
   const newMessages =
   messages && messages.filter((message) => message.state === "Leidos");
-  const userNameContact = messages ? messages[0].userName : null;
+  //const userNameContact = messages ? messages[0].userName : null;
   
   useEffect(() => {
     if (uploadedFile) {
@@ -75,7 +75,7 @@ const InputConversation = () => {
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
         phone: contact.phone,
-        userName: userNameContact
+        idUser: contact.idUser
       }));
     } else {
       // Si se borra el archivo subido, limpia el campo de mensaje
@@ -97,7 +97,7 @@ const InputConversation = () => {
       IdSocialMedia: contact.SocialMediumId,
       contactId: contact.id,
       phone: contact.phone,
-      userName: userNameContact
+      idUser: contact.idUser
     });
     //}
     //console.log("Esto es lo que sale del input:", input)
@@ -116,7 +116,7 @@ const InputConversation = () => {
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
         phone: contact.phone,
-        userName: userNameContact
+        idUser: contact.idUser
       });
     }
     //console.log("input SUBMIT: ", input);
@@ -137,7 +137,7 @@ const InputConversation = () => {
         IdSocialMedia: "",
         contactId: "",
         phone: "",
-        userName: ""
+        idUser: ""
       });
       uploadedFile && dispatch(setUploadFileAction(""));
     } else if (!input.UserId && input.message && input.chatId) {
