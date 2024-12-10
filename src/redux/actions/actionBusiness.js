@@ -46,11 +46,11 @@ export const updateBusnisessAction = (busnisessId, input) => {
 };
 
 export const loginBusinessAction = (input) => {
-    console.log('input en action', input);
+    //console.log('input en action', input);
     return async (dispatch) => {
         try {
             const response = await axios.post(`${URL}/auth/login`, input, {withCredentials: true});
-            console.log('business en action', response.data.business);
+            //console.log('business en action', response.data.business);
             
             dispatch({type: LOGIN_BUSINESS, payload: response.data.business})
             //getBusinessByIdAction(busnisessId, input.businessname)

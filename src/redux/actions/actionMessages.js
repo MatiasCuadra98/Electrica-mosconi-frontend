@@ -7,7 +7,8 @@ import {
     GET_ALL_MESSAGES_RECIVED,
     UPDATE_ACTIVE_MESSAGE_RECEIVED, 
     GET_MESSAGE_RECIVED_BY_ID,
-    UPDATE_STATE_MESSAGE_RECEIVED,
+    UPDATE_STATE_TO_READ_MESSAGE_RECEIVED,
+    UPDATE_STATE_TO_ANSWERED_MESSAGE_RECEIVED,
     CREATE_MESSAGE_SEND,
     NEW_MESSAGE_RECEIVED,
     GET_ALL_MESSAGES_SENT,
@@ -70,21 +71,21 @@ export const getMessageReceivedByIdAction = (messageId) => {
           );  
     }
 }
-export const updateActiveMessageReceivedAction = (messageId) => {
-    try {
-        return async (dispatch) => {
-            const response = await axios.put(`${URL}/message/received/active/${messageId}`)
-            dispatch({ type: UPDATE_ACTIVE_MESSAGE_RECEIVED, })
-            return response
-          } 
-    } catch (error) {
-        sweetAlertsError(
-            "Intenta de nuevo",
-            "No podemos activar/desactivar el mensaje seleccionado",
-            "Ok"
-          );  
-    }
-}
+// export const updateActiveMessageReceivedAction = (messageId) => {
+//     try {
+//         return async (dispatch) => {
+//             const response = await axios.put(`${URL}/message/received/active/${messageId}`)
+//             dispatch({ type: UPDATE_ACTIVE_MESSAGE_RECEIVED, })
+//             return response
+//           } 
+//     } catch (error) {
+//         sweetAlertsError(
+//             "Intenta de nuevo",
+//             "No podemos activar/desactivar el mensaje seleccionado",
+//             "Ok"
+//           );  
+//     }
+// }
 
 export const setActiveMessageAction = (messageId) => {
     return {
@@ -93,14 +94,30 @@ export const setActiveMessageAction = (messageId) => {
     }
 }
 
-export const updateStateMessageReceivedAction = (messageId) => {
+export const updateStateToReadMessageReceivedAction = (messageId) => {
+    console.log('entro en la action de cambio estado a leido:', messageId);
     try {
         return async (dispatch) => {
-            const response = await axios.put(`${URL}/message/received/state/${messageId}`)
-            console.log("Respuesta del backend:", response);
-            //console.log("Error capturado en la acción:", error.response || error.message);
-            dispatch({ type: UPDATE_STATE_MESSAGE_RECEIVED, })
-            return response
+            const response = await axios.put(`${URL}/message/received/state/read/${messageId}`)
+            //console.log("update to Read: Respuesta del backend:", response.data);
+            const message = response.data.message || null
+            dispatch({ type: UPDATE_STATE_TO_READ_MESSAGE_RECEIVED, payload: message })  
+          } 
+    } catch (error) {
+        sweetAlertsError(
+            "Intenta de nuevo",
+            "No podemos cambiar el estado del mensaje seleccionado",
+            "Ok"
+          );  
+    }
+
+}
+export const updateStateToAnsweredMessageReceivedAction = (messageId) => {
+    try {
+        return async (dispatch) => {
+            const response = await axios.put(`${URL}/message/received/state/answered/${messageId}`)
+            const message = response.data.message ? response.data.message : null
+            dispatch({ type: UPDATE_STATE_TO_ANSWERED_MESSAGE_RECEIVED, payload: message})
           } 
     } catch (error) {
         sweetAlertsError(
@@ -119,17 +136,26 @@ export const deactivateAllMessagesReceivedAction = () => {
   };
 
 export const createMessageSentAction = (input) => {
-    console.log('input en action', input);
+    //console.log('input en action', input);
     
     return async (dispatch) => {
     try {
             const response = await axios.post(`${URL}/messageSend`, input);
-            console.log('respusta telegram', response);
-            
+            //console.log('respusta telegram', response);
             const message = response.data;
-            console.log('mensaje en action', message);
-            
+            //console.log('mensaje en action', message);
+            console.log('status', response.status);
             dispatch({ type: CREATE_MESSAGE_SEND, payload: message });
+            
+            if(response.status === 200) {
+                const messagesUnresponded = await axios.get(`${URL}/message/received/unresponded/${input.contactId}`);
+                console.log('mensajes no respondidos', messagesUnresponded.data);
+                const messages = messagesUnresponded.data
+                
+                messages.length && messages.forEach((message) =>
+                    dispatch(updateStateToAnsweredMessageReceivedAction(message.id))
+                  );
+            }
     } catch (error) {
         console.log('error de action', error);
         sweetAlertsError(

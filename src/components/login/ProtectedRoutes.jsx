@@ -31,8 +31,8 @@ export const ProtectRoutes = ({ type }) => {
     const isBusinessLogged = sessionStorage.getItem("loginBusiness") === "true";
     const isAdmiLogged = sessionStorage.getItem("loginAdmi") === "true";
   
-    console.log("isBusinessLogged:", isBusinessLogged);
-    console.log("isAdmiLogged:", isAdmiLogged);
+    //console.log("isBusinessLogged:", isBusinessLogged);
+   // console.log("isAdmiLogged:", isAdmiLogged);
   
     if (type === "business" && !isBusinessLogged) {
       navigate("/"); 
