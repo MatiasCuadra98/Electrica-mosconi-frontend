@@ -20,7 +20,7 @@ const InboxAdmiTable = () => {
     } else {
       setTimeout(() => {
         setLoading(false);
-      }, 5000);
+      }, 7000);
     }
     return () => {
       if (timeoutId) clearTimeout(timeoutId); // Limpia el timeout si el componente se desmonta
