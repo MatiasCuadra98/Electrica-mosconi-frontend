@@ -15,7 +15,7 @@ export const getAllSocialMediaByBusinessAction = () => {
                 try {
                 const response = await axios.get(`${URL}/socialMedia/active`);
                 const socialMedia = response.data; 
-                console.log('socialMedia:', socialMedia);
+                //console.log('socialMedia:', socialMedia);
                  
                 dispatch({type: GET_ALL_SOCIAL_MEDIA_BY_BUSINESS, payload: socialMedia})
             } catch (error) {

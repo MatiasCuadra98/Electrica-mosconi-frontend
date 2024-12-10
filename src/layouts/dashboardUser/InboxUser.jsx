@@ -33,6 +33,7 @@ const InboxUser = () => {
   //mensajes
   const messageActive = useSelector((state) => state.messageActive);
   const msgSent = useSelector((state) => state.messagesSent);
+  const msgReceived = useSelector((state) => state.messagesReceived)
 
   useEffect(() => {
     if (businessId) {
@@ -40,7 +41,6 @@ const InboxUser = () => {
       dispatch(getAllMessagesReceivedAction());
       dispatch(getAllUsersAction());
       console.log("despacho getAllUsersAction");
-
       dispatch(getAllSocialMediaByBusinessAction());
     }
   }, [dispatch, businessId]);
@@ -53,10 +53,10 @@ const InboxUser = () => {
 
   useEffect(() => {
     if (messageActive) {
-      dispatch(getAllMessagesReceivedAction());
+      //dispatch(getAllMessagesReceivedAction());
       dispatch(getContactByMessageReceivedAction(messageActive));
     }
-  }, [dispatch, messageActive, msgSent]);
+  }, [dispatch, messageActive, msgSent, msgReceived]);
 
   useEffect(() => {
     if (!socket) {

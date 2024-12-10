@@ -3,66 +3,42 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createMessageSentAction,
   setUploadFileAction,
-  updateStateMessageReceivedAction,
 } from "../../../redux/actions/actionMessages";
 import { sweetAlertsError } from "../../utils/alerts/alerts";
 import UploadFiles from "../../utils/UploadFiles";
 
+//const instagramToken = import.meta.env.VITE_INSTAGRAM_ACCESS_TOKEN;
+
 const InputConversation = () => {
   const [input, setInput] = useState({
-    chatId: "",
-    message: "",
-    UserId: "",
-    accessToken: "",
-    businessId: "",
-    IdSocialMedia: "",
-    contactId: "",
-    phone:""
+    chatId: "", //id de la conversacion/ mensaje
+    message: "", //el mensaje en si mismo
+    UserId: "", // id de quien responde el mensaje
+    accessToken: "",//token
+    businessId: "", // id de la empresa
+    IdSocialMedia: "", //id de la red social
+    contactId: "", //id del contacto creado
+    phone:"", //telefono del quien envia el mensaje
+    idUser: "" //usuario que envia el mensaje contacto (id del usuario que envia el mensaje de instagram)
   });
 
-  console.log("Esto es lo que sale del input:", input)
+  //console.log("Esto es lo que sale del input:", input)
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.contact);
   //console.log("contacto", contact);
   
   const socialMedia = useSelector((state) => state.socialMedia);
-  console.log("socialMedia", socialMedia);
+  //console.log("socialMedia", socialMedia);
 
-   const findSocialMedia = socialMedia && contact && socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
-  // console.log('find socialMedia', findSocialMedia);
-  const token = findSocialMedia && findSocialMedia.accessToken
-  
-  //console.log('token', token);
-  
-  
-  //esta parte del codigo esta hecha porque al cambiar el token de MeLi, se crea una nueva red social Activa
-  // const meLiId = 5;
-  // //const hardcodeToken = "APP_USR-1309613645970920-110709-3ce20f28a6c7cdcf20a26c2b68f570e5-232533265";
-  // const meLiArray =
-  //   contact.SocialMediumId === meLiId &&
-  //   socialMedia &&
-  //   socialMedia
-  //     .filter((sm) => sm.socialMediaId === meLiId)
-  //     .sort((a, b) => b.id - a.id);
-  // console.log("mercadoLibreArray", meLiArray);
-  // const token = meLiArray.length ? meLiArray[0].accessToken : null;
-  // //const token = hardcodeToken;
-  // console.log("token", token);
+        const findSocialMedia = socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
+        const token = findSocialMedia && findSocialMedia.accessToken ? findSocialMedia.accessToken : null; 
 
-  //ESTE ES EL CODIGO QUE DEBERIA ESTAR CUANDO SE ARREGLE:
-  // const findSocialMedia =
-  //   socialMedia &&
-  //   socialMedia.find((sm) => sm.socialMediaId === contact.socialMediumId);
-  // const token = findSocialMedia.accessToken;
-  //console.log('red social del contacto', socialMedia);
-  
-  
+   // console.log('token', token);
+    
+ 
   const user = useSelector((state) => state.user);
   const uploadedFile = useSelector((state) => state.uploadedFile);
   const business = useSelector((state) => state.business);
-  // console.log("uploadFile en InputConversation", uploadedFile);
-  // const [preview, setPreview] = useState(uploadedFile ? true : false);
-  // console.log("preview", preview);
   
   const messages =
   contact && contact.MsgReceiveds && contact.MsgReceiveds.length > 1
@@ -74,6 +50,7 @@ const InputConversation = () => {
   
   const newMessages =
   messages && messages.filter((message) => message.state === "Leidos");
+  //const userNameContact = messages ? messages[0].userName : null;
   
   useEffect(() => {
     if (uploadedFile) {
@@ -87,7 +64,8 @@ const InputConversation = () => {
         businessId: business.id,
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
-        phone: contact.phone
+        phone: contact.phone,
+        idUser: contact.idUser
       }));
     } else {
       // Si se borra el archivo subido, limpia el campo de mensaje
@@ -108,7 +86,8 @@ const InputConversation = () => {
       businessId: business.id,
       IdSocialMedia: contact.SocialMediumId,
       contactId: contact.id,
-      phone: contact.phone
+      phone: contact.phone,
+      idUser: contact.idUser
     });
     //}
     //console.log("Esto es lo que sale del input:", input)
@@ -126,7 +105,8 @@ const InputConversation = () => {
         businessId: business.id,
         IdSocialMedia: contact.SocialMediumId,
         contactId: contact.id,
-        phone: contact.phone
+        phone: contact.phone,
+        idUser: contact.idUser
       });
     }
     //console.log("input SUBMIT: ", input);
@@ -135,9 +115,9 @@ const InputConversation = () => {
     if (input.UserId && input.message && input.chatId) {
       dispatch(createMessageSentAction(input));
       //console.log("LOG2-envio el mensaje: ", input);
-      newMessages.forEach((message) =>
-        dispatch(updateStateMessageReceivedAction(message.id))
-      );
+      // newMessages.forEach((message) =>
+      //   dispatch(updateStateMessageReceivedAction(message.id))
+      // );
       setInput({
         chatId: "",
         message: "",
@@ -146,7 +126,8 @@ const InputConversation = () => {
         businessId: "",
         IdSocialMedia: "",
         contactId: "",
-        phone: ""
+        phone: "",
+        idUser: ""
       });
       uploadedFile && dispatch(setUploadFileAction(""));
     } else if (!input.UserId && input.message && input.chatId) {

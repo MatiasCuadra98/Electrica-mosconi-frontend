@@ -5,6 +5,9 @@ import {
   getAllMessagesReceivedAction,
   getAllMessagesSentAction,
 } from "../../../redux/actions/actionMessages";
+import {
+  getAllUsersAction
+} from "../../../redux/actions/actionsUsers"
 
 
 const SpinnerLoginBusiness = () => {
@@ -18,11 +21,12 @@ const SpinnerLoginBusiness = () => {
     if (businessId) {
       dispatch(getAllMessagesReceivedAction());
       dispatch(getAllMessagesSentAction());
+      //dispatch(getAllUsersAction());
       sessionStorage.setItem('businessId', business.id)
     }
   }, [dispatch, businessId]);
     
- businessId &&   sessionStorage.setItem('loginBusiness', true)
+ businessId &&  sessionStorage.setItem('loginBusiness', true)
 
   return (
     <div className="w-screen h-screen bg-sky-950 m-0">

@@ -6,6 +6,7 @@ import { getUserByIdAction } from "../../redux/actions/actionsUsers";
 import SideBarA from "../../components/admi/SideBarA";
 import MenuInboxAdmi from "../../components/admi/inbox/MenuInboxAdmi";
 import InboxAdmiTable from "../../components/admi/inbox/InboxAdmiTable";
+import { getAllMessagesReceivedAction } from "../../redux/actions/actionMessages";
 
 const InboxAdmi = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ const InboxAdmi = () => {
   useEffect(() => {
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
+      dispatch(getAllMessagesReceivedAction()); 
+      console.log('despacho la action getAllMessages desde inboxAdmi');
+      
       if (userId) {
         dispatch(getUserByIdAction(userId));
       }

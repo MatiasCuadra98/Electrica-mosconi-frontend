@@ -10,8 +10,8 @@ import {
     CLEAN_USER_BY_ID,
     GET_ALL_MESSAGES_RECIVED,
     GET_MESSAGE_RECIVED_BY_ID,
-    UPDATE_ACTIVE_MESSAGE_RECEIVED,
-    UPDATE_STATE_MESSAGE_RECEIVED,
+    UPDATE_STATE_TO_READ_MESSAGE_RECEIVED,
+    UPDATE_STATE_TO_ANSWERED_MESSAGE_RECEIVED,
     DESACTIVATE_ALL_MESSAGES_RECEIVED,
     GET_CONTACT_BY_ID,
     GET_CONTACT_BY_MESSAGE_RECEIVED,
@@ -39,7 +39,6 @@ const initialState = {
     //negocio por id
     business: {},
     businessLogin: false,
-    //**--USERS--**//
     //todos los usuarios deun negocio(+ copia para filtros)
     users: [],
     allUsers: [],
@@ -92,7 +91,7 @@ switch (action.type) {
             ...state,
         };
     case LOGIN_BUSINESS:
-        console.log('entro en el reducer del login con payload', action.payload);
+        //console.log('entro en el reducer del login con payload', action.payload);
         
         return {
             ...state,
@@ -111,16 +110,14 @@ switch (action.type) {
         };
     //***--REDUCER DE USUARIOS-- */
     case GET_ALL_USERS:
-        console.log('entro al reducer');
-        
+        console.log('entro al reducer de getAllUser con payload:', action.payload);
         let allBusinessUsers = action.payload
-        console.log('payload', allBusinessUsers);
+        //console.log('payload', allBusinessUsers);
         console.log('business Id', state.business.id);
-        let businessId = state.business.id || '15c7dce9-39b5-4b7a-98ac-cfd0e3cdcb85'; 
+        let businessId = state.business.id || sessionStorage.getItem('businessId'); 
         
         const usersFiltered = allBusinessUsers.filter(user => user.BusinessId === businessId)
-        console.log('usuarios filtrados por business', usersFiltered);
-        
+        console.log('usuarios filtrados por business en getAllUsers', usersFiltered);
         return {
             ...state,
             users: usersFiltered,
@@ -155,8 +152,10 @@ switch (action.type) {
     };
 //**REDUCER MENSAJES RECIBIDOS */
     case GET_ALL_MESSAGES_RECIVED:
+        
         const messages = action.payload
-        const allMessagesFiltered = messages.filter(message => message.BusinessId === state.business.id) 
+        let business_Id = state.business.id || sessionStorage.getItem('businessId')
+        const allMessagesFiltered = messages.filter(message => message.BusinessId === business_Id) 
         return {
             ...state,
             messagesReceived: allMessagesFiltered,
@@ -172,10 +171,37 @@ switch (action.type) {
             ...state,
             messageActive: action.payload
         };
-    case UPDATE_STATE_MESSAGE_RECEIVED: 
+//update estados
+    case UPDATE_STATE_TO_READ_MESSAGE_RECEIVED: 
+        console.log('update to read: entro al reducer con payload', action.payload);
         return {
             ...state,
-        };
+            messagesReceived: state.messagesReceived.map(message =>
+                (action.payload !== null && message && message.id === action.payload.id)
+                    ? { ...message, state: action.payload.state }
+                    : message
+            ),
+            allMessagesReceived: state.allMessagesReceived.map(message =>
+                (action.payload !== null && message && message.id === action.payload.id)
+                    ? { ...message, state: action.payload.state }
+                    : message
+            ),
+    };
+    case UPDATE_STATE_TO_ANSWERED_MESSAGE_RECEIVED:  
+        return {
+            ...state,
+             messagesReceived: state.messagesReceived.map(message =>
+               (action.payload !== null && message && message.id === action.payload.id)
+                    ? { ...message, state: action.payload.state }
+                    : message
+            ),
+            allMessagesReceived: state.allMessagesReceived.map(message =>
+                (action.payload !== null && message && message.id === action.payload.id)
+                    ? { ...message, state: action.payload.state }
+                    : message
+            ),
+
+    };
     case DESACTIVATE_ALL_MESSAGES_RECEIVED:
         let desactiveMessages = state.allMessagesReceived.map(message => message.active = false)
             return {
@@ -185,7 +211,7 @@ switch (action.type) {
             }
 //MENSAJES ENVIADOS
     case CREATE_MESSAGE_SEND: 
-    console.log('entro en el reducer, envio el objeto al back');
+    //console.log('entro en el reducer, envio el objeto al back');
     return {
         ...state,
     };
@@ -330,7 +356,7 @@ switch (action.type) {
     //** REDUCER DE REDES SOCIALES */
         case GET_ALL_SOCIAL_MEDIA_BY_BUSINESS:
             let allSocialMedia = action.payload
-            console.log('redes sociales desde el reducer', allSocialMedia);
+            //console.log('redes sociales desde el reducer', allSocialMedia);
             
 //esta parte del codigo debera descomentarse cuando la actualizacion del token de Meli cambie la red social activa en lugar de crear una nueva
             //const socialMediaFiltered = state.business && allSocialMedia.filter(sm => sm.Businesses.length && sm.Businesses[0].id === state.business.id)
