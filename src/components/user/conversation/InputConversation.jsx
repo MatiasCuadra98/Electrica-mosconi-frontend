@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createMessageSentAction,
   setUploadFileAction,
-  updateStateMessageReceivedAction,
 } from "../../../redux/actions/actionMessages";
 import { sweetAlertsError } from "../../utils/alerts/alerts";
 import UploadFiles from "../../utils/UploadFiles";
@@ -23,27 +22,18 @@ const InputConversation = () => {
     idUser: "" //usuario que envia el mensaje contacto (id del usuario que envia el mensaje de instagram)
   });
 
-  console.log("Esto es lo que sale del input:", input)
+  //console.log("Esto es lo que sale del input:", input)
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.contact);
-  console.log("contacto", contact);
+  //console.log("contacto", contact);
   
   const socialMedia = useSelector((state) => state.socialMedia);
-  console.log("socialMedia", socialMedia);
+  //console.log("socialMedia", socialMedia);
 
-  let token = ""; 
-    
-// if(contact && socialMedia) {
-//       if(contact.SocialMediumId !== 3) {
-//         //console.log('red social elegida', contact.SocialMediumId); 
         const findSocialMedia = socialMedia.find((sm) => sm.socialMediaId === contact.SocialMediumId)
-        token = findSocialMedia && findSocialMedia.accessToken ? findSocialMedia.accessToken : null; 
-    //   } else {
-    //     token = instagramToken
-    //   }
-    // }
+        const token = findSocialMedia && findSocialMedia.accessToken ? findSocialMedia.accessToken : null; 
 
-    console.log('token', token);
+   // console.log('token', token);
     
  
   const user = useSelector((state) => state.user);
@@ -125,9 +115,9 @@ const InputConversation = () => {
     if (input.UserId && input.message && input.chatId) {
       dispatch(createMessageSentAction(input));
       //console.log("LOG2-envio el mensaje: ", input);
-      newMessages.forEach((message) =>
-        dispatch(updateStateMessageReceivedAction(message.id))
-      );
+      // newMessages.forEach((message) =>
+      //   dispatch(updateStateMessageReceivedAction(message.id))
+      // );
       setInput({
         chatId: "",
         message: "",

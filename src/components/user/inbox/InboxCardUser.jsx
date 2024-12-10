@@ -3,7 +3,7 @@ import StateMessagesIcons from "../../utils/icons/StateMessagesIcons";
 import SocialMediaIcons from "../../utils/icons/socialMediaIcons";
 import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 import {
-  updateStateMessageReceivedAction,
+  updateStateToReadMessageReceivedAction,
   setActiveMessageAction,
 } from "../../../redux/actions/actionMessages";
 
@@ -23,7 +23,7 @@ const InboxCardUser = ({
       ? SocialMedium.name.toUpperCase()
       : "RED SOCIAL";
   //const upperSMName = socialMediaName && socialMediaName.toUpperCase();
-  console.log("inboxUser", socialMediaName);
+ // console.log("inboxUser", socialMediaName);
 
   const msgActive = useSelector((state) => state.messageActive);
 
@@ -33,7 +33,7 @@ const InboxCardUser = ({
   const noReadMsg =
     allMsgByContact &&
     allMsgByContact.filter((message) => message.state === "No Leidos");
-  console.log("mensajes", allMsgByContact);
+  //console.log("mensajes", allMsgByContact);
 
   const onClickHandler = (id) => {
     if (msgActive && msgActive !== id) {
@@ -43,8 +43,11 @@ const InboxCardUser = ({
     dispatch(setActiveMessageAction(id));
 
     if (noReadMsg) {
+      console.log('depacho la action para mensajes nuevos:', noReadMsg);
+      noReadMsg.forEach((message) => console.log(message.status));
+      
       noReadMsg.forEach((message) =>
-        dispatch(updateStateMessageReceivedAction(message.id))
+        dispatch(updateStateToReadMessageReceivedAction(message.id))
       );
     }
   };

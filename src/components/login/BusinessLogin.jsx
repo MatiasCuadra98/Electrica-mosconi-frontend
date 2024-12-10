@@ -24,7 +24,7 @@ const BusinessLogin = () => {
       [e.target.name]: e.target.value,
     });
   };
-console.log(input);
+//console.log(input);
 
 const toggleShowPassword = (e) => {
   e.preventDefault()
@@ -35,7 +35,7 @@ const toggleShowPassword = (e) => {
     e.preventDefault();
     setLoading(true)
     dispatch(loginBusinessAction(input));
-    console.log('despacho la action del login con input', input);
+    //console.log('despacho la action del login con input', input);
     setTimeout(() => {
       navigate("/inbox");
       setLoading(false);
