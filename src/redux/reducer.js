@@ -39,7 +39,6 @@ const initialState = {
     //negocio por id
     business: {},
     businessLogin: false,
-    //**--USERS--**//
     //todos los usuarios deun negocio(+ copia para filtros)
     users: [],
     allUsers: [],
@@ -111,16 +110,14 @@ switch (action.type) {
         };
     //***--REDUCER DE USUARIOS-- */
     case GET_ALL_USERS:
-        //console.log('entro al reducer');
-        
+        console.log('entro al reducer de getAllUser con payload:', action.payload);
         let allBusinessUsers = action.payload
         //console.log('payload', allBusinessUsers);
-        //console.log('business Id', state.business.id);
-        let businessId = state.business.id || '15c7dce9-39b5-4b7a-98ac-cfd0e3cdcb85'; 
+        console.log('business Id', state.business.id);
+        let businessId = state.business.id || sessionStorage.getItem('businessId'); 
         
         const usersFiltered = allBusinessUsers.filter(user => user.BusinessId === businessId)
-        //console.log('usuarios filtrados por business', usersFiltered);
-        
+        console.log('usuarios filtrados por business en getAllUsers', usersFiltered);
         return {
             ...state,
             users: usersFiltered,
@@ -155,8 +152,10 @@ switch (action.type) {
     };
 //**REDUCER MENSAJES RECIBIDOS */
     case GET_ALL_MESSAGES_RECIVED:
+        
         const messages = action.payload
-        const allMessagesFiltered = messages.filter(message => message.BusinessId === state.business.id) 
+        let business_Id = state.business.id || sessionStorage.getItem('businessId')
+        const allMessagesFiltered = messages.filter(message => message.BusinessId === business_Id) 
         return {
             ...state,
             messagesReceived: allMessagesFiltered,

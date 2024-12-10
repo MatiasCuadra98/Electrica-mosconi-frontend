@@ -21,7 +21,7 @@ const SpinnerLoginBusiness = () => {
     if (businessId) {
       dispatch(getAllMessagesReceivedAction());
       dispatch(getAllMessagesSentAction());
-      dispatch(getAllUsersAction());
+      //dispatch(getAllUsersAction());
       sessionStorage.setItem('businessId', business.id)
     }
   }, [dispatch, businessId]);

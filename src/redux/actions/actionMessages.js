@@ -26,10 +26,14 @@ const URL = 'https://electrica-mosconi-backend.onrender.com';
 //cambiar active: /message/received/active/:id
 
 export const getAllMessagesReceivedAction = () => {
+    console.log('entro en la action getAllMessages');
+    
     return async (dispatch, getState) => {
         try {
             const response = await axios.get(`${URL}/message/received`);
+            console.log('respusta del back en action getAllMessages', response);
             const messages = response.data;
+            console.log('despacho la action getALlMessages con Payload', messages)
             dispatch({ type: GET_ALL_MESSAGES_RECIVED, payload: messages });
             
             const { socket } = getState();  // socket desde el estado global

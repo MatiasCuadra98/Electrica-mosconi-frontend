@@ -38,13 +38,12 @@ const InboxUser = () => {
   useEffect(() => {
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
-      // dispatch(getAllMessagesReceivedAction());
-      //dispatch(getAllUsersAction());
-      //console.log("despacho getAllUsersAction");
-
+      dispatch(getAllMessagesReceivedAction());
+      dispatch(getAllUsersAction());
+      console.log("despacho getAllUsersAction");
       dispatch(getAllSocialMediaByBusinessAction());
     }
-  }, [dispatch, businessId, msgReceived]);
+  }, [dispatch, businessId]);
 
   useEffect(() => {
     if (userId) {

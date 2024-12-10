@@ -19,9 +19,12 @@ const URL = 'https://electrica-mosconi-backend.onrender.com';
 //updape: /business/update/:id
 
 export const getBusinessByIdAction = (businessId, businessName) => {
+    const idBusiness = businessId || sessionStorage.getItem('businessId')
+    console.log('empresa: ', idBusiness);
+    
     try {
         return async (dispatch) => {
-            const response = await axios.get(`${URL}/business/${businessId}`);
+            const response = await axios.get(`${URL}/business/${idBusiness}`);
             const business = response.data;   
             dispatch({type: GET_BUSINESS_BY_ID, payload: business}) 
         }
