@@ -11,14 +11,12 @@ import {
     ADMI_LOGIN,
 } from '../types.js';
 
-const URL = 'https://electrica-mosconi-backend.onrender.com';
+//LOCALHOST
 //const URL = 'http://localhost:3000';
-//RUTAS USER:
-// getAll: /user
-//getById: /user/:id
-//crear: /user/create
-//editar: /user/update/:id
-//eliminar: /user/delete/:id
+//SERVER DESARROLLO
+//const URL = 'https://electrica-mosconi-backend.onrender.com';
+//SERVER PRODUCCION
+const URL ='https://electrica-mosconi-backend-main.onrender.com'
 
 
 export const getAllUsersAction = () => {

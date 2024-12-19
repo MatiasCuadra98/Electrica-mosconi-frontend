@@ -11,9 +11,12 @@ import {
     FILTER_BY_USER
 } from '../types.js';
 
-
+//LOCALHOST
 //const URL = 'http://localhost:3000';
-const URL = 'https://electrica-mosconi-backend.onrender.com';
+//SERVER DESARROLLO
+//const URL = 'https://electrica-mosconi-backend.onrender.com';
+//SERVER PRODUCCION
+const URL ='https://electrica-mosconi-backend-main.onrender.com'
 
 export const filterBySocialMediaAction = (socialMedia) => {
     //console.log('llega a action: ', socialMedia);

@@ -1,8 +1,12 @@
 import { io } from "socket.io-client";
 import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET, ADD_NEW_MESSAGE_SENT } from "../types";
 
-const URL = 'https://electrica-mosconi-backend.onrender.com';
+//LOCALHOST
 //const URL = 'http://localhost:3000';
+//SERVER DESARROLLO
+//const URL = 'https://electrica-mosconi-backend.onrender.com';
+//SERVER PRODUCCION
+const URL ='https://electrica-mosconi-backend-main.onrender.com'
 
 const socketMiddleware = (store) => {
   let socket = null;
