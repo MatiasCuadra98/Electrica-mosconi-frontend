@@ -1,5 +1,10 @@
 import { io } from "socket.io-client";
-import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET, ADD_NEW_MESSAGE_SENT } from "../types";
+import {
+  ADD_NEW_MESSAGE_RECEIVED,
+  CONNECT_SOCKET,
+  DISCONNECT_SOCKET,
+  ADD_NEW_MESSAGE_SENT,
+} from "../types";
 
 //LOCALHOST
 //const URL = 'http://localhost:3000';
@@ -17,10 +22,10 @@ const socketMiddleware = (store) => {
         if (socket) {
           socket.disconnect();
         }
-          socket = io(URL, {
-            transports: ["websocket"],
-          });
-        
+        socket = io(URL, {
+          transports: ["websocket"],
+        });
+
         // Conectar con el servidor WebSocket
         socket.on("connect", () => {
           //console.log("Socket conectado");
@@ -45,7 +50,7 @@ const socketMiddleware = (store) => {
       case DISCONNECT_SOCKET:
         if (socket) {
           socket.disconnect();
-        };
+        }
         break;
 
       default:

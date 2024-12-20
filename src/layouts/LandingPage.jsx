@@ -45,20 +45,20 @@ const LandingPage = () => {
           {socialMediaLogin ? (
             <div> 
             <a
-              href={`https://electrica-mosconi-backend.onrender.com/mercadolibre/auth`}
+              href={`https://electrica-mosconi-backend-main.onrender.com/mercadolibre/auth`}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
               >
               INICIAR SESIÓN CON MERCADO LIBRE
             </a>
             <a
-              href={`https://electrica-mosconi-backend.onrender.com/auth/facebook`}
+              href={`https://electrica-mosconi-backend-main.onrender.com/auth/facebook`}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
               
             >
               INICIAR SESIÓN CON FACEBOOK
             </a>
             <a
-              href={`https://electrica-mosconi-backend.onrender.com/auth/instagram`}
+              href={`https://electrica-mosconi-backend-main.onrender.com/auth/instagram`}
               className="w-fit h-fit  relative mx-auto px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-base font-normal font-['Oswald']"
               
             >
