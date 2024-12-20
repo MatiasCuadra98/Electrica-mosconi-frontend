@@ -5,10 +5,13 @@ import {
 } from "../../components/utils/alerts/alerts.jsx";
 import { GET_CONTACT_BY_ID, GET_CONTACT_BY_MESSAGE_RECEIVED } from "../types";
 
-const URL = "https://electrica-mosconi-backend-main.onrender.com";
+//LOCALHOST
 //const URL = 'http://localhost:3000';
-//RUTAS CONTACTOS:
-///getById : /contact/:id
+//SERVER DESARROLLO
+//const URL = 'https://electrica-mosconi-backend.onrender.com';
+//SERVER PRODUCCION
+const URL ='https://electrica-mosconi-backend-main.onrender.com'
+
 
 export const getContactByIdAction = (contactId) => {
   try {

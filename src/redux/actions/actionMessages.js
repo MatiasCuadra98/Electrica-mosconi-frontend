@@ -16,13 +16,12 @@ import {
   SET_UPLOAD_FILE,
 } from "../types";
 
-const URL = "https://electrica-mosconi-backend-main.onrender.com";
+//LOCALHOST
 //const URL = 'http://localhost:3000';
-//RUTAS MENSAJES
-//RECIBIDOS:
-//getAll: /message/received/
-//getById: /message/received/:id
-//cambiar active: /message/received/active/:id
+//SERVER DESARROLLO
+//const URL = 'https://electrica-mosconi-backend.onrender.com';
+//SERVER PRODUCCION
+const URL ='https://electrica-mosconi-backend-main.onrender.com'
 
 export const getAllMessagesReceivedAction = () => {
   console.log("entro en la action getAllMessages");

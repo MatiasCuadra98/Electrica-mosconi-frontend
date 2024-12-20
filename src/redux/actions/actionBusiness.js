@@ -11,12 +11,12 @@ import {
   AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA,
 } from "../types.js";
 
-const URL = "https://electrica-mosconi-backend-main.onrender.com";
+//LOCALHOST
 //const URL = 'http://localhost:3000';
-//RUTAS BUSINESS:
-//get by Id: /business/:id
-//create : /business/create
-//updape: /business/update/:id
+//SERVER DESARROLLO
+//const URL = 'https://electrica-mosconi-backend.onrender.com';
+//SERVER PRODUCCION
+const URL ='https://electrica-mosconi-backend-main.onrender.com'
 
 export const getBusinessByIdAction = (businessId, businessName) => {
   const idBusiness = businessId || sessionStorage.getItem("businessId");
