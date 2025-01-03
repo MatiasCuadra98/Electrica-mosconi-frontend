@@ -43,11 +43,10 @@ const InboxCardUser = ({
     dispatch(setActiveMessageAction(id));
 
     if (noReadMsg) {
-      console.log('depacho la action para mensajes nuevos:', noReadMsg);
-      noReadMsg.forEach((message) => console.log(message.status));
-      
+      //console.log('depacho la action para mensajes nuevos:', noReadMsg);
+      //noReadMsg.forEach((message) => message && message.status && console.log(message.status));
       noReadMsg.forEach((message) =>
-        dispatch(updateStateToReadMessageReceivedAction(message.id))
+       dispatch(updateStateToReadMessageReceivedAction(message.id))
       );
     }
   };

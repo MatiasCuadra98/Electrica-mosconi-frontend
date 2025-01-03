@@ -313,7 +313,10 @@ switch (action.type) {
         }
 
         case FILTER_BY_USER:
+            console.log('entro en el reducer con payload', action.payload);
+            
             const allMsgsRecd = state.allMessagesReceived;
+            //console.log('mensajes recibidos en filtro', allMsgsRecd);
             if ( action.payload === 'TODOS') {
                 return {
                     ...state,
@@ -321,7 +324,8 @@ switch (action.type) {
                     userFilter: action.payload
                 }
             } else {
-                const messagesFilteredByUser = allMsgsRecd.filter(message => message.Contact && message.Contact.MsgSent && message.Contact.MsgSent.User && message.Contact.MsgSents.Users.id === action.payload)
+                // Ejemplo de allMsgsRecd = [{id: 1, Contact: {id: 12, MsgSents: [{id: 21, User: {id:1, name: "name1"}, text: "mensaje1"},  {id: 22, User: {id:1, name: "name1"}, text: "mensaje2"}]}}, {id: 2, Contact: {id: 2, MsgSents: [{id: 2, User: {id:2, name: "name2"}, text: "mensaje3"},  {id: 22, User: {id:1, name: "name1"}, text: "mensaje4"}]}} 
+                const messagesFilteredByUser = allMsgsRecd.filter(message => message.Contact && message.Contact.MsgSents && message.Contact.MsgSents.some((sent) => sent.User && sent.User.id === action.payload)) 
                 return {
                     ...state,
                     messagesReceived: messagesFilteredByUser,

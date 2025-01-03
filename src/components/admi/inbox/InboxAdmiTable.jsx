@@ -98,7 +98,7 @@ const InboxAdmiTable = () => {
                         (a, b) => b.timestamp - a.timestamp
                       )[0]
                     : null;
-                    console.log('ultimo mensaje enviado', lastMsgSent);
+                    //console.log('ultimo mensaje enviado', lastMsgSent);
                     
                 return (
                   <tr key={index} className="odd:bg-white even:bg-stone-300 ">
