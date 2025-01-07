@@ -110,14 +110,14 @@ switch (action.type) {
         };
     //***--REDUCER DE USUARIOS-- */
     case GET_ALL_USERS:
-        console.log('entro al reducer de getAllUser con payload:', action.payload);
+        //console.log('entro al reducer de getAllUser con payload:', action.payload);
         let allBusinessUsers = action.payload
         //console.log('payload', allBusinessUsers);
-        console.log('business Id', state.business.id);
+        //console.log('business Id', state.business.id);
         let businessId = state.business.id || sessionStorage.getItem('businessId'); 
         
         const usersFiltered = allBusinessUsers.filter(user => user.BusinessId === businessId)
-        console.log('usuarios filtrados por business en getAllUsers', usersFiltered);
+        //console.log('usuarios filtrados por business en getAllUsers', usersFiltered);
         return {
             ...state,
             users: usersFiltered,
@@ -154,8 +154,14 @@ switch (action.type) {
     case GET_ALL_MESSAGES_RECIVED:
         
         const messages = action.payload
+        //console.log('todos los mensajes', messages);
+        
         let business_Id = state.business.id || sessionStorage.getItem('businessId')
+        //console.log('id empresa', business_Id);
+        
         const allMessagesFiltered = messages.filter(message => message.BusinessId === business_Id) 
+        //console.log('mensajes por empresa', allMessagesFiltered);
+        
         return {
             ...state,
             messagesReceived: allMessagesFiltered,
@@ -295,11 +301,14 @@ switch (action.type) {
                 };
         };
     case SEARCH_BY_CONTACT:
-        const AllMessagesR = state.allMessagesReceived
-        //console.log('entro al reducer con payload', action.payload);
-        const contactsFiltered = action.payload.filter(contact => contact.businessId === state.business.id) 
-        //console.log('contactos en search', contactsFiltered);
-        const messagesBySearch = AllMessagesR.filter(message => contactsFiltered.some(contact => contact.id === message.ContactId));
+        const AllMessagesR = state.allMessagesReceived;
+        // console.log('todos los mensajes: ', AllMessagesR);
+        // console.log('payload', action.payload);
+        
+        // const contactsFiltered = action.payload.filter(contact => contact.businessId === state.business.id) 
+        // console.log('contactos en empresa', contactsFiltered);
+        // const messagesBySearch = AllMessagesR.filter(message => contactsFiltered.some(contact => contact.id === message.ContactId));
+        const messagesBySearch = AllMessagesR.filter(message => action.payload.some(contact => contact.id === message.ContactId));
         return {
             ...state,
             messagesReceived: messagesBySearch, 

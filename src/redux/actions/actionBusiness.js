@@ -19,23 +19,23 @@ import {
 const URL ='https://electrica-mosconi-backend-main.onrender.com'
 
 export const getBusinessByIdAction = (businessId, businessName) => {
-  const idBusiness = businessId || sessionStorage.getItem("businessId");
-  console.log("empresa: ", idBusiness);
-
-  try {
-    return async (dispatch) => {
-      const response = await axios.get(`${URL}/business/${idBusiness}`);
-      const business = response.data;
-      dispatch({ type: GET_BUSINESS_BY_ID, payload: business });
-    };
-  } catch (error) {
-    sweetAlertsError(
-      "Intenta de nuevo",
-      `No podemos encontrar a ${businessName}`,
-      "Ok"
-    );
-  }
-};
+    const idBusiness = businessId || sessionStorage.getItem('businessId')
+    //console.log('empresa: ', idBusiness);
+    
+    try {
+        return async (dispatch) => {
+            const response = await axios.get(`${URL}/business/${idBusiness}`);
+            const business = response.data;   
+            dispatch({type: GET_BUSINESS_BY_ID, payload: business}) 
+        }
+    } catch (error) {
+        sweetAlertsError(
+            "Intenta de nuevo",
+            `No podemos encontrar a ${businessName}`,
+            "Ok"
+          ); 
+    }
+}
 
 export const updateBusnisessAction = (busnisessId, input) => {
   return async (dispatch) => {
