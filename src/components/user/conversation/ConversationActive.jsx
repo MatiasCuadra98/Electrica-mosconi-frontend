@@ -68,6 +68,7 @@ const ConversationActive = () => {
                   ...contact,
                   id: Number(contact.id), // Convertimos contact.id a número para evitar el warning
                 }}
+                path={'/inbox'}
               />
             </div>
           </div>

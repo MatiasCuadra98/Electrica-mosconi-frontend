@@ -62,7 +62,7 @@ const App = () => {
             <Route path="/dashboardAdmi/profile/edit-business" element={<EditBusiness />}/>
             <Route path="/dashboardAdmi/profile/edit-socialMedia" element={<EditSocialMedia />}/>
             <Route path="/dashboardAdmi/inboxAdmi" element={<InboxAdmi />} />
-            <Route path="/inboxDetailAdmi/:detailId" element={<InboxDetailAdmi />}/>
+            <Route path="/inboxDetailAdmi/:contactId" element={<InboxDetailAdmi />}/>
             <Route path="/dashboardAdmi/usersManagement" element={<UsersManagement />}/>
             <Route path="/dashboardAdmi/metrics" element={<MetricsAnalysis />} />
           </Route>

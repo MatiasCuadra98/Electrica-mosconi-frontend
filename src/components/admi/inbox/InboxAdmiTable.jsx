@@ -8,6 +8,7 @@ import FormattedTimestamp from "../../utils/FormatedTimeStamp";
 import ArchivedButton from "./ArchivedButton";
 import FilterText from "../../utils/filters/FilterText";
 import IconUser from "../../utils/selectUser/IconUser";
+import { Link } from "react-router-dom";
 
 const InboxAdmiTable = () => {
   const allMessagesReceived = useSelector((state) => state.messagesReceived);
@@ -101,7 +102,7 @@ const InboxAdmiTable = () => {
                     //console.log('ultimo mensaje enviado', lastMsgSent);
                     
                 return (
-                  <tr key={index} className="odd:bg-white even:bg-stone-300 ">
+                  <tr key={index} className="odd:bg-white even:bg-stone-300 "> 
                     <td className="pl-6 pr-4 py-2 text-center">
                       <StateMessagesIcons state={message.state} />
                     </td>
@@ -127,7 +128,8 @@ const InboxAdmiTable = () => {
                       />
                     </td>
                     <td className="px-4 py-2 text-center text-xs font-normal font-['Inter'] capitalize">
-                      {message.name}
+                    <Link to={`/inboxDetailAdmi/${message.Contact.id}`} state={{ isOdd: index % 2 !== 0 }}>{message.name} </Link>
+                    {/* con state paso la data si su ubicacion es par o impar */}
                     </td>
                     <td className="pl-6 pr-4 py-2 text-center w-6 h-6 ">
                       <IconUser
