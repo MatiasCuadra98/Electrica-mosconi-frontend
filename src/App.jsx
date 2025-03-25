@@ -16,6 +16,7 @@ import {
   InboxDetailAdmi,
   UsersManagement,
   MetricsAnalysis,
+  MercadoLibreAuth
 } from "./layouts";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -42,7 +43,7 @@ const App = () => {
       location.pathname === "/loginAdmi" ||
       location.pathname === "/dashboardAdmi/profile/edit" ||
       location.pathname === "/dashboardAdmi/profile/edit-business" ||
-      location.pathname === "/dashboardAdmi/profile/edit-socialMedia" ? null : (
+      location.pathname === "/dashboardAdmi/profile/edit-socialMedia" ||  location.pathname.includes("/MeLi_auth")? null : (
         <div>
           <NavBar />
         </div>
@@ -52,6 +53,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<BusinessLogin />} />
+        <Route path="/MeLi_auth" element={<MercadoLibreAuth />} />
         <Route element={<ProtectRoutes type={"business"}/>}>
           <Route path="/inbox" element={<InboxUser />} />
           <Route path="/loginAdmi" element={<LoginAdmi />} />
@@ -73,6 +75,7 @@ const App = () => {
       {/* <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<BusinessLogin />} />
+        <Route path="/MeLi_auth" element={<MercadoLibreAuth />} />
         <Route path="/inbox" element={<InboxUser />} />
         <Route path="/loginAdmi" element={<LoginAdmi />} />
         <Route path="/dashboardAdmi/homeAdmi" element={<HomeAdmi />} />

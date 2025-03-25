@@ -31,7 +31,9 @@ import {
     GET_USER_BY_ADMI,
     LOGIN_BUSINESS, 
     LOGOUT_BUSINESS,
-    AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA
+    AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA,
+    POST_CODE_TO_AUTH_MELI,
+    POST_CODE_TO_AUTH_MELI_ERROR
 } from './types';
 
 const initialState = {
@@ -74,7 +76,10 @@ const initialState = {
         //**--SOCKET--**//
     socket: null,
     //para carga de imagen y archivos
-    uploadedFile: ''
+    uploadedFile: '',
+     //**--AUTH--**//
+     meliAuthData: null,
+     meliAuthError: null,
 
 }
 
@@ -395,6 +400,16 @@ switch (action.type) {
             case UPDATE_SOCIAL_MEDIA:
         return {
             ...state,
+        };
+        case POST_CODE_TO_AUTH_MELI: 
+        return {
+            ...state,
+            meliAuthData: action.payload,
+        };
+        case POST_CODE_TO_AUTH_MELI_ERROR: 
+        return {
+            ...state,
+            meliAuthError: action.payload
         };
 
     default:

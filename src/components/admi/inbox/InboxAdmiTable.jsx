@@ -76,7 +76,7 @@ const InboxAdmiTable = () => {
           <tbody>
             <tr>
               <td colSpan="7" className="text-center py-4 h-[600px]">
-                <Spinner />
+                <Spinner text={'loading...'}/>
               </td>
             </tr>
           </tbody>

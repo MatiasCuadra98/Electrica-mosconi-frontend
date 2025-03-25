@@ -23,7 +23,7 @@ const ConversationActive = () => {
   //   <div className="w-full h-full flex flex-col overflow-hidden">
   //     <div className="flex-grow overflow-y-auto">
   //       {loading ? (
-  //         <Spinner />
+  //         <Spinner text={'loading...'}/>
   //       ) : (
   //         <div>
   //           <div className="w-3/5 h-5 fixed top-16 z-40  ml-6 mt-2">
@@ -51,7 +51,7 @@ const ConversationActive = () => {
       {/* Contenedor de la conversación */}
       <div className="flex-grow overflow-y-auto">
         {loading ? (
-          <Spinner />
+          <Spinner text={'loading...'}/>
         ) : (
           <div className="flex flex-col h-full relative">
             {/* Contador en la conversación */}

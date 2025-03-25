@@ -35,7 +35,7 @@ const InboxDetailAdmi = () => {
       {/* Contenedor del menú y tabla */}
       <div className="flex flex-row flex-grow overflow-hidden">
         {/* Menu fijo */}
-        <div className="w-56 flex-shrink-0 bg-white shadow-md h-full relative z-20">
+        <div className="w-56 flex-shrink-0 bg-white shadow-md h-full relative z-20 top-14">
           <MenuInboxAdmi />
         </div>
 

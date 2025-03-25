@@ -44,7 +44,7 @@ const InboxListUser = () => {
   return (
     <div className="sticky w-64 h-screen overflow-y-auto overflow-x-hidden bg-green-400">
       {loading ? (
-        <Spinner />
+        <Spinner text={'loading...'}/>
       ) : allMessagesReceived.length ? (
         messagesByContact.map((message, index) => {
           const { id, name, timestamp, state, SocialMedium, ContactId } =

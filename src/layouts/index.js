@@ -13,6 +13,7 @@ import InboxDetailAdmi from "./dashboardAdmi/InboxDetailAdmi";
 import UsersManagement from "./dashboardAdmi/UsersManagement";
 import MetricsAnalysis from "./dashboardAdmi/MetricsAnalysis";
 import BusinessLogin from "../components/login/BusinessLogin";
+import MercadoLibreAuth from "./auth/MercadoLibreAuth";
 
 
 export {
@@ -30,5 +31,6 @@ export {
   InboxAdmi,
   InboxDetailAdmi,
   UsersManagement,
-  MetricsAnalysis
+  MetricsAnalysis,
+  MercadoLibreAuth,
 };
