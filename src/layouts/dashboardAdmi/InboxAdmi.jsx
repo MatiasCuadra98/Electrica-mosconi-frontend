@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getBusinessByIdAction } from "../../redux/actions/actionBusiness";
-import { getUserByIdAction } from "../../redux/actions/actionsUsers";
+import { getUserByIdAction, getAllUsersAction } from "../../redux/actions/actionsUsers";
 import SideBarA from "../../components/admi/SideBarA";
 import MenuInboxAdmi from "../../components/admi/inbox/MenuInboxAdmi";
 import InboxAdmiTable from "../../components/admi/inbox/InboxAdmiTable";
@@ -19,7 +19,8 @@ const InboxAdmi = () => {
     if (businessId) {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction()); 
-      console.log('despacho la action getAllMessages desde inboxAdmi');
+      dispatch(getAllUsersAction())
+      //console.log('despacho la action getAllMessages desde inboxAdmi');
       
       if (userId) {
         dispatch(getUserByIdAction(userId));

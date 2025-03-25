@@ -55,7 +55,7 @@ const UsersTable = () => {
         {loading ? (
           <tr>
             <td colSpan="6" className="text-center py-4 h-[600px]">
-              <Spinner />
+              <Spinner text={'loading...'}/>
             </td>
           </tr>
         ) : (

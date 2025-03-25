@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setActiveMessageAction } from "../../../redux/actions/actionMessages";
 
-const ClouseConversationButton = () => {
+const ClouseConversationButton = ({path}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handlerOnClick = () => {
     dispatch(setActiveMessageAction(""));
-    navigate("/inbox");
+    navigate(path);
   };
 
   return (

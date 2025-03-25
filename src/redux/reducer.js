@@ -31,7 +31,9 @@ import {
     GET_USER_BY_ADMI,
     LOGIN_BUSINESS, 
     LOGOUT_BUSINESS,
-    AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA
+    AUTH_BUSINESS_BY_ALL_SOCIAL_MEDIA,
+    POST_CODE_TO_AUTH_MELI,
+    POST_CODE_TO_AUTH_MELI_ERROR
 } from './types';
 
 const initialState = {
@@ -74,7 +76,10 @@ const initialState = {
         //**--SOCKET--**//
     socket: null,
     //para carga de imagen y archivos
-    uploadedFile: ''
+    uploadedFile: '',
+     //**--AUTH--**//
+     meliAuthData: null,
+     meliAuthError: null,
 
 }
 
@@ -110,14 +115,14 @@ switch (action.type) {
         };
     //***--REDUCER DE USUARIOS-- */
     case GET_ALL_USERS:
-        console.log('entro al reducer de getAllUser con payload:', action.payload);
+        //console.log('entro al reducer de getAllUser con payload:', action.payload);
         let allBusinessUsers = action.payload
         //console.log('payload', allBusinessUsers);
-        console.log('business Id', state.business.id);
+        //console.log('business Id', state.business.id);
         let businessId = state.business.id || sessionStorage.getItem('businessId'); 
         
         const usersFiltered = allBusinessUsers.filter(user => user.BusinessId === businessId)
-        console.log('usuarios filtrados por business en getAllUsers', usersFiltered);
+        //console.log('usuarios filtrados por business en getAllUsers', usersFiltered);
         return {
             ...state,
             users: usersFiltered,
@@ -154,8 +159,14 @@ switch (action.type) {
     case GET_ALL_MESSAGES_RECIVED:
         
         const messages = action.payload
+        //console.log('todos los mensajes', messages);
+        
         let business_Id = state.business.id || sessionStorage.getItem('businessId')
+        //console.log('id empresa', business_Id);
+        
         const allMessagesFiltered = messages.filter(message => message.BusinessId === business_Id) 
+        //console.log('mensajes por empresa', allMessagesFiltered);
+        
         return {
             ...state,
             messagesReceived: allMessagesFiltered,
@@ -295,11 +306,14 @@ switch (action.type) {
                 };
         };
     case SEARCH_BY_CONTACT:
-        const AllMessagesR = state.allMessagesReceived
-        //console.log('entro al reducer con payload', action.payload);
-        const contactsFiltered = action.payload.filter(contact => contact.businessId === state.business.id) 
-        //console.log('contactos en search', contactsFiltered);
-        const messagesBySearch = AllMessagesR.filter(message => contactsFiltered.some(contact => contact.id === message.ContactId));
+        const AllMessagesR = state.allMessagesReceived;
+        // console.log('todos los mensajes: ', AllMessagesR);
+        // console.log('payload', action.payload);
+        
+        // const contactsFiltered = action.payload.filter(contact => contact.businessId === state.business.id) 
+        // console.log('contactos en empresa', contactsFiltered);
+        // const messagesBySearch = AllMessagesR.filter(message => contactsFiltered.some(contact => contact.id === message.ContactId));
+        const messagesBySearch = AllMessagesR.filter(message => action.payload.some(contact => contact.id === message.ContactId));
         return {
             ...state,
             messagesReceived: messagesBySearch, 
@@ -313,7 +327,10 @@ switch (action.type) {
         }
 
         case FILTER_BY_USER:
+            console.log('entro en el reducer con payload', action.payload);
+            
             const allMsgsRecd = state.allMessagesReceived;
+            //console.log('mensajes recibidos en filtro', allMsgsRecd);
             if ( action.payload === 'TODOS') {
                 return {
                     ...state,
@@ -321,7 +338,8 @@ switch (action.type) {
                     userFilter: action.payload
                 }
             } else {
-                const messagesFilteredByUser = allMsgsRecd.filter(message => message.Contact && message.Contact.MsgSent && message.Contact.MsgSent.User && message.Contact.MsgSents.Users.id === action.payload)
+                // Ejemplo de allMsgsRecd = [{id: 1, Contact: {id: 12, MsgSents: [{id: 21, User: {id:1, name: "name1"}, text: "mensaje1"},  {id: 22, User: {id:1, name: "name1"}, text: "mensaje2"}]}}, {id: 2, Contact: {id: 2, MsgSents: [{id: 2, User: {id:2, name: "name2"}, text: "mensaje3"},  {id: 22, User: {id:1, name: "name1"}, text: "mensaje4"}]}} 
+                const messagesFilteredByUser = allMsgsRecd.filter(message => message.Contact && message.Contact.MsgSents && message.Contact.MsgSents.some((sent) => sent.User && sent.User.id === action.payload)) 
                 return {
                     ...state,
                     messagesReceived: messagesFilteredByUser,
@@ -382,6 +400,16 @@ switch (action.type) {
             case UPDATE_SOCIAL_MEDIA:
         return {
             ...state,
+        };
+        case POST_CODE_TO_AUTH_MELI: 
+        return {
+            ...state,
+            meliAuthData: action.payload,
+        };
+        case POST_CODE_TO_AUTH_MELI_ERROR: 
+        return {
+            ...state,
+            meliAuthError: action.payload
         };
 
     default:

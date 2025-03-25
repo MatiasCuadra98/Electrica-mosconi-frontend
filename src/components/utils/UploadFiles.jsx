@@ -90,7 +90,7 @@ const UploadFiles = () => {
 
       {loading ? (
         <div className=" relative -mt-52 -ml-12 w-28 h-auto bg-white rounded-md py-4 px-8">
-          <Spinner />
+          <Spinner text={'loading...'}/>
         </div>
       ) : (
         URLfile && (
