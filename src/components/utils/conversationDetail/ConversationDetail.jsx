@@ -4,7 +4,7 @@ import MsgSent from "./MsgSent";
 import ClouseConversationButton from "../buttons/ClouseConversationButton";
 import { timestampToISO } from "../timeStampToISO";
 
-const ConversationDetail = ({ contact }) => {
+const ConversationDetail = ({ contact, path }) => {
   // console.log("conversation detail contact", contact);
 
   const [messages, setMessages] = useState([
@@ -43,7 +43,7 @@ const ConversationDetail = ({ contact }) => {
   return (
     <div className="w-full h-full relative flex flex-col overflow-y-auto overflow-x-hidden">
       <div className="fixed top-24 right-10 mt-2">
-        <ClouseConversationButton />
+        <ClouseConversationButton path={path}/>
       </div>
       <div className="flex-grow">
         {sortedMessages &&

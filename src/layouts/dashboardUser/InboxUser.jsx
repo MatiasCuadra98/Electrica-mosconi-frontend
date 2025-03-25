@@ -40,7 +40,7 @@ const InboxUser = () => {
       dispatch(getBusinessByIdAction(businessId));
       dispatch(getAllMessagesReceivedAction());
       dispatch(getAllUsersAction());
-      console.log("despacho getAllUsersAction");
+      //console.log("despacho getAllUsersAction");
       dispatch(getAllSocialMediaByBusinessAction());
     }
   }, [dispatch, businessId]);

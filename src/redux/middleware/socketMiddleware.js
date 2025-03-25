@@ -1,8 +1,17 @@
 import { io } from "socket.io-client";
-import { ADD_NEW_MESSAGE_RECEIVED, CONNECT_SOCKET, DISCONNECT_SOCKET, ADD_NEW_MESSAGE_SENT } from "../types";
+import {
+  ADD_NEW_MESSAGE_RECEIVED,
+  CONNECT_SOCKET,
+  DISCONNECT_SOCKET,
+  ADD_NEW_MESSAGE_SENT,
+} from "../types";
 
-const URL = 'https://electrica-mosconi-backend.onrender.com';
+//LOCALHOST
 //const URL = 'http://localhost:3000';
+//SERVER DESARROLLO
+//const URL = 'https://electrica-mosconi-backend.onrender.com';
+//SERVER PRODUCCION
+const URL ='https://electrica-mosconi-backend-main.onrender.com'
 
 const socketMiddleware = (store) => {
   let socket = null;
@@ -13,10 +22,10 @@ const socketMiddleware = (store) => {
         if (socket) {
           socket.disconnect();
         }
-          socket = io(URL, {
-            transports: ["websocket"],
-          });
-        
+        socket = io(URL, {
+          transports: ["websocket"],
+        });
+
         // Conectar con el servidor WebSocket
         socket.on("connect", () => {
           //console.log("Socket conectado");
@@ -41,7 +50,7 @@ const socketMiddleware = (store) => {
       case DISCONNECT_SOCKET:
         if (socket) {
           socket.disconnect();
-        };
+        }
         break;
 
       default:
