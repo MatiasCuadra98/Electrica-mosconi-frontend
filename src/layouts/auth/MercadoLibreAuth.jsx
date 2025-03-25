@@ -7,7 +7,7 @@ import Spinner from "../../components/utils/spinners/Spinner";
 const MercadoLibreAuth = () => {
     const [searchParams] = useSearchParams()
     const code = searchParams.get("code");
-    console.log('respuesta del serach:', code);
+    console.log('respuesta del search:', code);
     const dispatch = useDispatch();
     const navigate = useNavigate(); 
 
