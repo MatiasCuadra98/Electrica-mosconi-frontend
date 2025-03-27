@@ -11,7 +11,7 @@ const BusinessLogin = () => {
 
   const [isLoading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false)
-  const business = useSelector((state) => state.business)
+  //const business = useSelector((state) => state.business)
 
   const [input, setInput] = useState({
     businessName: "",
@@ -19,6 +19,7 @@ const BusinessLogin = () => {
   });
 
   const handlerInputChange = (e) => {
+    //console.log("Input cambiado:", e.target.name, e.target.value);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -55,7 +56,7 @@ const toggleShowPassword = (e) => {
           <div className="flex flex-col items-center justify-center my-10">
             <input
               placeholder="Nombre Empresa"
-              className="w-64 h-6 bg-white rounded-[30px] shadow-inner p-4 text-sm"
+              className="w-64 h-6 bg-white rounded-[30px] shadow-inner p-4 text-sm text-sky-950"
               id="businessName"
               type="text"
               value={input.businessName}
@@ -65,7 +66,7 @@ const toggleShowPassword = (e) => {
             <div className="relative w-64 mt-4">
              <input
                 placeholder="Contraseña"
-                className="w-64 h-6 bg-white rounded-[30px] shadow-inner mt-4 p-4 text-sm"
+                className="w-64 h-6 bg-white rounded-[30px] shadow-inner mt-4 p-4 text-sm text-sky-950"
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
