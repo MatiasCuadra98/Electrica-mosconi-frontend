@@ -14,6 +14,11 @@ const MercadoLibreAuth = () => {
     const error = useSelector((state) => state.meliAuthError)
 
     useEffect(() => {
+        console.log('MercadoLibreAuth montado');
+        
+    }, [])
+
+    useEffect(() => {
         if(code) {
             //funcion que envia el codigo de autentificacion al backend
             dispatch(postCodeToAuthMeLiAction(code, navigate))
