@@ -13,9 +13,9 @@ import {
 //LOCALHOST
 //const URL = 'http://localhost:3000';
 //SERVER DESARROLLO
-const URL = 'https://electrica-mosconi-backend.onrender.com';
+//const URL = 'https://electrica-mosconi-backend.onrender.com';
 //SERVER PRODUCCION
-//const URL ='https://electrica-mosconi-backend-main.onrender.com'
+const URL ='https://electrica-mosconi-backend-main.onrender.com'
 
 export const getAllSocialMediaByBusinessAction = () => {
     return async (dispatch) => {
