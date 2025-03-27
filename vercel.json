@@ -1,6 +1,5 @@
 
 {
-    "_comment": "Le pide a Vercel que redirija todas las rutas al index.html, lo que permite que React Router maneje la navegación",
     "rewrites": [
       {
         "source": "/:path*",
