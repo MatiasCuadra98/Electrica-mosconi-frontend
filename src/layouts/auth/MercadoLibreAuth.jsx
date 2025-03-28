@@ -10,9 +10,8 @@ const MercadoLibreAuth = () => {
     console.log('respuesta del search:', code);
     const dispatch = useDispatch();
     const navigate = useNavigate(); 
-
     const error = useSelector((state) => state.meliAuthError)
-
+ 
     useEffect(() => {
         console.log('MercadoLibreAuth montado');
         
@@ -25,19 +24,22 @@ const MercadoLibreAuth = () => {
         }
     }, [code, navigate, dispatch])
 
- return (
-    <div className="bg-sky-950">
-        <Spinner text={'Autenticando con Mercado Libre...'} />
-        {error ? (
-            <div className="mt-12 mx-auto">
-                <p style={{ color: "red" }}>Error: {error}</p>
-                <button className="w-fit h-fit  px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-xs font-normal font-['Oswald']" onClick={() => dispatch(postCodeToAuthMeLiAction(code, navigate))}>
-                    REINTENTAR
-                </button>
-            </div>
-        ) : null}
+return (
+    <div className="bg-sky-950 w-screen h-screen flex flex-col items-center">
+      <Spinner text={'Autenticando con Mercado Libre...'} className="mt-auto" />
+      {error ? (
+      <div className="flex flex-col items-center gap-2 mb-56">
+        <p className="text-red-500">'aca hay un error'</p>
+        <button 
+          className="w-fit px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-xs font-normal font-['Oswald']"
+          onClick={() => dispatch(postCodeToAuthMeLiAction(code, navigate))}
+        >
+          REINTENTAR
+        </button>
+      </div>
+      ): null}
     </div>
- );    
-
+  );
 }
+
 export default MercadoLibreAuth;
