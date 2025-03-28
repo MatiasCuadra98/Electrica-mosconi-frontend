@@ -21,17 +21,18 @@ const MercadoLibreAuth = () => {
     useEffect(() => {
         if(code) {
             //funcion que envia el codigo de autentificacion al backend
-            dispatch(postCodeToAuthMeLiAction(code, navigate))
+            dispatch(postCodeToAuthMeLiAction({code, navigate}))
         }
     }, [code, navigate, dispatch])
+
  return (
-    <div>
+    <div className="bg-sky-950">
         <Spinner text={'Autenticando con Mercado Libre...'} />
         {error ? (
-            <div>
+            <div className="mt-12 mx-auto">
                 <p style={{ color: "red" }}>Error: {error}</p>
                 <button className="w-fit h-fit  px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-xs font-normal font-['Oswald']" onClick={() => dispatch(postCodeToAuthMeLiAction(code, navigate))}>
-                    Reintentar
+                    REINTENTAR
                 </button>
             </div>
         ) : null}

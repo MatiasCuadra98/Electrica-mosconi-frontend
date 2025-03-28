@@ -45,7 +45,7 @@ export const getAllSocialMediaByBusinessAction = () => {
     export const postCodeToAuthMeLiAction = ({code, navigate}) => {
         return async(dispatch) => {
             try {
-                await axios.post(`${URL}/auth/callback`, code)
+                const response = await axios.post(`${URL}/auth/callback`, {code})
                 console.log("MELI-AUTH: Tokens guardados con éxito", response.data);
                 dispatch({type: POST_CODE_TO_AUTH_MELI, payload: response.data})
                 navigate('/')
