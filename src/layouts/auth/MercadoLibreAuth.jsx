@@ -6,7 +6,7 @@ import Spinner from "../../components/utils/spinners/Spinner";
 
 const MercadoLibreAuth = () => {
     const [searchParams] = useSearchParams()
-    const code = searchParams.get("code");
+    const code = {code: searchParams.get("code")};
     console.log('respuesta del search:', code);
     const dispatch = useDispatch();
     const navigate = useNavigate(); 
@@ -19,9 +19,9 @@ const MercadoLibreAuth = () => {
     }, [])
 
     useEffect(() => {
-        if(code) {
+        if(code.code) {
             //funcion que envia el codigo de autentificacion al backend
-            dispatch(postCodeToAuthMeLiAction({code, navigate}))
+            dispatch(postCodeToAuthMeLiAction(code, navigate))
         }
     }, [code, navigate, dispatch])
 
