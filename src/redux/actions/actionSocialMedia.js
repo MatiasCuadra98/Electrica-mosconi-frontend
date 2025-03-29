@@ -53,7 +53,7 @@ export const getAllSocialMediaByBusinessAction = () => {
                 }, 2000);
             } catch (error) {
                 console.error("MELI-AUTH: Error al enviar el código de autorización", error);  
-                dispatch({ type: "POST_CODE_TO_AUTH_MELI_ERROR", payload: error.message });
+                dispatch({ type: "POST_CODE_TO_AUTH_MELI_ERROR", payload:`MELI-AUTH: Error al enviar el código de autorización: ${error.message}` });
             }
         }
     };
