@@ -48,7 +48,9 @@ export const getAllSocialMediaByBusinessAction = () => {
                 const response = await axios.post(`${URL}/mercadolibre/auth/callback`, code)
                 console.log("MELI-AUTH: Tokens guardados con éxito", response.data);
                 dispatch({type: POST_CODE_TO_AUTH_MELI, payload: response.data})
-                navigate('/')
+                setTimeout(() => {
+                    navigate('/')   
+                }, 2000);
             } catch (error) {
                 console.error("MELI-AUTH: Error al enviar el código de autorización", error);  
                 dispatch({ type: "POST_CODE_TO_AUTH_MELI_ERROR", payload: error.message });
