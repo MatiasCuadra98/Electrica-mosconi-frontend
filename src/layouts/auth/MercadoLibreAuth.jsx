@@ -29,7 +29,7 @@ return (
       <Spinner text={'Autenticando con Mercado Libre...'} className="mt-auto" />
       {error ? (
       <div className="flex flex-col items-center gap-2 mb-56">
-        <p className="text-red-500">'aca hay un error'</p>
+        <p className="text-red-500">{error}</p>
         <button 
           className="w-fit px-8 py-1 bg-sky-950 hover:bg-amber-500 border-gray-700 rounded-[30px] shadow-inner text-white text-xs font-normal font-['Oswald']"
           onClick={() => dispatch(postCodeToAuthMeLiAction(code, navigate))}
