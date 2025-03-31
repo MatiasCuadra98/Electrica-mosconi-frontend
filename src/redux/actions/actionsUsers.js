@@ -20,13 +20,13 @@ const URL ='https://electrica-mosconi-backend-main.onrender.com'
 
 export const getAllUsersAction = () => {
   return async (dispatch) => {
-    console.log("entro en la action GetAllUsersAction");
+   // console.log("entro en la action GetAllUsersAction");
     try {
       const response = await axios.get(`${URL}/user`);
-      console.log("repuesta en action de getAllUsers", response);
+      //console.log("repuesta en action de getAllUsers", response);
       const users = response.data;
       dispatch({ type: GET_ALL_USERS, payload: users });
-      console.log("voy al reducer de getAllUsers");
+      //console.log("voy al reducer de getAllUsers");
     } catch (error) {
       sweetAlertsError(
         "Intenta de nuevo",
